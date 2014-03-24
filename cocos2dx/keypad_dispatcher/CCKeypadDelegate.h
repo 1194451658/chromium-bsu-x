@@ -45,6 +45,9 @@ public:
 
     // The menu key clicked. only available on wophone & android
     virtual void keyMenuClicked() {};
+
+    virtual void keyDown_Extension(int key) {};
+    virtual void keyUp_Extension(int key) {};
 };
 
 /**

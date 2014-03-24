@@ -1,5 +1,8 @@
 #include "HelloWorldScene.h"
 
+#include "test/engine/TestKeyUpDown.h"
+#include "keypad_dispatcher/CCKeypadDispatcher.h"
+
 USING_NS_CC;
 
 CCScene* HelloWorld::scene()
@@ -28,10 +31,6 @@ bool HelloWorld::init()
     }
     
     // CCLayerColor* layer = CCLayerColor::create();
-
-
-
-
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
@@ -78,12 +77,26 @@ bool HelloWorld::init()
     // add the sprite as a child to this layer
     this->addChild(pSprite, 0);
 
-    CCSprite* testSprite = CCSprite::create("png/hero.png");
-
-    testSprite->setPosition(ccp(visibleSize.width/2, visibleSize.height/2));
-    addChild(testSprite);
+    test();
     
     return true;
+}
+
+void HelloWorld::test()
+{
+    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    // CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+
+
+    CCSprite* testSprite = CCSprite::create("png/hero.png");
+    testSprite->setPosition(ccp(visibleSize.width/2, visibleSize.height/2));
+    addChild(testSprite);
+
+    // ----------------------
+    // test key up down event
+    // ----------------------
+    TestKeyUpDown* keyHandler = new TestKeyUpDown();
+    CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(keyHandler);
 }
 
 

@@ -39,6 +39,8 @@ typedef enum {
     // the back key clicked msg
     kTypeBackClicked = 1,
     kTypeMenuClicked,
+    kTypeKeyDown_Extension,
+    kTypeKeyUp_Extension,
 } ccKeypadMSGType;
 
 struct _ccCArray;
@@ -78,6 +80,7 @@ public:
     @brief dispatch the key pad msg
     */
     bool dispatchKeypadMSG(ccKeypadMSGType nMsgType);
+	bool dispatchKeypadMSG_Extension(ccKeypadMSGType nMsgType, int key);
 
 protected:
 

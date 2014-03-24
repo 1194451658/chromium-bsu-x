@@ -14,6 +14,8 @@
 #include "touch_dispatcher/CCTouchDispatcher.h"
 #include "text_input_node/CCIMEDispatcher.h"
 
+#include "keypad_dispatcher/CCKeypadDispatcher.h"
+
 PFNGLGENFRAMEBUFFERSEXTPROC glGenFramebuffersEXT = NULL;
 PFNGLDELETEFRAMEBUFFERSEXTPROC glDeleteFramebuffersEXT = NULL;
 PFNGLBINDFRAMEBUFFEREXTPROC glBindFramebufferEXT = NULL;
@@ -99,6 +101,30 @@ void keyEventHandle(int iKeyID,int iKeyState) {
 	}
 }
 
+void keyEventHandle_Extension(int iKeyID,int iKeyState) {
+
+	// CCLOG("keyEventHandle_Extension called !");
+
+	if(iKeyState == GLFW_PRESS)
+	{
+		CCDirector::sharedDirector()->getKeypadDispatcher()->dispatchKeypadMSG_Extension(kTypeKeyDown_Extension, iKeyID);
+
+	}else if(iKeyState == GLFW_RELEASE)
+	{ CCDirector::sharedDirector()->getKeypadDispatcher()->dispatchKeypadMSG_Extension(kTypeKeyUp_Extension, iKeyID);
+	}
+
+	if (iKeyState ==GLFW_RELEASE) {
+		return;
+	}
+
+	if (iKeyID == GLFW_KEY_DEL) {
+		CCIMEDispatcher::sharedDispatcher()->dispatchDeleteBackward();
+	} else if (iKeyID == GLFW_KEY_ENTER) {
+		CCIMEDispatcher::sharedDispatcher()->dispatchInsertText("\n", 1);
+	} else if (iKeyID == GLFW_KEY_TAB) {
+
+	}
+}
 void charEventHandle(int iCharID,int iCharState) {
 	if (iCharState ==GLFW_RELEASE) {
 		return;
@@ -221,7 +247,8 @@ void CCEGLView::setFrameSize(float width, float height)
 		bIsInit = true;
 
 		//register the glfw key event
-		glfwSetKeyCallback(keyEventHandle);
+		// glfwSetKeyCallback(keyEventHandle);
+		glfwSetKeyCallback(keyEventHandle_Extension);
 		//register the glfw char event
 		glfwSetCharCallback(charEventHandle);
 		//register the glfw mouse event

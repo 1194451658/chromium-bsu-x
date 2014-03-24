@@ -1,3 +1,6 @@
+
+DEBUG = 1
+
 EXECUTABLE = HelloCpp
 
 INCLUDES = -I.. -I../Classes
@@ -24,6 +27,6 @@ $(OBJ_DIR)/%.o: ../%.cpp $(CORE_MAKEFILE_LIST)
 	@mkdir -p $(@D)
 	$(LOG_CXX)$(CXX) $(CXXFLAGS) $(INCLUDES) $(DEFINES) $(VISIBILITY) -c $< -o $@
 
-run:
-	./bin/release/HelloCpp
+debug:
+	./bin/debug/HelloCpp
 
