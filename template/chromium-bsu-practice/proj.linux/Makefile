@@ -1,5 +1,6 @@
 
 DEBUG = 1
+USE_BOX2D = 1
 
 EXECUTABLE = HelloCpp
 
@@ -10,13 +11,24 @@ SOURCES = main.cpp \
         ../Classes/HelloWorldScene.cpp \
 	../Classes/aircraft/heroAircraft.cpp \
 	../Classes/input/InputManager.cpp \
+	../Classes/util/GLES-Render.cpp \
+	../Classes/util/GB2ShapeCache-x.cpp \
+
+
 
 
 COCOS_ROOT = ../../..
 include $(COCOS_ROOT)/cocos2dx/proj.linux/cocos2dx.mk
 
-SHAREDLIBS += -lcocos2d
-COCOS_LIBS = $(LIB_DIR)/libcocos2d.so
+INCLUDES += -I${COCOS_SRC}/../external
+
+SHAREDLIBS += -lcocos2d \
+	      -lbox2d \
+
+
+COCOS_LIBS = $(LIB_DIR)/libcocos2d.so \
+	     $(LIB_DIR)/libbox2d.a \
+
 
 $(TARGET): $(OBJECTS) $(STATICLIBS) $(COCOS_LIBS) $(CORE_MAKEFILE_LIST)
 	@mkdir -p $(@D)

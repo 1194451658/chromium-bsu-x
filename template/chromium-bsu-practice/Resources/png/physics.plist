@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<!-- created with http://www.physicseditor.de -->
+
+<plist version="1.0">
+	<dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>1</integer>
+            <key>ptm_ratio</key>
+            <real>32</real>
+        </dict>
+        <key>bodies</key>
+		<dict>
+
+			<key>hero</key>
+			<dict>
+				<key>anchorpoint</key>
+                <string>{ 0.0000,0.0000 }</string>
+				<key>fixtures</key>
+				<array>
+
+					<dict>
+                        <key>density</key> <real>2</real>
+                        <key>friction</key> <real>0</real>
+                        <key>restitution</key> <real>0</real>
+                        <key>filter_categoryBits</key> <integer>1</integer>
+                        <key>filter_groupIndex</key> <integer>0</integer>
+                        <key>filter_maskBits</key> <integer>65535</integer>
+                        <key>isSensor</key> <true/>
+                        <key>id</key> <string></string>
+                        <key>fixture_type</key> <string>POLYGON</string>
+
+						<key>polygons</key>
+						<array>
+							<array>	
+								<string>{ 32.000,64.000 }</string>	
+								<string>{ 0.000,14.000 }</string>	
+								<string>{ 21.000,1.000 }</string>	
+								<string>{ 43.000,1.000 }</string>	
+								<string>{ 64.000,15.000 }</string>
+							</array>
+						</array>
+                    </dict>
+				</array>
+			</dict>
+			<key>enemy00</key>
+			<dict>
+				<key>anchorpoint</key>
+                <string>{ 0.0000,0.0000 }</string>
+				<key>fixtures</key>
+				<array>
+
+					<dict>
+                        <key>density</key> <real>2</real>
+                        <key>friction</key> <real>0</real>
+                        <key>restitution</key> <real>0</real>
+                        <key>filter_categoryBits</key> <integer>1</integer>
+                        <key>filter_groupIndex</key> <integer>0</integer>
+                        <key>filter_maskBits</key> <integer>65535</integer>
+                        <key>isSensor</key> <false/>
+                        <key>id</key> <string></string>
+                        <key>fixture_type</key> <string>POLYGON</string>
+
+						<key>polygons</key>
+						<array>
+							<array>	
+								<string>{ 4.000,15.000 }</string>	
+								<string>{ 31.000,0.000 }</string>	
+								<string>{ 52.000,7.000 }</string>	
+								<string>{ 60.000,16.000 }</string>	
+								<string>{ 15.000,64.000 }</string>	
+								<string>{ 5.000,50.000 }</string>
+							</array>
+							<array>	
+								<string>{ 50.000,64.000 }</string>	
+								<string>{ 15.000,64.000 }</string>	
+								<string>{ 60.000,16.000 }</string>	
+								<string>{ 60.000,49.000 }</string>
+							</array>
+						</array>
+                    </dict>
+				</array>
+			</dict>
+			<key>enemy01</key>
+			<dict>
+				<key>anchorpoint</key>
+                <string>{ 0.0000,0.0000 }</string>
+				<key>fixtures</key>
+				<array>
+
+					<dict>
+                        <key>density</key> <real>2</real>
+                        <key>friction</key> <real>0</real>
+                        <key>restitution</key> <real>0</real>
+                        <key>filter_categoryBits</key> <integer>1</integer>
+                        <key>filter_groupIndex</key> <integer>0</integer>
+                        <key>filter_maskBits</key> <integer>65535</integer>
+                        <key>isSensor</key> <false/>
+                        <key>id</key> <string></string>
+                        <key>fixture_type</key> <string>CIRCLE</string>
+
+                         <key>circle</key>
+                         <dict>
+                             <key>radius</key> <real>30.414</real>
+                             <key>position</key> <string>{ 31.710,32.583 }</string>
+                         </dict>
+                    </dict>
+				</array>
+			</dict>
+			<key>enemy02</key>
+			<dict>
+				<key>anchorpoint</key>
+                <string>{ 0.0000,0.0000 }</string>
+				<key>fixtures</key>
+				<array>
+
+					<dict>
+                        <key>density</key> <real>2</real>
+                        <key>friction</key> <real>0</real>
+                        <key>restitution</key> <real>0</real>
+                        <key>filter_categoryBits</key> <integer>1</integer>
+                        <key>filter_groupIndex</key> <integer>0</integer>
+                        <key>filter_maskBits</key> <integer>65535</integer>
+                        <key>isSensor</key> <false/>
+                        <key>id</key> <string></string>
+                        <key>fixture_type</key> <string>POLYGON</string>
+
+						<key>polygons</key>
+						<array>
+							<array>	
+								<string>{ 15.000,63.000 }</string>	
+								<string>{ -2.000,29.000 }</string>	
+								<string>{ 6.000,13.000 }</string>	
+								<string>{ 32.000,-2.000 }</string>	
+								<string>{ 57.000,12.000 }</string>	
+								<string>{ 66.000,29.000 }</string>	
+								<string>{ 49.000,63.000 }</string>
+							</array>
+						</array>
+                    </dict>
+				</array>
+			</dict>
+			<key>enemy03</key>
+			<dict>
+				<key>anchorpoint</key>
+                <string>{ 0.0000,0.0000 }</string>
+				<key>fixtures</key>
+				<array>
+
+					<dict>
+                        <key>density</key> <real>2</real>
+                        <key>friction</key> <real>0</real>
+                        <key>restitution</key> <real>0</real>
+                        <key>filter_categoryBits</key> <integer>1</integer>
+                        <key>filter_groupIndex</key> <integer>0</integer>
+                        <key>filter_maskBits</key> <integer>65535</integer>
+                        <key>isSensor</key> <false/>
+                        <key>id</key> <string></string>
+                        <key>fixture_type</key> <string>POLYGON</string>
+
+						<key>polygons</key>
+						<array>
+							<array>	
+								<string>{ 24.000,0.000 }</string>	
+								<string>{ 104.000,0.000 }</string>	
+								<string>{ 127.000,20.000 }</string>	
+								<string>{ 126.000,112.000 }</string>	
+								<string>{ 104.000,128.000 }</string>	
+								<string>{ 27.000,128.000 }</string>	
+								<string>{ 6.000,116.000 }</string>	
+								<string>{ 1.000,28.000 }</string>
+							</array>
+						</array>
+                    </dict>
+				</array>
+			</dict>
+			<key>enemy04</key>
+			<dict>
+				<key>anchorpoint</key>
+                <string>{ 0.0000,0.0000 }</string>
+				<key>fixtures</key>
+				<array>
+
+					<dict>
+                        <key>density</key> <real>2</real>
+                        <key>friction</key> <real>0</real>
+                        <key>restitution</key> <real>0</real>
+                        <key>filter_categoryBits</key> <integer>1</integer>
+                        <key>filter_groupIndex</key> <integer>0</integer>
+                        <key>filter_maskBits</key> <integer>65535</integer>
+                        <key>isSensor</key> <false/>
+                        <key>id</key> <string></string>
+                        <key>fixture_type</key> <string>CIRCLE</string>
+
+                         <key>circle</key>
+                         <dict>
+                             <key>radius</key> <real>30.017</real>
+                             <key>position</key> <string>{ 31.745,32.679 }</string>
+                         </dict>
+                    </dict>
+				</array>
+			</dict>
+			<key>enemy05</key>
+			<dict>
+				<key>anchorpoint</key>
+                <string>{ 0.0000,0.0000 }</string>
+				<key>fixtures</key>
+				<array>
+
+					<dict>
+                        <key>density</key> <real>2</real>
+                        <key>friction</key> <real>0</real>
+                        <key>restitution</key> <real>0</real>
+                        <key>filter_categoryBits</key> <integer>1</integer>
+                        <key>filter_groupIndex</key> <integer>0</integer>
+                        <key>filter_maskBits</key> <integer>65535</integer>
+                        <key>isSensor</key> <false/>
+                        <key>id</key> <string></string>
+                        <key>fixture_type</key> <string>POLYGON</string>
+
+						<key>polygons</key>
+						<array>
+							<array>	
+								<string>{ 130.000,0.000 }</string>	
+								<string>{ 125.000,89.000 }</string>	
+								<string>{ 51.000,130.000 }</string>	
+								<string>{ -4.000,75.000 }</string>	
+								<string>{ 19.000,8.000 }</string>
+							</array>
+						</array>
+                    </dict>
+					<dict>
+                        <key>density</key> <real>2</real>
+                        <key>friction</key> <real>0</real>
+                        <key>restitution</key> <real>0</real>
+                        <key>filter_categoryBits</key> <integer>1</integer>
+                        <key>filter_groupIndex</key> <integer>0</integer>
+                        <key>filter_maskBits</key> <integer>65535</integer>
+                        <key>isSensor</key> <false/>
+                        <key>id</key> <string></string>
+                        <key>fixture_type</key> <string>POLYGON</string>
+
+						<key>polygons</key>
+						<array>
+							<array>	
+								<string>{ 131.000,3.000 }</string>	
+								<string>{ 234.000,6.000 }</string>	
+								<string>{ 263.000,72.000 }</string>	
+								<string>{ 208.000,130.000 }</string>	
+								<string>{ 126.000,87.000 }</string>
+							</array>
+						</array>
+                    </dict>
+				</array>
+			</dict>
+			<key>enemy06</key>
+			<dict>
+				<key>anchorpoint</key>
+                <string>{ 0.0000,0.0000 }</string>
+				<key>fixtures</key>
+				<array>
+
+					<dict>
+                        <key>density</key> <real>2</real>
+                        <key>friction</key> <real>0</real>
+                        <key>restitution</key> <real>0</real>
+                        <key>filter_categoryBits</key> <integer>1</integer>
+                        <key>filter_groupIndex</key> <integer>0</integer>
+                        <key>filter_maskBits</key> <integer>65535</integer>
+                        <key>isSensor</key> <false/>
+                        <key>id</key> <string></string>
+                        <key>fixture_type</key> <string>POLYGON</string>
+
+						<key>polygons</key>
+						<array>
+							<array>	
+								<string>{ 239.000,54.000 }</string>	
+								<string>{ 169.000,124.000 }</string>	
+								<string>{ 66.000,127.000 }</string>	
+								<string>{ 1.000,81.000 }</string>	
+								<string>{ 8.000,37.000 }</string>	
+								<string>{ 81.000,0.000 }</string>	
+								<string>{ 116.000,0.000 }</string>	
+								<string>{ 193.000,12.000 }</string>
+							</array>
+						</array>
+                    </dict>
+					<dict>
+                        <key>density</key> <real>2</real>
+                        <key>friction</key> <real>0</real>
+                        <key>restitution</key> <real>0</real>
+                        <key>filter_categoryBits</key> <integer>1</integer>
+                        <key>filter_groupIndex</key> <integer>0</integer>
+                        <key>filter_maskBits</key> <integer>65535</integer>
+                        <key>isSensor</key> <false/>
+                        <key>id</key> <string></string>
+                        <key>fixture_type</key> <string>POLYGON</string>
+
+						<key>polygons</key>
+						<array>
+							<array>	
+								<string>{ 253.000,83.000 }</string>	
+								<string>{ 215.000,119.000 }</string>	
+								<string>{ 181.000,111.000 }</string>	
+								<string>{ 221.000,71.000 }</string>
+							</array>
+						</array>
+                    </dict>
+				</array>
+			</dict>
+		</dict>
+	</dict>
+</plist>
+

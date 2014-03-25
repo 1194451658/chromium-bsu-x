@@ -26,6 +26,7 @@ void HeroAircraft::update(float dt)
 {
 	// CCLOG("hero aircraft update !");
 	
+	// move
 	InputManager* input = InputManager::sharedInstance();
 
 	if(input->arrowState[input->ARROW_UP] == InputManager::ARROW_PRESSED)
@@ -39,5 +40,13 @@ void HeroAircraft::update(float dt)
 
 	if(input->arrowState[input->ARROW_RIGHT] == InputManager::ARROW_PRESSED)
 		graphics->setPositionX(graphics->getPositionX() + 10);
+}
+
+void HeroAircraft::updateFire()
+{
+
+
+
+
 }
 

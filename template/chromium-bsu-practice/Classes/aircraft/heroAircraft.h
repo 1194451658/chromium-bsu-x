@@ -14,6 +14,8 @@ public:
     // update
     virtual void update(float dt) ;
 
+    void updateFire();
+
 private: 
     HeroAircraft();
     ~HeroAircraft();
