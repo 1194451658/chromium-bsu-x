@@ -3,6 +3,9 @@
 #include "test/engine/TestKeyUpDown.h"
 #include "keypad_dispatcher/CCKeypadDispatcher.h"
 
+#include "aircraft/heroAircraft.h"
+#include "input/InputManager.h"
+
 USING_NS_CC;
 
 CCScene* HelloWorld::scene()
@@ -88,15 +91,26 @@ void HelloWorld::test()
     // CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
 
-    CCSprite* testSprite = CCSprite::create("png/hero.png");
-    testSprite->setPosition(ccp(visibleSize.width/2, visibleSize.height/2));
-    addChild(testSprite);
+    // CCSprite* testSprite = CCSprite::create("png/hero.png");
+    // testSprite->setPosition(ccp(visibleSize.width/2, visibleSize.height/2));
+    // addChild(testSprite);
 
     // ----------------------
     // test key up down event
     // ----------------------
-    TestKeyUpDown* keyHandler = new TestKeyUpDown();
-    CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(keyHandler);
+    //TestKeyUpDown* keyHandler = new TestKeyUpDown();
+    //CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(keyHandler);
+
+
+    // init input manager
+    InputManager* input = InputManager::sharedInstance();
+    CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(input);
+
+    // hero
+    HeroAircraft* hero = HeroAircraft::create();
+    addChild(hero->graphics);
+    hero->graphics->setPosition(ccp(visibleSize.width/2, visibleSize.height/2));
+	CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(hero, 0, false);
 }
 
 
