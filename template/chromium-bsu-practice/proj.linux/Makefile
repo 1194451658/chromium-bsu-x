@@ -13,6 +13,11 @@ SOURCES = main.cpp \
 	../Classes/input/InputManager.cpp \
 	../Classes/util/GLES-Render.cpp \
 	../Classes/util/GB2ShapeCache-x.cpp \
+	../Classes/physics/PhysicsManager.cpp \
+	../Classes/GameObject.cpp \
+
+
+
 
 
 

@@ -6,7 +6,16 @@
 #include "aircraft/heroAircraft.h"
 #include "input/InputManager.h"
 
+#include "util/GB2ShapeCache-x.h"
+#include "util/GLES-Render.h"
+
+#include "physics/PhysicsManager.h"
+
+#include <stdlib.h>
+
 USING_NS_CC;
+
+#define PTM_RATIO  32
 
 CCScene* HelloWorld::scene()
 {
@@ -26,22 +35,19 @@ CCScene* HelloWorld::scene()
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-    //////////////////////////////
-    // 1. super init first
     if ( !CCLayer::init() )
     {
         return false;
     }
     
-    // CCLayerColor* layer = CCLayerColor::create();
+    // coordiante indicator
+    CCLayerColor* layer = CCLayerColor::create(ccc4(255,0,0,255), 100, 100);
+    addChild(layer);
+
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-
-    // add a "close" icon to exit the progress. it's an autorelease object
+    // close button
     CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
                                         "CloseNormal.png",
                                         "CloseSelected.png",
@@ -56,63 +62,214 @@ bool HelloWorld::init()
     pMenu->setPosition(CCPointZero);
     this->addChild(pMenu, 1);
 
-    /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
     
+    // hello world label
     CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Arial", 24);
-    
-    // position the label on the center of the screen
     pLabel->setPosition(ccp(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height - pLabel->getContentSize().height));
-
-    // add the label as a child to this layer
     this->addChild(pLabel, 1);
 
     // add "HelloWorld" splash screen"
-    CCSprite* pSprite = CCSprite::create("HelloWorld.png");
-
-    // position the sprite on the center of the screen
-    pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-    // add the sprite as a child to this layer
-    this->addChild(pSprite, 0);
+    // CCSprite* pSprite = CCSprite::create("HelloWorld.png");
+    // pSprite->setPosition(ccp(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    // this->addChild(pSprite, 0);
 
     test();
     
     return true;
 }
-
 void HelloWorld::test()
+{
+	// ------------
+	// init input manager
+	// ---------------
+	InputManager* input = InputManager::sharedInstance();
+	CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(input);
+
+	// -------------
+	// init physics
+	// -----------
+	b2World* physicsWorld = PhysicsManager::sharedInstance()->getPhysicsWorld();
+	GB2ShapeCache::sharedGB2ShapeCache()->addShapesWithFile("png/physics.plist");
+
+	// step
+	schedule(schedule_selector(HelloWorld::stepForPhysicsManager));
+
+	// debug draw
+	GLESDebugDraw* debugDraw = new GLESDebugDraw(PTM_RATIO);
+	physicsWorld->SetDebugDraw(debugDraw);
+
+	uint32 flags = 0;
+	flags += b2Draw::e_shapeBit;
+	flags += b2Draw::e_jointBit;
+	// flags += b2Draw::e_aabbBit;
+	// flags += b2Draw::e_pairBit;
+	// flags += b2Draw::e_centerOfMassBit;
+	debugDraw->SetFlags(flags);
+
+	// ------------
+	// Hero Aircraft
+	// -----------
+	HeroAircraft* hero = HeroAircraft::create();
+	hero->retain();
+	addChild(hero->graphics);
+	CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(hero, 0, false);
+
+	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+	hero->graphics->setPosition(screenSize.width/2, screenSize.height/2);
+}
+
+void HelloWorld::testPhysicsEditor()
 {
     CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     // CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
 
-    // CCSprite* testSprite = CCSprite::create("png/hero.png");
-    // testSprite->setPosition(ccp(visibleSize.width/2, visibleSize.height/2));
-    // addChild(testSprite);
+    // -----------------
+    // physics world
+    // ----------------
 
-    // ----------------------
-    // test key up down event
-    // ----------------------
-    //TestKeyUpDown* keyHandler = new TestKeyUpDown();
-    //CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(keyHandler);
+	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
+
+    GB2ShapeCache::sharedGB2ShapeCache()->addShapesWithFile("png/physics.plist");
+
+    b2Vec2 gravity;
+    gravity.Set(0.0f, -10.0f);
+
+    bool doSleep = true;
+
+    physicsWorld = new b2World(gravity);
+    physicsWorld->SetAllowSleeping(doSleep);
+    physicsWorld->SetContinuousPhysics(true);
+
+    // ----------
+    // debug draw
+    // -----------
+    GLESDebugDraw* debugDraw = new GLESDebugDraw(PTM_RATIO);
+    physicsWorld->SetDebugDraw(debugDraw);
+
+   uint32 flags = 0;
+    flags += b2Draw::e_shapeBit;
+    flags += b2Draw::e_jointBit;
+     // flags += b2Draw::e_aabbBit;
+    // flags += b2Draw::e_pairBit;
+    // flags += b2Draw::e_centerOfMassBit;
+    debugDraw->SetFlags(flags);
+    
+
+    
+    // -----------
+    // ground
+    // --------
+
+	b2BodyDef groundBodyDef;
+	groundBodyDef.position.Set(screenSize.width/2/PTM_RATIO,
+                               screenSize.height/2/PTM_RATIO); // bottom-left corner
+
+	b2Body* groundBody = physicsWorld->CreateBody(&groundBodyDef);
+
+	// Define the ground box shape.
+	b2PolygonShape groundBox;	
+    // bottom
+    groundBox.SetAsBox(screenSize.width/2/PTM_RATIO, 0, b2Vec2(0, -screenSize.height/2/PTM_RATIO), 0);
+  groundBody->CreateFixture(&groundBox, 0);
+    // top
+    groundBox.SetAsBox(screenSize.width/2/PTM_RATIO, 0, b2Vec2(0, screenSize.height/2/PTM_RATIO), 0);
+    groundBody->CreateFixture(&groundBox, 0);
+    // left
+    groundBox.SetAsBox(0, screenSize.height/2/PTM_RATIO, b2Vec2(-screenSize.width/2/PTM_RATIO, 0), 0);
+    groundBody->CreateFixture(&groundBox, 0);
+    // right
+    groundBox.SetAsBox(0, screenSize.height/2/PTM_RATIO, b2Vec2(screenSize.width/2/PTM_RATIO, 0), 0);
+    groundBody->CreateFixture(&groundBox, 0);
+
+
+
+
+    {
+    
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+
+	    
+	bodyDef.position.Set(screenSize.width/2/PTM_RATIO, screenSize.height/2/PTM_RATIO);
+	//bodyDef.userData = sprite;
+	b2Body *body = physicsWorld->CreateBody(&bodyDef);
+
+	// b2PolygonShape shape;
+	// shape.SetAsBox(160.0 / PTM_RATIO, 160.0 / PTM_RATIO);
+	// body->CreateFixture(&shape, 1);
+    
+    // add the fixture definitions to the body
+    GB2ShapeCache *sc = GB2ShapeCache::sharedGB2ShapeCache();
+    sc->addFixturesToBody(body, "hero");
+
+    }
+
+
+
+
+    {
+	    // body
+	    b2BodyDef bodyDef;
+	    bodyDef.type = b2_dynamicBody;
+	    bodyDef.position	= b2Vec2(screenSize.width/2/PTM_RATIO, screenSize.height/2/PTM_RATIO);
+	    b2Body* body = physicsWorld->CreateBody(&bodyDef);
+
+	    float bodyAngle = CC_DEGREES_TO_RADIANS(45);
+	    body->SetTransform(body->GetPosition(), bodyAngle);
+
+	    // shape 0
+	    {
+		    b2PolygonShape box;
+		    // b2Vec2 center(30.0/PTM_RATIO, 30.0/PTM_RATIO);
+		    // float angle = 0;
+		    float width		= 40;
+		    float height	= 60;
+		    box.SetAsBox(width/PTM_RATIO, height/PTM_RATIO);
+		    // fixture
+		    body->CreateFixture(&box, 1);
+	    }
+
+
+	    // shape 1
+	    {
+		    b2PolygonShape box;
+		    // b2Vec2 center(30.0/PTM_RATIO, 30.0/PTM_RATIO);
+		    b2Vec2 center(0,0);
+
+		    // float angle = CC_DEGREES_TO_RADIANS(45);
+		     float angle = 0;
+
+		    box.SetAsBox(30.0/PTM_RATIO, 30.0/PTM_RATIO, center, angle);
+		    // fixture
+		    body->CreateFixture(&box, 1);
+	    }
+
+
+
+
+    }
+
+    // sprite->setAnchorPoint(sc->anchorPointForShape(name.c_str()));
+    // schedule(schedule_selector(HelloWorld::tick));
 
 
     // init input manager
     InputManager* input = InputManager::sharedInstance();
     CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(input);
 
-    // hero
-    HeroAircraft* hero = HeroAircraft::create();
-    addChild(hero->graphics);
-    hero->graphics->setPosition(ccp(visibleSize.width/2, visibleSize.height/2));
-	CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(hero, 0, false);
+//    // hero
+//    HeroAircraft* hero = HeroAircraft::create();
+//    addChild(hero->graphics);
+//    hero->graphics->setPosition(ccp(visibleSize.width/2, visibleSize.height/2));
+//	CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(hero, 0, false);
 }
 
+void HelloWorld::stepForPhysicsManager(float time)
+{
+	PhysicsManager::sharedInstance()->step(time);
+}
 
 void HelloWorld::menuCloseCallback(CCObject* pSender)
 {
@@ -124,4 +281,56 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
     exit(0);
 #endif
 #endif
+}
+
+
+void HelloWorld::tick(float dt)
+{
+	//It is recommended that a fixed time step is used with Box2D for stability
+	//of the simulation, however, we are using a variable time step here.
+	//You need to make an informed choice, the following URL is useful
+	//http://gafferongames.com/game-physics/fix-your-timestep/
+
+	int velocityIterations = 8;
+	int positionIterations = 1;
+	    
+	// Instruct the world to perform a single step of simulation. It is
+	// generally best to keep the time step and iterations fixed.
+	physicsWorld->Step(dt, velocityIterations, positionIterations);
+
+	////Iterate over the bodies in the physics world
+	//for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
+	//{
+	//	if (b->GetUserData() != NULL) {
+	//		//Synchronize the AtlasSprites position and rotation with the corresponding body
+	//		CCSprite* myActor = (CCSprite*)b->GetUserData();
+	//		myActor->setPosition( CCPointMake( b->GetPosition().x * PTM_RATIO, b->GetPosition().y * PTM_RATIO) );
+	//		myActor->setRotation( -1 * CC_RADIANS_TO_DEGREES(b->GetAngle()) );
+	//	}	
+	//}
+}
+
+void HelloWorld::draw()
+{
+    CCLayer::draw();
+
+    ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
+
+    kmGLPushMatrix();
+    //physicsWorld->DrawDebugData();
+
+    b2World* world = PhysicsManager::sharedInstance()->getPhysicsWorld();
+    world->DrawDebugData();
+
+    kmGLPopMatrix();
+}
+
+
+void HelloWorld::testKeyUpDown()
+{
+    // ----------------------
+    // test key up down event
+    // ----------------------
+    TestKeyUpDown* keyHandler = new TestKeyUpDown();
+    CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(keyHandler);
 }
