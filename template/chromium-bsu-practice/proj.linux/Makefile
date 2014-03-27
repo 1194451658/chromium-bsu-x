@@ -10,11 +10,17 @@ SOURCES = main.cpp \
         ../Classes/AppDelegate.cpp \
         ../Classes/HelloWorldScene.cpp \
 	../Classes/aircraft/heroAircraft.cpp \
+	../Classes/aircraft/EnemyAircraft0.cpp \
+	../Classes/aircraft/Aircraft.cpp \
 	../Classes/input/InputManager.cpp \
 	../Classes/util/GLES-Render.cpp \
 	../Classes/util/GB2ShapeCache-x.cpp \
 	../Classes/physics/PhysicsManager.cpp \
 	../Classes/GameObject.cpp \
+	../Classes/gun/HeroDefaultGun.cpp \
+	../Classes/ammo/Ammo.cpp \
+
+
 
 
 

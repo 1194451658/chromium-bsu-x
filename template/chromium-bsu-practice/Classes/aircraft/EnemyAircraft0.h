@@ -1,6 +1,6 @@
 
-#ifndef __HEROAIRCRAFT_H__
-#define __HEROAIRCRAFT_H__
+#ifndef __ENEMY_AIRCRAFT0_H__
+#define __ENEMY_AIRCRAFT0_H__
 
 #include "cocos2d.h"
 #include "GameObject.h"
@@ -10,11 +10,11 @@
 
 USING_NS_CC;
 
-class HeroAircraft : public Aircraft, public CCKeypadDelegate
+class EnemyAircraft0 : public Aircraft, public CCKeypadDelegate
 {
 public:
-	static HeroAircraft* create();
-	~HeroAircraft();
+	static EnemyAircraft0* create();
+	~EnemyAircraft0();
 
 public:
     // update
@@ -22,7 +22,7 @@ public:
 protected:
 
 private: 
-    HeroAircraft();
+    EnemyAircraft0();
     virtual CCNode* initGraphics();
     virtual b2Body* initPhysics();
 

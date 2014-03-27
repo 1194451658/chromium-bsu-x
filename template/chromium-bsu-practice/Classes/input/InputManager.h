@@ -19,7 +19,12 @@ public:
     virtual void keyUp_Extension(int key);
 
 public:
-    enum ArrowType { ARROW_UP = 0, ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, NUMBER_OF_ARROW};
+    enum ArrowType { ARROW_UP = 0,
+		 ARROW_DOWN, 
+		 ARROW_LEFT,
+		 ARROW_RIGHT,
+		 FIRE,
+		 NUMBER_OF_ARROW};
     enum ArrowState { ARROW_RELEASED = 0, ARROW_PRESSED};
     ArrowState arrowState[NUMBER_OF_ARROW];
 

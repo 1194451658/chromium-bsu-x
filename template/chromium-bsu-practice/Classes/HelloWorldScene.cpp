@@ -10,6 +10,7 @@
 #include "util/GLES-Render.h"
 
 #include "physics/PhysicsManager.h"
+#include "aircraft/EnemyAircraft0.h"
 
 #include <stdlib.h>
 
@@ -111,17 +112,23 @@ void HelloWorld::test()
 	// Hero Aircraft
 	// -----------
 	HeroAircraft* hero = HeroAircraft::create();
-	hero->retain();
-	addChild(hero->graphics);
-	CCDirector::sharedDirector()->getScheduler()->scheduleUpdateForTarget(hero, 0, false);
+	addChild(hero);
 
 	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
-	hero->graphics->setPosition(screenSize.width/2, screenSize.height/2);
+	hero->setPosition(screenSize.width/2, screenSize.height/2);
+
+
+	// -------------
+	// Enemy Aircraft
+	// ------------
+	EnemyAircraft0* enemy = EnemyAircraft0::create();
+	addChild(enemy);
+	enemy->setPosition(screenSize.width/2, screenSize.height/2);
 }
 
 void HelloWorld::testPhysicsEditor()
 {
-    CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+    // CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
     // CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
 
@@ -321,7 +328,6 @@ void HelloWorld::draw()
 
     b2World* world = PhysicsManager::sharedInstance()->getPhysicsWorld();
     world->DrawDebugData();
-
     kmGLPopMatrix();
 }
 

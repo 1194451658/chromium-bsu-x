@@ -43,6 +43,9 @@ void InputManager::keyDown_Extension(int key) {
 		arrowState[ARROW_RIGHT] = ARROW_PRESSED;
 	else if(key == 'W')
 		arrowState[ARROW_UP] = ARROW_PRESSED;
+	else if(key == 'J')
+		arrowState[FIRE]	= ARROW_PRESSED;
+
 };
 void InputManager::keyUp_Extension(int key) {
 
@@ -56,4 +59,6 @@ void InputManager::keyUp_Extension(int key) {
 		arrowState[ARROW_RIGHT] = ARROW_RELEASED;
 	else if(key == 'W')
 		arrowState[ARROW_UP] = ARROW_RELEASED;
+	else if(key == 'J')
+		arrowState[FIRE]	= ARROW_RELEASED;
 };

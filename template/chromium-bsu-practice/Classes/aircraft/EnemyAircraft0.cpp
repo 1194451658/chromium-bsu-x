@@ -1,37 +1,35 @@
 
-#include "heroAircraft.h"
+#include "EnemyAircraft0.h"
 #include "input/InputManager.h"
-
 #include "util/GB2ShapeCache-x.h"
 
-
-HeroAircraft* HeroAircraft::create()
+EnemyAircraft0* EnemyAircraft0::create()
 {
-	HeroAircraft* hero = new HeroAircraft();
+	EnemyAircraft0* enemy = new EnemyAircraft0();
 
-	if(hero && hero->init())
+	if(enemy && enemy->init())
 	{
-		hero->autorelease();
-		return hero;
+		enemy->autorelease();
+		return enemy;
 	}
 
-	CC_SAFE_DELETE(hero);
+	CC_SAFE_DELETE(enemy);
 
 	return NULL;
 }
 
-HeroAircraft::HeroAircraft()
+EnemyAircraft0::EnemyAircraft0()
 {
 }
 
-bool HeroAircraft::init()
+bool EnemyAircraft0::init()
 {
 	// init base class
 	if(Aircraft::init())
 	{
 		// create gun
-		CCPoint velocity(0, 200);
-		defaultGun = HeroDefaultGun::create(this, velocity, PhysicsManager::JUSTICE);
+		CCPoint velocity(0, -100);
+		defaultGun = HeroDefaultGun::create(this, velocity, PhysicsManager::ENEMY);
 		addChild(defaultGun);
 		return true;
 	}
@@ -39,27 +37,27 @@ bool HeroAircraft::init()
 	return false;
 }
 
-HeroAircraft::~HeroAircraft()
+EnemyAircraft0::~EnemyAircraft0()
 {
 	CC_SAFE_RELEASE_NULL(graphics);
 }
 
-void HeroAircraft::update(float dt)
+void EnemyAircraft0::update(float dt)
 {
 	// move
 	InputManager* input = InputManager::sharedInstance();
 
-	if(input->arrowState[input->ARROW_UP] == InputManager::ARROW_PRESSED)
-		setPositionY(getPositionY() + 10);
+	// if(input->arrowState[input->ARROW_UP] == InputManager::ARROW_PRESSED)
+	// 	setPositionY(getPositionY() + 10);
 
-	if(input->arrowState[input->ARROW_DOWN] == InputManager::ARROW_PRESSED)
-		setPositionY(getPositionY() - 10);
+	// if(input->arrowState[input->ARROW_DOWN] == InputManager::ARROW_PRESSED)
+	// 	setPositionY(getPositionY() - 10);
 
-	if(input->arrowState[input->ARROW_LEFT] == InputManager::ARROW_PRESSED)
-		setPositionX(getPositionX() - 10);
+	// if(input->arrowState[input->ARROW_LEFT] == InputManager::ARROW_PRESSED)
+	// 	setPositionX(getPositionX() - 10);
 
-	if(input->arrowState[input->ARROW_RIGHT] == InputManager::ARROW_PRESSED)
-		setPositionX(getPositionX() + 10);
+	// if(input->arrowState[input->ARROW_RIGHT] == InputManager::ARROW_PRESSED)
+	// 	setPositionX(getPositionX() + 10);
 
 	if(input->arrowState[input->FIRE] == InputManager::ARROW_PRESSED)
 	{
@@ -71,14 +69,16 @@ void HeroAircraft::update(float dt)
 	}
 }
 
-CCNode* HeroAircraft::initGraphics()
+
+CCNode* EnemyAircraft0::initGraphics()
 {
 	// create the graphics
-	CCSprite* sprite = CCSprite::create("png/hero.png");
+	CCSprite* sprite = CCSprite::create("png/enemy00.png");
+	// sprite->setVisible(false);
 	return sprite;
 }
 
-b2Body* HeroAircraft::initPhysics()
+b2Body* EnemyAircraft0::initPhysics()
 {
 	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
 
@@ -91,20 +91,15 @@ b2Body* HeroAircraft::initPhysics()
 	bodyDef.allowSleep = false;
 	bodyDef.fixedRotation = true;
 	bodyDef.position.Set(screenSize.width/2/PhysicsManager::PTM_RATIO, screenSize.height/2/PhysicsManager::PTM_RATIO);
-
 	b2Body *body = world->CreateBody(&bodyDef);
-
-	// b2PolygonShape shape;
-	// shape.SetAsBox(160.0 / PTM_RATIO, 160.0 / PTM_RATIO);
-	// body->CreateFixture(&shape, 1);
     
 	// add the fixture 
 	GB2ShapeCache *sc = GB2ShapeCache::sharedGB2ShapeCache();
-	sc->addFixturesToBody(body, "hero");
+	sc->addFixturesToBody(body, "enemy00");
 
 	// set fixture collide filter
 	b2Filter filter;
-	filter.groupIndex	= PhysicsManager::JUSTICE;
+	filter.groupIndex	= PhysicsManager::ENEMY;
 	filter.categoryBits = PhysicsManager::AIRCRAFT;
 	filter.maskBits		= PhysicsManager::AIRCRAFT | 
 					PhysicsManager::AMMO;
