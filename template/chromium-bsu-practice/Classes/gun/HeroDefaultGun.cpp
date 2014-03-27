@@ -55,8 +55,8 @@ void HeroDefaultGun::update(float time)
 		if(velocity.y < 0) 
 			ammoSprite->setFlipY(true);
 
-
 		Ammo* newAmmo = Ammo::create(ammoSprite, velocity, physicsGroup);
+		// newAmmo->shouldReleased = true;
 
 		const CCPoint& aircraftPos = aircraft->getPosition();
 		newAmmo->setPosition(aircraftPos);

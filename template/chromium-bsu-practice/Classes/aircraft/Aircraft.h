@@ -11,10 +11,13 @@ class Aircraft : public GameObject
 {
 
 public:
-	bool init() { return GameObject::init(); };
+	bool init() ;
+	void damage(float damage);
+	void update(float dt) ;
 
-
-
+private:
+	float hp; 
+	float damageToHit;
 };
 
 #endif

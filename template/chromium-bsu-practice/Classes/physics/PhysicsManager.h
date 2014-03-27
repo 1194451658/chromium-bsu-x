@@ -19,7 +19,7 @@ public:
 };
 
 
-class PhysicsManager : public CCObject
+class PhysicsManager : public CCObject, public b2ContactListener
 {
 
 public:
@@ -28,6 +28,11 @@ public:
 	~PhysicsManager();
 	void addStepCallbackHandler(PhysicsStepCallbackHandler* handler);
 	void deleteStepCallbackHandler(PhysicsStepCallbackHandler* handler);
+
+	virtual void BeginContact(b2Contact* contact) ;
+	virtual void EndContact(b2Contact* contact) {};
+	virtual void PreSolve(b2Contact* contact, const b2Manifold* oldManifold) {};
+	virtual void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse) {};
 
 	b2World* getPhysicsWorld() {return world;};
 	void step(float time);

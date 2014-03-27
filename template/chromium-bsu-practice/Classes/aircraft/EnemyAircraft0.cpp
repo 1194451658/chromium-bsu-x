@@ -61,11 +61,11 @@ void EnemyAircraft0::update(float dt)
 
 	if(input->arrowState[input->FIRE] == InputManager::ARROW_PRESSED)
 	{
-		defaultGun->trigger(true);
+		// defaultGun->trigger(true);
 	}
 	else
 	{
-		defaultGun->trigger(false);
+		// defaultGun->trigger(false);
 	}
 }
 
@@ -87,7 +87,7 @@ b2Body* EnemyAircraft0::initPhysics()
 
 	// body 
 	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
+	// bodyDef.type = b2_dynamicBody;
 	bodyDef.allowSleep = false;
 	bodyDef.fixedRotation = true;
 	bodyDef.position.Set(screenSize.width/2/PhysicsManager::PTM_RATIO, screenSize.height/2/PhysicsManager::PTM_RATIO);

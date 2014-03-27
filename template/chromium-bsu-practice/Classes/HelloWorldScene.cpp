@@ -123,7 +123,7 @@ void HelloWorld::test()
 	// ------------
 	EnemyAircraft0* enemy = EnemyAircraft0::create();
 	addChild(enemy);
-	enemy->setPosition(screenSize.width/2, screenSize.height/2);
+	enemy->setPosition(screenSize.width/2, screenSize.height/2 + 150);
 }
 
 void HelloWorld::testPhysicsEditor()

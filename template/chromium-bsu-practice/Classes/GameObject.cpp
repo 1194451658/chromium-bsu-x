@@ -3,12 +3,15 @@
 
 bool GameObject::init()
 {
+	shouldReleased = false;
+
 	graphics = initGraphics();
 	physics = initPhysics();
 
 	if(graphics)
 	{
 		graphics->retain();
+		graphics->setUserData((void*)this);
 		addChild(graphics);
 	}
 
@@ -24,7 +27,11 @@ bool GameObject::init()
 GameObject::~GameObject()
 {
 	CC_SAFE_RELEASE_NULL(graphics);
-	deleted = true;
+
+	if(physics)
+	{
+		PhysicsManager::sharedInstance()->getPhysicsWorld()->DestroyBody(physics);
+	}
 }
 
 void GameObject::preStep(float time, PhysicsManager* manager) {
