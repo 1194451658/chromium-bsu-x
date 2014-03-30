@@ -14,16 +14,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-
 #include "Aircraft.h"
-
 
 bool Aircraft::init()
 {
 	hp = 900;
 	damageToHit = 0;
-	return GameObject::init();
+
+	if(GameObject::init())
+	{
+		name = "Aircraft";
+		return true;
+	}
+
+	return false;
 }
 
 

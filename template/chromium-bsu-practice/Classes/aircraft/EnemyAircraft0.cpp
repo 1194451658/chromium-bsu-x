@@ -18,7 +18,7 @@
 
 #include "EnemyAircraft0.h"
 #include "input/InputManager.h"
-#include "util/GB2ShapeCache-x.h"
+#include "physics/GB2ShapeCache-x.h"
 
 EnemyAircraft0* EnemyAircraft0::create()
 {
@@ -44,10 +44,11 @@ bool EnemyAircraft0::init()
 	// init base class
 	if(Aircraft::init())
 	{
+		name = "EnemyAircraft0";
 		// create gun
 		CCPoint velocity(0, -100);
-		defaultGun = HeroDefaultGun::create(this, velocity, PhysicsManager::ENEMY);
-		addChild(defaultGun);
+		// defaultGun = HeroDefaultGun::create(this, velocity, PhysicsManager::ENEMY);
+		// addChild(defaultGun);
 		return true;
 	}
 

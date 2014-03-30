@@ -31,8 +31,8 @@ class PhysicsStepCallbackHandler
 {
 public:
 	virtual ~PhysicsStepCallbackHandler(){}
-	virtual void preStep(float time, PhysicsManager* manager) { CCLOG("PhysicsStepCallbackHandler::preStep called ! Reimplement it !");};
-	virtual void postStep(float time, PhysicsManager* manager) { CCLOG("PhysicsStepCallbackHandler::postStep called ! Reimplement it !");};
+	virtual void prePhysicsStep(float time, PhysicsManager* manager) { CCLOG("PhysicsStepCallbackHandler::preStep called ! Reimplement it !");};
+	virtual void postPhysicsStep(float time, PhysicsManager* manager) { CCLOG("PhysicsStepCallbackHandler::postStep called ! Reimplement it !");};
 };
 
 
@@ -61,7 +61,7 @@ public:
 	static b2Vec2 gravity;
 	static float PTM_RATIO	;
 
-	enum Group { JUSTICE = -1, ENEMY = -2};
+	enum Group { UNKNOWN = 0, JUSTICE = -1, ENEMY = -2};
 	enum Category { AIRCRAFT = 1,
 			AMMO	= 1 << 2
 	};

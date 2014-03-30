@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-#include "physics/PhysicsManager.h"
-#include "aircraft/heroAircraft.h"
+#include "PhysicsManager.h"
+#include "GameObject.h"
 
 static PhysicsManager* _sharedInstance = NULL;
 
@@ -52,7 +52,11 @@ bool PhysicsManager::init(b2Vec2& gravity)
 	stepCallbacksToAdd	= CCArray::create();
 	stepCallbacksToDelete	= CCArray::create();
 
+	// create world
+	// step first a time
 	world = new b2World(gravity);
+	world->Step(1, velocityInteration, positionIteration);
+
 	world->SetContactListener(this);
 
 	stepCallbacks->retain();
@@ -104,7 +108,7 @@ void PhysicsManager::step(float time)
 		 PhysicsStepCallbackHandler* h = dynamic_cast<PhysicsStepCallbackHandler*>(pObj);
 		if(h)
 		{
-			h->preStep(time, this);
+			h->prePhysicsStep(time, this);
 		}
 	}
 
@@ -118,7 +122,7 @@ void PhysicsManager::step(float time)
 		PhysicsStepCallbackHandler* h = dynamic_cast<PhysicsStepCallbackHandler*>(pObj);
 		if(h)
 		{
-		      h->postStep(time, this);
+		      h->postPhysicsStep(time, this);
 		}
 	}
 

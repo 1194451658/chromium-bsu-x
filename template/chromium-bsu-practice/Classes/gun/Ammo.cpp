@@ -18,34 +18,53 @@
 
 #include "Ammo.h"
 #include "aircraft/Aircraft.h"
+#include "SimpleAudioEngine.h"
 
-bool Ammo::init(CCNode* graphics, CCPoint& velocity, int physicsGroup)
+using namespace CocosDenshion;
+
+bool Ammo::init(const char* graphicsFile, CCPoint& velocity, int physicsGroup)
 {
-	this->graphics = graphics;
+	this->graphicsFile = graphicsFile;
+	this->graphics = CCSprite::create(graphicsFile);
 	this->velocity = velocity;
-	this->physicsGroup = physicsGroup;
-	damage = 100;
 
-	shouldExplode = false;
+	if(GameObject::init())
+	{
+		name = "Ammo";
 
-	return GameObject::init();
+		this->physicsGroup = physicsGroup;
+		damage = 100;
+		shouldExplode = false;
+		return true;
+	}
+
+	return false;
 }
 
-bool Ammo::init(CCNode* graphics, AmmoDef& def)
+bool Ammo::init(const char* graphicsFile, AmmoDef& def)
 {
-	this->graphics = graphics;
+	this->graphicsFile = graphicsFile;
+	this->graphics = CCSprite::create(graphicsFile);
 	velocity = def.velocity;
-	physicsGroup = def.physicsGroup;
-	damage = def.demage;
 
-	return GameObject::init();
+	if(GameObject::init())
+	{
+		name = "Ammo";
+		physicsGroup = def.physicsGroup;
+		damage = def.damage;
+		shouldExplode = false;
+
+		return true;
+	}
+
+	return false;
 }
 
-Ammo* Ammo::create(CCNode* graphics, CCPoint& velocity, int physicsGroup)
+Ammo* Ammo::create(const char* graphicsFile, CCPoint& velocity, int physicsGroup)
 {
 	Ammo* newAmmo = new Ammo();
 
-	if(newAmmo && newAmmo->init(graphics, velocity, physicsGroup))
+	if(newAmmo && newAmmo->init(graphicsFile, velocity, physicsGroup))
 	{
 		newAmmo->autorelease();
 		return newAmmo;
@@ -55,11 +74,25 @@ Ammo* Ammo::create(CCNode* graphics, CCPoint& velocity, int physicsGroup)
 	return NULL;
 }
 
-Ammo* Ammo::create(CCNode* graphics, AmmoDef& def)
+Ammo* Ammo::create(const char* graphicsFile, AmmoDef& def)
 {
 	Ammo* newAmmo = new Ammo();
 
-	if(newAmmo && newAmmo->init(graphics, def))
+	if(newAmmo && newAmmo->init(graphicsFile, def))
+	{
+		newAmmo->autorelease();
+		return newAmmo;
+	}
+
+	CC_SAFE_DELETE(newAmmo);
+	return NULL;
+}
+
+Ammo* Ammo::create(AmmoDef& def)
+{
+	Ammo* newAmmo = new Ammo();
+
+	if(newAmmo && newAmmo->init(def.graphicsFile, def))
 	{
 		newAmmo->autorelease();
 		return newAmmo;
@@ -116,17 +149,13 @@ b2Body* Ammo::initPhysics()
 
 void Ammo::update(float time)
 {
-	// CCPoint curPos = getPosition();
-	// curPos.x += velocity.x * time;
-	// curPos.y += velocity.y * time;
-	// setPosition(curPos);
-
 	if(shouldReleased)
 		return;
 	
 	if(shouldExplode)
 	{
-		// shouldExplode = true;
+		SimpleAudioEngine::sharedEngine()->playEffect("wav/exploStd.wav");
+		
 		shouldReleased = true;
 		removeFromParent();
 	}
@@ -164,4 +193,14 @@ Ammo::~Ammo()
 Ammo::Ammo()
 {
 	// CCLOG("Ammo::Ammo Called !");
+}
+
+GameObject* Ammo::instance()
+{
+	Ammo* newAmmo = Ammo::create(this->graphicsFile,
+				this->velocity,
+				this->physicsGroup);
+	newAmmo->damage = this->damage;
+
+	return newAmmo;
 }

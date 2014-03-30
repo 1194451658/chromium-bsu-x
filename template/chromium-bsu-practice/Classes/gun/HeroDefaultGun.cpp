@@ -1,5 +1,4 @@
 
-
 // Copyright 2014 Wanwan Zhang
 
 // This program is free software: you can redistribute it and/or modify
@@ -17,7 +16,6 @@
 
 
 #include "HeroDefaultGun.h"
-#include "ammo/Ammo.h"
 
 HeroDefaultGun::HeroDefaultGun()
 {
@@ -29,15 +27,25 @@ HeroDefaultGun::~HeroDefaultGun()
 
 bool HeroDefaultGun::init(Aircraft* aircraft, CCPoint& velocity, int physicsGroup)
 {
-	currentColdTime = 0;
-	coldTime = 0.3;
-	triggerPressed = false;
+	if(GameObject::init())
+	{
+		name = "HeroDefaultGun";
+		currentColdTime = 0;
+		coldTime = 0.3;
+		triggerPressed = false;
 
-	this->velocity = velocity;
-	this->physicsGroup = physicsGroup;
+		this->velocity = velocity;
+		this->physicsGroup = physicsGroup;
 
-	this->aircraft = aircraft;
-	return true;
+		this->aircraft = aircraft;
+
+		gunPosLeft = CCPoint(-10, 0);
+		gunPosRight = CCPoint(10, 0);
+
+		return true;
+	}
+
+	return false;
 }
 
 HeroDefaultGun* HeroDefaultGun::create(Aircraft* aircraft, CCPoint& velocity, int physicsGroup)
@@ -63,21 +71,35 @@ void HeroDefaultGun::update(float time)
 	{
 		currentColdTime = coldTime;
 		// fire
-		// CCLOG("default gun fired !!!");
+		{
+			Ammo* newAmmo = createAmmo();
 
-		// create ammo
-		CCSprite* ammoSprite = CCSprite::create("png/heroAmmo00.png");
-		// CCSprite* ammoSprite = CCSprite::create("png/hero.png");
+			float posX = aircraft->getPositionX();
+			posX += gunPosLeft.x;
 
-		if(velocity.y < 0) 
-			ammoSprite->setFlipY(true);
+			float posY = aircraft->getPositionY();
+			posY += gunPosLeft.y;
 
-		Ammo* newAmmo = Ammo::create(ammoSprite, velocity, physicsGroup);
-		// newAmmo->shouldReleased = true;
+			newAmmo->setPosition(posX, posY);
+			CCDirector::sharedDirector()->getRunningScene()->addChild(newAmmo);
+		}
 
-		const CCPoint& aircraftPos = aircraft->getPosition();
-		newAmmo->setPosition(aircraftPos);
-
-		CCDirector::sharedDirector()->getRunningScene()->addChild(newAmmo);
+		{
+			Ammo* newAmmo = createAmmo();
+			newAmmo->setPosition(aircraft->getPositionX() + gunPosRight.x, aircraft->getPositionY() + gunPosRight.y );
+			CCDirector::sharedDirector()->getRunningScene()->addChild(newAmmo);
+		}
 	}
+}
+
+Ammo* HeroDefaultGun::createAmmo()
+{
+	// create ammo
+	//CCSprite* ammoSprite = CCSprite::create("png/heroAmmo00.png");
+	//if(velocity.y < 0) 
+	//	ammoSprite->setFlipY(true);
+
+	Ammo* newAmmo = Ammo::create("png/heroAmmo00.png", velocity, physicsGroup);
+
+	return newAmmo;
 }

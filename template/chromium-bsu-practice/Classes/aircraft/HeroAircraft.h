@@ -23,7 +23,8 @@
 #include "GameObject.h"
 #include "Aircraft.h"
 
-#include "gun/HeroDefaultGun.h"
+//#include "gun/HeroDefaultGun.h"
+#include "gun/Gun.h"
 
 USING_NS_CC;
 
@@ -49,7 +50,8 @@ private:
 public:
 
 private:
-    HeroDefaultGun* defaultGun;
+    //HeroDefaultGun* defaultGun;
+    Gun* defaultGun;
 };
 
 #endif

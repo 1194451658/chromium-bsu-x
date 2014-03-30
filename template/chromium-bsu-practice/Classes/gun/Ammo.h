@@ -21,29 +21,35 @@
 
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
-
 #include "GameObject.h"
 
 USING_NS_CC;
 
 struct AmmoDef
 {
-	// AmmoDef(CCPoint& velocity, int physicsGroup, float demage)
-	// 	: velocity(velocity), 
-	// 	physicsGroup(physicsGroup),
-	// 	demage(demage)
-	// {}
+	AmmoDef(const char* graphicsFile,
+		CCPoint velocity,
+		PhysicsManager::Group physicsGroup,
+		float damage
+	       ):graphicsFile(graphicsFile),
+		velocity(velocity),
+		physicsGroup(physicsGroup),
+		damage(damage)
+	{
+	}
 
-	CCPoint& velocity;
-	int physicsGroup;
-	float demage;
+	const char* graphicsFile;
+	CCPoint velocity;
+	PhysicsManager::Group physicsGroup;
+	float damage;
 };
 
 class Ammo : public GameObject, public b2ContactListener
 {
 public:
-	static Ammo* create(CCNode* graphics, CCPoint& velocity, int physicsGroup);
-	static Ammo* create(CCNode* graphics, AmmoDef& def);
+	static Ammo* create(const char* graphicsFile, CCPoint& velocity, int physicsGroup);
+	static Ammo* create(const char* graphicsFile, AmmoDef& def);
+	static Ammo* create(AmmoDef& def);
 
 	~Ammo();
 
@@ -56,9 +62,11 @@ public:
     virtual void PreSolve(b2Contact* contact, const b2Manifold* oldManifold) {};
     virtual void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse) {};
 
+    virtual GameObject* instance();
+
 protected:
-	bool init(CCNode* graphics, CCPoint& velocity, int physicsGroup);
-	bool init(CCNode* graphics, AmmoDef& def);
+	bool init(const char* graphicsFile, CCPoint& velocity, int physicsGroup);
+	bool init(const char* graphicsFile, AmmoDef& def);
 
 	void doDamageToGameObject(GameObject* g);
 
@@ -67,6 +75,7 @@ private:
 	CCPoint velocity;
 	int physicsGroup;
 	float damage;
+	const char* graphicsFile;
 
 	bool shouldExplode;
 };

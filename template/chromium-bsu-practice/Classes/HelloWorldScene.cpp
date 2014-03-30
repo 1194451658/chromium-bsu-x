@@ -3,18 +3,21 @@
 #include "test/engine/TestKeyUpDown.h"
 #include "keypad_dispatcher/CCKeypadDispatcher.h"
 
-#include "aircraft/heroAircraft.h"
+#include "aircraft/HeroAircraft.h"
 #include "input/InputManager.h"
 
-#include "util/GB2ShapeCache-x.h"
-#include "util/GLES-Render.h"
+#include "physics/GB2ShapeCache-x.h"
+#include "physics/GLES-Render.h"
 
 #include "physics/PhysicsManager.h"
 #include "aircraft/EnemyAircraft0.h"
 
+#include "SimpleAudioEngine.h"
+
 #include <stdlib.h>
 
 USING_NS_CC;
+using namespace CocosDenshion;
 
 #define PTM_RATIO  32
 
@@ -107,6 +110,11 @@ void HelloWorld::test()
 	// flags += b2Draw::e_pairBit;
 	// flags += b2Draw::e_centerOfMassBit;
 	debugDraw->SetFlags(flags);
+
+	// -----------------
+	// Init Audio
+	// ------------
+	SimpleAudioEngine::sharedEngine()->preloadEffect("wav/exploStd.wav");
 
 	// ------------
 	// Hero Aircraft

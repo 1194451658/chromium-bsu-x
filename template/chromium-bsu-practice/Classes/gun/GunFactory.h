@@ -1,5 +1,4 @@
 
-
 // Copyright 2014 Wanwan Zhang
 
 // This program is free software: you can redistribute it and/or modify
@@ -15,44 +14,35 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-#ifndef __HERO_DEFAULT_GUN_H__
-#define __HERO_DEFAULT_GUN_H__
+#ifndef __GUN_FACTORY_H__
+#define __GUN_FACTORY_H__
 
 #include "cocos2d.h"
-
-#include "aircraft/Aircraft.h"
-#include "Ammo.h"
+#include "Gun.h"
 
 USING_NS_CC;
 
-class HeroDefaultGun : public GameObject
+class GunFactory : public CCObject
 {
-
 public:
-	static HeroDefaultGun* create(Aircraft* aircraft, CCPoint& velocity, int physicsGroup);
-	~HeroDefaultGun();
-	virtual void update(float time);
-	void trigger(bool press) { triggerPressed = press;};
-
-	Ammo* createAmmo();
+	static GunFactory* sharedInstance();
+	Gun* createGun(const char* gunName);
 
 protected:
-	HeroDefaultGun();
-	bool init(Aircraft* aircraft, CCPoint& velocity, int physicsGroup);
+	GunFactory();
 
-private:
-	float coldTime;
-	float currentColdTime;
-	bool triggerPressed;
+	// config
+	struct HeroAmmo00Config
+	{
+		HeroAmmo00Config():
+			ammoDef("png/heroAmmo00.png",
+				CCPoint(0,100),
+				PhysicsManager::UNKNOWN,
+				100.0f)
+		{}
 
-	 CCPoint velocity;
-	 int physicsGroup;
-
-	Aircraft* aircraft;
-
-	CCPoint gunPosLeft;
-	CCPoint gunPosRight;
+		AmmoDef ammoDef;
+	};
 };
 
 #endif

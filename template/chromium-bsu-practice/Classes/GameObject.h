@@ -23,15 +23,29 @@
 #include "Box2D/Box2D.h"
 #include "physics/PhysicsManager.h"
 
+#include <string>
+
+using namespace std;
 
 class GameObject : public CCNode, public PhysicsStepCallbackHandler
 {
 
 public:
 	~GameObject();
-	void preStep(float time, PhysicsManager* manager);
-	void postStep(float time, PhysicsManager* manager);
 	virtual void update(float dt) {CCLOG("GameObject::update called !");} ;
+
+	// physics
+	void prePhysicsStep(float time, PhysicsManager* manager);
+	void postPhysicsStep(float time, PhysicsManager* manager);
+	void setPhysicsFilterData(b2Filter& filterData);
+	void setPhysicsGroup(int physicsGroup);
+	int getOnePhysicsGroup();
+
+	// instance
+	virtual GameObject* instance() { return NULL;}
+
+	// utils
+	// CCPoint getPositionInWorldSpace();
 
 protected:
 	virtual CCNode* initGraphics() { return NULL; };
@@ -45,10 +59,16 @@ public:
 	CCNode* graphics;
 	b2Body* physics;
 
+	string name;
+
 public:
 	bool shouldReleased;	// indicate that this object is useless, should deleted !!
 				// if others once before retain an class, and some time later 
 				// see shouldReleased == true, then should release it, and let it go.
+
+	// for test
+private:
+	int testForPrivate;
 };
 
 #endif

@@ -1,5 +1,4 @@
 
-
 // Copyright 2014 Wanwan Zhang
 
 // This program is free software: you can redistribute it and/or modify
@@ -15,44 +14,58 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-#ifndef __HERO_DEFAULT_GUN_H__
-#define __HERO_DEFAULT_GUN_H__
+#ifndef __GUN_H__
+#define __GUN_H__
 
 #include "cocos2d.h"
-
-#include "aircraft/Aircraft.h"
+#include "GameObject.h"
 #include "Ammo.h"
+#include "ShotMethod.h"
+#include "aircraft/Aircraft.h"
 
 USING_NS_CC;
 
-class HeroDefaultGun : public GameObject
+class ShotMethod;
+
+class Gun : public GameObject
 {
-
 public:
-	static HeroDefaultGun* create(Aircraft* aircraft, CCPoint& velocity, int physicsGroup);
-	~HeroDefaultGun();
-	virtual void update(float time);
-	void trigger(bool press) { triggerPressed = press;};
+	static Gun* create(Ammo* prototypeAmmo, ShotMethod* shotMethod);
+	~Gun();
 
+	void trigger(bool press) { triggerPressed = press;};
+	virtual void update(float time);
+
+	Ammo* getPrototypeAmmo() { return prototypeAmmo;}
 	Ammo* createAmmo();
 
+	void setOwnerAircraft(Aircraft* aircraft) 
+	{ 
+		physicsGroup = aircraft->getOnePhysicsGroup(); 
+
+		//cout<<name<< " setOwnerAircraft called "<<endl;
+		//cout<<"physicsGroup: "<< physicsGroup<<endl;
+	}
+
 protected:
-	HeroDefaultGun();
-	bool init(Aircraft* aircraft, CCPoint& velocity, int physicsGroup);
+	Gun();
+	bool init(Ammo* prototypeAmmo, ShotMethod* shotMethod);
 
 private:
-	float coldTime;
-	float currentColdTime;
+	
 	bool triggerPressed;
 
-	 CCPoint velocity;
-	 int physicsGroup;
+	// code time
+	float coldTime;
+	float curTimeToCold;
 
-	Aircraft* aircraft;
+	// prototype ammo
+	Ammo* prototypeAmmo;
 
-	CCPoint gunPosLeft;
-	CCPoint gunPosRight;
+	// shot method
+	ShotMethod* shotMethod;
+
+	int physicsGroup;
 };
-
 #endif
+

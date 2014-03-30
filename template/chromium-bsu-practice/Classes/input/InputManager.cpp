@@ -61,7 +61,10 @@ void InputManager::keyDown_Extension(int key) {
 	else if(key == 'W')
 		arrowState[ARROW_UP] = ARROW_PRESSED;
 	else if(key == 'J')
+	{
+		CCLOG("InputManager fire key is down !");
 		arrowState[FIRE]	= ARROW_PRESSED;
+	}
 
 };
 void InputManager::keyUp_Extension(int key) {
@@ -77,5 +80,8 @@ void InputManager::keyUp_Extension(int key) {
 	else if(key == 'W')
 		arrowState[ARROW_UP] = ARROW_RELEASED;
 	else if(key == 'J')
+	{
+		CCLOG("InputManager fire key release !");
 		arrowState[FIRE]	= ARROW_RELEASED;
+	}
 };

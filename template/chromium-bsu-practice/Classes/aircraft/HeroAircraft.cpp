@@ -15,11 +15,10 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-#include "heroAircraft.h"
+#include "HeroAircraft.h"
 #include "input/InputManager.h"
-
-#include "util/GB2ShapeCache-x.h"
-
+#include "physics/GB2ShapeCache-x.h"
+#include "gun/GunFactory.h"
 
 HeroAircraft* HeroAircraft::create()
 {
@@ -45,9 +44,14 @@ bool HeroAircraft::init()
 	// init base class
 	if(Aircraft::init())
 	{
+
+		name = "HeroAircraft";
 		// create gun
 		CCPoint velocity(0, 200);
-		defaultGun = HeroDefaultGun::create(this, velocity, PhysicsManager::JUSTICE);
+		//defaultGun = HeroDefaultGun::create(this, velocity, PhysicsManager::JUSTICE);
+		defaultGun = GunFactory::sharedInstance()->createGun("hello");
+		defaultGun->setOwnerAircraft(this);
+
 		addChild(defaultGun);
 		return true;
 	}
