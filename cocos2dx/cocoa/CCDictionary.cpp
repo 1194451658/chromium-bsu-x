@@ -416,8 +416,13 @@ void CCDictionary::acceptVisitor(CCDataVisitor &visitor)
 CCDictionary* CCDictionary::createWithContentsOfFile(const char *pFileName)
 {
     CCDictionary* pRet = createWithContentsOfFileThreadSafe(pFileName);
-    pRet->autorelease();
-    return pRet;
+	if(NULL != pRet)
+	{
+		pRet->autorelease();
+		return pRet;
+	}
+
+	return NULL;
 }
 
 bool CCDictionary::writeToFile(const char *fullPath)

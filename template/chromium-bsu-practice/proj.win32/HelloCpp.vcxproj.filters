@@ -7,6 +7,21 @@
     <Filter Include="Classes">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\aircraft">
+      <UniqueIdentifier>{5e9696c1-af15-4028-a6ee-1a9afb3021ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\gun">
+      <UniqueIdentifier>{ed7cfd87-3b06-4af4-be3b-a376857418c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\gun\shotMethod">
+      <UniqueIdentifier>{2c784576-d735-466e-97fb-e002fa827b92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\input">
+      <UniqueIdentifier>{dce2253f-f714-47f1-bd01-0d1528f00d1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\physics">
+      <UniqueIdentifier>{99228ac5-c923-4361-baa6-2978c855ea86}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -16,6 +31,48 @@
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\aircraft\Aircraft.cpp">
+      <Filter>Classes\aircraft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\aircraft\EnemyAircraft0.cpp">
+      <Filter>Classes\aircraft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\aircraft\HeroAircraft.cpp">
+      <Filter>Classes\aircraft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\Ammo.cpp">
+      <Filter>Classes\gun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\Gun.cpp">
+      <Filter>Classes\gun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\GunFactory.cpp">
+      <Filter>Classes\gun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\HeroDefaultGun.cpp">
+      <Filter>Classes\gun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\ShotMethod.cpp">
+      <Filter>Classes\gun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\shotMethod\LateralShot.cpp">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\input\InputManager.cpp">
+      <Filter>Classes\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\physics\GB2ShapeCache-x.cpp">
+      <Filter>Classes\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\physics\GLES-Render.cpp">
+      <Filter>Classes\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\physics\PhysicsManager.cpp">
+      <Filter>Classes\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameObject.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,5 +86,51 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>Classes</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="..\Classes\aircraft\Aircraft.h">
+      <Filter>Classes\aircraft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\aircraft\EnemyAircraft0.h">
+      <Filter>Classes\aircraft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\aircraft\HeroAircraft.h">
+      <Filter>Classes\aircraft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\Ammo.h">
+      <Filter>Classes\gun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\Gun.h">
+      <Filter>Classes\gun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\GunFactory.h">
+      <Filter>Classes\gun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\HeroDefaultGun.h">
+      <Filter>Classes\gun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\ShotMethod.h">
+      <Filter>Classes\gun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\shotMethod\LateralShot.h">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\input\InputManager.h">
+      <Filter>Classes\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\physics\GB2ShapeCache-x.h">
+      <Filter>Classes\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\physics\GLES-Render.h">
+      <Filter>Classes\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\physics\PhysicsManager.h">
+      <Filter>Classes\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameObject.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="HelloCpp.rc" />
   </ItemGroup>
 </Project>

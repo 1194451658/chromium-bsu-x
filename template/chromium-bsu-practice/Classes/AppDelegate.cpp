@@ -15,6 +15,10 @@ AppDelegate::~AppDelegate()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+
+	// init resource
+	CCFileUtils::sharedFileUtils()->addSearchPath("Resources");
+
     // initialize director
     CCDirector* pDirector = CCDirector::sharedDirector();
     CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();

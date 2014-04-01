@@ -458,7 +458,9 @@ LRESULT CCEGLView::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
         else if (wParam == VK_ESCAPE)
         {
             CCDirector::sharedDirector()->getKeypadDispatcher()->dispatchKeypadMSG(kTypeBackClicked);
-        }
+		}
+
+		CCDirector::sharedDirector()->getKeypadDispatcher()->dispatchKeypadMSG_Extension(kTypeKeyDown_Extension, wParam);
 
         if ( m_lpfnAccelerometerKeyHook!=NULL )
         {
@@ -466,6 +468,9 @@ LRESULT CCEGLView::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
         }
         break;
     case WM_KEYUP:
+
+		CCDirector::sharedDirector()->getKeypadDispatcher()->dispatchKeypadMSG_Extension(kTypeKeyUp_Extension, wParam);
+
         if ( m_lpfnAccelerometerKeyHook!=NULL )
         {
             (*m_lpfnAccelerometerKeyHook)( message,wParam,lParam );
