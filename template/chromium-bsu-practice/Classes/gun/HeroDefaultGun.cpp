@@ -25,22 +25,25 @@ HeroDefaultGun::~HeroDefaultGun()
 {
 }
 
-bool HeroDefaultGun::init(Aircraft* aircraft, CCPoint& velocity, int physicsGroup)
+bool HeroDefaultGun::init(Aircraft* ownerAircraft)
 {
-	if(GameObject::init())
+	if(Gun::init())
 	{
 		name = "HeroDefaultGun";
+
+		velocity = 400;
 		currentColdTime = 0;
 		coldTime = 0.3;
-		triggerPressed = false;
-
-		this->velocity = velocity;
-		this->physicsGroup = physicsGroup;
-
-		this->aircraft = aircraft;
-
 		gunPosLeft = CCPoint(-10, 0);
 		gunPosRight = CCPoint(10, 0);
+		physicsGroup = PhysicsManager::GROUP_UNKNOWN;
+
+		this->ownerAircraft = ownerAircraft;
+
+		if(ownerAircraft)
+		{
+			this->physicsGroup = ownerAircraft->getOnePhysicsGroup();
+		}
 
 		return true;
 	}
@@ -48,11 +51,11 @@ bool HeroDefaultGun::init(Aircraft* aircraft, CCPoint& velocity, int physicsGrou
 	return false;
 }
 
-HeroDefaultGun* HeroDefaultGun::create(Aircraft* aircraft, CCPoint& velocity, int physicsGroup)
+HeroDefaultGun* HeroDefaultGun::create(Aircraft* aircraft)
 {
 	HeroDefaultGun* newGun = new HeroDefaultGun();
 
-	if(newGun && newGun->init(aircraft, velocity, physicsGroup))
+	if(newGun && newGun->init(aircraft))
 	{
 		newGun->autorelease();
 		return newGun;
@@ -64,29 +67,29 @@ HeroDefaultGun* HeroDefaultGun::create(Aircraft* aircraft, CCPoint& velocity, in
 
 void HeroDefaultGun::update(float time)
 {
+
+
 	currentColdTime -= time;
 	if(currentColdTime < 0) currentColdTime = 0;
 
 	if(triggerPressed && currentColdTime == 0)
 	{
 		currentColdTime = coldTime;
+
+		CCPoint posInWorld = this->convertToWorldSpace(CCPoint(0,0));
+
 		// fire
 		{
 			Ammo* newAmmo = createAmmo();
-
-			float posX = aircraft->getPositionX();
-			posX += gunPosLeft.x;
-
-			float posY = aircraft->getPositionY();
-			posY += gunPosLeft.y;
-
+			float posX = posInWorld.x + gunPosLeft.x;
+			float posY = posInWorld.y + gunPosLeft.y;
 			newAmmo->setPosition(posX, posY);
 			CCDirector::sharedDirector()->getRunningScene()->addChild(newAmmo);
 		}
 
 		{
 			Ammo* newAmmo = createAmmo();
-			newAmmo->setPosition(aircraft->getPositionX() + gunPosRight.x, aircraft->getPositionY() + gunPosRight.y );
+			newAmmo->setPosition(posInWorld.x + gunPosRight.x, posInWorld.y + gunPosRight.y );
 			CCDirector::sharedDirector()->getRunningScene()->addChild(newAmmo);
 		}
 	}
@@ -94,12 +97,20 @@ void HeroDefaultGun::update(float time)
 
 Ammo* HeroDefaultGun::createAmmo()
 {
-	// create ammo
-	//CCSprite* ammoSprite = CCSprite::create("png/heroAmmo00.png");
-	//if(velocity.y < 0) 
-	//	ammoSprite->setFlipY(true);
-
-	Ammo* newAmmo = Ammo::create("png/heroAmmo00.png", velocity, physicsGroup);
+	float damage = 100;
+	CCPoint ammoVelocity = CCPoint(direction.x * velocity, direction.y * velocity);
+	AmmoDef ammoDef("png/heroAmmo00.png", ammoVelocity, physicsGroup, damage);
+	Ammo* newAmmo = Ammo::create(ammoDef);
 
 	return newAmmo;
 }
+
+void HeroDefaultGun::setOwnerAircraft(Aircraft* owner)
+{
+	Gun::setOwnerAircraft(owner);
+
+	if(owner)
+	{
+		physicsGroup = owner->getOnePhysicsGroup();
+	}
+};

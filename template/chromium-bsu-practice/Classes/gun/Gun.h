@@ -20,7 +20,6 @@
 #include "cocos2d.h"
 #include "GameObject.h"
 #include "Ammo.h"
-#include "ShotMethod.h"
 #include "aircraft/Aircraft.h"
 
 USING_NS_CC;
@@ -30,42 +29,25 @@ class ShotMethod;
 class Gun : public GameObject
 {
 public:
-	static Gun* create(Ammo* prototypeAmmo, ShotMethod* shotMethod);
-	~Gun();
+	virtual void trigger(bool press) { triggerPressed = press;};
+	virtual void setOwnerAircraft(Aircraft* owner){ ownerAircraft = owner;};
 
-	void trigger(bool press) { triggerPressed = press;};
-	virtual void update(float time);
+	virtual void setDirection(CCPoint& d)
+	{
+		direction = d.normalize();
+	}
 
-	Ammo* getPrototypeAmmo() { return prototypeAmmo;}
-	Ammo* createAmmo();
-
-	void setOwnerAircraft(Aircraft* aircraft) 
+	bool init() 
 	{ 
-		physicsGroup = aircraft->getOnePhysicsGroup(); 
-
-		//cout<<name<< " setOwnerAircraft called "<<endl;
-		//cout<<"physicsGroup: "<< physicsGroup<<endl;
+		triggerPressed = false;
+		direction = CCPoint(0,1);
+		return GameObject::init();
 	}
 
 protected:
-	Gun();
-	bool init(Ammo* prototypeAmmo, ShotMethod* shotMethod);
-
-private:
-	
+	CCPoint direction;
 	bool triggerPressed;
-
-	// code time
-	float coldTime;
-	float curTimeToCold;
-
-	// prototype ammo
-	Ammo* prototypeAmmo;
-
-	// shot method
-	ShotMethod* shotMethod;
-
-	int physicsGroup;
+	Aircraft* ownerAircraft;
 };
 #endif
 

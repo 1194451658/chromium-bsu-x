@@ -13,9 +13,6 @@
     <Filter Include="Classes\gun">
       <UniqueIdentifier>{ed7cfd87-3b06-4af4-be3b-a376857418c8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\gun\shotMethod">
-      <UniqueIdentifier>{2c784576-d735-466e-97fb-e002fa827b92}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\input">
       <UniqueIdentifier>{dce2253f-f714-47f1-bd01-0d1528f00d1b}</UniqueIdentifier>
     </Filter>
@@ -45,20 +42,8 @@
     <ClCompile Include="..\Classes\gun\Ammo.cpp">
       <Filter>Classes\gun</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\gun\Gun.cpp">
-      <Filter>Classes\gun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\gun\GunFactory.cpp">
-      <Filter>Classes\gun</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\gun\HeroDefaultGun.cpp">
       <Filter>Classes\gun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\gun\ShotMethod.cpp">
-      <Filter>Classes\gun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\gun\shotMethod\LateralShot.cpp">
-      <Filter>Classes\gun\shotMethod</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\input\InputManager.cpp">
       <Filter>Classes\input</Filter>
@@ -102,17 +87,8 @@
     <ClInclude Include="..\Classes\gun\Gun.h">
       <Filter>Classes\gun</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\gun\GunFactory.h">
-      <Filter>Classes\gun</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\gun\HeroDefaultGun.h">
       <Filter>Classes\gun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\gun\ShotMethod.h">
-      <Filter>Classes\gun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\gun\shotMethod\LateralShot.h">
-      <Filter>Classes\gun\shotMethod</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\input\InputManager.h">
       <Filter>Classes\input</Filter>

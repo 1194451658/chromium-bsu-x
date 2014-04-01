@@ -138,11 +138,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\GameObject.cpp" />
     <ClCompile Include="..\Classes\gun\Ammo.cpp" />
-    <ClCompile Include="..\Classes\gun\Gun.cpp" />
-    <ClCompile Include="..\Classes\gun\GunFactory.cpp" />
     <ClCompile Include="..\Classes\gun\HeroDefaultGun.cpp" />
-    <ClCompile Include="..\Classes\gun\ShotMethod.cpp" />
-    <ClCompile Include="..\Classes\gun\shotMethod\LateralShot.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\input\InputManager.cpp" />
     <ClCompile Include="..\Classes\physics\GB2ShapeCache-x.cpp" />
@@ -158,10 +154,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\GameObject.h" />
     <ClInclude Include="..\Classes\gun\Ammo.h" />
     <ClInclude Include="..\Classes\gun\Gun.h" />
-    <ClInclude Include="..\Classes\gun\GunFactory.h" />
     <ClInclude Include="..\Classes\gun\HeroDefaultGun.h" />
-    <ClInclude Include="..\Classes\gun\ShotMethod.h" />
-    <ClInclude Include="..\Classes\gun\shotMethod\LateralShot.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\input\InputManager.h" />
     <ClInclude Include="..\Classes\physics\GB2ShapeCache-x.h" />

@@ -18,7 +18,9 @@
 #include "HeroAircraft.h"
 #include "input/InputManager.h"
 #include "physics/GB2ShapeCache-x.h"
-#include "gun/GunFactory.h"
+// #include "gun/GunFactory.h"
+
+#include "gun/HeroDefaultGun.h"
 
 HeroAircraft* HeroAircraft::create()
 {
@@ -48,9 +50,8 @@ bool HeroAircraft::init()
 		name = "HeroAircraft";
 		// create gun
 		CCPoint velocity(0, 200);
-		//defaultGun = HeroDefaultGun::create(this, velocity, PhysicsManager::JUSTICE);
-		defaultGun = GunFactory::sharedInstance()->createGun("hello");
-		defaultGun->setOwnerAircraft(this);
+		defaultGun = HeroDefaultGun::create(this);
+		// defaultGun->setOwnerAircraft(this);
 
 		addChild(defaultGun);
 		return true;
@@ -124,7 +125,7 @@ b2Body* HeroAircraft::initPhysics()
 
 	// set fixture collide filter
 	b2Filter filter;
-	filter.groupIndex	= PhysicsManager::JUSTICE;
+	filter.groupIndex	= PhysicsManager::GROUP_JUSTICE;
 	filter.categoryBits = PhysicsManager::AIRCRAFT;
 	filter.maskBits		= PhysicsManager::AIRCRAFT | 
 					PhysicsManager::AMMO;

@@ -68,19 +68,3 @@ void Gun::update(float time)
 {
 	curTimeToCold -= time;
 	if(curTimeToCold < 0) curTimeToCold = 0;
-
-	if(triggerPressed && curTimeToCold == 0)
-	{
-		curTimeToCold = coldTime;
-		shotMethod->shot(this);
-	}
-}
-
-Ammo* Gun::createAmmo()
-{
-	Ammo* newAmmo = (Ammo*)prototypeAmmo->instance();
-	newAmmo->setPhysicsGroup(physicsGroup);
-
-	return newAmmo;
-}
-

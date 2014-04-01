@@ -1,5 +1,4 @@
 
-
 // Copyright 2014 Wanwan Zhang
 
 // This program is free software: you can redistribute it and/or modify
@@ -22,37 +21,37 @@
 #include "cocos2d.h"
 
 #include "aircraft/Aircraft.h"
+#include "Gun.h"
 #include "Ammo.h"
 
 USING_NS_CC;
 
-class HeroDefaultGun : public GameObject
+class HeroDefaultGun : public Gun
 {
 
 public:
-	static HeroDefaultGun* create(Aircraft* aircraft, CCPoint& velocity, int physicsGroup);
+	static HeroDefaultGun* create(Aircraft* ownerAircraft);
 	~HeroDefaultGun();
 	virtual void update(float time);
-	void trigger(bool press) { triggerPressed = press;};
+	virtual void setOwnerAircraft(Aircraft* owner);
 
 	Ammo* createAmmo();
 
 protected:
 	HeroDefaultGun();
-	bool init(Aircraft* aircraft, CCPoint& velocity, int physicsGroup);
+	bool init(Aircraft* aircraft);
 
 private:
 	float coldTime;
 	float currentColdTime;
-	bool triggerPressed;
 
-	 CCPoint velocity;
+	 float velocity;
 	 int physicsGroup;
-
-	Aircraft* aircraft;
 
 	CCPoint gunPosLeft;
 	CCPoint gunPosRight;
+
+
 };
 
 #endif
