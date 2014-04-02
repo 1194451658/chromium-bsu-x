@@ -117,7 +117,7 @@ b2Body* EnemyAircraft0::initPhysics()
 
 	// set fixture collide filter
 	b2Filter filter;
-	filter.groupIndex	= PhysicsManager::ENEMY;
+	filter.groupIndex	= PhysicsManager::PHYSICS_GROUP_ENEMY;
 	filter.categoryBits = PhysicsManager::AIRCRAFT;
 	filter.maskBits		= PhysicsManager::AIRCRAFT | 
 					PhysicsManager::AMMO;

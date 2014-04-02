@@ -22,35 +22,16 @@
 
 using namespace CocosDenshion;
 
-bool Ammo::init(const char* graphicsFile, CCPoint& velocity, int physicsGroup)
+bool Ammo::init(AmmoDef& def)
 {
-	this->graphicsFile = graphicsFile;
+	this->graphicsFile = def.graphicsFile;
 	this->graphics = CCSprite::create(graphicsFile);
-	this->velocity = velocity;
-
-	if(GameObject::init())
-	{
-		name = "Ammo";
-
-		this->physicsGroup = physicsGroup;
-		damage = 100;
-		shouldExplode = false;
-		return true;
-	}
-
-	return false;
-}
-
-bool Ammo::init(const char* graphicsFile, AmmoDef& def)
-{
-	this->graphicsFile = graphicsFile;
-	this->graphics = CCSprite::create(graphicsFile);
+	physicsGroup = def.physicsGroup;
 	velocity = def.velocity;
 
 	if(GameObject::init())
 	{
 		name = "Ammo";
-		physicsGroup = def.physicsGroup;
 		damage = def.damage;
 		shouldExplode = false;
 
@@ -60,39 +41,11 @@ bool Ammo::init(const char* graphicsFile, AmmoDef& def)
 	return false;
 }
 
-Ammo* Ammo::create(const char* graphicsFile, CCPoint& velocity, int physicsGroup)
-{
-	Ammo* newAmmo = new Ammo();
-
-	if(newAmmo && newAmmo->init(graphicsFile, velocity, physicsGroup))
-	{
-		newAmmo->autorelease();
-		return newAmmo;
-	}
-
-	CC_SAFE_DELETE(newAmmo);
-	return NULL;
-}
-
-Ammo* Ammo::create(const char* graphicsFile, AmmoDef& def)
-{
-	Ammo* newAmmo = new Ammo();
-
-	if(newAmmo && newAmmo->init(graphicsFile, def))
-	{
-		newAmmo->autorelease();
-		return newAmmo;
-	}
-
-	CC_SAFE_DELETE(newAmmo);
-	return NULL;
-}
-
 Ammo* Ammo::create(AmmoDef& def)
 {
 	Ammo* newAmmo = new Ammo();
 
-	if(newAmmo && newAmmo->init(def.graphicsFile, def))
+	if(newAmmo && newAmmo->init(def))
 	{
 		newAmmo->autorelease();
 		return newAmmo;
@@ -197,9 +150,9 @@ Ammo::Ammo()
 
 GameObject* Ammo::instance()
 {
-	Ammo* newAmmo = Ammo::create(this->graphicsFile,
-				this->velocity,
-				this->physicsGroup);
+
+	AmmoDef ammoDef((const char*)graphicsFile, velocity, physicsGroup, damage);
+	Ammo* newAmmo = Ammo::create(ammoDef);
 	newAmmo->damage = this->damage;
 
 	return newAmmo;

@@ -1,41 +1,44 @@
 
-#include "LateralShot.h"
+#include "SwapLateralShotMethod.h"
 
-void LateralShotMethod::shot(Gun* gun)
+void SwapLateralShotMethod::shot(Gun* gun)
 {
 	CCPoint gunPosInWorld = gun->convertToWorldSpace(CCPoint(0,0));
 
+	if(swapFlag == false)
 	{
+		swapFlag = true;
 		Ammo* newAmmo = gun->createAmmo();
 		newAmmo->setPosition(gunPosInWorld.x + relativePos.x, gunPosInWorld.y + relativePos.y);
 		CCDirector::sharedDirector()->getRunningScene()->addChild(newAmmo);
-	}
-
+	}else
 	{
+		swapFlag = false;
 		Ammo* newAmmo = gun->createAmmo();
 		newAmmo->setPosition(gunPosInWorld.x - relativePos.x, gunPosInWorld.y + relativePos.y);
 		CCDirector::sharedDirector()->getRunningScene()->addChild(newAmmo);
 	}
 }
 
-LateralShotMethod::LateralShotMethod()
+SwapLateralShotMethod::SwapLateralShotMethod()
 {
 }
 
-bool LateralShotMethod::init(CCPoint& relativePos)
+bool SwapLateralShotMethod::init(CCPoint& relativePos)
 {
 	this->relativePos = relativePos;
+	swapFlag = false;
 	return ShotMethod::init();
 }
 
-LateralShotMethod* LateralShotMethod::create(CCPoint& relativePos)
+SwapLateralShotMethod* SwapLateralShotMethod::create(CCPoint& relativePos)
 {
 
-	LateralShotMethod* newShotMethod = new LateralShotMethod();
+	SwapLateralShotMethod* newShotMethod = new SwapLateralShotMethod();
 
 	if(newShotMethod && newShotMethod->init(relativePos))
 	{
-		newShotMethod->retain();
+		newShotMethod->autorelease();
 		return newShotMethod;
 	}
 

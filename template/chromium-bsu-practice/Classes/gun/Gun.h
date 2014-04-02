@@ -30,7 +30,7 @@ class ShotMethod;
 class Gun : public GameObject
 {
 public:
-	static Gun* create(Ammo* prototypeAmmo, ShotMethod* shotMethod);
+	static Gun* create(Aircraft* owner, Ammo* prototypeAmmo, ShotMethod* shotMethod);
 	~Gun();
 
 	void trigger(bool press) { triggerPressed = press;};
@@ -42,14 +42,17 @@ public:
 	void setOwnerAircraft(Aircraft* aircraft) 
 	{ 
 		physicsGroup = aircraft->getOnePhysicsGroup(); 
-
-		//cout<<name<< " setOwnerAircraft called "<<endl;
-		//cout<<"physicsGroup: "<< physicsGroup<<endl;
 	}
+
+	// create specific gun
+	static Gun* createHeroDefaultGun();
+	static Gun* createGunExample1();
+	static Gun* createGunSwapLateralExample();
+	static Gun* createGunSinExample();
 
 protected:
 	Gun();
-	bool init(Ammo* prototypeAmmo, ShotMethod* shotMethod);
+	bool init(Aircraft* owner, Ammo* prototypeAmmo, ShotMethod* shotMethod);
 
 private:
 	

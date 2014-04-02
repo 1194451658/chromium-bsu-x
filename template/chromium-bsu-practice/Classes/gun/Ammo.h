@@ -29,7 +29,7 @@ struct AmmoDef
 {
 	AmmoDef(const char* graphicsFile,
 		CCPoint velocity,
-		PhysicsManager::Group physicsGroup,
+		int physicsGroup,
 		float damage
 	       ):graphicsFile(graphicsFile),
 		velocity(velocity),
@@ -40,15 +40,13 @@ struct AmmoDef
 
 	const char* graphicsFile;
 	CCPoint velocity;
-	PhysicsManager::Group physicsGroup;
+	int physicsGroup;
 	float damage;
 };
 
 class Ammo : public GameObject, public b2ContactListener
 {
 public:
-	static Ammo* create(const char* graphicsFile, CCPoint& velocity, int physicsGroup);
-	static Ammo* create(const char* graphicsFile, AmmoDef& def);
 	static Ammo* create(AmmoDef& def);
 
 	~Ammo();
@@ -65,8 +63,7 @@ public:
     virtual GameObject* instance();
 
 protected:
-	bool init(const char* graphicsFile, CCPoint& velocity, int physicsGroup);
-	bool init(const char* graphicsFile, AmmoDef& def);
+	bool init(AmmoDef& def);
 
 	void doDamageToGameObject(GameObject* g);
 

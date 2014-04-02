@@ -15,14 +15,19 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Gun.h"
+#include "shotMethod/LateralShotMethod.h"
+#include "shotMethod/MiddleShotMethod.h"
+#include "shotMethod/SwapLateralShotMethod.h"
+#include "shotMethod/SineShotMethod.h"
 
-bool Gun::init(Ammo* prototypeAmmo, ShotMethod* shotMethod)
+
+bool Gun::init(Aircraft* owner, Ammo* prototypeAmmo, ShotMethod* shotMethod)
 {
 	if(GameObject::init())
 	{
 		name = "Gun";
 
-		physicsGroup = PhysicsManager::UNKNOWN;
+		physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
 
 		this->prototypeAmmo = prototypeAmmo;
 		prototypeAmmo->retain();
@@ -30,7 +35,7 @@ bool Gun::init(Ammo* prototypeAmmo, ShotMethod* shotMethod)
 		this->shotMethod = shotMethod;
 		shotMethod->retain();
 
-		coldTime = 1;
+		coldTime = 0.2;
 		curTimeToCold = 0;
 		triggerPressed = false;
 
@@ -50,11 +55,11 @@ Gun::~Gun()
 	CC_SAFE_RELEASE(shotMethod);
 }
 
-Gun* Gun::create(Ammo* prototypeAmmo, ShotMethod* shotMethod)
+Gun* Gun::create(Aircraft* owner, Ammo* prototypeAmmo, ShotMethod* shotMethod)
 {
 	Gun* newGun = new Gun();
 
-	if(newGun && newGun->init(prototypeAmmo, shotMethod))
+	if(newGun && newGun->init(owner, prototypeAmmo, shotMethod))
 	{
 		newGun->autorelease();
 		return newGun;
@@ -83,4 +88,85 @@ Ammo* Gun::createAmmo()
 
 	return newAmmo;
 }
+
+Gun* Gun::createHeroDefaultGun()
+{
+	// ammo
+	AmmoDef	ammoDef("png/heroAmmo00.png",
+		CCPoint(0,500),
+		PhysicsManager::PHYSICS_GROUP_UNKNOWN,
+		100.0f);
+
+	Ammo* prototypeAmmo = Ammo::create(ammoDef);
+
+	// shot method
+	CCPoint relativePos = CCPoint(10,0);
+	ShotMethod* shotMethod = LateralShotMethod::create(relativePos);
+
+	// create gun
+	Gun* gun = Gun::create(NULL, prototypeAmmo, shotMethod);
+
+	return gun;
+}
+
+ Gun* Gun::createGunExample1()
+{
+	// ammo
+	AmmoDef	ammoDef("png/heroAmmo00.png",
+		CCPoint(0,500),
+		PhysicsManager::PHYSICS_GROUP_UNKNOWN,
+		100.0f);
+
+	Ammo* prototypeAmmo = Ammo::create(ammoDef);
+
+	// shot method
+	CCPoint relativePos = CCPoint(0,10);
+	ShotMethod* shotMethod = MiddleShotMethod::create(relativePos);
+
+	// create gun
+	Gun* gun = Gun::create(NULL, prototypeAmmo, shotMethod);
+
+	return gun;
+}
+
+Gun* Gun::createGunSwapLateralExample()
+ {
+	 // ammo
+	 AmmoDef	ammoDef("png/heroAmmo00.png",
+		 CCPoint(0,500),
+		 PhysicsManager::PHYSICS_GROUP_UNKNOWN,
+		 100.0f);
+
+	 Ammo* prototypeAmmo = Ammo::create(ammoDef);
+
+	 // shot method
+	 CCPoint relativePos = CCPoint(10,0);
+	 ShotMethod* shotMethod = SwapLateralShotMethod::create(relativePos);
+
+	 // create gun
+	 Gun* gun = Gun::create(NULL, prototypeAmmo, shotMethod);
+	 return gun;
+ }
+
+Gun* Gun::createGunSinExample()
+{
+	// ammo
+	AmmoDef	ammoDef("png/heroAmmo00.png",
+		CCPoint(0,500),
+		PhysicsManager::PHYSICS_GROUP_UNKNOWN,
+		100.0f);
+
+	Ammo* prototypeAmmo = Ammo::create(ammoDef);
+
+	// shot method
+	CCPoint relativePos = CCPoint(30,0);
+	ShotMethod* shotMethod = SineShotMethod::create(relativePos, 13);
+
+	// create gun
+	Gun* gun = Gun::create(NULL, prototypeAmmo, shotMethod);
+	return gun;
+}
+
+
+
 

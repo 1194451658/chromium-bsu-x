@@ -61,7 +61,7 @@ public:
 	static b2Vec2 gravity;
 	static float PTM_RATIO	;
 
-	enum Group { UNKNOWN = 0, JUSTICE = -1, ENEMY = -2};
+	enum  { PHYSICS_GROUP_UNKNOWN = 0, PHYSICS_GROUP_JUSTICE = -1, PHYSICS_GROUP_ENEMY = -2};
 	enum Category { AIRCRAFT = 1,
 			AMMO	= 1 << 2
 	};
