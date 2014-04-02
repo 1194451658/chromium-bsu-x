@@ -1,5 +1,4 @@
 
-
 // Copyright 2014 Wanwan Zhang
 
 // This program is free software: you can redistribute it and/or modify
@@ -28,6 +27,7 @@ bool Ammo::init(AmmoDef& def)
 	this->graphics = CCSprite::create(graphicsFile);
 	physicsGroup = def.physicsGroup;
 	velocity = def.velocity;
+	physicsGroup = def.physicsGroup;
 
 	if(GameObject::init())
 	{
@@ -152,6 +152,7 @@ GameObject* Ammo::instance()
 {
 
 	AmmoDef ammoDef((const char*)graphicsFile, velocity, physicsGroup, damage);
+
 	Ammo* newAmmo = Ammo::create(ammoDef);
 	newAmmo->damage = this->damage;
 

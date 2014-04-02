@@ -166,7 +166,3 @@ Gun* Gun::createGunSinExample()
 	Gun* gun = Gun::create(NULL, prototypeAmmo, shotMethod);
 	return gun;
 }
-
-
-
-

@@ -14,48 +14,44 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef __GUN_H__
-#define __GUN_H__
+
+#ifndef __HERO_DEFAULT_GUN_H__
+#define __HERO_DEFAULT_GUN_H__
 
 #include "cocos2d.h"
-#include "GameObject.h"
-#include "Ammo.h"
+
 #include "aircraft/Aircraft.h"
+#include "Gun.h"
+#include "Ammo.h"
 
 USING_NS_CC;
 
-class ShotMethod;
-
-class Gun : public GameObject
+class HeroDefaultGun : public Gun
 {
+
 public:
-	static Gun* create(Aircraft* owner, Ammo* prototypeAmmo, ShotMethod* shotMethod);
-	~Gun();
+	static HeroDefaultGun* create(Aircraft* ownerAircraft);
+	~HeroDefaultGun();
+	virtual void update(float time);
+	virtual void setOwnerAircraft(Aircraft* owner);
 
-	virtual void setDirection(CCPoint& d)
-	{
-		direction = d.normalize();
-	}
-
-	bool init() 
-	{ 
-		physicsGroup = aircraft->getOnePhysicsGroup(); 
-	}
-
-	// create specific gun
-	static Gun* createHeroDefaultGun();
-	static Gun* createGunExample1();
-	static Gun* createGunSwapLateralExample();
-	static Gun* createGunSinExample();
+	Ammo* createAmmo();
 
 protected:
-	Gun();
-	bool init(Aircraft* owner, Ammo* prototypeAmmo, ShotMethod* shotMethod);
+	HeroDefaultGun();
+	bool init(Aircraft* aircraft);
 
 private:
-	
-	bool triggerPressed;
-	Aircraft* ownerAircraft;
-};
-#endif
+	float coldTime;
+	float currentColdTime;
 
+	 float velocity;
+	 int physicsGroup;
+
+	CCPoint gunPosLeft;
+	CCPoint gunPosRight;
+
+
+};
+
+#endif
