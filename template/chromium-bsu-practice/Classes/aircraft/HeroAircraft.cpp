@@ -46,8 +46,8 @@ bool HeroAircraft::init()
 		name = "HeroAircraft";
 
 		// create gun
-		//defaultGun = Gun::createHeroDefaultGun();
-		//defaultGun->retain();
+		defaultGun = Gun::createHeroDefaultGun();
+		defaultGun->retain();
 
 		//defaultGun = Gun::createGunExample1();
 		//defaultGun->retain();
@@ -55,8 +55,11 @@ bool HeroAircraft::init()
 		//defaultGun = Gun::createGunSwapLateralExample();
 		//defaultGun->retain();
 
-		defaultGun = Gun::createGunSinExample();
-		defaultGun->retain();
+		//defaultGun = Gun::createGunSinExample();
+		//defaultGun->retain();
+
+		//defaultGun = Gun::createGunStrafeExample();
+		//defaultGun->retain();
 
 		defaultGun->setOwnerAircraft(this);
 		addChild(defaultGun);

@@ -21,15 +21,17 @@
 #include "GameObject.h"
 #include "Ammo.h"
 #include "aircraft/Aircraft.h"
+#include "ColdTimeMethod.h"
 
 USING_NS_CC;
 
 class ShotMethod;
+class ColdTimeMethod;
 
 class Gun : public GameObject
 {
 public:
-	static Gun* create(Aircraft* owner, Ammo* prototypeAmmo, ShotMethod* shotMethod);
+	static Gun* create(Aircraft* owner, Ammo* prototypeAmmo, ColdTimeMethod* coldTimeMethod, ShotMethod* shotMethod);
 	~Gun();
 
 	void update(float time);
@@ -48,10 +50,11 @@ public:
 	static Gun* createGunExample1();
 	static Gun* createGunSwapLateralExample();
 	static Gun* createGunSinExample();
+	static Gun* createGunStrafeExample();
 
 protected:
 	Gun();
-	bool init(Aircraft* owner, Ammo* prototypeAmmo, ShotMethod* shotMethod);
+	bool init(Aircraft* owner, Ammo* prototypeAmmo, ColdTimeMethod* coldTimeMethod, ShotMethod* shotMethod);
 
 private:
 	CCPoint direction;
@@ -61,6 +64,7 @@ private:
 	float curTimeToCold;
 
 	Ammo* prototypeAmmo;
+	ColdTimeMethod* coldTimeMethod;
 	ShotMethod* shotMethod;
 	
 	bool triggerPressed;

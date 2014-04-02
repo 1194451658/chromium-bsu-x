@@ -59,8 +59,8 @@ GameObject::~GameObject()
 
 void GameObject::prePhysicsStep(float time, PhysicsManager* manager) {
 	
-	const CCPoint& pos = getPosition();
-	float angle	= getRotation();
+	const CCPoint& pos = getPosition();			// suppose that GameObject Is In The Top Layer.
+	float angle	= graphics->getRotation();		// puppose that GameObject doesn't rotate;
 
 	b2Vec2 physicsPos(pos.x / PhysicsManager::PTM_RATIO, pos.y / PhysicsManager::PTM_RATIO);
 	float physicsAngle = CC_DEGREES_TO_RADIANS(-angle);
@@ -74,7 +74,7 @@ void GameObject::postPhysicsStep(float time, PhysicsManager* manager) {
 	setPosition(pos.x * PhysicsManager::PTM_RATIO, pos.y * PhysicsManager::PTM_RATIO);
 
 	float angle = physics->GetAngle();
-	setRotation(CC_RADIANS_TO_DEGREES(-angle));
+	graphics->setRotation(CC_RADIANS_TO_DEGREES(-angle));
 };
 
 

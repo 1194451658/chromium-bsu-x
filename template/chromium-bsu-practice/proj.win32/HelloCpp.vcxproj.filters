@@ -22,6 +22,9 @@
     <Filter Include="Classes\gun\shotMethod">
       <UniqueIdentifier>{94f3087d-c2aa-40d9-adfe-3dbb50a2e785}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\gun\coldTimeMethod">
+      <UniqueIdentifier>{3336da0c-ccdd-4740-a4ac-7c3b08209fe0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -74,6 +77,15 @@
     </ClCompile>
     <ClCompile Include="..\Classes\gun\shotMethod\SineShotMethod.cpp">
       <Filter>Classes\gun\shotMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\shotMethod\StrafeShotMethod.cpp">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\coldTimeMethod\EqualColdTime.cpp">
+      <Filter>Classes\gun\coldTimeMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\coldTimeMethod\GroupShotColdTimeMethod.cpp">
+      <Filter>Classes\gun\coldTimeMethod</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +143,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\gun\ShotMethod.h">
       <Filter>Classes\gun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\shotMethod\StrafeShotMethod.h">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\ColdTimeMethod.h">
+      <Filter>Classes\gun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\coldTimeMethod\EqualColdTime.h">
+      <Filter>Classes\gun\coldTimeMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\coldTimeMethod\GroupShotColdTimeMethod.h">
+      <Filter>Classes\gun\coldTimeMethod</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

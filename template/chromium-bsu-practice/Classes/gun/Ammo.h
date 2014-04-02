@@ -28,19 +28,26 @@ USING_NS_CC;
 struct AmmoDef
 {
 	AmmoDef(const char* graphicsFile,
-		CCPoint velocity,
+		float velocity,
+		CCPoint& direction,
+		bool directionAffectRotation,
 		int physicsGroup,
 		float damage
 	       ):graphicsFile(graphicsFile),
 		velocity(velocity),
+		direction(direction),
+		directionAffectRotation(directionAffectRotation),
 		physicsGroup(physicsGroup),
 		damage(damage)
 	{
 	}
 
 	const char* graphicsFile;
-	CCPoint velocity;
 	int physicsGroup;
+
+	float velocity;
+	CCPoint& direction;
+	bool directionAffectRotation;
 	float damage;
 };
 
@@ -62,6 +69,17 @@ public:
 
     virtual GameObject* instance();
 
+	void setDirection(CCPoint& direction)
+	{
+		this->direction = direction.normalize();
+
+		if(directionAffectRotation)
+			graphics->setRotation(90 - CC_RADIANS_TO_DEGREES(this->direction.getAngle()));
+
+		physics->SetLinearVelocity(b2Vec2(this->direction.x * velocity/PhysicsManager::PTM_RATIO,
+			this->direction.y * velocity/PhysicsManager::PTM_RATIO));
+	}
+
 protected:
 	bool init(AmmoDef& def);
 
@@ -69,7 +87,10 @@ protected:
 
 private:
 	Ammo();
-	CCPoint velocity;
+	float velocity;
+	CCPoint direction;
+	bool directionAffectRotation;
+
 	int physicsGroup;
 	float damage;
 	const char* graphicsFile;

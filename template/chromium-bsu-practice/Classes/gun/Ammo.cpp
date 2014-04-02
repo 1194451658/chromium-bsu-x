@@ -23,15 +23,24 @@ using namespace CocosDenshion;
 
 bool Ammo::init(AmmoDef& def)
 {
-	this->graphicsFile = def.graphicsFile;
-	this->graphics = CCSprite::create(graphicsFile);
+	graphicsFile = def.graphicsFile;
+	graphics = CCSprite::create(graphicsFile);
 	physicsGroup = def.physicsGroup;
 	velocity = def.velocity;
+	direction = def.direction.normalize();
 	physicsGroup = def.physicsGroup;
+
+	directionAffectRotation = def.directionAffectRotation;
+
+	if(directionAffectRotation)
+	{
+		this->graphics->setRotation(90 - CC_RADIANS_TO_DEGREES(this->direction.getAngle()));
+	}
 
 	if(GameObject::init())
 	{
 		name = "Ammo";
+
 		damage = def.damage;
 		shouldExplode = false;
 
@@ -72,7 +81,8 @@ b2Body* Ammo::initPhysics()
 		bodyDef.type = b2_dynamicBody;
 		bodyDef.bullet = true;
 		bodyDef.fixedRotation = true;
-		bodyDef.linearVelocity.Set(velocity.x/PhysicsManager::PTM_RATIO, velocity.y/PhysicsManager::PTM_RATIO);
+		bodyDef.linearVelocity.Set(direction.x * velocity/PhysicsManager::PTM_RATIO,
+									direction.y * velocity/PhysicsManager::PTM_RATIO);
 		b2Body* body = world->CreateBody(&bodyDef);
 
 		b2PolygonShape shape;
@@ -151,7 +161,7 @@ Ammo::Ammo()
 GameObject* Ammo::instance()
 {
 
-	AmmoDef ammoDef((const char*)graphicsFile, velocity, physicsGroup, damage);
+	AmmoDef ammoDef((const char*)graphicsFile, velocity, direction, directionAffectRotation, physicsGroup, damage);
 
 	Ammo* newAmmo = Ammo::create(ammoDef);
 	newAmmo->damage = this->damage;
