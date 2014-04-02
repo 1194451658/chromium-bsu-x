@@ -32,14 +32,15 @@ public:
 	static Gun* create(Aircraft* owner, Ammo* prototypeAmmo, ShotMethod* shotMethod);
 	~Gun();
 
+	void update(float time);
+	Ammo* createAmmo();
+
+	void trigger(bool pressed) { triggerPressed = pressed;}
+	void setOwnerAircraft(Aircraft* owner);
+
 	virtual void setDirection(CCPoint& d)
 	{
 		direction = d.normalize();
-	}
-
-	bool init() 
-	{ 
-		physicsGroup = aircraft->getOnePhysicsGroup(); 
 	}
 
 	// create specific gun
@@ -53,6 +54,14 @@ protected:
 	bool init(Aircraft* owner, Ammo* prototypeAmmo, ShotMethod* shotMethod);
 
 private:
+	CCPoint direction;
+	int physicsGroup;
+
+	float coldTime;
+	float curTimeToCold;
+
+	Ammo* prototypeAmmo;
+	ShotMethod* shotMethod;
 	
 	bool triggerPressed;
 	Aircraft* ownerAircraft;

@@ -27,7 +27,10 @@ bool Gun::init(Aircraft* owner, Ammo* prototypeAmmo, ShotMethod* shotMethod)
 	{
 		name = "Gun";
 
-		physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
+		if(owner)
+			physicsGroup = owner->getOnePhysicsGroup();
+		else
+			physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
 
 		this->prototypeAmmo = prototypeAmmo;
 		prototypeAmmo->retain();
@@ -43,6 +46,12 @@ bool Gun::init(Aircraft* owner, Ammo* prototypeAmmo, ShotMethod* shotMethod)
 	}
 
 	return false;
+}
+
+void Gun::setOwnerAircraft(Aircraft* owner)
+{
+	if(owner)
+		physicsGroup = owner->getOnePhysicsGroup();
 }
 
 Gun::Gun()

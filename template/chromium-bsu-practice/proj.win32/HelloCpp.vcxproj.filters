@@ -117,9 +117,6 @@
     <ClInclude Include="..\Classes\GameObject.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\gun\ShotMethod.h">
-      <Filter>Classes\gun</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\gun\shotMethod\LateralShotMethod.h">
       <Filter>Classes\gun\shotMethod</Filter>
     </ClInclude>
@@ -131,6 +128,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\gun\shotMethod\SineShotMethod.h">
       <Filter>Classes\gun\shotMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\ShotMethod.h">
+      <Filter>Classes\gun</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
