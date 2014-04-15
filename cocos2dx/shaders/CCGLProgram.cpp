@@ -347,7 +347,22 @@ const char* CCGLProgram::vertexShaderLog()
 
 const char* CCGLProgram::fragmentShaderLog()
 {
-    return this->logForOpenGLObject(m_uFragShader, (GLInfoFunction)&glGetShaderiv, (GLLogFunction)&glGetShaderInfoLog);
+    // return this->logForOpenGLObject(m_uFragShader, (GLInfoFunction)&glGetShaderiv, (GLLogFunction)&glGetShaderInfoLog);
+	
+	// use direct gl function !
+	GLint logLength = 0, charsWritten = 0;
+
+	glGetShaderiv(m_uFragShader, GL_INFO_LOG_LENGTH, &logLength);
+	if (logLength < 1)
+		return 0;
+
+	char *logBytes = (char*)malloc(logLength);
+	glGetShaderInfoLog(m_uFragShader, logLength, &charsWritten, logBytes);
+
+	CCString* log = CCString::create(logBytes);
+
+	free(logBytes);
+	return log->getCString();
 }
 
 const char* CCGLProgram::programLog()
