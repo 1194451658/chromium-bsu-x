@@ -148,6 +148,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\gun\shotMethod\SwapLateralShotMethod.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\input\InputManager.cpp" />
+    <ClCompile Include="..\Classes\map\AutoTiledBackground.cpp" />
     <ClCompile Include="..\Classes\physics\GB2ShapeCache-x.cpp" />
     <ClCompile Include="..\Classes\physics\GLES-Render.cpp" />
     <ClCompile Include="..\Classes\physics\PhysicsManager.cpp" />
@@ -172,6 +173,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\gun\shotMethod\SwapLateralShotMethod.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\input\InputManager.h" />
+    <ClInclude Include="..\Classes\map\AutoTiledBackground.h" />
     <ClInclude Include="..\Classes\physics\GB2ShapeCache-x.h" />
     <ClInclude Include="..\Classes\physics\GLES-Render.h" />
     <ClInclude Include="..\Classes\physics\PhysicsManager.h" />

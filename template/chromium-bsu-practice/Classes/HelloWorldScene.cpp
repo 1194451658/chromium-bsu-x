@@ -16,6 +16,12 @@
 
 #include <stdlib.h>
 
+#include "cocos-ext.h"
+
+#include "map/AutoTiledBackground.h"
+
+USING_NS_CC_EXT;
+
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -79,6 +85,8 @@ bool HelloWorld::init()
     // this->addChild(pSprite, 0);
 
     test();
+
+	testDragon();
     
     return true;
 }
@@ -116,6 +124,14 @@ void HelloWorld::test()
 	// ------------
 	SimpleAudioEngine::sharedEngine()->preloadEffect("wav/exploStd.wav");
 
+	// test AutoTiledBackground
+	AutoTiledBackground* bg = AutoTiledBackground::create("png/check.png");
+
+	//const CCPoint delta = ccp(100,100);
+	CCMoveBy* moveBy = CCMoveBy::create(1.0, ccp(-100,-100));
+	bg->runAction(CCRepeatForever::create(moveBy));
+	addChild(bg);
+
 	// ------------
 	// Hero Aircraft
 	// -----------
@@ -132,6 +148,14 @@ void HelloWorld::test()
 	EnemyAircraft0* enemy = EnemyAircraft0::create();
 	addChild(enemy);
 	enemy->setPosition(screenSize.width/2, screenSize.height/2 + 150);
+
+
+
+
+
+
+
+
 }
 
 void HelloWorld::testPhysicsEditor()
@@ -347,4 +371,28 @@ void HelloWorld::testKeyUpDown()
     // ----------------------
     TestKeyUpDown* keyHandler = new TestKeyUpDown();
     CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(keyHandler);
+}
+
+void HelloWorld::testDragon()
+{
+
+	/*
+	// load texture
+	// CCTextureCache::sharedTextureCache()->addImage("anim/DragonBones_Tutorial_MultiBehavior_output/DragonBones_Tutorial_MultiBehavior.plist");
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("anim/DragonBones_Tutorial_MultiBehavior_output/DragonBones_Tutorial_MultiBehavior.plist");
+
+	// load armature
+	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("anim/DragonBones_Tutorial_MultiBehavior_output/DragonBones_Tutorial_MultiBehavior.xml");
+	CCArmature* armature = CCArmature::create("Dragon");
+
+	addChild(armature);
+	armature->getAnimation()->play("stand");
+
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+
+	armature->setPosition(CCPoint(visibleSize.width/2, 0*visibleSize.height/2));
+	*/
+
+	return ;
 }

@@ -91,7 +91,7 @@ void EnemyAircraft0::update(float dt)
 CCNode* EnemyAircraft0::initGraphics()
 {
 	// create the graphics
-	CCSprite* sprite = CCSprite::create("png/enemy00.png");
+	CCSprite* sprite = CCSprite::create("png/airCraft/enemy00.png");
 	// sprite->setVisible(false);
 	return sprite;
 }

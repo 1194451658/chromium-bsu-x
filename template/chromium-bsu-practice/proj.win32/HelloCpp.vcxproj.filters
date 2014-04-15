@@ -25,6 +25,9 @@
     <Filter Include="Classes\gun\coldTimeMethod">
       <UniqueIdentifier>{3336da0c-ccdd-4740-a4ac-7c3b08209fe0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\map">
+      <UniqueIdentifier>{ceb1276e-ec7b-4280-8c11-1f6208d967e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -86,6 +89,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\gun\coldTimeMethod\GroupShotColdTimeMethod.cpp">
       <Filter>Classes\gun\coldTimeMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\map\AutoTiledBackground.cpp">
+      <Filter>Classes\map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +161,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\gun\coldTimeMethod\GroupShotColdTimeMethod.h">
       <Filter>Classes\gun\coldTimeMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\map\AutoTiledBackground.h">
+      <Filter>Classes\map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

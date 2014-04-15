@@ -105,7 +105,8 @@ void HeroAircraft::update(float dt)
 CCNode* HeroAircraft::initGraphics()
 {
 	// create the graphics
-	CCSprite* sprite = CCSprite::create("png/hero.png");
+	CCSprite* sprite = CCSprite::create("png/airCraft/hero.png");
+
 	return sprite;
 }
 

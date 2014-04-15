@@ -24,6 +24,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
 
     pDirector->setOpenGLView(pEGLView);
+
+	// pEGLView->setViewPortInPoints(0,0, 300, 400);
+	// pEGLView->setScissorInPoints(0, 0, 300, 400);
 	
     // turn on display FPS
     pDirector->setDisplayStats(true);
