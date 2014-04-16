@@ -28,6 +28,9 @@
     <Filter Include="Classes\map">
       <UniqueIdentifier>{ceb1276e-ec7b-4280-8c11-1f6208d967e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\engine">
+      <UniqueIdentifier>{673c131f-919c-4de2-9b0c-cb6223638d55}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -92,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\map\AutoTiledBackground.cpp">
       <Filter>Classes\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\CCSpriteWithShadow.cpp">
+      <Filter>Classes\engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +170,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\map\AutoTiledBackground.h">
       <Filter>Classes\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\CCSpriteWithShadow.h">
+      <Filter>Classes\engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

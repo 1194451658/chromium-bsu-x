@@ -19,6 +19,8 @@
 #include "input/InputManager.h"
 #include "physics/GB2ShapeCache-x.h"
 
+#include "engine/CCSpriteWithShadow.h"
+
 HeroAircraft* HeroAircraft::create()
 {
 	HeroAircraft* hero = new HeroAircraft();
@@ -105,7 +107,8 @@ void HeroAircraft::update(float dt)
 CCNode* HeroAircraft::initGraphics()
 {
 	// create the graphics
-	CCSprite* sprite = CCSprite::create("png/airCraft/hero.png");
+	// CCSprite* sprite = CCSprite::create("png/airCraft/hero.png");
+	CCSpriteWithShadow* sprite = CCSpriteWithShadow::create("png/airCraft/hero.png");
 
 	return sprite;
 }

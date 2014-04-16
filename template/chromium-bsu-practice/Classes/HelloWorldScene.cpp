@@ -130,6 +130,7 @@ void HelloWorld::test()
 	//const CCPoint delta = ccp(100,100);
 	CCMoveBy* moveBy = CCMoveBy::create(1.0, ccp(-100,-100));
 	bg->runAction(CCRepeatForever::create(moveBy));
+	// this->runAction(CCRepeatForever::create(moveBy));
 	addChild(bg);
 
 	// ------------
