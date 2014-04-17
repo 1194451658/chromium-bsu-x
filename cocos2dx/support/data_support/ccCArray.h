@@ -88,7 +88,7 @@ bool ccArrayContainsObject(ccArray *arr, CCObject* object);
 void ccArrayAppendObject(ccArray *arr, CCObject* object);
 
 /** Appends an object. Capacity of arr is increased if needed. */
-void ccArrayAppendObjectWithResize(ccArray *arr, CCObject* object);
+CC_DLL void ccArrayAppendObjectWithResize(ccArray *arr, CCObject* object);
 
 /** Appends objects from plusArr to arr. 
  Behavior undefined if arr doesn't have enough capacity. */

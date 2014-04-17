@@ -54,9 +54,10 @@ void CCSpriteWithShadow::initShader()
 			vec4 finalColor;														\n\
 			if((texColor.r > 0.0 || texColor.g > 0.0 || texColor.b > 0.0) &&		\n\
 				texColor.a > 0.0)													\n\
-				finalColor = vec4(0.0, 0.0, 0.0, 1.0);								\n\
+				finalColor = vec4(0.0, 0.0, 0.0, texColor.a);						\n\
 			else																	\n\
-				finalColor = vec4(0.0);												\n\
+				//finalColor = vec4(0.0);											\n\
+				discard;															\n\
 			gl_FragColor = finalColor;												\n\
 			// gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);								\n\
 		}																			\n\
@@ -74,7 +75,7 @@ void CCSpriteWithShadow::initShader()
 	return ;
 }
 
-void CCSpriteWithShadow::draw()
+void CCSpriteWithShadow::drawShadow()
 {
 	
 	// adjust shadow size && position
@@ -90,15 +91,19 @@ void CCSpriteWithShadow::draw()
 
 	m_sShadowQuad.bl.vertices.x = shadowCenter.x - shadowWidth/2;
 	m_sShadowQuad.bl.vertices.y = shadowCenter.y - shadowHeight/2;
+	// m_sShadowQuad.bl.vertices.z = -0.5;
 
 	m_sShadowQuad.br.vertices.x = shadowCenter.x + shadowWidth/2;
 	m_sShadowQuad.br.vertices.y = shadowCenter.y - shadowHeight/2;
+	// m_sShadowQuad.br.vertices.z = -0.5;
 
 	m_sShadowQuad.tl.vertices.x = shadowCenter.x - shadowWidth/2;
 	m_sShadowQuad.tl.vertices.y = shadowCenter.y + shadowHeight/2;
+	// m_sShadowQuad.tl.vertices.z = -0.5;
 
 	m_sShadowQuad.tr.vertices.x = shadowCenter.x + shadowWidth/2;
 	m_sShadowQuad.tr.vertices.y = shadowCenter.y + shadowHeight/2;
+	// m_sShadowQuad.tr.vertices.z = -0.5;
 
 	// draw shadow first
 	CC_PROFILER_START_CATEGORY(kCCProfilerCategorySprite, "CCSprite - draw");
@@ -164,7 +169,71 @@ void CCSpriteWithShadow::draw()
 	CC_INCREMENT_GL_DRAWS(1);
 
 	CC_PROFILER_STOP_CATEGORY(kCCProfilerCategorySprite, "CCSprite - draw");
+}
 
-	// Base Draw
-	CCSprite::draw();
+void CCSpriteWithShadow::visitShadow()
+{
+	// quick return if not visible. children won't be drawn.
+	if (!m_bVisible)
+	{
+		return;
+	}
+	kmGLPushMatrix();
+
+	if (m_pGrid && m_pGrid->isActive())
+	{
+		m_pGrid->beforeDraw();
+	}
+
+	this->transform();
+
+	// CCNode* pNode = NULL;
+	CCSpriteWithShadow* spriteWithShadow = NULL;
+
+	unsigned int i = 0;
+
+	if(m_pChildren && m_pChildren->count() > 0)
+	{
+		sortAllChildren();
+		// draw children zOrder < 0
+		ccArray *arrayData = m_pChildren->data;
+		for( ; i < arrayData->num; i++ )
+		{
+			spriteWithShadow = dynamic_cast<CCSpriteWithShadow*>(arrayData->arr[i]);
+
+			if ( spriteWithShadow && spriteWithShadow->m_nZOrder < 0 ) 
+			{
+				spriteWithShadow->visitShadow();
+			}
+			else
+			{
+				break;
+			}
+		}
+		// self draw
+		this->drawShadow();
+
+		for( ; i < arrayData->num; i++ )
+		{
+			spriteWithShadow = dynamic_cast<CCSpriteWithShadow*>(arrayData->arr[i]);
+			if (spriteWithShadow)
+			{
+				spriteWithShadow->visitShadow();
+			}
+		}        
+	}
+	else
+	{
+		this->drawShadow();
+	}
+
+	// reset for next frame
+	// m_uOrderOfArrival = 0;
+
+	if (m_pGrid && m_pGrid->isActive())
+	{
+		m_pGrid->afterDraw(this);
+	}
+
+	kmGLPopMatrix();
 }

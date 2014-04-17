@@ -37,6 +37,7 @@ public:
 public:
     // update
     virtual void update(float time);
+	
 protected:
 
 private: 

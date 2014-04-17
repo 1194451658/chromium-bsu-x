@@ -143,3 +143,37 @@ int GameObject::getOnePhysicsGroup()
 
 	return 0;
 }
+
+void GameObject::visitShadow()
+{
+
+	// quick return if not visible. children won't be drawn.
+	if (!m_bVisible)
+	{
+		return;
+	}
+	kmGLPushMatrix();
+
+	if (m_pGrid && m_pGrid->isActive())
+	{
+		m_pGrid->beforeDraw();
+	}
+
+	this->transform();
+
+	///////////////////////////////
+	// visit game object 's shadow
+	///////////////////////////////
+	CCSpriteWithShadow* shadow = getShadowSprite();
+	if(shadow)
+	{
+		shadow->visitShadow();
+	}
+
+	if (m_pGrid && m_pGrid->isActive())
+	{
+		m_pGrid->afterDraw(this);
+	}
+
+	kmGLPopMatrix();
+}

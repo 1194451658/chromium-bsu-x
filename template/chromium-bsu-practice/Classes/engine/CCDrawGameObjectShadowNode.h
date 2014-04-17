@@ -15,34 +15,26 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-#ifndef __CCSPRITE_WITH_SHADOW__
-#define __CCSPRITE_WITH_SHADOW__
+#ifndef __CCDRAW_SPRITE_SHADOW_NODE_H__
+#define __CCDRAW_SPRITE_SHADOW_NODE_H__
 
 #include "cocos2d.h"
+#include "GameObject.h"
 
 USING_NS_CC;
 
-class CCSpriteWithShadow : public CCSprite
+class CCDrawGameObjectShadowNode : public CCNode
 {
 public:
-	void drawShadow();
-	void visitShadow();
-	static CCSpriteWithShadow* create(const char *pszFileName);
-
-	void setShadowOffset(CCPoint& offset){ shadowOffset = offset;}
-	void setShadowScale(float scale){ shadowScaleX = shadowScaleY = scale;}
-
-private:
-	void initShader();
+	void visit();
+	static CCDrawGameObjectShadowNode* create();
+	~CCDrawGameObjectShadowNode();
+	void removeShouldReleasedGameObject();
+	void addGameObject(GameObject* go);
 
 private:
-	ccV3F_C4B_T2F_Quad m_sShadowQuad;
-
-	CCPoint shadowOffset;
-	float shadowScaleX;
-	float shadowScaleY;
-
-	CCGLProgram* shadowShaderProgram;
+	CCArray* childrenToRemove;
+	CCArray* gameObjects;
 };
 
 #endif

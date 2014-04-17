@@ -20,6 +20,8 @@
 
 #include "map/AutoTiledBackground.h"
 
+#include "engine/CCDrawGameObjectShadowNode.h"
+
 USING_NS_CC_EXT;
 
 USING_NS_CC;
@@ -49,6 +51,8 @@ bool HelloWorld::init()
     {
         return false;
     }
+
+
     
     // coordiante indicator
     CCLayerColor* layer = CCLayerColor::create(ccc4(255,0,0,255), 100, 100);
@@ -126,37 +130,35 @@ void HelloWorld::test()
 
 	// test AutoTiledBackground
 	AutoTiledBackground* bg = AutoTiledBackground::create("png/check.png");
+	addChild(bg);
 
 	//const CCPoint delta = ccp(100,100);
 	CCMoveBy* moveBy = CCMoveBy::create(1.0, ccp(-100,-100));
 	bg->runAction(CCRepeatForever::create(moveBy));
 	// this->runAction(CCRepeatForever::create(moveBy));
-	addChild(bg);
+
+
+	// shadow layer
+	CCDrawGameObjectShadowNode* shadowLayer = CCDrawGameObjectShadowNode::create();
+	addChild(shadowLayer);
 
 	// ------------
 	// Hero Aircraft
 	// -----------
 	HeroAircraft* hero = HeroAircraft::create();
 	addChild(hero);
+	shadowLayer->addGameObject(hero);
 
 	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
 	hero->setPosition(screenSize.width/2, screenSize.height/2);
-
 
 	// -------------
 	// Enemy Aircraft
 	// ------------
 	EnemyAircraft0* enemy = EnemyAircraft0::create();
 	addChild(enemy);
+	shadowLayer->addGameObject(enemy);
 	enemy->setPosition(screenSize.width/2, screenSize.height/2 + 150);
-
-
-
-
-
-
-
-
 }
 
 void HelloWorld::testPhysicsEditor()

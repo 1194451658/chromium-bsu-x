@@ -22,6 +22,7 @@
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
 #include "physics/PhysicsManager.h"
+#include "engine/CCSpriteWithShadow.h"
 
 #include <string>
 
@@ -40,6 +41,13 @@ public:
 	void setPhysicsFilterData(b2Filter& filterData);
 	void setPhysicsGroup(int physicsGroup);
 	int getOnePhysicsGroup();
+
+	///////////
+	// graphics
+	//////////
+	// shadow support
+	virtual CCSpriteWithShadow* getShadowSprite(){ return NULL;};
+	void visitShadow();
 
 	// instance
 	virtual GameObject* instance() { return NULL;}

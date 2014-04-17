@@ -33,6 +33,9 @@ public:
 	void update(float dt) ;
 
 private:
+	virtual CCSpriteWithShadow* getShadowSprite();
+
+private:
 	float hp; 
 	float damageToHit;
 };

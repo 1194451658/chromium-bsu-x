@@ -24,6 +24,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
 
     pDirector->setOpenGLView(pEGLView);
+	pDirector->setDepthTest(true);
 
 	// pEGLView->setViewPortInPoints(0,0, 300, 400);
 	// pEGLView->setScissorInPoints(0, 0, 300, 400);

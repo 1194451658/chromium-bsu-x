@@ -50,3 +50,9 @@ void Aircraft::update(float dt)
 		hp -= damageToHit;
 	}
 }
+
+CCSpriteWithShadow* Aircraft::getShadowSprite()
+{
+	CCSpriteWithShadow* shadow = dynamic_cast<CCSpriteWithShadow*>(graphics);
+	return shadow;
+}
