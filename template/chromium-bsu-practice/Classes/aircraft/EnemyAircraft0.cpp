@@ -63,6 +63,7 @@ EnemyAircraft0::~EnemyAircraft0()
 
 void EnemyAircraft0::update(float dt)
 {
+
 	// move
 	InputManager* input = InputManager::sharedInstance();
 
@@ -86,6 +87,10 @@ void EnemyAircraft0::update(float dt)
 	{
 		// defaultGun->trigger(false);
 	}
+
+	// base Update
+	Aircraft::update(dt);
+
 }
 
 

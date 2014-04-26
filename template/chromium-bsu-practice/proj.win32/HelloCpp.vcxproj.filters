@@ -99,6 +99,9 @@
     <ClCompile Include="..\Classes\engine\CCSpriteWithShadow.cpp">
       <Filter>Classes\engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\engine\CCDrawGameObjectShadowNode.cpp">
+      <Filter>Classes\engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -172,6 +175,9 @@
       <Filter>Classes\map</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\engine\CCSpriteWithShadow.h">
+      <Filter>Classes\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\CCDrawGameObjectShadowNode.h">
       <Filter>Classes\engine</Filter>
     </ClInclude>
   </ItemGroup>

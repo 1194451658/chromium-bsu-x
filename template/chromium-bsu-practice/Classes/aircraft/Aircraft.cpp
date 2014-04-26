@@ -18,12 +18,15 @@
 
 bool Aircraft::init()
 {
-	hp = 900;
+	maxHp = 900;
+	curHp = 900;
 	damageToHit = 0;
 
 	if(GameObject::init())
 	{
 		name = "Aircraft";
+
+		hpBarInit(100, 10, maxHp, curHp);
 		return true;
 	}
 
@@ -35,11 +38,47 @@ void Aircraft::damage(float damage)
 {
 	if(damage < 0) damage = 0;
 	damageToHit += damage;
+
+
+	CCLOG("Aircraft::damage called !");
+	CCLOG("name: %s", name.c_str());
+	CCLOG("damageToHit: %f ", damageToHit);
+}
+
+void Aircraft::hpBarInit(float width, float height, float maxValue, float initialValue)
+{
+	CCLayerColor* bg = CCLayerColor::create(ccc4(0, 255, 0, 255));
+	bg->changeWidthAndHeight(width, height);
+
+	CCLayerColor* fg = CCLayerColor::create(ccc4(255, 0, 0, 255));
+	float fgWidth = initialValue / maxValue * width;
+	fg->changeWidthAndHeight(fgWidth, height);
+	bg->addChild(fg);
+
+	// center hp bar
+	bg->setPosition(ccp(-bg->getContentSize().width/2, 30));
+
+	hpBarMaxValue = maxValue;
+	hpBarCurValue = initialValue;
+	hpBarWidth = width;
+	hpBarHeight = height;
+
+	hpBarBg = bg;
+	hpBarFg = fg;
+
+	// add bar
+	addChild(bg);
+}
+
+void Aircraft::hpBarUpdate(float percentage)
+{
+	if(percentage < 0) percentage = 0;
+	hpBarFg->changeWidthAndHeight(hpBarWidth * percentage, hpBarHeight);
 }
 
 void Aircraft::update(float dt)
 {
-	if(hp < 0)
+	if(curHp < 0)
 	{
 		removeFromParent();
 		shouldReleased = true;
@@ -47,8 +86,16 @@ void Aircraft::update(float dt)
 
 	if(damageToHit > 0)
 	{
-		hp -= damageToHit;
+		//curHp -= damageToHit;
+		setCurHp(curHp-damageToHit);
+		damageToHit = 0;
 	}
+}
+
+void Aircraft::setCurHp(float newHp)
+{
+	curHp = newHp;
+	hpBarUpdate(curHp / maxHp);
 }
 
 CCSpriteWithShadow* Aircraft::getShadowSprite()

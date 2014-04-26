@@ -32,12 +32,28 @@ public:
 	void damage(float damage);
 	void update(float dt) ;
 
+	void setCurHp(float newHp);
+
+	// hp bar
+	void hpBarInit(float width, float height, float maxValue, float initialValue);
+	void hpBarUpdate(float percentage);
+
 private:
 	virtual CCSpriteWithShadow* getShadowSprite();
 
 private:
-	float hp; 
+	float maxHp;
+	float curHp;
 	float damageToHit;
+
+	// hp bar
+	CCLayerColor* hpBarBg;
+	CCLayerColor* hpBarFg;
+	float hpBarMaxValue;
+	float hpBarCurValue;
+	float hpBarWidth;
+	float hpBarHeight;
+	
 };
 
 #endif

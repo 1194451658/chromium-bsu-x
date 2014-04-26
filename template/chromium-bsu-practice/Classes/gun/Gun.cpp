@@ -128,7 +128,7 @@ Gun* Gun::createHeroDefaultGun()
 		CCPoint(0,1),	// direction
 		false,
 		PhysicsManager::PHYSICS_GROUP_UNKNOWN,
-		100.0f);
+		50.0f);
 
 	Ammo* prototypeAmmo = Ammo::create(ammoDef);
 
