@@ -18,6 +18,7 @@ public:
 	void menuCloseCallback(CCObject* pSender);
 	void playEffectCallback(CCObject* pSender);
 	void playShieldCallback(CCObject* pSender);
+	void playBurstDisappear(CCObject* pSender);
 
 	// implement the "static node()" method manually
 	CREATE_FUNC(TestEffectScene);

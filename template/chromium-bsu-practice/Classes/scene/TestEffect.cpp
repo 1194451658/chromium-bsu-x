@@ -24,6 +24,7 @@
 
 #include "effect/Explosion.h"
 #include "effect/RoundShield.h"
+#include "effect/BurstDisappear.h"
 
 USING_NS_CC_EXT;
 
@@ -130,6 +131,14 @@ void TestEffectScene::testExplosion()
 		pMenu->addChild(playShield);
 	}
 
+	{
+		// menu play shield effect
+		CCLabelTTF* label = CCLabelTTF::create();
+		label->setString("replay Burst disappear");
+		CCMenuItemLabel* item = CCMenuItemLabel::create(label, this, menu_selector(TestEffectScene::playBurstDisappear));
+		pMenu->addChild(item);
+	}
+
 
 	pMenu->setPosition(ccp(origin.x + visibleSize.width/2 + 100, origin.y + visibleSize.height/2));
 	pMenu->alignItemsVertically();
@@ -149,6 +158,17 @@ void TestEffectScene::playEffectCallback(CCObject* pSender)
 }
 
 void TestEffectScene::playShieldCallback(CCObject* pSender)
+{
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+
+	BurstDisappear* burst = BurstDisappear::create();
+	addChild(burst);
+
+	burst->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+}
+
+void TestEffectScene::playBurstDisappear(CCObject* pSender)
 {
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();

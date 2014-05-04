@@ -15,18 +15,6 @@ class RoundShield : public CCNode
 public:
 	CREATE_FUNC(RoundShield);
 
-	//static Explositon* create(int number, int numberVar, float x, float xVar, float y, float yVar)
-	//{
-	//	Explositon* exp = new Explositon();
-	//	if(exp->init(number, numberVar, x, xVar, y, yVar))
-	//	{
-	//		exp->autorelease();
-	//		return exp;
-	//	}
-
-	//	return NULL;
-	//}
-
 	bool init(int number = 4, int numberVar = 2, float x = 0, float xVar = 20, float y = 0, float yVar = 20)
 	{
 		// create sprite
@@ -66,16 +54,17 @@ public:
 			actionArray->addObject(finalSpawn);
 		}
 
+		// final seq 
+		CCSequence* actionSeq = CCSequence::create(actionArray);
+		CCTargetedAction* targetedAction = CCTargetedAction::create(shield, actionSeq);
+
 		// remove
 		CCRemoveSelf* remove = CCRemoveSelf::create();
-		actionArray->addObject(remove);
 
-		// final seq 
-		CCSequence* finalSeq = CCSequence::create(actionArray);
-		CCTargetedAction* targetedAction = CCTargetedAction::create(shield, finalSeq);
+		CCSequence* finalSeq = CCSequence::createWithTwoActions(targetedAction, remove);
 
 		// run action
-		this->runAction(targetedAction);
+		this->runAction(finalSeq);
 
 		return true;
 	}

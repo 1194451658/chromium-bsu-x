@@ -213,6 +213,9 @@
     <ClInclude Include="..\Classes\engine\CCRandomRotateBy.h">
       <Filter>Classes\engine</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\effect\BurstDisappear.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="HelloCpp.rc" />
