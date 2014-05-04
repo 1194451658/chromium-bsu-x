@@ -153,8 +153,8 @@ void Ammo::doDamageToGameObject(GameObject* go)
 		CCNode* parent = aircraft->getParent();
 		if(parent)
 		{
-			Explositon* exp = Explositon::create();
-			exp->setPosition(aircraft->getPosition());
+			Explositon* exp = Explositon::create(1,0,0,0,20,10);
+			exp->setPosition(this->getPosition());
 			parent->addChild(exp);
 		}
 	}

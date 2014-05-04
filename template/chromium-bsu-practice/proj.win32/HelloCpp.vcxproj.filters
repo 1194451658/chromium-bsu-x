@@ -207,6 +207,12 @@
     <ClInclude Include="..\Classes\scene\TestEffect.h">
       <Filter>Classes\scene</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\effect\RoundShield.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\CCRandomRotateBy.h">
+      <Filter>Classes\engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="HelloCpp.rc" />

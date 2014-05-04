@@ -23,6 +23,7 @@
 #include "engine/CCDrawGameObjectShadowNode.h"
 
 #include "effect/Explosion.h"
+#include "effect/RoundShield.h"
 
 USING_NS_CC_EXT;
 
@@ -105,6 +106,37 @@ void TestEffectScene::menuCloseCallback(CCObject* pSender)
 #endif
 }
 
+void TestEffectScene::testExplosion()
+{
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+
+	CCMenu* pMenu = CCMenu::create();
+	addChild(pMenu);
+
+	{
+		// menu play explosion effect
+		CCLabelTTF* label = CCLabelTTF::create();
+		label->setString("replay explosion");
+		CCMenuItemLabel* playExplosion = CCMenuItemLabel::create(label, this, menu_selector(TestEffectScene::playEffectCallback));
+		pMenu->addChild(playExplosion);
+	}
+
+	{
+		// menu play shield effect
+		CCLabelTTF* label = CCLabelTTF::create();
+		label->setString("replay shield effect");
+		CCMenuItemLabel* playShield = CCMenuItemLabel::create(label, this, menu_selector(TestEffectScene::playShieldCallback));
+		pMenu->addChild(playShield);
+	}
+
+
+	pMenu->setPosition(ccp(origin.x + visibleSize.width/2 + 100, origin.y + visibleSize.height/2));
+	pMenu->alignItemsVertically();
+
+	return ;
+}
+
 void TestEffectScene::playEffectCallback(CCObject* pSender)
 {
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
@@ -116,19 +148,13 @@ void TestEffectScene::playEffectCallback(CCObject* pSender)
 	ex->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
 }
 
-void TestEffectScene::testExplosion()
+void TestEffectScene::playShieldCallback(CCObject* pSender)
 {
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
-	// menu
-	CCLabelTTF* label = CCLabelTTF::create();
-	label->setString("replay explosion");
-	CCMenuItemLabel* playExplosion = CCMenuItemLabel::create(label, this, menu_selector(TestEffectScene::playEffectCallback));
+	RoundShield* effect = RoundShield::create();
+	addChild(effect);
 
-	CCMenu* pMenu = CCMenu::create(playExplosion, NULL);
-	addChild(pMenu);
-	pMenu->setPosition(ccp(origin.x + visibleSize.width/2 + 100, origin.y + visibleSize.height/2));
-
-	return ;
+	effect->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
 }

@@ -13,14 +13,26 @@ class Explositon : public CCNode
 public:
 	CREATE_FUNC(Explositon);
 
-	bool init()
+	static Explositon* create(int number, int numberVar, float x, float xVar, float y, float yVar)
 	{
-		number = 4;
-		numberVar = 2;
-		x = 0;
-		y = 0;
-		xVar = 20;
-		yVar = 20;
+		Explositon* exp = new Explositon();
+		if(exp->init(number, numberVar, x, xVar, y, yVar))
+		{
+			exp->autorelease();
+			return exp;
+		}
+
+		return NULL;
+	}
+
+	bool init(int number = 4, int numberVar = 2, float x = 0, float xVar = 20, float y = 0, float yVar = 20)
+	{
+		//number = 4;
+		//numberVar = 2;
+		//x = 0;
+		//y = 0;
+		//xVar = 20;
+		//yVar = 20;
 		
 		int trueNumber = number + CCRANDOM_MINUS1_1()*numberVar;
 
@@ -92,13 +104,6 @@ public:
 	{
 		this->removeFromParentAndCleanup(true);
 	}
-
-	int number;
-	int numberVar;
-	float x;
-	float y;
-	float xVar;
-	float yVar;
 };
 
 
