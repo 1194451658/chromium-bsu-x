@@ -37,12 +37,7 @@ bool Aircraft::init()
 void Aircraft::damage(float damage)
 {
 	if(damage < 0) damage = 0;
-	damageToHit += damage;
-
-
-	CCLOG("Aircraft::damage called !");
-	CCLOG("name: %s", name.c_str());
-	CCLOG("damageToHit: %f ", damageToHit);
+	// damageToHit += damage;
 }
 
 void Aircraft::hpBarInit(float width, float height, float maxValue, float initialValue)

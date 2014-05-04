@@ -19,6 +19,8 @@
 #include "aircraft/Aircraft.h"
 #include "SimpleAudioEngine.h"
 
+#include "effect/Explosion.h"
+
 using namespace CocosDenshion;
 
 bool Ammo::init(AmmoDef& def)
@@ -145,7 +147,17 @@ void Ammo::doDamageToGameObject(GameObject* go)
 {
 	Aircraft* aircraft = dynamic_cast<Aircraft*> (go);
 	if(aircraft)
+	{
 		aircraft->damage(damage);
+
+		CCNode* parent = aircraft->getParent();
+		if(parent)
+		{
+			Explositon* exp = Explositon::create();
+			exp->setPosition(aircraft->getPosition());
+			parent->addChild(exp);
+		}
+	}
 }
 
 Ammo::~Ammo()

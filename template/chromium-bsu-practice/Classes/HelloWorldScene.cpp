@@ -52,8 +52,6 @@ bool HelloWorld::init()
         return false;
     }
 
-
-    
     // coordiante indicator
     CCLayerColor* layer = CCLayerColor::create(ccc4(255,0,0,255), 100, 100);
     addChild(layer);
@@ -89,8 +87,6 @@ bool HelloWorld::init()
     // this->addChild(pSprite, 0);
 
     test();
-
-	testDragon();
     
     return true;
 }
@@ -198,8 +194,6 @@ void HelloWorld::testPhysicsEditor()
     // flags += b2Draw::e_centerOfMassBit;
     debugDraw->SetFlags(flags);
     
-
-    
     // -----------
     // ground
     // --------
@@ -225,9 +219,6 @@ void HelloWorld::testPhysicsEditor()
     groundBox.SetAsBox(0, screenSize.height/2/PTM_RATIO, b2Vec2(screenSize.width/2/PTM_RATIO, 0), 0);
     groundBody->CreateFixture(&groundBox, 0);
 
-
-
-
     {
     
 	b2BodyDef bodyDef;
@@ -245,11 +236,7 @@ void HelloWorld::testPhysicsEditor()
     // add the fixture definitions to the body
     GB2ShapeCache *sc = GB2ShapeCache::sharedGB2ShapeCache();
     sc->addFixturesToBody(body, "hero");
-
     }
-
-
-
 
     {
 	    // body
@@ -273,7 +260,6 @@ void HelloWorld::testPhysicsEditor()
 		    body->CreateFixture(&box, 1);
 	    }
 
-
 	    // shape 1
 	    {
 		    b2PolygonShape box;
@@ -287,10 +273,6 @@ void HelloWorld::testPhysicsEditor()
 		    // fixture
 		    body->CreateFixture(&box, 1);
 	    }
-
-
-
-
     }
 
     // sprite->setAnchorPoint(sc->anchorPointForShape(name.c_str()));
@@ -359,8 +341,6 @@ void HelloWorld::draw()
     ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
 
     kmGLPushMatrix();
-    //physicsWorld->DrawDebugData();
-
     b2World* world = PhysicsManager::sharedInstance()->getPhysicsWorld();
     world->DrawDebugData();
     kmGLPopMatrix();
@@ -374,28 +354,4 @@ void HelloWorld::testKeyUpDown()
     // ----------------------
     TestKeyUpDown* keyHandler = new TestKeyUpDown();
     CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(keyHandler);
-}
-
-void HelloWorld::testDragon()
-{
-
-	/*
-	// load texture
-	// CCTextureCache::sharedTextureCache()->addImage("anim/DragonBones_Tutorial_MultiBehavior_output/DragonBones_Tutorial_MultiBehavior.plist");
-	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("anim/DragonBones_Tutorial_MultiBehavior_output/DragonBones_Tutorial_MultiBehavior.plist");
-
-	// load armature
-	CCArmatureDataManager::sharedArmatureDataManager()->addArmatureFileInfo("anim/DragonBones_Tutorial_MultiBehavior_output/DragonBones_Tutorial_MultiBehavior.xml");
-	CCArmature* armature = CCArmature::create("Dragon");
-
-	addChild(armature);
-	armature->getAnimation()->play("stand");
-
-	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
-	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-
-	armature->setPosition(CCPoint(visibleSize.width/2, 0*visibleSize.height/2));
-	*/
-
-	return ;
 }

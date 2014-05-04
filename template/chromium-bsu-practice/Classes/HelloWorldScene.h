@@ -31,8 +31,6 @@ private:
 	void testKeyUpDown();
 	void testPhysicsEditor();
 
-	void testDragon();
-
 private:
 	b2World* physicsWorld;
 };

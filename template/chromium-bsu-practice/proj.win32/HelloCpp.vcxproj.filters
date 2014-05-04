@@ -31,6 +31,12 @@
     <Filter Include="Classes\engine">
       <UniqueIdentifier>{673c131f-919c-4de2-9b0c-cb6223638d55}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\scene">
+      <UniqueIdentifier>{5ac6930a-4ce4-42a2-a078-4e8fd110b9ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\effect">
+      <UniqueIdentifier>{abc805a6-d6e2-4aae-8fa7-5871a7a2c355}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -101,6 +107,15 @@
     </ClCompile>
     <ClCompile Include="..\Classes\engine\CCDrawGameObjectShadowNode.cpp">
       <Filter>Classes\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\TestArmatureScene.cpp">
+      <Filter>Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\map\Map1.cpp">
+      <Filter>Classes\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\TestEffect.cpp">
+      <Filter>Classes\scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +194,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\engine\CCDrawGameObjectShadowNode.h">
       <Filter>Classes\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\TestArmatureScene.h">
+      <Filter>Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\map\Map1.h">
+      <Filter>Classes\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\effect\Explosion.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\TestEffect.h">
+      <Filter>Classes\scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

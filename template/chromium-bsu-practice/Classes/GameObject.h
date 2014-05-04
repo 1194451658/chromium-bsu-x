@@ -73,10 +73,6 @@ public:
 	bool shouldReleased;	// indicate that this object is useless, should deleted !!
 				// if others once before retain an class, and some time later 
 				// see shouldReleased == true, then should release it, and let it go.
-
-	// for test
-private:
-	int testForPrivate;
 };
 
 #endif

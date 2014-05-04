@@ -151,9 +151,12 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\input\InputManager.cpp" />
     <ClCompile Include="..\Classes\map\AutoTiledBackground.cpp" />
+    <ClCompile Include="..\Classes\map\Map1.cpp" />
     <ClCompile Include="..\Classes\physics\GB2ShapeCache-x.cpp" />
     <ClCompile Include="..\Classes\physics\GLES-Render.cpp" />
     <ClCompile Include="..\Classes\physics\PhysicsManager.cpp" />
+    <ClCompile Include="..\Classes\scene\TestArmatureScene.cpp" />
+    <ClCompile Include="..\Classes\scene\TestEffect.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +164,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\aircraft\EnemyAircraft0.h" />
     <ClInclude Include="..\Classes\aircraft\HeroAircraft.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\effect\Explosion.h" />
     <ClInclude Include="..\Classes\engine\CCDrawGameObjectShadowNode.h" />
     <ClInclude Include="..\Classes\engine\CCSpriteWithShadow.h" />
     <ClInclude Include="..\Classes\GameObject.h" />
@@ -178,9 +182,12 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\input\InputManager.h" />
     <ClInclude Include="..\Classes\map\AutoTiledBackground.h" />
+    <ClInclude Include="..\Classes\map\Map1.h" />
     <ClInclude Include="..\Classes\physics\GB2ShapeCache-x.h" />
     <ClInclude Include="..\Classes\physics\GLES-Render.h" />
     <ClInclude Include="..\Classes\physics\PhysicsManager.h" />
+    <ClInclude Include="..\Classes\scene\TestArmatureScene.h" />
+    <ClInclude Include="..\Classes\scene\TestEffect.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
