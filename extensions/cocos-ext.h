@@ -70,6 +70,8 @@
 #include "CocoStudio/Reader/SceneReader.h"
 
 #include "CocoStudio/Action/CCActionManager.h"
+#include "CocoStudio/Action/CCActionEaseEx.h"
+
 
 
 // Physics integration

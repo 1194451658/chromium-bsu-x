@@ -502,9 +502,12 @@ public:
     
     /// @} End of Sprite properties getter/setters
     
+
+	virtual void setTextureCoords(CCRect rect);
+
 protected:
     void updateColor(void);
-    virtual void setTextureCoords(CCRect rect);
+    //virtual void setTextureCoords(CCRect rect);
     virtual void updateBlendFunc(void);
     virtual void setReorderChildDirtyRecursively(void);
     virtual void setDirtyRecursively(bool bValue);
