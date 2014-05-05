@@ -8,34 +8,43 @@
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\aircraft">
-      <UniqueIdentifier>{5e9696c1-af15-4028-a6ee-1a9afb3021ca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\gun">
-      <UniqueIdentifier>{ed7cfd87-3b06-4af4-be3b-a376857418c8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\input">
-      <UniqueIdentifier>{dce2253f-f714-47f1-bd01-0d1528f00d1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\physics">
-      <UniqueIdentifier>{99228ac5-c923-4361-baa6-2978c855ea86}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\gun\shotMethod">
-      <UniqueIdentifier>{94f3087d-c2aa-40d9-adfe-3dbb50a2e785}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\gun\coldTimeMethod">
-      <UniqueIdentifier>{3336da0c-ccdd-4740-a4ac-7c3b08209fe0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\map">
-      <UniqueIdentifier>{ceb1276e-ec7b-4280-8c11-1f6208d967e0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\engine">
-      <UniqueIdentifier>{673c131f-919c-4de2-9b0c-cb6223638d55}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\scene">
-      <UniqueIdentifier>{5ac6930a-4ce4-42a2-a078-4e8fd110b9ad}</UniqueIdentifier>
+      <UniqueIdentifier>{43b082af-5467-48b9-a3f9-ec7e0d64cf7e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\effect">
-      <UniqueIdentifier>{abc805a6-d6e2-4aae-8fa7-5871a7a2c355}</UniqueIdentifier>
+      <UniqueIdentifier>{37b2c176-0c5d-4f21-a4a5-72b49dd8e1d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\engine">
+      <UniqueIdentifier>{27ac68ce-e4f7-41aa-8149-8646663a1eaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\gun">
+      <UniqueIdentifier>{6d130e19-4550-475f-beff-6972c4c242c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\gun\codeTimeMethod">
+      <UniqueIdentifier>{9979dd39-ac5d-4307-8b6d-e0dc90735b28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\gun\shotMethod">
+      <UniqueIdentifier>{091614a2-764c-47f9-a199-004bc225eea3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\input">
+      <UniqueIdentifier>{c4f49c2a-965e-415f-9737-55181847bf03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\map">
+      <UniqueIdentifier>{0cef207b-13e6-427a-bf86-33ffb1770b07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\physics">
+      <UniqueIdentifier>{74232fba-0779-45fb-9fa6-165fb7a4ab69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\scene">
+      <UniqueIdentifier>{5ab3f309-64e8-4946-b435-735eb58e4d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\test">
+      <UniqueIdentifier>{9628b962-bc04-4a0a-a9f3-8fb6a3760c56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\test\engine">
+      <UniqueIdentifier>{5cf2f3d8-b160-43a6-a603-e3fed731cf48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\engine\action">
+      <UniqueIdentifier>{85104e68-a580-475b-8002-b5ce5c715523}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -57,11 +66,47 @@
     <ClCompile Include="..\Classes\aircraft\HeroAircraft.cpp">
       <Filter>Classes\aircraft</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\engine\CCDrawGameObjectShadowNode.cpp">
+      <Filter>Classes\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\CCSpriteWithShadow.cpp">
+      <Filter>Classes\engine</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\gun\Ammo.cpp">
       <Filter>Classes\gun</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\gun\Gun.cpp">
+      <Filter>Classes\gun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\coldTimeMethod\EqualColdTime.cpp">
+      <Filter>Classes\gun\codeTimeMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\coldTimeMethod\GroupShotColdTimeMethod.cpp">
+      <Filter>Classes\gun\codeTimeMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\shotMethod\LateralShotMethod.cpp">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\shotMethod\MiddleShotMethod.cpp">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\shotMethod\SineShotMethod.cpp">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\shotMethod\StrafeShotMethod.cpp">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\gun\shotMethod\SwapLateralShotMethod.cpp">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClCompile>
     <ClCompile Include="..\Classes\input\InputManager.cpp">
       <Filter>Classes\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\map\AutoTiledBackground.cpp">
+      <Filter>Classes\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\map\Map1.cpp">
+      <Filter>Classes\map</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\physics\GB2ShapeCache-x.cpp">
       <Filter>Classes\physics</Filter>
@@ -72,50 +117,14 @@
     <ClCompile Include="..\Classes\physics\PhysicsManager.cpp">
       <Filter>Classes\physics</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\GameObject.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\gun\Gun.cpp">
-      <Filter>Classes\gun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\gun\shotMethod\LateralShotMethod.cpp">
-      <Filter>Classes\gun\shotMethod</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\gun\shotMethod\MiddleShotMethod.cpp">
-      <Filter>Classes\gun\shotMethod</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\gun\shotMethod\SwapLateralShotMethod.cpp">
-      <Filter>Classes\gun\shotMethod</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\gun\shotMethod\SineShotMethod.cpp">
-      <Filter>Classes\gun\shotMethod</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\gun\shotMethod\StrafeShotMethod.cpp">
-      <Filter>Classes\gun\shotMethod</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\gun\coldTimeMethod\EqualColdTime.cpp">
-      <Filter>Classes\gun\coldTimeMethod</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\gun\coldTimeMethod\GroupShotColdTimeMethod.cpp">
-      <Filter>Classes\gun\coldTimeMethod</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\map\AutoTiledBackground.cpp">
-      <Filter>Classes\map</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\engine\CCSpriteWithShadow.cpp">
-      <Filter>Classes\engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\engine\CCDrawGameObjectShadowNode.cpp">
-      <Filter>Classes\engine</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\scene\TestArmatureScene.cpp">
       <Filter>Classes\scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\map\Map1.cpp">
-      <Filter>Classes\map</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\scene\TestEffect.cpp">
       <Filter>Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameObject.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -128,7 +137,6 @@
     <ClInclude Include="..\Classes\HelloWorldScene.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h" />
     <ClInclude Include="..\Classes\aircraft\Aircraft.h">
       <Filter>Classes\aircraft</Filter>
     </ClInclude>
@@ -138,14 +146,62 @@
     <ClInclude Include="..\Classes\aircraft\HeroAircraft.h">
       <Filter>Classes\aircraft</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\effect\BurstDisappear.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\effect\Explosion.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\effect\RoundShield.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\CCDrawGameObjectShadowNode.h">
+      <Filter>Classes\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\CCSpriteWithShadow.h">
+      <Filter>Classes\engine</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\gun\Ammo.h">
+      <Filter>Classes\gun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\ColdTimeMethod.h">
       <Filter>Classes\gun</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\gun\Gun.h">
       <Filter>Classes\gun</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\gun\ShotMethod.h">
+      <Filter>Classes\gun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\coldTimeMethod\EqualColdTime.h">
+      <Filter>Classes\gun\codeTimeMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\coldTimeMethod\GroupShotColdTimeMethod.h">
+      <Filter>Classes\gun\codeTimeMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\shotMethod\LateralShotMethod.h">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\shotMethod\MiddleShotMethod.h">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\shotMethod\SineShotMethod.h">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\shotMethod\StrafeShotMethod.h">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\shotMethod\SwapLateralShotMethod.h">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClInclude>
     <ClInclude Include="..\Classes\input\InputManager.h">
       <Filter>Classes\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\map\AutoTiledBackground.h">
+      <Filter>Classes\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\map\Map1.h">
+      <Filter>Classes\map</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\physics\GB2ShapeCache-x.h">
       <Filter>Classes\physics</Filter>
@@ -156,68 +212,35 @@
     <ClInclude Include="..\Classes\physics\PhysicsManager.h">
       <Filter>Classes\physics</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\GameObject.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\gun\shotMethod\LateralShotMethod.h">
-      <Filter>Classes\gun\shotMethod</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\gun\shotMethod\MiddleShotMethod.h">
-      <Filter>Classes\gun\shotMethod</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\gun\shotMethod\SwapLateralShotMethod.h">
-      <Filter>Classes\gun\shotMethod</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\gun\shotMethod\SineShotMethod.h">
-      <Filter>Classes\gun\shotMethod</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\gun\ShotMethod.h">
-      <Filter>Classes\gun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\gun\shotMethod\StrafeShotMethod.h">
-      <Filter>Classes\gun\shotMethod</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\gun\ColdTimeMethod.h">
-      <Filter>Classes\gun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\gun\coldTimeMethod\EqualColdTime.h">
-      <Filter>Classes\gun\coldTimeMethod</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\gun\coldTimeMethod\GroupShotColdTimeMethod.h">
-      <Filter>Classes\gun\coldTimeMethod</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\map\AutoTiledBackground.h">
-      <Filter>Classes\map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\engine\CCSpriteWithShadow.h">
-      <Filter>Classes\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\engine\CCDrawGameObjectShadowNode.h">
-      <Filter>Classes\engine</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\scene\TestArmatureScene.h">
       <Filter>Classes\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\map\Map1.h">
-      <Filter>Classes\map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\effect\Explosion.h">
-      <Filter>Classes\effect</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\scene\TestEffect.h">
       <Filter>Classes\scene</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\effect\RoundShield.h">
+    <ClInclude Include="..\Classes\test\engine\TestKeyUpDown.h">
+      <Filter>Classes\test\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameObject.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\effect\Electric.h">
       <Filter>Classes\effect</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\engine\CCRandomRotateBy.h">
-      <Filter>Classes\engine</Filter>
+    <ClInclude Include="..\Classes\engine\action\CCRandomRotateBy.h">
+      <Filter>Classes\engine\action</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\effect\BurstDisappear.h">
+    <ClInclude Include="..\Classes\engine\action\CCRandTextureCoord.h">
+      <Filter>Classes\engine\action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\effect\Glitter.h">
       <Filter>Classes\effect</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="HelloCpp.rc" />
+    <ClInclude Include="..\Classes\effect\GlitterEmitter.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\effect\SuperShield.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

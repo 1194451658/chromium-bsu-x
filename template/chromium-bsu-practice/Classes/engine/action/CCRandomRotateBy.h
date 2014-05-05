@@ -14,31 +14,53 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef __TEST_ARMATURE_SCENE_H__
-#define __TEST_ARMATURE_SCENE_H__
+#ifndef __CCRANDOMROTATEBY_H__
+#define __CCRANDOMROTATEBY_H__
 
 #include "cocos2d.h"
 
-#include "Box2D/Box2D.h"
+USING_NS_CC;
 
-class TestArmatureScene : public cocos2d::CCLayer
+class CCRandomRotateBy : public CCActionInterval
 {
 public:
-	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-	virtual bool init();  
 
-	// there's no 'id' in cpp, so we recommend returning the class instance pointer
-	static cocos2d::CCScene* scene();
+	static CCRandomRotateBy* create(float duration, float angleVar)
+	{
+		CCRandomRotateBy* seq = new CCRandomRotateBy();
+		if(seq && seq->initWithDuration(duration, angleVar))
+		{
 
-	// a selector callback
-	void menuCloseCallback(CCObject* pSender);
+			seq->autorelease();
+			return seq;
+		}
 
-	// implement the "static node()" method manually
-	CREATE_FUNC(TestArmatureScene);
+		return NULL;
+	}
 
+
+	bool initWithDuration(float duration, float angleVar)
+	{
+		if(CCActionInterval::initWithDuration(duration))
+		{
+			this->angleVar = angleVar;
+			return true;
+		}
+
+		return false;
+	}
+
+	void update(float time)
+	{
+		float angle = CCRANDOM_MINUS1_1() * angleVar;
+		this->m_pTarget->setRotation(angle);
+	}
 
 private:
-	void testDragon();
+	float angleVar;
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+#endif
+
+
+

@@ -1,3 +1,20 @@
+
+// Copyright 2014 Wanwan Zhang
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
 #ifndef __TEST_EFFECT_SCENE_H__
 #define __TEST_EFFECT_SCENE_H__
 
@@ -19,6 +36,10 @@ public:
 	void playEffectCallback(CCObject* pSender);
 	void playShieldCallback(CCObject* pSender);
 	void playBurstDisappear(CCObject* pSender);
+	void playElectric(CCObject* pSender);
+	void playSingleGlitter(CCObject* pSender);
+	void playGlitterEmitter(CCObject* pSender);
+	void playSuperShield(CCObject* pSender);
 
 	// implement the "static node()" method manually
 	CREATE_FUNC(TestEffectScene);

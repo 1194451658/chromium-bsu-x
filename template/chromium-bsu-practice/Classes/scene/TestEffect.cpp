@@ -1,3 +1,20 @@
+
+// Copyright 2014 Wanwan Zhang
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
 #include "TestEffect.h"
 
 #include "test/engine/TestKeyUpDown.h"
@@ -25,6 +42,10 @@
 #include "effect/Explosion.h"
 #include "effect/RoundShield.h"
 #include "effect/BurstDisappear.h"
+#include "effect/Electric.h"
+#include "effect/Glitter.h"
+#include "effect/GlitterEmitter.h"
+#include "effect/SuperShield.h"
 
 USING_NS_CC_EXT;
 
@@ -92,6 +113,15 @@ bool TestEffectScene::init()
 
 	testExplosion();
 
+
+	CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("png/airCraft/aircrafts.plist");
+
+	//CCSprite* testAir = CCSprite::createWithSpriteFrameName("enemy03.png");
+	//testAir->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+	//CCRect textureSize = testAir->getTextureRect();
+	//testAir->setTextureRect(textureSize, true, textureSize.size);
+	//addChild(testAir);
+
 	return true;
 }
 
@@ -131,14 +161,46 @@ void TestEffectScene::testExplosion()
 		pMenu->addChild(playShield);
 	}
 
+	// burst disappear
 	{
-		// menu play shield effect
 		CCLabelTTF* label = CCLabelTTF::create();
 		label->setString("replay Burst disappear");
 		CCMenuItemLabel* item = CCMenuItemLabel::create(label, this, menu_selector(TestEffectScene::playBurstDisappear));
 		pMenu->addChild(item);
 	}
 
+
+	// electric
+	{
+		CCLabelTTF* label = CCLabelTTF::create();
+		label->setString("electric");
+		CCMenuItemLabel* item = CCMenuItemLabel::create(label, this, menu_selector(TestEffectScene::playElectric));
+		pMenu->addChild(item);
+	}
+
+	// single glitter
+	{
+		CCLabelTTF* label = CCLabelTTF::create();
+		label->setString("single glitter");
+		CCMenuItemLabel* item = CCMenuItemLabel::create(label, this, menu_selector(TestEffectScene::playSingleGlitter));
+		pMenu->addChild(item);
+	}
+
+	// glitter emitter
+	{
+		CCLabelTTF* label = CCLabelTTF::create();
+		label->setString("glitter emitter");
+		CCMenuItemLabel* item = CCMenuItemLabel::create(label, this, menu_selector(TestEffectScene::playGlitterEmitter));
+		pMenu->addChild(item);
+	}
+
+	// super shield
+	{
+		CCLabelTTF* label = CCLabelTTF::create();
+		label->setString("super shield");
+		CCMenuItemLabel* item = CCMenuItemLabel::create(label, this, menu_selector(TestEffectScene::playSuperShield));
+		pMenu->addChild(item);
+	}
 
 	pMenu->setPosition(ccp(origin.x + visibleSize.width/2 + 100, origin.y + visibleSize.height/2));
 	pMenu->alignItemsVertically();
@@ -162,10 +224,10 @@ void TestEffectScene::playShieldCallback(CCObject* pSender)
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
-	BurstDisappear* burst = BurstDisappear::create();
-	addChild(burst);
+	RoundShield* effect = RoundShield::create();
+	addChild(effect);
 
-	burst->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+	effect->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
 }
 
 void TestEffectScene::playBurstDisappear(CCObject* pSender)
@@ -173,8 +235,52 @@ void TestEffectScene::playBurstDisappear(CCObject* pSender)
 	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
 
-	RoundShield* effect = RoundShield::create();
+	BurstDisappear* burst = BurstDisappear::create();
+	addChild(burst);
+
+	burst->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+}
+
+void TestEffectScene::playElectric(CCObject* pSender)
+{
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+
+	Electric* effect = Electric::create();
 	addChild(effect);
 
 	effect->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+}
+
+void TestEffectScene::playSingleGlitter(CCObject* pSender)
+{
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+
+	Glitter* effect = Glitter::create();
+	addChild(effect);
+
+	effect->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+}
+
+void TestEffectScene::playGlitterEmitter(CCObject* pSender)
+{
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+
+	GlitterEmitter* effect = GlitterEmitter::create();
+	addChild(effect);
+
+	effect->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+}
+
+void TestEffectScene::playSuperShield(CCObject* pSender)
+{
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+
+	SuperShield* shield = SuperShield::create();
+	addChild(shield);
+
+	shield->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
 }

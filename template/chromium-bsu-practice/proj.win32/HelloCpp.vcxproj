@@ -62,7 +62,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
-    <SourcePath>E:\cocos2d-x\chromium-bsu-practice\template\chromium-bsu-practice\Classes;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
@@ -165,10 +164,15 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\aircraft\HeroAircraft.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\effect\BurstDisappear.h" />
+    <ClInclude Include="..\Classes\effect\Electric.h" />
     <ClInclude Include="..\Classes\effect\Explosion.h" />
+    <ClInclude Include="..\Classes\effect\Glitter.h" />
+    <ClInclude Include="..\Classes\effect\GlitterEmitter.h" />
     <ClInclude Include="..\Classes\effect\RoundShield.h" />
+    <ClInclude Include="..\Classes\effect\SuperShield.h" />
+    <ClInclude Include="..\Classes\engine\action\CCRandomRotateBy.h" />
+    <ClInclude Include="..\Classes\engine\action\CCRandTextureCoord.h" />
     <ClInclude Include="..\Classes\engine\CCDrawGameObjectShadowNode.h" />
-    <ClInclude Include="..\Classes\engine\CCRandomRotateBy.h" />
     <ClInclude Include="..\Classes\engine\CCSpriteWithShadow.h" />
     <ClInclude Include="..\Classes\GameObject.h" />
     <ClInclude Include="..\Classes\gun\Ammo.h" />
@@ -191,8 +195,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\physics\PhysicsManager.h" />
     <ClInclude Include="..\Classes\scene\TestArmatureScene.h" />
     <ClInclude Include="..\Classes\scene\TestEffect.h" />
+    <ClInclude Include="..\Classes\test\engine\TestKeyUpDown.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\cocos2dx\proj.win32\cocos2d.vcxproj">
@@ -215,9 +219,6 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
       <Project>{207bc7a9-ccf1-4f2f-a04d-45f72242ae25}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="HelloCpp.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

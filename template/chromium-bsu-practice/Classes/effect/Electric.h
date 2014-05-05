@@ -14,31 +14,39 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef __TEST_ARMATURE_SCENE_H__
-#define __TEST_ARMATURE_SCENE_H__
+#ifndef __ELECTRIC_H__
+#define __ELECTRIC_H__
 
 #include "cocos2d.h"
+#include "ccMacros.h"
 
-#include "Box2D/Box2D.h"
+#include "engine/action/CCRandTextureCoord.h"
 
-class TestArmatureScene : public cocos2d::CCLayer
+USING_NS_CC;
+
+class Electric : public CCNode
 {
 public:
-	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-	virtual bool init();  
+	CREATE_FUNC(Electric);
 
-	// there's no 'id' in cpp, so we recommend returning the class instance pointer
-	static cocos2d::CCScene* scene();
+	bool init()
+	{
+		// create sprite
+		CCSprite* sprite = CCSprite::create("png/electric.png");
+		addChild(sprite);
 
-	// a selector callback
-	void menuCloseCallback(CCObject* pSender);
+		// create action
+		CCRandTextureCoord* randTex = CCRandTextureCoord::create(2.0, 6);
+		CCRepeatForever* repeat = CCRepeatForever::create(randTex);
 
-	// implement the "static node()" method manually
-	CREATE_FUNC(TestArmatureScene);
-
-
-private:
-	void testDragon();
+		sprite->runAction(repeat);
+		
+		return true;
+	}
 };
 
-#endif // __HELLOWORLD_SCENE_H__
+
+#endif // !__EXPLOSION_H__
+
+
+
