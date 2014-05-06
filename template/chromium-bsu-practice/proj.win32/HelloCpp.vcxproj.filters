@@ -60,9 +60,6 @@
     <ClCompile Include="..\Classes\aircraft\Aircraft.cpp">
       <Filter>Classes\aircraft</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\aircraft\EnemyAircraft0.cpp">
-      <Filter>Classes\aircraft</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\aircraft\HeroAircraft.cpp">
       <Filter>Classes\aircraft</Filter>
     </ClCompile>
@@ -138,9 +135,6 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\aircraft\Aircraft.h">
-      <Filter>Classes\aircraft</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\aircraft\EnemyAircraft0.h">
       <Filter>Classes\aircraft</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\aircraft\HeroAircraft.h">
@@ -241,6 +235,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\effect\SuperShield.h">
       <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\effect\SuperBomb.h">
+      <Filter>Classes\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\action\CCRandTextureForAmmo.h">
+      <Filter>Classes\engine\action</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

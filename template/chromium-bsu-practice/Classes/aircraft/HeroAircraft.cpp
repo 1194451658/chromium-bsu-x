@@ -21,11 +21,11 @@
 
 #include "engine/CCSpriteWithShadow.h"
 
-HeroAircraft* HeroAircraft::create()
+HeroAircraft* HeroAircraft::create(AircraftDef def)
 {
 	HeroAircraft* hero = new HeroAircraft();
 
-	if(hero && hero->init())
+	if(hero && hero->init(def))
 	{
 		hero->autorelease();
 		return hero;
@@ -40,10 +40,10 @@ HeroAircraft::HeroAircraft()
 {
 }
 
-bool HeroAircraft::init()
+bool HeroAircraft::init(AircraftDef def)
 {
 	// init base class
-	if(Aircraft::init())
+	if(Aircraft::init(def))
 	{
 		name = "HeroAircraft";
 
@@ -102,55 +102,4 @@ void HeroAircraft::update(float dt)
 	{
 		defaultGun->trigger(false);
 	}
-}
-
-CCNode* HeroAircraft::initGraphics()
-{
-	// create the graphics
-	// CCSprite* sprite = CCSprite::create("png/airCraft/hero.png");
-	CCSpriteWithShadow* sprite = CCSpriteWithShadow::create("png/airCraft/hero.png");
-
-	return sprite;
-}
-
-b2Body* HeroAircraft::initPhysics()
-{
-	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
-
-	// physics world
-	b2World* world = PhysicsManager::sharedInstance()->getPhysicsWorld();
-
-	// body 
-	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
-	bodyDef.allowSleep = false;
-	bodyDef.fixedRotation = true;
-	bodyDef.position.Set(screenSize.width/2/PhysicsManager::PTM_RATIO, screenSize.height/2/PhysicsManager::PTM_RATIO);
-
-	b2Body *body = world->CreateBody(&bodyDef);
-
-	// b2PolygonShape shape;
-	// shape.SetAsBox(160.0 / PTM_RATIO, 160.0 / PTM_RATIO);
-	// body->CreateFixture(&shape, 1);
-    
-	// add the fixture 
-	GB2ShapeCache *sc = GB2ShapeCache::sharedGB2ShapeCache();
-	sc->addFixturesToBody(body, "hero");
-
-	// set fixture collide filter
-	b2Filter filter;
-	filter.groupIndex	= PhysicsManager::PHYSICS_GROUP_JUSTICE;
-	filter.categoryBits = PhysicsManager::AIRCRAFT;
-	filter.maskBits		= PhysicsManager::AIRCRAFT | 
-					PhysicsManager::AMMO;
-
-	b2Fixture* fixtureList = body->GetFixtureList();
-
-	while(NULL != fixtureList)
-	{
-		fixtureList->SetFilterData(filter);
-		fixtureList = fixtureList->GetNext();
-	}
-
-	return body;
 }

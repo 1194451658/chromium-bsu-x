@@ -3,14 +3,13 @@
 #include "test/engine/TestKeyUpDown.h"
 #include "keypad_dispatcher/CCKeypadDispatcher.h"
 
-#include "aircraft/HeroAircraft.h"
+#include "aircraft/Aircraft.h"
 #include "input/InputManager.h"
 
 #include "physics/GB2ShapeCache-x.h"
 #include "physics/GLES-Render.h"
 
 #include "physics/PhysicsManager.h"
-#include "aircraft/EnemyAircraft0.h"
 
 #include "SimpleAudioEngine.h"
 
@@ -141,7 +140,7 @@ void HelloWorld::test()
 	// ------------
 	// Hero Aircraft
 	// -----------
-	HeroAircraft* hero = HeroAircraft::create();
+	Aircraft* hero = Aircraft::createHeroAircraft();
 	addChild(hero);
 	shadowLayer->addGameObject(hero);
 
@@ -151,7 +150,7 @@ void HelloWorld::test()
 	// -------------
 	// Enemy Aircraft
 	// ------------
-	EnemyAircraft0* enemy = EnemyAircraft0::create();
+	Aircraft* enemy = Aircraft::createEnemyAircraft01();
 	addChild(enemy);
 	shadowLayer->addGameObject(enemy);
 	enemy->setPosition(screenSize.width/2, screenSize.height/2 + 150);

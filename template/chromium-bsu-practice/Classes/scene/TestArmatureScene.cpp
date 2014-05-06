@@ -26,8 +26,6 @@
 #include "physics/GLES-Render.h"
 
 #include "physics/PhysicsManager.h"
-#include "aircraft/EnemyAircraft0.h"
-
 #include "SimpleAudioEngine.h"
 
 #include <stdlib.h>

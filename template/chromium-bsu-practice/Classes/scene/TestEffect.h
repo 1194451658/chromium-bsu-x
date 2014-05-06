@@ -40,6 +40,7 @@ public:
 	void playSingleGlitter(CCObject* pSender);
 	void playGlitterEmitter(CCObject* pSender);
 	void playSuperShield(CCObject* pSender);
+	void playSuperBomb(CCObject* pSender);
 
 	// implement the "static node()" method manually
 	CREATE_FUNC(TestEffectScene);

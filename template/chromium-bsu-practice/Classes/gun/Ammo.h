@@ -24,31 +24,32 @@
 #include "GameObject.h"
 
 USING_NS_CC;
+#include <string>
+
+using namespace std;
 
 struct AmmoDef
 {
-	AmmoDef(const char* graphicsFile,
-		float velocity,
-		CCPoint& direction,
-		bool directionAffectRotation,
-		int physicsGroup,
-		float damage
-	       ):graphicsFile(graphicsFile),
-		velocity(velocity),
-		direction(direction),
-		directionAffectRotation(directionAffectRotation),
-		physicsGroup(physicsGroup),
-		damage(damage)
+	AmmoDef()
 	{
+		graphicsFile = "png/heroAmmo00.png";
+		velocity = 100;
+		direction = ccp(0,1);
+		directionAffectRotation = false;
+		physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
+		damage = 100;
+		randTex = false;
+		scaleX = 1;
 	}
 
-	const char* graphicsFile;
+	string graphicsFile;
 	int physicsGroup;
-
 	float velocity;
-	CCPoint& direction;
+	CCPoint direction;
 	bool directionAffectRotation;
 	float damage;
+	bool randTex;
+	float scaleX;
 };
 
 class Ammo : public GameObject, public b2ContactListener
@@ -71,14 +72,22 @@ public:
 
 	void setDirection(CCPoint& direction)
 	{
-		this->direction = direction.normalize();
+		ammoDef.direction = direction.normalize();
 
-		if(directionAffectRotation)
-			graphics->setRotation(90 - CC_RADIANS_TO_DEGREES(this->direction.getAngle()));
+		if(ammoDef.directionAffectRotation)
+			graphics->setRotation(90 - CC_RADIANS_TO_DEGREES(ammoDef.direction.getAngle()));
 
-		physics->SetLinearVelocity(b2Vec2(this->direction.x * velocity/PhysicsManager::PTM_RATIO,
-			this->direction.y * velocity/PhysicsManager::PTM_RATIO));
+		physics->SetLinearVelocity(b2Vec2(ammoDef.direction.x * ammoDef.velocity/PhysicsManager::PTM_RATIO,
+			ammoDef.direction.y * ammoDef.velocity/PhysicsManager::PTM_RATIO));
 	}
+
+	bool isOutScreen();
+
+	static Ammo* createEnemyAmmo0();
+	static Ammo* createEnemyAmmo1();
+	static Ammo* createEnemyAmmo2();
+	static Ammo* createEnemyAmmo3();
+
 
 protected:
 	bool init(AmmoDef& def);
@@ -87,14 +96,8 @@ protected:
 
 private:
 	Ammo();
-	float velocity;
-	CCPoint direction;
-	bool directionAffectRotation;
-
-	int physicsGroup;
-	float damage;
-	const char* graphicsFile;
-
+	
+	AmmoDef ammoDef;
 	bool shouldExplode;
 };
 

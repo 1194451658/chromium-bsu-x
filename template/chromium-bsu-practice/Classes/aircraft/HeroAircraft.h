@@ -1,5 +1,4 @@
 
-
 // Copyright 2014 Wanwan Zhang
 
 // This program is free software: you can redistribute it and/or modify
@@ -31,7 +30,8 @@ USING_NS_CC;
 class HeroAircraft : public Aircraft, public CCKeypadDelegate
 {
 public:
-	static HeroAircraft* create();
+	static HeroAircraft* create(AircraftDef def);
+	bool init(AircraftDef def);
 	~HeroAircraft();
 
 public:
@@ -42,16 +42,8 @@ protected:
 
 private: 
     HeroAircraft();
-    virtual CCNode* initGraphics();
-    virtual b2Body* initPhysics();
 
 private:
-    bool init();
-
-public:
-
-private:
-    //HeroDefaultGun* defaultGun;
     Gun* defaultGun;
 };
 

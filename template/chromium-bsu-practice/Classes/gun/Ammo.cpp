@@ -20,31 +20,37 @@
 #include "SimpleAudioEngine.h"
 
 #include "effect/Explosion.h"
+#include "engine/action/CCRandTextureForAmmo.h"
 
 using namespace CocosDenshion;
 
 bool Ammo::init(AmmoDef& def)
 {
-	graphicsFile = def.graphicsFile;
-	graphics = CCSprite::create(graphicsFile);
-	physicsGroup = def.physicsGroup;
-	velocity = def.velocity;
-	direction = def.direction.normalize();
-	physicsGroup = def.physicsGroup;
+	ammoDef = def;
+	ammoDef.direction = def.direction.normalize();
 
-	directionAffectRotation = def.directionAffectRotation;
+	graphics = CCSprite::create(ammoDef.graphicsFile.c_str());
 
-	if(directionAffectRotation)
+	if(ammoDef.directionAffectRotation)
 	{
-		this->graphics->setRotation(90 - CC_RADIANS_TO_DEGREES(this->direction.getAngle()));
+		this->graphics->setRotation(90 - CC_RADIANS_TO_DEGREES(ammoDef.direction.getAngle()));
 	}
 
 	if(GameObject::init())
 	{
 		name = "Ammo";
-
-		damage = def.damage;
 		shouldExplode = false;
+
+		// scale
+		setScaleX(def.scaleX);
+
+		if(def.randTex)
+		{
+			// create rand texture action
+			CCRandTextureForAmmo* randTextureAct = CCRandTextureForAmmo::create(1);
+			CCRepeatForever* repeatAct = CCRepeatForever::create(randTextureAct);
+			graphics->runAction(repeatAct);
+		}
 
 		return true;
 	}
@@ -83,8 +89,8 @@ b2Body* Ammo::initPhysics()
 		bodyDef.type = b2_dynamicBody;
 		bodyDef.bullet = true;
 		bodyDef.fixedRotation = true;
-		bodyDef.linearVelocity.Set(direction.x * velocity/PhysicsManager::PTM_RATIO,
-									direction.y * velocity/PhysicsManager::PTM_RATIO);
+		bodyDef.linearVelocity.Set(ammoDef.direction.x * ammoDef.velocity/PhysicsManager::PTM_RATIO,
+									ammoDef.direction.y * ammoDef.velocity/PhysicsManager::PTM_RATIO);
 		b2Body* body = world->CreateBody(&bodyDef);
 
 		b2PolygonShape shape;
@@ -94,7 +100,7 @@ b2Body* Ammo::initPhysics()
 
 		// set fixture collide filter
 		b2Filter filter;
-		filter.groupIndex	= physicsGroup;
+		filter.groupIndex	= ammoDef.physicsGroup;
 		filter.categoryBits = PhysicsManager::AMMO;
 		filter.maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
 
@@ -103,6 +109,7 @@ b2Body* Ammo::initPhysics()
 		while(NULL != fixtureList)
 		{
 			fixtureList->SetFilterData(filter);
+			fixtureList->SetSensor(true);
 			fixtureList = fixtureList->GetNext();
 		}
 
@@ -119,8 +126,14 @@ void Ammo::update(float time)
 	
 	if(shouldExplode)
 	{
-		SimpleAudioEngine::sharedEngine()->playEffect("wav/exploStd.wav");
+		// SimpleAudioEngine::sharedEngine()->playEffect("wav/exploStd.wav");
 		
+		shouldReleased = true;
+		removeFromParent();
+	}
+
+	if(isOutScreen())
+	{
 		shouldReleased = true;
 		removeFromParent();
 	}
@@ -148,7 +161,7 @@ void Ammo::doDamageToGameObject(GameObject* go)
 	Aircraft* aircraft = dynamic_cast<Aircraft*> (go);
 	if(aircraft)
 	{
-		aircraft->damage(damage);
+		aircraft->damage(ammoDef.damage);
 
 		CCNode* parent = aircraft->getParent();
 		if(parent)
@@ -158,6 +171,29 @@ void Ammo::doDamageToGameObject(GameObject* go)
 			parent->addChild(exp);
 		}
 	}
+}
+
+bool Ammo::isOutScreen()
+{
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+
+	CCNode* parent = getParent();
+
+	if(parent)
+	{
+		CCPoint posInWorld = parent->convertToWorldSpace(getPosition());
+
+		if(posInWorld.x > origin.x + visibleSize.width || 
+			posInWorld.x < origin.x ||
+			posInWorld.y > origin.y + visibleSize.height || 
+			posInWorld.y < origin.y)
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 Ammo::~Ammo()
@@ -172,11 +208,73 @@ Ammo::Ammo()
 
 GameObject* Ammo::instance()
 {
-
-	AmmoDef ammoDef((const char*)graphicsFile, velocity, direction, directionAffectRotation, physicsGroup, damage);
-
 	Ammo* newAmmo = Ammo::create(ammoDef);
-	newAmmo->damage = this->damage;
 
 	return newAmmo;
+}
+
+Ammo* Ammo::createEnemyAmmo0()
+{
+	// ammo
+	AmmoDef ammoDef;
+	ammoDef.graphicsFile = "png/enemyAmmo00.png";
+	ammoDef.velocity	= 400;
+	ammoDef.direction	= ccp(0,1);
+	ammoDef.directionAffectRotation = false;
+	ammoDef.physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
+	ammoDef.damage = 50;
+	ammoDef.randTex = true;
+	ammoDef.scaleX = 0.4;
+
+	Ammo* prototypeAmmo = Ammo::create(ammoDef);
+	return prototypeAmmo;
+}
+
+Ammo*  Ammo::createEnemyAmmo1()
+{
+	// ammo
+	AmmoDef ammoDef;
+	ammoDef.graphicsFile = "png/enemyAmmo01.png";
+	ammoDef.velocity	= 400;
+	ammoDef.direction	= ccp(0,1);
+	ammoDef.directionAffectRotation = false;
+	ammoDef.physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
+	ammoDef.damage = 50;
+	ammoDef.randTex = true;
+
+	Ammo* prototypeAmmo = Ammo::create(ammoDef);
+	return prototypeAmmo;
+}
+
+Ammo*  Ammo::createEnemyAmmo2()
+{
+	// ammo
+	AmmoDef ammoDef;
+	ammoDef.graphicsFile = "png/enemyAmmo02.png";
+	ammoDef.velocity	= 400;
+	ammoDef.direction	= ccp(0,1);
+	ammoDef.directionAffectRotation = false;
+	ammoDef.physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
+	ammoDef.damage = 50;
+	ammoDef.randTex = true;
+
+	Ammo* prototypeAmmo = Ammo::create(ammoDef);
+	return prototypeAmmo;
+}
+
+Ammo*  Ammo::createEnemyAmmo3()
+{
+	// ammo
+	AmmoDef ammoDef;
+	ammoDef.graphicsFile = "png/enemyAmmo03.png";
+	ammoDef.velocity	= 2000;
+	ammoDef.direction	= ccp(0,1);
+	ammoDef.directionAffectRotation = false;
+	ammoDef.physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
+	ammoDef.damage = 50;
+	ammoDef.randTex = true;
+	ammoDef.scaleX = 0.4;
+
+	Ammo* prototypeAmmo = Ammo::create(ammoDef);
+	return prototypeAmmo;
 }

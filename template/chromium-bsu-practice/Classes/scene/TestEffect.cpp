@@ -16,29 +16,18 @@
 
 
 #include "TestEffect.h"
-
 #include "test/engine/TestKeyUpDown.h"
 #include "keypad_dispatcher/CCKeypadDispatcher.h"
-
 #include "aircraft/HeroAircraft.h"
 #include "input/InputManager.h"
-
 #include "physics/GB2ShapeCache-x.h"
 #include "physics/GLES-Render.h"
-
 #include "physics/PhysicsManager.h"
-#include "aircraft/EnemyAircraft0.h"
-
 #include "SimpleAudioEngine.h"
-
 #include <stdlib.h>
-
 #include "cocos-ext.h"
-
 #include "map/AutoTiledBackground.h"
-
 #include "engine/CCDrawGameObjectShadowNode.h"
-
 #include "effect/Explosion.h"
 #include "effect/RoundShield.h"
 #include "effect/BurstDisappear.h"
@@ -46,6 +35,7 @@
 #include "effect/Glitter.h"
 #include "effect/GlitterEmitter.h"
 #include "effect/SuperShield.h"
+#include "effect/SuperBomb.h"
 
 USING_NS_CC_EXT;
 
@@ -202,6 +192,14 @@ void TestEffectScene::testExplosion()
 		pMenu->addChild(item);
 	}
 
+	// super bomb
+	{
+		CCLabelTTF* label = CCLabelTTF::create();
+		label->setString("super bomb");
+		CCMenuItemLabel* item = CCMenuItemLabel::create(label, this, menu_selector(TestEffectScene::playSuperBomb));
+		pMenu->addChild(item);
+	}
+
 	pMenu->setPosition(ccp(origin.x + visibleSize.width/2 + 100, origin.y + visibleSize.height/2));
 	pMenu->alignItemsVertically();
 
@@ -283,4 +281,15 @@ void TestEffectScene::playSuperShield(CCObject* pSender)
 	addChild(shield);
 
 	shield->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
+}
+
+void TestEffectScene::playSuperBomb(CCObject* pSender)
+{
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+
+	SuperBomb* bomb = SuperBomb::create();
+	addChild(bomb);
+
+	bomb->setPosition(ccp(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
 }

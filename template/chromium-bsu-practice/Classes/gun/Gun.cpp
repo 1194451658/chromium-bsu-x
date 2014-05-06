@@ -91,15 +91,6 @@ Gun* Gun::create(Aircraft* owner, Ammo* prototypeAmmo, ColdTimeMethod* coldTimeM
 
 void Gun::update(float time)
 {
-	//curTimeToCold -= time;
-	//if(curTimeToCold < 0) curTimeToCold = 0;
-
-	//if(triggerPressed && curTimeToCold == 0)
-	//{
-	//	curTimeToCold = coldTime;
-	//	shotMethod->shot(this);
-	//}
-
 	if(triggerPressed)
 	{
 		if(coldTimeMethod->isTimeToShot(time))
@@ -112,9 +103,6 @@ void Gun::update(float time)
 Ammo* Gun::createAmmo()
 {
 	Ammo* newAmmo = (Ammo*)prototypeAmmo->instance();
-
-
-
 	newAmmo->setPhysicsGroup(physicsGroup);
 
 	return newAmmo;
@@ -123,17 +111,9 @@ Ammo* Gun::createAmmo()
 Gun* Gun::createHeroDefaultGun()
 {
 	// ammo
-	AmmoDef	ammoDef("png/heroAmmo00.png",
-		500,			// velocity
-		CCPoint(0,1),	// direction
-		false,
-		PhysicsManager::PHYSICS_GROUP_UNKNOWN,
-		50.0f);
-
-	Ammo* prototypeAmmo = Ammo::create(ammoDef);
+	Ammo* prototypeAmmo = Ammo::createEnemyAmmo3();
 
 	// cold time
-	//ColdTimeMethod* coldTimeMethod = EqualColdTime::create(0.2);
 	ColdTimeMethod* coldTimeMethod = GroupShotColdTimeMethod::create(0.1, 3, 0.4);
 
 	// shot method
@@ -149,12 +129,13 @@ Gun* Gun::createHeroDefaultGun()
  Gun* Gun::createGunExample1()
 {
 	// ammo
-	AmmoDef	ammoDef("png/heroAmmo00.png",
-		500,
-		CCPoint(0,1),	// direction
-		false,
-		PhysicsManager::PHYSICS_GROUP_UNKNOWN,
-		100.0f);
+	AmmoDef ammoDef;
+	ammoDef.graphicsFile = "png/heroAmmo00.png";
+	ammoDef.velocity	= 500;
+	ammoDef.direction	= ccp(0,1);
+	ammoDef.directionAffectRotation = false;
+	ammoDef.physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
+	ammoDef.damage = 100;
 
 	Ammo* prototypeAmmo = Ammo::create(ammoDef);
 
@@ -174,12 +155,13 @@ Gun* Gun::createHeroDefaultGun()
 Gun* Gun::createGunSwapLateralExample()
  {
 	 // ammo
-	 AmmoDef	ammoDef("png/heroAmmo00.png",
-		 500,
-		 CCPoint(0,1),
-		 false,
-		 PhysicsManager::PHYSICS_GROUP_UNKNOWN,
-		 100.0f);
+	 AmmoDef ammoDef;
+	 ammoDef.graphicsFile = "png/heroAmmo00.png";
+	 ammoDef.velocity	= 500;
+	 ammoDef.direction	= ccp(0,1);
+	 ammoDef.directionAffectRotation = false;
+	 ammoDef.physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
+	 ammoDef.damage = 100;
 
 	 Ammo* prototypeAmmo = Ammo::create(ammoDef);
 
@@ -197,13 +179,13 @@ Gun* Gun::createGunSwapLateralExample()
 
 Gun* Gun::createGunSinExample()
 {
-	// ammo
-	AmmoDef	ammoDef("png/heroAmmo00.png",
-		500,
-		CCPoint(0,1),
-		false,
-		PhysicsManager::PHYSICS_GROUP_UNKNOWN,
-		100.0f);
+	AmmoDef ammoDef;
+	ammoDef.graphicsFile = "png/heroAmmo00.png";
+	ammoDef.velocity	= 500;
+	ammoDef.direction	= ccp(0,1);
+	ammoDef.directionAffectRotation = false;
+	ammoDef.physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
+	ammoDef.damage = 100;
 
 	Ammo* prototypeAmmo = Ammo::create(ammoDef);
 
@@ -221,13 +203,13 @@ Gun* Gun::createGunSinExample()
 
  Gun* Gun::createGunStrafeExample()
 {
-	// ammo
-	AmmoDef	ammoDef("png/heroAmmo00.png",
-		500,
-		CCPoint(0,1),
-		true,
-		PhysicsManager::PHYSICS_GROUP_UNKNOWN,
-		100.0f);
+	AmmoDef ammoDef;
+	ammoDef.graphicsFile = "png/heroAmmo00.png";
+	ammoDef.velocity	= 500;
+	ammoDef.direction	= ccp(0,1);
+	ammoDef.directionAffectRotation = true;
+	ammoDef.physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
+	ammoDef.damage = 100;
 
 	Ammo* prototypeAmmo = Ammo::create(ammoDef);
 

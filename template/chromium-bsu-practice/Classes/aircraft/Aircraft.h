@@ -14,23 +14,56 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-
 #ifndef __AIRCRAFT_H__
 #define __AIRCRAFT_H__
 
 #include "cocos2d.h"
 #include "GameObject.h"
 
+#include <string>
+
+using namespace std;
+
 USING_NS_CC;
+
+struct AircraftDef
+{
+	AircraftDef()
+	{
+		hp = 1000;
+		graphicsFile = "png/airCraft/hero.png";
+		physicsShapeName = "hero";
+
+		groupIndex = PhysicsManager::PHYSICS_GROUP_JUSTICE;
+		categoryBits = PhysicsManager::AIRCRAFT;
+		maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
+	}
+
+	float hp;
+	string graphicsFile;
+	string physicsShapeName;
+
+	//
+	int groupIndex;
+	int categoryBits;
+	int maskBits;
+};
+
+class HeroAircraft;
 
 class Aircraft : public GameObject
 {
 
 public:
-	bool init() ;
+	bool init(AircraftDef def) ;
 	void damage(float damage);
 	void update(float dt) ;
+
+	static Aircraft* create(AircraftDef& def);
+
+	// game object
+	virtual CCNode* initGraphics();
+	virtual b2Body* initPhysics();
 
 	void setCurHp(float newHp);
 
@@ -38,10 +71,15 @@ public:
 	void hpBarInit(float width, float height, float maxValue, float initialValue);
 	void hpBarUpdate(float percentage);
 
+	static Aircraft* createHeroAircraft();
+	static Aircraft* createEnemyAircraft01();
+
 private:
 	virtual CCSpriteWithShadow* getShadowSprite();
 
 private:
+	AircraftDef aircraftDef;
+
 	float maxHp;
 	float curHp;
 	float damageToHit;
