@@ -132,10 +132,12 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\aircraft\Aircraft.cpp" />
+    <ClCompile Include="..\Classes\aircraft\EnemyBoss00.cpp" />
     <ClCompile Include="..\Classes\aircraft\HeroAircraft.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\engine\CCDrawGameObjectShadowNode.cpp" />
     <ClCompile Include="..\Classes\engine\CCSpriteWithShadow.cpp" />
+    <ClCompile Include="..\Classes\GameController.cpp" />
     <ClCompile Include="..\Classes\GameObject.cpp" />
     <ClCompile Include="..\Classes\gun\Ammo.cpp" />
     <ClCompile Include="..\Classes\gun\coldTimeMethod\EqualColdTime.cpp" />
@@ -159,6 +161,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\aircraft\Aircraft.h" />
+    <ClInclude Include="..\Classes\aircraft\EnemyBoss00.h" />
     <ClInclude Include="..\Classes\aircraft\HeroAircraft.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\effect\BurstDisappear.h" />
@@ -174,6 +177,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\engine\action\CCRandTextureForAmmo.h" />
     <ClInclude Include="..\Classes\engine\CCDrawGameObjectShadowNode.h" />
     <ClInclude Include="..\Classes\engine\CCSpriteWithShadow.h" />
+    <ClInclude Include="..\Classes\GameController.h" />
     <ClInclude Include="..\Classes\GameObject.h" />
     <ClInclude Include="..\Classes\gun\Ammo.h" />
     <ClInclude Include="..\Classes\gun\ColdTimeMethod.h" />

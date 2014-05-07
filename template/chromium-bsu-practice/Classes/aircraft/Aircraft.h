@@ -50,6 +50,7 @@ struct AircraftDef
 };
 
 class HeroAircraft;
+class EnemyBoss00;
 
 class Aircraft : public GameObject
 {
@@ -73,6 +74,7 @@ public:
 
 	static Aircraft* createHeroAircraft();
 	static Aircraft* createEnemyAircraft01();
+	static Aircraft* createBoss00();
 
 private:
 	virtual CCSpriteWithShadow* getShadowSprite();

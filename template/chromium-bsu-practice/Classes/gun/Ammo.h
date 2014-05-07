@@ -96,9 +96,10 @@ protected:
 
 private:
 	Ammo();
-	
-	AmmoDef ammoDef;
+
 	bool shouldExplode;
+public:
+	AmmoDef ammoDef;
 };
 
 #endif

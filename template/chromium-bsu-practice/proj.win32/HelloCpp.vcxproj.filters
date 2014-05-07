@@ -123,6 +123,12 @@
     <ClCompile Include="..\Classes\GameObject.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameController.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\aircraft\EnemyBoss00.cpp">
+      <Filter>Classes\aircraft</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -241,6 +247,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\engine\action\CCRandTextureForAmmo.h">
       <Filter>Classes\engine\action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameController.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\aircraft\EnemyBoss00.h">
+      <Filter>Classes\aircraft</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

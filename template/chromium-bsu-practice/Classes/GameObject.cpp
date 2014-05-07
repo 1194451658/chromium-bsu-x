@@ -177,3 +177,16 @@ void GameObject::visitShadow()
 
 	kmGLPopMatrix();
 }
+
+CCPoint GameObject::getPositionInWorldSpace()
+{
+	CCNode* parent = getParent();
+
+	if(parent)
+	{
+			CCPoint posInWorld = parent->convertToWorldSpace(getPosition());
+			return posInWorld;
+	}
+
+	return getPosition();
+}

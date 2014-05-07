@@ -21,6 +21,8 @@
 
 #include "engine/CCDrawGameObjectShadowNode.h"
 
+#include "GameController.h"
+
 USING_NS_CC_EXT;
 
 USING_NS_CC;
@@ -147,13 +149,21 @@ void HelloWorld::test()
 	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
 	hero->setPosition(screenSize.width/2, screenSize.height/2);
 
-	// -------------
-	// Enemy Aircraft
-	// ------------
-	Aircraft* enemy = Aircraft::createEnemyAircraft01();
-	addChild(enemy);
-	shadowLayer->addGameObject(enemy);
-	enemy->setPosition(screenSize.width/2, screenSize.height/2 + 150);
+	GameController::sharedInstance()->setPlayerAircraft(hero);
+
+	//// -------------
+	//// Enemy Aircraft
+	//// ------------
+	//Aircraft* enemy = Aircraft::createEnemyAircraft01();
+	//addChild(enemy); 
+	//shadowLayer->addGameObject(enemy);
+	//enemy->setPosition(screenSize.width/2, screenSize.height/2 + 150);
+
+	// enemy boss
+	Aircraft* boss = Aircraft::createBoss00();
+	addChild(boss);
+	shadowLayer->addGameObject(boss);
+	boss->setPosition(screenSize.width/2, screenSize.height/2 + 150);
 }
 
 void HelloWorld::testPhysicsEditor()

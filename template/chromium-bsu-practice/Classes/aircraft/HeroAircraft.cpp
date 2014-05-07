@@ -17,9 +17,7 @@
 
 #include "HeroAircraft.h"
 #include "input/InputManager.h"
-#include "physics/GB2ShapeCache-x.h"
 
-#include "engine/CCSpriteWithShadow.h"
 
 HeroAircraft* HeroAircraft::create(AircraftDef def)
 {
@@ -48,7 +46,13 @@ bool HeroAircraft::init(AircraftDef def)
 		name = "HeroAircraft";
 
 		// create gun
-		defaultGun = Gun::createHeroDefaultGun();
+		//defaultGun = Gun::createHeroDefaultGun();
+		//defaultGun->retain();
+
+		//defaultGun = Gun::createEnemyBoss00Gun0();
+		//defaultGun->retain();
+
+		defaultGun = Gun::createEnemyBoss00Gun1();
 		defaultGun->retain();
 
 		//defaultGun = Gun::createGunExample1();
@@ -79,6 +83,8 @@ HeroAircraft::~HeroAircraft()
 
 void HeroAircraft::update(float dt)
 {
+	Aircraft::update(dt);
+
 	// move
 	InputManager* input = InputManager::sharedInstance();
 

@@ -224,3 +224,42 @@ Gun* Gun::createGunSinExample()
 	Gun* gun = Gun::create(NULL, prototypeAmmo, coldTimeMethod, shotMethod);
 	return gun;
 }
+
+ Gun* Gun::createEnemyBoss00Gun0()
+ {
+	 // ammo
+	 Ammo* ammo = Ammo::createEnemyAmmo0();
+
+	 // cold time
+	 ColdTimeMethod* coldTimeMethod = EqualColdTime::create(0.2);
+
+	 // shot method
+	 CCPoint relativePos = CCPoint(70, -70);
+	 ShotMethod* shotMethod = LateralShotMethod::create(relativePos);
+
+	 // create gun
+	 Gun* gun = Gun::create(NULL, ammo, coldTimeMethod, shotMethod);
+	 return gun;
+ }
+
+ Gun* Gun::createEnemyBoss00Gun1()
+ {
+	 // ammo
+	 Ammo* ammo = Ammo::createEnemyAmmo3();
+
+	 // cold time
+	 ColdTimeMethod* coldTimeMethod = GroupShotColdTimeMethod::create(0.1, 3, 0.4);
+
+	 // shot method
+	 CCPoint relativePos = CCPoint(0, -70);
+	 ShotMethod* shotMethod = MiddleShotMethod::create(relativePos);
+
+	 //// shot method
+	 //CCPoint relativePos = CCPoint(70, -70);
+	 //ShotMethod* shotMethod = LateralShotMethod::create(relativePos);
+
+
+	 // create gun
+	 Gun* gun = Gun::create(NULL, ammo, coldTimeMethod, shotMethod);
+	 return gun;
+ }

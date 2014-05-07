@@ -43,6 +43,7 @@ public:
 	virtual void setDirection(CCPoint& d)
 	{
 		direction = d.normalize();
+		prototypeAmmo->ammoDef.direction  = direction;
 	}
 
 	// create specific gun
@@ -51,6 +52,10 @@ public:
 	static Gun* createGunSwapLateralExample();
 	static Gun* createGunSinExample();
 	static Gun* createGunStrafeExample();
+
+	// boss gun
+	static Gun* createEnemyBoss00Gun0();
+	static Gun* createEnemyBoss00Gun1();
 
 protected:
 	Gun();

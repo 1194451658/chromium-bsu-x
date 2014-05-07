@@ -53,7 +53,7 @@ public:
 	virtual GameObject* instance() { return NULL;}
 
 	// utils
-	// CCPoint getPositionInWorldSpace();
+	CCPoint getPositionInWorldSpace();
 
 protected:
 	virtual CCNode* initGraphics() { return NULL; };

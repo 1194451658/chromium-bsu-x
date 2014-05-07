@@ -17,6 +17,7 @@
 #include "Aircraft.h"
 #include "physics/GB2ShapeCache-x.h"
 #include "HeroAircraft.h"
+#include "EnemyBoss00.h"
 
 bool Aircraft::init(AircraftDef def)
 {
@@ -141,7 +142,6 @@ void Aircraft::update(float dt)
 
 	if(damageToHit > 0)
 	{
-		//curHp -= damageToHit;
 		setCurHp(curHp-damageToHit);
 		damageToHit = 0;
 	}
@@ -173,10 +173,25 @@ Aircraft* Aircraft::createEnemyAircraft01()
 	AircraftDef aircraftDef;
 	aircraftDef.graphicsFile	= "png/airCraft/enemy00.png";
 	aircraftDef.physicsShapeName = "enemy00";
-	aircraftDef.hp				= 99999;
+	aircraftDef.hp				= 1000;
 	aircraftDef.groupIndex		= PhysicsManager::PHYSICS_GROUP_ENEMY;
 	aircraftDef.categoryBits	= PhysicsManager::AIRCRAFT;
 	aircraftDef.maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
 	Aircraft* craft = Aircraft::create(aircraftDef);
 	return craft;
+}
+
+Aircraft* Aircraft::createBoss00()
+{
+	AircraftDef aircraftDef;
+	aircraftDef.graphicsFile	= "png/airCraft/enemy05.png";
+	aircraftDef.physicsShapeName = "enemy05";
+	aircraftDef.hp				= 99999;
+	aircraftDef.groupIndex		= PhysicsManager::PHYSICS_GROUP_ENEMY;
+	aircraftDef.categoryBits	= PhysicsManager::AIRCRAFT;
+	aircraftDef.maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
+
+	// Aircraft* boss = Aircraft::create(aircraftDef);
+	EnemyBoss00* boss = EnemyBoss00::create(aircraftDef);
+	return boss;
 }
