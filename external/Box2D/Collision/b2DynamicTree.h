@@ -156,7 +156,16 @@ inline void* b2DynamicTree::GetUserData(int32 proxyId) const
 
 inline const b2AABB& b2DynamicTree::GetFatAABB(int32 proxyId) const
 {
-    b2Assert(0 <= proxyId && proxyId < m_nodeCapacity);
+    // b2Assert(0 <= proxyId && proxyId < m_nodeCapacity);
+	static b2AABB aabb;
+
+	if(!((0 <= proxyId && proxyId < m_nodeCapacity)))
+	{
+		aabb.lowerBound = b2Vec2(0,0);
+		aabb.lowerBound = b2Vec2(0,0);
+		return aabb;
+	}
+
     return m_nodes[proxyId].aabb;
 }
 
