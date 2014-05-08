@@ -1,7 +1,12 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+
+
 #include "scene/TestArmatureScene.h"
 #include "scene/TestEffect.h"
+#include "scene/TestPhysicsManager.h"
+#include "scene/TestAircraft.h"
+#include "scene/TestControl.h"
 
 USING_NS_CC;
 
@@ -34,9 +39,19 @@ bool AppDelegate::applicationDidFinishLaunching() {
     pDirector->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-	CCScene *pScene = HelloWorld::scene();
+	// CCScene *pScene = HelloWorld::scene();
+
+
+	// --------------------
+	// test
+	// -------------------
+
+	// CCScene* pScene = TestPhysicsManager::scene();
 	// CCScene *pScene = TestEffectScene::scene();
 	// CCScene* pScene = TestArmatureScene::scene();
+	CCScene* pScene = TestAircraft::scene();
+
+	// CCScene* pScene = TestControl::scene();
 
     // run
     pDirector->runWithScene(pScene);

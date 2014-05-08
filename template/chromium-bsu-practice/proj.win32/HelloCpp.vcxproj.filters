@@ -129,6 +129,18 @@
     <ClCompile Include="..\Classes\aircraft\EnemyBoss00.cpp">
       <Filter>Classes\aircraft</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\aircraft\EnemyOmni.cpp">
+      <Filter>Classes\aircraft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\TestPhysicsManager.cpp">
+      <Filter>Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\TestAircraft.cpp">
+      <Filter>Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\TestControl.cpp">
+      <Filter>Classes\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -253,6 +265,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\aircraft\EnemyBoss00.h">
       <Filter>Classes\aircraft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\aircraft\EnemyOmni.h">
+      <Filter>Classes\aircraft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\TestPhysicsManager.h">
+      <Filter>Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\TestAircraft.h">
+      <Filter>Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\TestControl.h">
+      <Filter>Classes\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

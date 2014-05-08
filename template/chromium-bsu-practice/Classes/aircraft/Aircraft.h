@@ -51,6 +51,7 @@ struct AircraftDef
 
 class HeroAircraft;
 class EnemyBoss00;
+class EnemyOmni;
 
 class Aircraft : public GameObject
 {
@@ -73,8 +74,14 @@ public:
 	void hpBarUpdate(float percentage);
 
 	static Aircraft* createHeroAircraft();
-	static Aircraft* createEnemyAircraft01();
+	static Aircraft* createEnemyStraight();
+
+	static Aircraft* createEnemyOmni();
+	static Aircraft* createEnemyRayGUn();
+	static Aircraft* createEnemyTank();
+
 	static Aircraft* createBoss00();
+	static Aircraft* createBoss01();
 
 private:
 	virtual CCSpriteWithShadow* getShadowSprite();

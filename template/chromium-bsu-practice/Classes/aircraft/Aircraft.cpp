@@ -18,6 +18,7 @@
 #include "physics/GB2ShapeCache-x.h"
 #include "HeroAircraft.h"
 #include "EnemyBoss00.h"
+#include "EnemyOmni.h"
 
 bool Aircraft::init(AircraftDef def)
 {
@@ -55,6 +56,8 @@ CCNode* Aircraft::initGraphics()
 {
 	// create the graphics
 	CCSpriteWithShadow* sprite = CCSpriteWithShadow::create(aircraftDef.graphicsFile.c_str());
+	// CCSprite* sprite = CCSprite::create(aircraftDef.graphicsFile.c_str());
+
 	return sprite;
 }
 
@@ -168,17 +171,63 @@ Aircraft* Aircraft::createHeroAircraft()
 	return hero;
 }
 
-Aircraft* Aircraft::createEnemyAircraft01()
+Aircraft* Aircraft::createEnemyStraight()
 {
 	AircraftDef aircraftDef;
 	aircraftDef.graphicsFile	= "png/airCraft/enemy00.png";
 	aircraftDef.physicsShapeName = "enemy00";
-	aircraftDef.hp				= 1000;
+	aircraftDef.hp				= 99999;
 	aircraftDef.groupIndex		= PhysicsManager::PHYSICS_GROUP_ENEMY;
 	aircraftDef.categoryBits	= PhysicsManager::AIRCRAFT;
 	aircraftDef.maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
 	Aircraft* craft = Aircraft::create(aircraftDef);
 	return craft;
+}
+
+
+
+Aircraft* Aircraft::createEnemyOmni()
+{
+	AircraftDef aircraftDef;
+	aircraftDef.graphicsFile	= "png/airCraft/enemy01.png";
+	aircraftDef.physicsShapeName = "enemy04";
+	aircraftDef.hp				= 99999;
+	aircraftDef.groupIndex		= PhysicsManager::PHYSICS_GROUP_ENEMY;
+	aircraftDef.categoryBits	= PhysicsManager::AIRCRAFT;
+	aircraftDef.maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
+
+	EnemyOmni* enemy = EnemyOmni::create(aircraftDef);
+	return enemy;
+
+}
+
+Aircraft* Aircraft::createEnemyRayGUn()
+{
+	AircraftDef aircraftDef;
+	aircraftDef.graphicsFile	= "png/airCraft/enemy02.png";
+	aircraftDef.physicsShapeName = "enemy02";
+	aircraftDef.hp				= 99999;
+	aircraftDef.groupIndex		= PhysicsManager::PHYSICS_GROUP_ENEMY;
+	aircraftDef.categoryBits	= PhysicsManager::AIRCRAFT;
+	aircraftDef.maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
+
+	Aircraft* enemy = Aircraft::create(aircraftDef);
+	return enemy;
+}
+
+Aircraft* Aircraft::createEnemyTank()
+{
+	AircraftDef aircraftDef;
+	aircraftDef.graphicsFile	= "png/airCraft/enemy03.png";
+	aircraftDef.physicsShapeName = "enemy03";
+	aircraftDef.hp				= 99999;
+	aircraftDef.groupIndex		= PhysicsManager::PHYSICS_GROUP_ENEMY;
+	aircraftDef.categoryBits	= PhysicsManager::AIRCRAFT;
+	aircraftDef.maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
+
+	// Aircraft* boss = Aircraft::create(aircraftDef);
+	Aircraft* boss = Aircraft::create(aircraftDef);
+	return boss;
 }
 
 Aircraft* Aircraft::createBoss00()
@@ -195,3 +244,20 @@ Aircraft* Aircraft::createBoss00()
 	EnemyBoss00* boss = EnemyBoss00::create(aircraftDef);
 	return boss;
 }
+
+Aircraft* Aircraft::createBoss01()
+{
+	AircraftDef aircraftDef;
+	aircraftDef.graphicsFile	= "png/airCraft/enemy06.png";
+	aircraftDef.physicsShapeName = "enemy06";
+	aircraftDef.hp				= 99999;
+	aircraftDef.groupIndex		= PhysicsManager::PHYSICS_GROUP_ENEMY;
+	aircraftDef.categoryBits	= PhysicsManager::AIRCRAFT;
+	aircraftDef.maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
+
+	// Aircraft* boss = Aircraft::create(aircraftDef);
+	Aircraft* boss = Aircraft::create(aircraftDef);
+	return boss;
+}
+
+
