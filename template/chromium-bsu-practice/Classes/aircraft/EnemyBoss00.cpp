@@ -57,8 +57,10 @@ bool EnemyBoss00::init(AircraftDef def)
 		this->lateralGun = lateralGun;
 		this->middleGun = middleGun;
 
-		lateralGun->setDirection(ccp(0,-1));
-		middleGun->setDirection(ccp(0,-1));
+		CCPoint lateralDir = ccp(0,-1);
+		lateralGun->setDirection(lateralDir);
+		CCPoint middleDir = ccp(0,-1);
+		middleGun->setDirection(middleDir);
 
 		addChild(lateralGun);
 		addChild(middleGun);

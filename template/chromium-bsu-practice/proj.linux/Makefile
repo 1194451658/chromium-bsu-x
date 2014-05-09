@@ -8,41 +8,60 @@ EXECUTABLE = HelloCpp
 INCLUDES = -I.. -I../Classes
 
 SOURCES = main.cpp \
-        ../Classes/AppDelegate.cpp \
-        ../Classes/HelloWorldScene.cpp \
-	../Classes/aircraft/HeroAircraft.cpp \
-	../Classes/aircraft/EnemyAircraft0.cpp \
 	../Classes/aircraft/Aircraft.cpp \
+	../Classes/aircraft/EnemyBoss00.cpp \
+	../Classes/aircraft/EnemyOmni.cpp \
+	../Classes/aircraft/EnemyStraight.cpp \
+	../Classes/aircraft/HeroAircraft.cpp \
+	../Classes/engine/action/CCRandomRotateBy.cpp \
+	../Classes/engine/action/CCRandTextureCoord.cpp \
+	../Classes/engine/CCDrawGameObjectShadowNode.cpp \
+	../Classes/engine/CCSpriteWithShadow.cpp \
+	../Classes/gun/coldTimeMethod/EqualColdTime.cpp \
+	../Classes/gun/coldTimeMethod/GroupShotColdTimeMethod.cpp \
+	../Classes/gun/shotMethod/LateralShotMethod.cpp \
+	../Classes/gun/shotMethod/MiddleShotMethod.cpp \
+	../Classes/gun/shotMethod/SineShotMethod.cpp \
+	../Classes/gun/shotMethod/StrafeShotMethod.cpp \
+	../Classes/gun/shotMethod/SwapLateralShotMethod.cpp \
+	../Classes/gun/Gun.cpp \
+	../Classes/gun/Ammo.cpp \
 	../Classes/input/InputManager.cpp \
+	../Classes/map/AutoTiledBackground.cpp \
+	../Classes/map/Map1.cpp \
 	../Classes/physics/GLES-Render.cpp \
 	../Classes/physics/GB2ShapeCache-x.cpp \
 	../Classes/physics/PhysicsManager.cpp \
+	../Classes/scene/TestAircraft.cpp \
+	../Classes/scene/TestArmatureScene.cpp \
+	../Classes/scene/TestControl.cpp \
+	../Classes/scene/TestEffect.cpp \
+	../Classes/scene/TestPhysicsManager.cpp \
+	../Classes/scene/TestShotMethod.cpp \
 	../Classes/GameObject.cpp \
-	../Classes/gun/HeroDefaultGun.cpp \
-	../Classes/gun/GunFactory.cpp \
-	../Classes/gun/Gun.cpp \
-	../Classes/gun/shotMethod/LateralShot.cpp \
-	../Classes/gun/Ammo.cpp \
-
+	../Classes/GameController.cpp \
+        ../Classes/AppDelegate.cpp \
+        ../Classes/HelloWorldScene.cpp \
 
 
 COCOS_ROOT = ../../..
 include $(COCOS_ROOT)/cocos2dx/proj.linux/cocos2dx.mk
 
 INCLUDES += -I${COCOS_SRC}/../external \
+	    -I${COCOS_SRC}/../extensions \
 	    -I${COCOS_SRC}/../CocosDenshion/include \
-
 
 
 SHAREDLIBS += -lcocos2d \
 	      -lbox2d \
 	      -lcocosdenshion \
-
-
+	      -lextension \
 
 COCOS_LIBS = $(LIB_DIR)/libcocos2d.so \
 	     $(LIB_DIR)/libbox2d.a \
 	     $(LIB_DIR)/libcocosdenshion.so \
+	     $(LIB_DIR)/libextension.a
+
 
 
 

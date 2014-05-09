@@ -22,7 +22,8 @@ void StrafeShotMethod::shot(Gun* gun)
 
 	{
 		Ammo* newAmmo = gun->createAmmo();
-		newAmmo->setDirection(CCPoint::forAngle(sin(currentAngle)*CC_DEGREES_TO_RADIANS(angleRangeDegree) + 3.1415/2));
+		CCPoint dir = CCPoint::forAngle(sin(currentAngle)*CC_DEGREES_TO_RADIANS(angleRangeDegree) + 3.1415/2);
+		newAmmo->setDirection(dir);
 
 		newAmmo->setPosition(gunPosInWorld.x + relativePos.x, gunPosInWorld.y + relativePos.y);
 		CCDirector::sharedDirector()->getRunningScene()->addChild(newAmmo);
