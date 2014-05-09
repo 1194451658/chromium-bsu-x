@@ -36,6 +36,8 @@ EnemyOmni* EnemyOmni::create(AircraftDef def)
 
 EnemyOmni::EnemyOmni()
 {
+	lastMoveX = 0;
+	sensitiveToHero = CCRANDOM_0_1();
 }
 
 bool EnemyOmni::init(AircraftDef def)
@@ -79,33 +81,28 @@ EnemyOmni::~EnemyOmni()
 
 void EnemyOmni::move(float dt)
 {
-	//static float lastMoveX = 0;
-	//static float lastMoveY = 0;
-	//static float time = 0;
-	//static float shiftX = 200;
-	//static float yDistance = 400;
+	// get hero
+	Aircraft* hero = GameController::sharedInstance()->getPlayerAircraft();
 
-	//time += dt;
+	if(hero)
+	{
+		CCPoint pos = hero->getPositionInWorldSpace();
+		CCPoint selfPos = getPositionInWorldSpace();
 
-	//// get hero
-	//Aircraft* hero = GameController::sharedInstance()->getPlayerAircraft();
+		CCPoint distance = pos - selfPos;
+		distance.x *= sensitiveToHero;
 
-	//if(hero)
-	//{
-	//	CCPoint pos = hero->getPositionInWorldSpace();
-	//	CCPoint selfPos = getPositionInWorldSpace();
+		lastMoveX = lastMoveX * 0.97 + distance.x * 0.0003;;
 
-	//	CCPoint distance = pos - selfPos;
+		setPositionX(getPositionX() + lastMoveX);
+		setPositionY(getPositionY() + aircraftDef.omniYVelocity * dt);
+	}
 
-	//	distance.x += shiftX * sin(3.151*2 * time / 2);
-	//	lastMoveX = lastMoveX * 0.97 + distance.x * 0.0003;
-
-	//	distance.y += yDistance;
-	//	lastMoveY = lastMoveY * 0.97 + distance.y * 0.0003;
-
-	//	setPositionX(getPositionX() + lastMoveX);
-	//	setPositionY(getPositionY() + lastMoveY);
-	//}
+	if(isOutScreen(0, graphics->getContentSize().height))
+	{
+		shouldReleased = true;
+		removeFromParentAndCleanup(true);
+	}
 }
 
 void EnemyOmni::shot(float dt)

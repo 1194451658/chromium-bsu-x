@@ -19,6 +19,7 @@
 #include "HeroAircraft.h"
 #include "EnemyBoss00.h"
 #include "EnemyOmni.h"
+#include "EnemyStraight.h"
 
 bool Aircraft::init(AircraftDef def)
 {
@@ -28,6 +29,8 @@ bool Aircraft::init(AircraftDef def)
 	curHp = def.hp;
 	damageToHit = 0;
 
+	defaultGun = NULL;
+
 	if(GameObject::init())
 	{
 		name = "Aircraft";
@@ -36,6 +39,14 @@ bool Aircraft::init(AircraftDef def)
 	}
 
 	return false;
+}
+
+Aircraft::~Aircraft()
+{
+	if(defaultGun)
+	{
+		CC_SAFE_RELEASE_NULL(defaultGun);
+	}
 }
 
 Aircraft* Aircraft::create(AircraftDef& def)
@@ -156,6 +167,27 @@ void Aircraft::setCurHp(float newHp)
 	hpBarUpdate(curHp / maxHp);
 }
 
+void Aircraft::setDefaultGun(Gun* gun)
+{
+	// remove previous gun
+	if(defaultGun)
+	{
+		defaultGun->removeFromParent();
+		CC_SAFE_RELEASE_NULL(defaultGun);
+	}
+
+	// add new gun
+	if(gun)
+	{
+		defaultGun = gun;
+		defaultGun->retain();
+		addChild(gun);
+		gun->setOwnerAircraft(this);
+	}
+}
+
+
+
 CCSpriteWithShadow* Aircraft::getShadowSprite()
 {
 	CCSpriteWithShadow* shadow = dynamic_cast<CCSpriteWithShadow*>(graphics);
@@ -180,7 +212,7 @@ Aircraft* Aircraft::createEnemyStraight()
 	aircraftDef.groupIndex		= PhysicsManager::PHYSICS_GROUP_ENEMY;
 	aircraftDef.categoryBits	= PhysicsManager::AIRCRAFT;
 	aircraftDef.maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
-	Aircraft* craft = Aircraft::create(aircraftDef);
+	Aircraft* craft = EnemyStraight::create(aircraftDef);
 	return craft;
 }
 
@@ -201,7 +233,7 @@ Aircraft* Aircraft::createEnemyOmni()
 
 }
 
-Aircraft* Aircraft::createEnemyRayGUn()
+Aircraft* Aircraft::createEnemyRayGun()
 {
 	AircraftDef aircraftDef;
 	aircraftDef.graphicsFile	= "png/airCraft/enemy02.png";

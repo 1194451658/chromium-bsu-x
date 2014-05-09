@@ -45,27 +45,8 @@ bool HeroAircraft::init(AircraftDef def)
 	{
 		name = "HeroAircraft";
 
-		// create gun
-		//defaultGun = Gun::createHeroDefaultGun();
-		//defaultGun->retain();
-
-		//defaultGun = Gun::createEnemyBoss00Gun0();
-		//defaultGun->retain();
-
 		defaultGun = Gun::createEnemyBoss00Gun1();
 		defaultGun->retain();
-
-		//defaultGun = Gun::createGunExample1();
-		//defaultGun->retain();
-
-		//defaultGun = Gun::createGunSwapLateralExample();
-		//defaultGun->retain();
-
-		//defaultGun = Gun::createGunSinExample();
-		//defaultGun->retain();
-
-		//defaultGun = Gun::createGunStrafeExample();
-		//defaultGun->retain();
 
 		defaultGun->setOwnerAircraft(this);
 		addChild(defaultGun);

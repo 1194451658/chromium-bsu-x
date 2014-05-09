@@ -26,6 +26,8 @@ using namespace std;
 
 USING_NS_CC;
 
+class Gun;
+
 struct AircraftDef
 {
 	AircraftDef()
@@ -37,6 +39,12 @@ struct AircraftDef
 		groupIndex = PhysicsManager::PHYSICS_GROUP_JUSTICE;
 		categoryBits = PhysicsManager::AIRCRAFT;
 		maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
+
+		// for enemy straight
+		straightYVelocity = -80;
+
+		// for enemy omni
+		omniYVelocity = -60;
 	}
 
 	float hp;
@@ -47,11 +55,18 @@ struct AircraftDef
 	int groupIndex;
 	int categoryBits;
 	int maskBits;
+
+	// for enemy straight;
+	float straightYVelocity;
+
+	// for enemy omni
+	float omniYVelocity;
 };
 
 class HeroAircraft;
 class EnemyBoss00;
 class EnemyOmni;
+class EnemyStraight;
 
 class Aircraft : public GameObject
 {
@@ -63,21 +78,34 @@ public:
 
 	static Aircraft* create(AircraftDef& def);
 
+	~Aircraft();
+
 	// game object
 	virtual CCNode* initGraphics();
 	virtual b2Body* initPhysics();
 
 	void setCurHp(float newHp);
 
+	// ----------
+	// gun 
+	// ----------
+	void setDefaultGun(Gun* gun);
+	Gun* getDefaultGun() { return defaultGun;}
+
+	// -------
 	// hp bar
+	// -------
 	void hpBarInit(float width, float height, float maxValue, float initialValue);
 	void hpBarUpdate(float percentage);
 
+	// ---------------
+	// create enemy aircraft
+	// ---------------
 	static Aircraft* createHeroAircraft();
 	static Aircraft* createEnemyStraight();
 
 	static Aircraft* createEnemyOmni();
-	static Aircraft* createEnemyRayGUn();
+	static Aircraft* createEnemyRayGun();
 	static Aircraft* createEnemyTank();
 
 	static Aircraft* createBoss00();
@@ -86,8 +114,10 @@ public:
 private:
 	virtual CCSpriteWithShadow* getShadowSprite();
 
-private:
+protected:
 	AircraftDef aircraftDef;
+
+	Gun* defaultGun;
 
 	float maxHp;
 	float curHp;

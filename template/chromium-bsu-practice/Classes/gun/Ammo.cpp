@@ -173,28 +173,7 @@ void Ammo::doDamageToGameObject(GameObject* go)
 	}
 }
 
-bool Ammo::isOutScreen()
-{
-	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
-	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
 
-	CCNode* parent = getParent();
-
-	if(parent)
-	{
-		CCPoint posInWorld = parent->convertToWorldSpace(getPosition());
-
-		if(posInWorld.x > origin.x + visibleSize.width || 
-			posInWorld.x < origin.x ||
-			posInWorld.y > origin.y + visibleSize.height || 
-			posInWorld.y < origin.y)
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
 
 Ammo::~Ammo()
 {
@@ -219,7 +198,7 @@ Ammo* Ammo::createEnemyAmmo0()
 	AmmoDef ammoDef;
 	ammoDef.graphicsFile = "png/enemyAmmo00.png";
 	ammoDef.velocity	= 400;
-	ammoDef.direction	= ccp(0,1);
+	ammoDef.direction	= ccp(0,-1);
 	ammoDef.directionAffectRotation = false;
 	ammoDef.physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
 	ammoDef.damage = 50;

@@ -50,6 +50,9 @@ private:
 private:
 	Gun* defaultGun;
 
+	float lastMoveX;
+	float sensitiveToHero;
+
 };
 
 #endif

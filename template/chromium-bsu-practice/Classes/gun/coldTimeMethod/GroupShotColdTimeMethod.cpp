@@ -4,19 +4,19 @@
 
 bool GroupShotColdTimeMethod::isTimeToShot(float dt)
 {
-	//curCycleTime += dt;
-	//curTimeToNextShot -= dt;
+	curCycleTime += dt;
+	curTimeToNextShot -= dt;
 
-	//if(curTimeToNextShot <= 0)
-	//{
-	//	shotted();
-	//	return true;
-	//}
+	if(curTimeToNextShot <= 0)
+	{
+		shotted();
+		return true;
+	}
 
-	//notShotted();
-	//return false;
+	notShotted();
+	return false;
 
-	return true;
+	// return true;
 }
 
  void GroupShotColdTimeMethod::shotted()

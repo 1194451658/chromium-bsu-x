@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#include "TestAircraft.h"
+#include "TestShotMethod.h"
 
 #include "test/engine/TestKeyUpDown.h"
 #include "keypad_dispatcher/CCKeypadDispatcher.h"
@@ -39,6 +39,12 @@
 
 #include "GameController.h"
 
+#include "gun/shotMethod/LateralShotMethod.h"
+#include "gun/shotMethod/MiddleShotMethod.h"
+#include "gun/shotMethod/SineShotMethod.h"
+#include "gun/shotMethod/StrafeShotMethod.h"
+#include "gun/shotMethod/SwapLateralShotMethod.h"
+
 USING_NS_CC_EXT;
 
 USING_NS_CC;
@@ -46,13 +52,13 @@ using namespace CocosDenshion;
 
 #define PTM_RATIO  32
 
-CCScene* TestAircraft::scene()
+CCScene* TestShotMethod::scene()
 {
 	// 'scene' is an autorelease object
 	CCScene *scene = CCScene::create();
 
 	// 'layer' is an autorelease object
-	TestAircraft *layer = TestAircraft::create();
+	TestShotMethod *layer = TestShotMethod::create();
 
 	// add layer as a child to scene
 	scene->addChild(layer);
@@ -62,7 +68,7 @@ CCScene* TestAircraft::scene()
 }
 
 // on "init" you need to initialize your instance
-bool TestAircraft::init()
+bool TestShotMethod::init()
 {
 	if ( !CCLayer::init() )
 	{
@@ -82,7 +88,7 @@ bool TestAircraft::init()
 	GB2ShapeCache::sharedGB2ShapeCache()->addShapesWithFile("png/physics.plist");
 
 	// step
-	schedule(schedule_selector(TestAircraft::stepForPhysicsManager));
+	schedule(schedule_selector(TestShotMethod::stepForPhysicsManager));
 
 	// debug draw
 	GLESDebugDraw* debugDraw = new GLESDebugDraw(PTM_RATIO);
@@ -117,45 +123,33 @@ bool TestAircraft::init()
 	// -------------
 	CCMenu* menu = CCMenu::create();
 
-	// straight menu item
+	// lateral
 	{
-		CCMenuItemFont* menuItem = CCMenuItemFont::create("straight", this, menu_selector(TestAircraft::menuItemCallback));
+		CCMenuItemFont* menuItem = CCMenuItemFont::create("lateral shot method", this, menu_selector(TestShotMethod::menuItemCallback));
 		menu->addChild(menuItem);
 	}
 
-	// omni 
+	// middle 
 	{
-		CCMenuItemFont* menuItem = CCMenuItemFont::create("omni", this, menu_selector(TestAircraft::menuItemCallback));
+		CCMenuItemFont* menuItem = CCMenuItemFont::create("middle shot method", this, menu_selector(TestShotMethod::menuItemCallback));
 		menu->addChild(menuItem);
 	}
 
-	// ray gun 
+	// sine
 	{
-		CCMenuItemFont* menuItem = CCMenuItemFont::create("ray gun", this, menu_selector(TestAircraft::menuItemCallback));
+		CCMenuItemFont* menuItem = CCMenuItemFont::create("sine shot method", this, menu_selector(TestShotMethod::menuItemCallback));
 		menu->addChild(menuItem);
 	}
 
-	// tank
+	// strafe
 	{
-		CCMenuItemFont* menuItem = CCMenuItemFont::create("tank", this, menu_selector(TestAircraft::menuItemCallback));
+		CCMenuItemFont* menuItem = CCMenuItemFont::create("strafe shot method", this, menu_selector(TestShotMethod::menuItemCallback));
 		menu->addChild(menuItem);
 	}
 
-	// boss00
+	// swap
 	{
-		CCMenuItemFont* menuItem = CCMenuItemFont::create("boss00", this, menu_selector(TestAircraft::menuItemCallback));
-		menu->addChild(menuItem);
-	}
-
-	// boss01
-	{
-		CCMenuItemFont* menuItem = CCMenuItemFont::create("boss01", this, menu_selector(TestAircraft::menuItemCallback));
-		menu->addChild(menuItem);
-	}
-
-	// hero
-	{
-		CCMenuItemFont* menuItem = CCMenuItemFont::create("hero", this, menu_selector(TestAircraft::menuItemCallback));
+		CCMenuItemFont* menuItem = CCMenuItemFont::create("swap lateral shot method", this, menu_selector(TestShotMethod::menuItemCallback));
 		menu->addChild(menuItem);
 	}
 
@@ -164,12 +158,10 @@ bool TestAircraft::init()
 
 	menu->setPositionX(menu->getPositionX() + 200);
 
-
-
 	return true;
 }
 
-void TestAircraft::menuItemCallback(CCObject* menuItem)
+void TestShotMethod::menuItemCallback(CCObject* menuItem)
 {
 	CCMenuItemLabel* menuItemLabel = dynamic_cast<CCMenuItemLabel*>(menuItem);
 
@@ -184,78 +176,63 @@ void TestAircraft::menuItemCallback(CCObject* menuItem)
 
 		string labelString = label->getString();
 
-		if(labelString == "straight")
+		Gun* heroGun = GameController::sharedInstance()->getPlayerAircraft()->getDefaultGun();
+
+		if(labelString == "lateral shot method")
 		{
-			// straight
+			if(heroGun)
 			{
-				Aircraft* enemy = Aircraft::createEnemyStraight();
-				addChild(enemy);
-				enemy->setPosition(screenSize.width/2, screenSize.height/2 + 150);
+				CCPoint pos = ccp(30, 10);
+				LateralShotMethod* shotMethod = LateralShotMethod::create(pos);
+				heroGun->setShotMethod(shotMethod);
 			}
 		}
-		else if(labelString == "omni")
+		else if(labelString == "middle shot method")
 		{
-			// enemy omni
+			if(heroGun)
 			{
-				Aircraft* omni = Aircraft::createEnemyOmni();
-				addChild(omni);
-				omni->setPosition(screenSize.width/2, screenSize.height/2 + 150);
+				CCPoint pos = ccp(0, 10);
+				MiddleShotMethod* shotMethod = MiddleShotMethod::create(pos);
+				heroGun->setShotMethod(shotMethod);
 			}
 		}
-		else if(labelString == "ray gun")
+		else if(labelString == "sine shot method")
 		{
-			// ray gun
+			if(heroGun)
 			{
-				Aircraft* enemy = Aircraft::createEnemyRayGun();
-				addChild(enemy);
-				enemy->setPosition(screenSize.width/2, screenSize.height/2 + 150);
+				CCPoint pos = ccp(30, 10);
+				SineShotMethod* shotMethod = SineShotMethod::create(pos, 5);
+				heroGun->setShotMethod(shotMethod);
 			}
 		}
-		else if(labelString == "tank")
+		else if(labelString == "strafe shot method")
 		{
-			// tank
+			if(heroGun)
 			{
-				Aircraft* enemy = Aircraft::createEnemyTank();
-				addChild(enemy);
-				enemy->setPosition(screenSize.width/2, screenSize.height/2 + 150);
+				CCPoint pos = ccp(0, 10);
+				StrafeShotMethod* shotMethod = StrafeShotMethod::create(pos,45,20);
+				heroGun->setShotMethod(shotMethod);
 			}
 		}
 
-		else if(labelString == "boss00")
+		else if(labelString == "swap lateral shot method")
 		{
-
-			// enemy boss
-			Aircraft* boss = Aircraft::createBoss00();
-			addChild(boss);
-			boss->setPosition(screenSize.width/2, screenSize.height/2 + 150);
-		}
-
-		else if(labelString == "boss01")
-		{
-			// boss 01
+			if(heroGun)
 			{
-				Aircraft* enemy = Aircraft::createBoss01();
-				addChild(enemy);
-				enemy->setPosition(screenSize.width/2, screenSize.height/2 + 150);
+				CCPoint pos = ccp(30, 10);
+				SwapLateralShotMethod* shotMethod = SwapLateralShotMethod::create(pos);
+				heroGun->setShotMethod(shotMethod);
 			}
-		}
-
-		else if(labelString == "hero")
-		{
-			Aircraft* hero = Aircraft::createHeroAircraft();
-			addChild(hero);
-			hero->setPosition(screenSize.width/2, screenSize.height/2);
-			GameController::sharedInstance()->setPlayerAircraft(hero);
 		}
 	}
 }
 
-void TestAircraft::stepForPhysicsManager(float time)
+void TestShotMethod::stepForPhysicsManager(float time)
 {
 	PhysicsManager::sharedInstance()->step(time);
 }
 
-void TestAircraft::draw()
+void TestShotMethod::draw()
 {
 	CCLayer::draw();
 

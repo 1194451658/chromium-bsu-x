@@ -46,6 +46,8 @@ public:
 		prototypeAmmo->ammoDef.direction  = direction;
 	}
 
+	void setShotMethod(ShotMethod* shotMethod);
+
 	// create specific gun
 	static Gun* createHeroDefaultGun();
 	static Gun* createGunExample1();
@@ -56,6 +58,11 @@ public:
 	// boss gun
 	static Gun* createEnemyBoss00Gun0();
 	static Gun* createEnemyBoss00Gun1();
+
+	static Gun* createEnemyStraightGun();
+	static Gun* createEnemyOmniGun();
+	static Gun* createEnemyRayGun();
+	static Gun* createEnemyTankGun();
 
 protected:
 	Gun();

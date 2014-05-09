@@ -54,6 +54,7 @@ public:
 
 	// utils
 	CCPoint getPositionInWorldSpace();
+	bool isOutScreen(float extraOutX = 0, float extraOutY = 0);
 
 protected:
 	virtual CCNode* initGraphics() { return NULL; };

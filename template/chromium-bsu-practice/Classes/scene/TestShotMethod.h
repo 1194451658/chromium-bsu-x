@@ -14,14 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef __TEST_PHYSICS_MANAGER_H__
-#define __TEST_PHYSICS_MANAGER_H__
+#ifndef __TEST_SHOT_METHOD_H__
+#define __TEST_SHOT_METHOD_H__
 
 #include "cocos2d.h"
 
 #include "Box2D/Box2D.h"
 
-class TestPhysicsManager : public cocos2d::CCLayer
+class TestShotMethod : public cocos2d::CCLayer
 {
 public:
 	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -31,7 +31,9 @@ public:
 	static cocos2d::CCScene* scene();
 
 	// implement the "static node()" method manually
-	CREATE_FUNC(TestPhysicsManager);
+	CREATE_FUNC(TestShotMethod);
+
+	void menuItemCallback(CCObject* menuItem);
 
 
 private:

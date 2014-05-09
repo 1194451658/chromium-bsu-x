@@ -190,3 +190,29 @@ CCPoint GameObject::getPositionInWorldSpace()
 
 	return getPosition();
 }
+
+bool GameObject::isOutScreen(float extraOutX , float extraOutY)
+{
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+
+	extraOutX = fabs(extraOutX);
+	extraOutY = fabs(extraOutY);
+
+	CCNode* parent = getParent();
+
+	if(parent)
+	{
+		CCPoint posInWorld = parent->convertToWorldSpace(getPosition());
+
+		if(posInWorld.x > origin.x + visibleSize.width + extraOutX || 
+			posInWorld.x < origin.x - extraOutX ||
+			posInWorld.y > origin.y + visibleSize.height + extraOutY || 
+			posInWorld.y < origin.y - extraOutY)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}

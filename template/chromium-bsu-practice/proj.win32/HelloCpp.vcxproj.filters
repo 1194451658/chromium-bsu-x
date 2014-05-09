@@ -141,6 +141,12 @@
     <ClCompile Include="..\Classes\scene\TestControl.cpp">
       <Filter>Classes\scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\aircraft\EnemyStraight.cpp">
+      <Filter>Classes\aircraft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\TestShotMethod.cpp">
+      <Filter>Classes\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -276,6 +282,12 @@
       <Filter>Classes\scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\scene\TestControl.h">
+      <Filter>Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\aircraft\EnemyStraight.h">
+      <Filter>Classes\aircraft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\TestShotMethod.h">
       <Filter>Classes\scene</Filter>
     </ClInclude>
   </ItemGroup>

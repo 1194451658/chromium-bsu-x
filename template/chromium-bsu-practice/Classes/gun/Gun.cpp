@@ -41,7 +41,7 @@ bool Gun::init(Aircraft* owner, Ammo* prototypeAmmo, ColdTimeMethod* coldTimeMet
 		prototypeAmmo->retain();
 
 		this->coldTimeMethod = coldTimeMethod;
-		coldTimeMethod->retain();
+		CC_SAFE_RETAIN(coldTimeMethod);
 
 		this->shotMethod = shotMethod;
 		shotMethod->retain();
@@ -65,13 +65,26 @@ void Gun::setOwnerAircraft(Aircraft* owner)
 		physicsGroup = owner->getOnePhysicsGroup();
 }
 
+void Gun::setShotMethod(ShotMethod* shotMethod)
+{
+	CC_SAFE_RELEASE_NULL(this->shotMethod);
+
+	this->shotMethod = shotMethod;
+	CC_SAFE_RETAIN(shotMethod);
+}
+
 Gun::Gun()
 {
+	prototypeAmmo = NULL;
+	coldTimeMethod = NULL;
+	shotMethod = NULL;
+	ownerAircraft = NULL;
 }
 
 Gun::~Gun()
 {
 	CC_SAFE_RELEASE(prototypeAmmo);
+	CC_SAFE_RELEASE(coldTimeMethod);
 	CC_SAFE_RELEASE(shotMethod);
 }
 
@@ -93,7 +106,14 @@ void Gun::update(float time)
 {
 	if(triggerPressed)
 	{
-		if(coldTimeMethod->isTimeToShot(time))
+		if(coldTimeMethod)
+		{
+			if(coldTimeMethod->isTimeToShot(time))
+			{
+				shotMethod->shot(this);
+			}
+		}
+		else
 		{
 			shotMethod->shot(this);
 		}
@@ -248,18 +268,84 @@ Gun* Gun::createGunSinExample()
 	 Ammo* ammo = Ammo::createEnemyAmmo3();
 
 	 // cold time
-	 ColdTimeMethod* coldTimeMethod = GroupShotColdTimeMethod::create(0.1, 3, 0.4);
+	 // ColdTimeMethod* coldTimeMethod = GroupShotColdTimeMethod::create(0.1, 3, 0.4);
+	 ColdTimeMethod* coldTimeMethod = NULL;
 
 	 // shot method
 	 CCPoint relativePos = CCPoint(0, -70);
 	 ShotMethod* shotMethod = MiddleShotMethod::create(relativePos);
 
-	 //// shot method
-	 //CCPoint relativePos = CCPoint(70, -70);
-	 //ShotMethod* shotMethod = LateralShotMethod::create(relativePos);
-
-
 	 // create gun
+	 Gun* gun = Gun::create(NULL, ammo, coldTimeMethod, shotMethod);
+	 return gun;
+ }
+
+  Gun* Gun::createEnemyStraightGun()
+ {
+	 // ammo
+	 Ammo* ammo = Ammo::createEnemyAmmo0();
+
+	 // cold time
+	 ColdTimeMethod* coldTimeMethod = NULL;
+
+	 // shot method
+	 CCPoint pos = ccp(0,-10);
+	 ShotMethod* shotMethod = MiddleShotMethod::create(pos);
+
+	 // gun
+	 Gun* gun = Gun::create(NULL, ammo, coldTimeMethod, shotMethod);
+	 return gun;
+ }
+
+  Gun* Gun::createEnemyOmniGun()
+ {
+	 // ammo
+	 Ammo* ammo = Ammo::createEnemyAmmo1();
+
+	 // cold time
+	 ColdTimeMethod* coldTimeMethod = NULL;
+
+	 // shot method
+	 CCPoint pos = ccp(0,-10);
+	 ShotMethod* shotMethod = MiddleShotMethod::create(pos);
+
+	 // gun
+	 Gun* gun = Gun::create(NULL, ammo, coldTimeMethod, shotMethod);
+	 return gun;
+ }
+
+  Gun* Gun::createEnemyRayGun()
+ {
+	 // ammo
+	 Ammo* ammo = Ammo::createEnemyAmmo0();
+
+	 // cold time
+	 ColdTimeMethod* coldTimeMethod = NULL;
+
+	 // shot method
+	 CCPoint pos = ccp(0,-10);
+	 ShotMethod* shotMethod = MiddleShotMethod::create(pos);
+
+	 // gun
+	 Gun* gun = Gun::create(NULL, ammo, coldTimeMethod, shotMethod);
+	 return gun;
+
+
+ }
+
+  Gun* Gun::createEnemyTankGun()
+ {
+	 // ammo
+	 Ammo* ammo = Ammo::createEnemyAmmo0();
+
+	 // cold time
+	 ColdTimeMethod* coldTimeMethod = NULL;
+
+	 // shot method
+	 CCPoint pos = ccp(0,-10);
+	 ShotMethod* shotMethod = MiddleShotMethod::create(pos);
+
+	 // gun
 	 Gun* gun = Gun::create(NULL, ammo, coldTimeMethod, shotMethod);
 	 return gun;
  }

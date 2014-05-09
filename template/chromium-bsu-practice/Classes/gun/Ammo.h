@@ -81,7 +81,7 @@ public:
 			ammoDef.direction.y * ammoDef.velocity/PhysicsManager::PTM_RATIO));
 	}
 
-	bool isOutScreen();
+	// bool isOutScreen();
 
 	static Ammo* createEnemyAmmo0();
 	static Ammo* createEnemyAmmo1();

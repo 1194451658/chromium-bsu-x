@@ -42,9 +42,6 @@ protected:
 
 private: 
     HeroAircraft();
-
-private:
-    Gun* defaultGun;
 };
 
 #endif

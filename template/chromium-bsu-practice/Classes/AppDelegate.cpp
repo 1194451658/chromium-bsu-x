@@ -7,6 +7,7 @@
 #include "scene/TestPhysicsManager.h"
 #include "scene/TestAircraft.h"
 #include "scene/TestControl.h"
+#include "scene/TestShotMethod.h"
 
 USING_NS_CC;
 
@@ -50,6 +51,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	// CCScene *pScene = TestEffectScene::scene();
 	// CCScene* pScene = TestArmatureScene::scene();
 	CCScene* pScene = TestAircraft::scene();
+	// CCScene* pScene = TestShotMethod::scene();
 
 	// CCScene* pScene = TestControl::scene();
 
