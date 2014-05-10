@@ -98,8 +98,10 @@ void EnemyOmni::move(float dt)
 		lastMoveX = lastMoveX * 0.97 + distance.x * 0.0003;;
 
 		setPositionX(getPositionX() + lastMoveX);
-		setPositionY(getPositionY() + aircraftDef.omniYVelocity * dt);
+
 	}
+
+	setPositionY(getPositionY() + aircraftDef.omniYVelocity * dt);
 
 	if(isOutScreen(0, graphics->getContentSize().height))
 	{
@@ -112,32 +114,11 @@ void EnemyOmni::shot(float dt)
 {
 	//static int frame = 0;
 	//frame ++;
-	
 
 	if(defaultGun)
 	{
 		defaultGun->trigger(true);
 	}
-
-	//// middle gun
-	//int frameInMiddleGun = frame % (60*3);
-	//if(frameInMiddleGun > 60*2 + 30)
-	//{
-	//	middleGun->trigger(true);
-	//}else
-	//{
-	//	middleGun->trigger(false);
-	//}
-
-	//// lateral gun
-	//int frameInLateralGUn = frame % (60*3);
-	//if(frameInLateralGUn > 60*2)
-	//{
-	//	lateralGun->trigger(true);
-	//}else
-	//{
-	//	lateralGun->trigger(false);
-	//}
 }
 
 void EnemyOmni::update(float dt)

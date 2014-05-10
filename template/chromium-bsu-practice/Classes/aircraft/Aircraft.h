@@ -78,6 +78,7 @@ public:
 
 	static Aircraft* create(AircraftDef& def);
 
+	Aircraft();
 	~Aircraft();
 
 	// game object
@@ -97,6 +98,12 @@ public:
 	// -------
 	void hpBarInit(float width, float height, float maxValue, float initialValue);
 	void hpBarUpdate(float percentage);
+
+
+	// --------------
+	// debug
+	// --------------
+	void setDebugUnDestoryable(bool undestroyable) { debugUndestroyable = undestroyable; };
 
 	// ---------------
 	// create enemy aircraft
@@ -130,6 +137,9 @@ protected:
 	float hpBarCurValue;
 	float hpBarWidth;
 	float hpBarHeight;
+
+	// debug
+	bool debugUndestroyable;
 	
 };
 

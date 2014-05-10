@@ -20,6 +20,9 @@
 #include "EnemyBoss00.h"
 #include "EnemyOmni.h"
 #include "EnemyStraight.h"
+#include "EnemyRayGun.h"
+#include "EnemyBoss00.h"
+#include "EnemyBoss01.h"
 
 bool Aircraft::init(AircraftDef def)
 {
@@ -29,7 +32,7 @@ bool Aircraft::init(AircraftDef def)
 	curHp = def.hp;
 	damageToHit = 0;
 
-	defaultGun = NULL;
+
 
 	if(GameObject::init())
 	{
@@ -39,6 +42,12 @@ bool Aircraft::init(AircraftDef def)
 	}
 
 	return false;
+}
+
+Aircraft::Aircraft()
+{
+		defaultGun = NULL;
+		debugUndestroyable = false;
 }
 
 Aircraft::~Aircraft()
@@ -111,8 +120,11 @@ b2Body* Aircraft::initPhysics()
 
 void Aircraft::damage(float damage)
 {
-	if(damage < 0) damage = 0;
+	if(!debugUndestroyable)
+	{
+		if(damage < 0) damage = 0;
 		damageToHit += damage;
+	}
 }
 
 void Aircraft::hpBarInit(float width, float height, float maxValue, float initialValue)
@@ -242,7 +254,7 @@ Aircraft* Aircraft::createEnemyRayGun()
 	aircraftDef.categoryBits	= PhysicsManager::AIRCRAFT;
 	aircraftDef.maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
 
-	Aircraft* enemy = Aircraft::create(aircraftDef);
+	Aircraft* enemy = EnemyRayGun::create(aircraftDef);
 	return enemy;
 }
 
@@ -287,7 +299,7 @@ Aircraft* Aircraft::createBoss01()
 	aircraftDef.maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
 
 	// Aircraft* boss = Aircraft::create(aircraftDef);
-	Aircraft* boss = Aircraft::create(aircraftDef);
+	Aircraft* boss = EnemyBoss01::create(aircraftDef);
 	return boss;
 }
 

@@ -46,6 +46,7 @@ bool HeroAircraft::init(AircraftDef def)
 		name = "HeroAircraft";
 
 		defaultGun = Gun::createEnemyBoss00Gun1();
+		defaultGun->prototypeAmmo->ammoDef.direction = ccp(0,1);
 		defaultGun->retain();
 
 		defaultGun->setOwnerAircraft(this);

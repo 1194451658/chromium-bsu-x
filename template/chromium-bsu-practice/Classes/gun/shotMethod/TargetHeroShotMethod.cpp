@@ -25,31 +25,51 @@ void TargetHeroShotMethod::shot(Gun* gun)
 
 	if(hero)
 	{
-		CCPoint heroPos = hero->getPositionInWorldSpace();
-		CCPoint dir = heroPos - gunPosInWorld;
-		Ammo* newAmmo = gun->createAmmo();
-		newAmmo->setPosition(gunPosInWorld.x + relativePos.x, gunPosInWorld.y + relativePos.y);
-		newAmmo->setDirection(dir);
-		CCDirector::sharedDirector()->getRunningScene()->addChild(newAmmo);
+		// if retarget hero
+		if(curTargetPeriodCount == targetPeriodCount)
+		{
+			curTargetPeriodCount = targetPeriodCount;
+			CCPoint heroPos = hero->getPositionInWorldSpace();
+			previousDir = heroPos - gunPosInWorld;
+		}
+
+		if(curTargetPeriodCount >= 0)
+		{
+			Ammo* newAmmo = gun->createAmmo();
+			newAmmo->setPosition(gunPosInWorld.x + relativePos.x, gunPosInWorld.y + relativePos.y);
+			CCDirector::sharedDirector()->getRunningScene()->addChild(newAmmo);
+			newAmmo->setDirection(previousDir);
+		}
+
+		curTargetPeriodCount--;
+
+		if(curTargetPeriodCount <= -8)
+		{
+			curTargetPeriodCount = targetPeriodCount;
+		}
 	}
 }
 
 TargetHeroShotMethod::TargetHeroShotMethod()
 {
+	targetPeriodCount = 0;
+	curTargetPeriodCount = 0;
 }
 
-bool TargetHeroShotMethod::init(CCPoint& relativePos)
+bool TargetHeroShotMethod::init(CCPoint& relativePos, int targetPeriodCount)
 {
 	this->relativePos = relativePos;
+	this->targetPeriodCount = targetPeriodCount;
+	curTargetPeriodCount = targetPeriodCount;
 	return ShotMethod::init();
 }
 
-TargetHeroShotMethod* TargetHeroShotMethod::create(CCPoint& relativePos)
+TargetHeroShotMethod* TargetHeroShotMethod::create(CCPoint& relativePos, int targetPeriodCount)
 {
 
 	TargetHeroShotMethod* newShotMethod = new TargetHeroShotMethod();
 
-	if(newShotMethod && newShotMethod->init(relativePos))
+	if(newShotMethod && newShotMethod->init(relativePos, targetPeriodCount))
 	{
 		newShotMethod->autorelease();
 		return newShotMethod;

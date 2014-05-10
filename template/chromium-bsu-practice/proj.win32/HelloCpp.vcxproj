@@ -133,7 +133,9 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
   <ItemGroup>
     <ClCompile Include="..\Classes\aircraft\Aircraft.cpp" />
     <ClCompile Include="..\Classes\aircraft\EnemyBoss00.cpp" />
+    <ClCompile Include="..\Classes\aircraft\EnemyBoss01.cpp" />
     <ClCompile Include="..\Classes\aircraft\EnemyOmni.cpp" />
+    <ClCompile Include="..\Classes\aircraft\EnemyRayGun.cpp" />
     <ClCompile Include="..\Classes\aircraft\EnemyStraight.cpp" />
     <ClCompile Include="..\Classes\aircraft\HeroAircraft.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
@@ -150,6 +152,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\gun\shotMethod\SineShotMethod.cpp" />
     <ClCompile Include="..\Classes\gun\shotMethod\StrafeShotMethod.cpp" />
     <ClCompile Include="..\Classes\gun\shotMethod\SwapLateralShotMethod.cpp" />
+    <ClCompile Include="..\Classes\gun\shotMethod\TargetHeroShotMethod.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\input\InputManager.cpp" />
     <ClCompile Include="..\Classes\map\AutoTiledBackground.cpp" />
@@ -168,7 +171,9 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
   <ItemGroup>
     <ClInclude Include="..\Classes\aircraft\Aircraft.h" />
     <ClInclude Include="..\Classes\aircraft\EnemyBoss00.h" />
+    <ClInclude Include="..\Classes\aircraft\EnemyBoss01.h" />
     <ClInclude Include="..\Classes\aircraft\EnemyOmni.h" />
+    <ClInclude Include="..\Classes\aircraft\EnemyRayGun.h" />
     <ClInclude Include="..\Classes\aircraft\EnemyStraight.h" />
     <ClInclude Include="..\Classes\aircraft\HeroAircraft.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
@@ -198,6 +203,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\gun\shotMethod\SineShotMethod.h" />
     <ClInclude Include="..\Classes\gun\shotMethod\StrafeShotMethod.h" />
     <ClInclude Include="..\Classes\gun\shotMethod\SwapLateralShotMethod.h" />
+    <ClInclude Include="..\Classes\gun\shotMethod\TargetHeroShotMethod.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\input\InputManager.h" />
     <ClInclude Include="..\Classes\map\AutoTiledBackground.h" />

@@ -147,6 +147,15 @@
     <ClCompile Include="..\Classes\scene\TestShotMethod.cpp">
       <Filter>Classes\scene</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\gun\shotMethod\TargetHeroShotMethod.cpp">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\aircraft\EnemyRayGun.cpp">
+      <Filter>Classes\aircraft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\aircraft\EnemyBoss01.cpp">
+      <Filter>Classes\aircraft</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -289,6 +298,15 @@
     </ClInclude>
     <ClInclude Include="..\Classes\scene\TestShotMethod.h">
       <Filter>Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\gun\shotMethod\TargetHeroShotMethod.h">
+      <Filter>Classes\gun\shotMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\aircraft\EnemyRayGun.h">
+      <Filter>Classes\aircraft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\aircraft\EnemyBoss01.h">
+      <Filter>Classes\aircraft</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

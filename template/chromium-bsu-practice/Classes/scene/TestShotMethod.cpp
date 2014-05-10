@@ -114,18 +114,12 @@ bool TestShotMethod::init()
 	// -----------
 	Aircraft* hero = Aircraft::createHeroAircraft();
 	addChild(hero);
+	hero->setDebugUnDestoryable(true);
 
 	CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
 	hero->setPosition(screenSize.width/2, screenSize.height/2);
 
 	GameController::sharedInstance()->setPlayerAircraft(hero);
-
-	// n-----
-	// enemy
-	// -------
-	Aircraft* enemy = Aircraft::createEnemyOmni();
-	addChild(enemy);
-	defaultEnemy = enemy;
 
 	// ------------
 	// create menu
@@ -241,16 +235,10 @@ void TestShotMethod::menuItemCallback(CCObject* menuItem)
 		}
 		else if(labelString == "target hero method")
 		{
-			if(heroGun)
-			{
-				CCPoint pos = ccp(30, 10);
-				TargetHeroShotMethod* shotMethod = TargetHeroShotMethod::create(pos);
-				// heroGun->setShotMethod(shotMethod);
-				if(defaultEnemy)
-				{
-					// defaultEnemy->setDefaultGun(
-				}
-			}
+			// add enemy
+			Aircraft* enemy = Aircraft::createEnemyOmni();
+			addChild(enemy);
+			enemy->setPosition(screenSize.width/2, screenSize.height/2+ 200);
 		}
 	}
 }

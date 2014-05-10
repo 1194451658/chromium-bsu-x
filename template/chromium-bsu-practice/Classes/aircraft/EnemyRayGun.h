@@ -15,8 +15,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-#ifndef __ENEMY_OMNI_H__
-#define __ENEMY_OMNI_H__
+#ifndef __ENEMY_RAY_GUN_H__
+#define __ENEMY_RAY_GUN_H__
 
 #include "cocos2d.h"
 #include "GameObject.h"
@@ -27,29 +27,27 @@
 
 USING_NS_CC;
 
-class EnemyOmni : public Aircraft
+class EnemyRayGun : public Aircraft
 {
 public:
-	static EnemyOmni* create(AircraftDef def);
+	static EnemyRayGun* create(AircraftDef def);
 	bool init(AircraftDef def);
 	void move(float dt);
 	void shot(float dt);
-	~EnemyOmni();
+	~EnemyRayGun();
 
 public:
 	// update
 	virtual void update(float time);
-
-	void createExtraGraphics();
-
-protected:
-
 private: 
-	EnemyOmni();
+	EnemyRayGun();
 
-	float lastMoveX;
-	float sensitiveToHero;
-
+private:
+	 float lastMoveX;
+	 float lastMoveY;
+	 float time;
+	 float shiftX;
+	 float yDistance;
 };
 
 #endif

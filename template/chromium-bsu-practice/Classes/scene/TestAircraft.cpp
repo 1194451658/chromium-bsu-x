@@ -263,6 +263,6 @@ void TestAircraft::draw()
 
 	kmGLPushMatrix();
 	b2World* world = PhysicsManager::sharedInstance()->getPhysicsWorld();
-	world->DrawDebugData();
+	// world->DrawDebugData();
 	kmGLPopMatrix();
 }

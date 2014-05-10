@@ -24,14 +24,17 @@ class TargetHeroShotMethod : public ShotMethod
 {
 public:
 	virtual void shot(Gun* gun);
-	static TargetHeroShotMethod* create(CCPoint& relativePos);
+	static TargetHeroShotMethod* create(CCPoint& relativePos, int targetPeriodCount);
 
 protected:
-	bool init(CCPoint& relativePos);
+	bool init(CCPoint& relativePos, int targetPeriodCount);
 	TargetHeroShotMethod();
 
 private:
 	CCPoint relativePos;
+	int targetPeriodCount;
+	int curTargetPeriodCount;
+	CCPoint previousDir;
 };
 
 #endif

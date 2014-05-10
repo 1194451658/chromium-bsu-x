@@ -74,10 +74,11 @@ private:
 
 	float coldTime;
 	float curTimeToCold;
-
+public:
 	Ammo* prototypeAmmo;
 	ColdTimeMethod* coldTimeMethod;
 	ShotMethod* shotMethod;
+private:
 	
 	bool triggerPressed;
 	Aircraft* ownerAircraft;

@@ -247,7 +247,7 @@ Ammo*  Ammo::createEnemyAmmo3()
 	AmmoDef ammoDef;
 	ammoDef.graphicsFile = "png/enemyAmmo03.png";
 	ammoDef.velocity	= 2000;
-	ammoDef.direction	= ccp(0,1);
+	ammoDef.direction	= ccp(0,-1);
 	ammoDef.directionAffectRotation = false;
 	ammoDef.physicsGroup = PhysicsManager::PHYSICS_GROUP_UNKNOWN;
 	ammoDef.damage = 50;

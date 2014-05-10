@@ -304,11 +304,12 @@ Gun* Gun::createGunSinExample()
 	 Ammo* ammo = Ammo::createEnemyAmmo1();
 
 	 // cold time
-	 ColdTimeMethod* coldTimeMethod = NULL;
+	 ColdTimeMethod* coldTimeMethod = EqualColdTime::create(1.0/60 * 5);
+	 // ColdTimeMethod* coldTimeMethod = GroupShotColdTimeMethod::create(1.0/60 * 5, 4, 1.0/60 * 30);
 
 	 // shot method
 	 CCPoint pos = ccp(0,-10);
-	 ShotMethod* shotMethod = TargetHeroShotMethod::create(pos);
+	 ShotMethod* shotMethod = TargetHeroShotMethod::create(pos, 3);
 
 	 // gun
 	 Gun* gun = Gun::create(NULL, ammo, coldTimeMethod, shotMethod);
@@ -318,20 +319,20 @@ Gun* Gun::createGunSinExample()
   Gun* Gun::createEnemyRayGun()
  {
 	 // ammo
-	 Ammo* ammo = Ammo::createEnemyAmmo0();
+	 Ammo* ammo = Ammo::createEnemyAmmo3();
+	 ammo->ammoDef.direction = ccp(0, -1);
 
 	 // cold time
+	 // ColdTimeMethod* coldTimeMethod = GroupShotColdTimeMethod::create(0.1, 3, 0.4);
 	 ColdTimeMethod* coldTimeMethod = NULL;
 
 	 // shot method
-	 CCPoint pos = ccp(0,-10);
-	 ShotMethod* shotMethod = MiddleShotMethod::create(pos);
+	 CCPoint relativePos = CCPoint(0, -70);
+	 ShotMethod* shotMethod = MiddleShotMethod::create(relativePos);
 
-	 // gun
+	 // create gun
 	 Gun* gun = Gun::create(NULL, ammo, coldTimeMethod, shotMethod);
 	 return gun;
-
-
  }
 
   Gun* Gun::createEnemyTankGun()
