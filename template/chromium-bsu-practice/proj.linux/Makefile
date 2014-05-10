@@ -24,6 +24,7 @@ SOURCES = main.cpp \
 	../Classes/gun/shotMethod/SineShotMethod.cpp \
 	../Classes/gun/shotMethod/StrafeShotMethod.cpp \
 	../Classes/gun/shotMethod/SwapLateralShotMethod.cpp \
+	../Classes/gun/shotMethod/TargetHeroShotMethod.cpp \
 	../Classes/gun/Gun.cpp \
 	../Classes/gun/Ammo.cpp \
 	../Classes/input/InputManager.cpp \

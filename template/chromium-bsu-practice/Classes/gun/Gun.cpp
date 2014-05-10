@@ -20,6 +20,7 @@
 #include "shotMethod/SwapLateralShotMethod.h"
 #include "shotMethod/SineShotMethod.h"
 #include "shotMethod/StrafeShotMethod.h"
+#include "shotMethod/TargetHeroShotMethod.h"
 
 #include "coldTimeMethod/EqualColdTime.h"
 #include "coldTimeMethod/GroupShotColdTimeMethod.h"
@@ -307,7 +308,7 @@ Gun* Gun::createGunSinExample()
 
 	 // shot method
 	 CCPoint pos = ccp(0,-10);
-	 ShotMethod* shotMethod = MiddleShotMethod::create(pos);
+	 ShotMethod* shotMethod = TargetHeroShotMethod::create(pos);
 
 	 // gun
 	 Gun* gun = Gun::create(NULL, ammo, coldTimeMethod, shotMethod);

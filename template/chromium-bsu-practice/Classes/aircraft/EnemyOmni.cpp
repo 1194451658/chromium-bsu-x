@@ -50,6 +50,9 @@ bool EnemyOmni::init(AircraftDef def)
 		createExtraGraphics();
 
 		// create gun
+		Gun* gun = Gun::createEnemyOmniGun();
+		setDefaultGun(gun);
+
 		return true;
 	}
 
@@ -109,6 +112,12 @@ void EnemyOmni::shot(float dt)
 {
 	//static int frame = 0;
 	//frame ++;
+	
+
+	if(defaultGun)
+	{
+		defaultGun->trigger(true);
+	}
 
 	//// middle gun
 	//int frameInMiddleGun = frame % (60*3);

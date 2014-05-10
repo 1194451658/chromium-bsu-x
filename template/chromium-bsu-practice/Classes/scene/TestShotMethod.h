@@ -20,6 +20,7 @@
 #include "cocos2d.h"
 
 #include "Box2D/Box2D.h"
+#include "aircraft/Aircraft.h"
 
 class TestShotMethod : public cocos2d::CCLayer
 {
@@ -39,6 +40,9 @@ public:
 private:
 	void draw();
 	void stepForPhysicsManager(float time);
+
+private:
+       	Aircraft* defaultEnemy;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

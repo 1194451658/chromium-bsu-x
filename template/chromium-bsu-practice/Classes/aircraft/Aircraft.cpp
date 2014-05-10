@@ -230,7 +230,6 @@ Aircraft* Aircraft::createEnemyOmni()
 
 	EnemyOmni* enemy = EnemyOmni::create(aircraftDef);
 	return enemy;
-
 }
 
 Aircraft* Aircraft::createEnemyRayGun()

@@ -50,8 +50,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	// CCScene* pScene = TestPhysicsManager::scene();
 	// CCScene *pScene = TestEffectScene::scene();
 	// CCScene* pScene = TestArmatureScene::scene();
-	CCScene* pScene = TestAircraft::scene();
-	// CCScene* pScene = TestShotMethod::scene();
+	// CCScene* pScene = TestAircraft::scene();
+	CCScene* pScene = TestShotMethod::scene();
 
 	// CCScene* pScene = TestControl::scene();
 

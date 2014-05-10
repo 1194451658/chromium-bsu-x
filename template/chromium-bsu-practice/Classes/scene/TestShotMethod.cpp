@@ -44,6 +44,8 @@
 #include "gun/shotMethod/SineShotMethod.h"
 #include "gun/shotMethod/StrafeShotMethod.h"
 #include "gun/shotMethod/SwapLateralShotMethod.h"
+#include "gun/shotMethod/TargetHeroShotMethod.h"
+
 
 USING_NS_CC_EXT;
 
@@ -118,6 +120,13 @@ bool TestShotMethod::init()
 
 	GameController::sharedInstance()->setPlayerAircraft(hero);
 
+	// n-----
+	// enemy
+	// -------
+	Aircraft* enemy = Aircraft::createEnemyOmni();
+	addChild(enemy);
+	defaultEnemy = enemy;
+
 	// ------------
 	// create menu
 	// -------------
@@ -150,6 +159,12 @@ bool TestShotMethod::init()
 	// swap
 	{
 		CCMenuItemFont* menuItem = CCMenuItemFont::create("swap lateral shot method", this, menu_selector(TestShotMethod::menuItemCallback));
+		menu->addChild(menuItem);
+	}
+
+	// target hero
+	{
+		CCMenuItemFont* menuItem = CCMenuItemFont::create("target hero method", this, menu_selector(TestShotMethod::menuItemCallback));
 		menu->addChild(menuItem);
 	}
 
@@ -222,6 +237,19 @@ void TestShotMethod::menuItemCallback(CCObject* menuItem)
 				CCPoint pos = ccp(30, 10);
 				SwapLateralShotMethod* shotMethod = SwapLateralShotMethod::create(pos);
 				heroGun->setShotMethod(shotMethod);
+			}
+		}
+		else if(labelString == "target hero method")
+		{
+			if(heroGun)
+			{
+				CCPoint pos = ccp(30, 10);
+				TargetHeroShotMethod* shotMethod = TargetHeroShotMethod::create(pos);
+				// heroGun->setShotMethod(shotMethod);
+				if(defaultEnemy)
+				{
+					// defaultEnemy->setDefaultGun(
+				}
 			}
 		}
 	}
