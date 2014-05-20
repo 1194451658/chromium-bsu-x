@@ -9,6 +9,13 @@
 #include "scene/TestControl.h"
 #include "scene/TestShotMethod.h"
 
+#include "test/engine/TestTinyXml.h"
+#include "scene/TestEnterScreenTrigger.h"
+#include "test/engine/TestBox2d.h"
+#include "scene/TestMapAndTrigger.h"
+
+#include "test/other/TestFallingLeaf.h"
+
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -50,10 +57,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	// CCScene* pScene = TestPhysicsManager::scene();
 	// CCScene *pScene = TestEffectScene::scene();
 	// CCScene* pScene = TestArmatureScene::scene();
-	CCScene* pScene = TestAircraft::scene();
+	 //CCScene* pScene = TestAircraft::scene();
 	// CCScene* pScene = TestShotMethod::scene();
-
+	 //CCScene* pScene = TestTinyXml::scene();
 	// CCScene* pScene = TestControl::scene();
+	//CCScene* pScene = TestEnterScreenTrigger::scene();
+	//CCScene* pScene = TestBox2d::scene();
+	CCScene* pScene = TestMapAndTrigger::scene();
+
+	//CCScene* pScene = TestFallingLeaf::scene();
 
     // run
     pDirector->runWithScene(pScene);

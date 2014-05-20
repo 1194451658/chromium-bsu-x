@@ -35,7 +35,6 @@ public:
 
 
 private:
-	void draw();
 	void stepForPhysicsManager(float time);
 };
 

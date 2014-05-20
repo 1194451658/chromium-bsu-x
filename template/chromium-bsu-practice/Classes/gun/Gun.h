@@ -82,6 +82,9 @@ private:
 	
 	bool triggerPressed;
 	Aircraft* ownerAircraft;
+
+private:
+	static int serialNumber;
 };
 #endif
 

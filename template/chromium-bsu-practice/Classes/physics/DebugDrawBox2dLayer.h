@@ -1,4 +1,3 @@
-
 // Copyright 2014 Wanwan Zhang
 
 // This program is free software: you can redistribute it and/or modify
@@ -14,40 +13,19 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-#ifndef __ENEMY_STRAIGHT_H__
-#define __ENEMY_STRAIGHT_H__
+#ifndef __DEBUG_DRAW_BOX2D_LAYER_H__
+#define __DEBUG_DRAW_BOX2D_LAYER_H__
 
 #include "cocos2d.h"
-#include "GameObject.h"
-#include "Aircraft.h"
-
-//#include "gun/HeroDefaultGun.h"
-#include "gun/Gun.h"
 
 USING_NS_CC;
 
-class EnemyStraight : public Aircraft
+class DebugDrawBox2dLayer : public CCNode
 {
 public:
-	static EnemyStraight* create(AircraftDef def);
-	bool init(AircraftDef def);
-	void move(float dt);
-	void shot(float dt);
-	~EnemyStraight();
+	CREATE_FUNC(DebugDrawBox2dLayer);
 
-public:
-	// update
-	virtual void update(float time);
-
-	// void createExtraGraphics();
-
-protected:
-
-private: 
-	EnemyStraight();
-
-	static int serialNumber;
+	void draw();
 };
 
 #endif

@@ -22,6 +22,8 @@
 
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
+#include "physics/GLES-Render.h"
+#include "physics/DebugDrawBox2dLayer.h"
 
 USING_NS_CC;
 
@@ -54,16 +56,29 @@ public:
 	b2World* getPhysicsWorld() {return world;};
 	void step(float time);
 
+	// debug draw
+	void enableDebugDraw(bool enable);
+
+	// create screen collider
+	void createScreenCollider();
+
 private:
 	bool init(b2Vec2& gravity);
+	PhysicsManager();
 
 public:
 	static b2Vec2 gravity;
 	static float PTM_RATIO	;
 
-	enum  { PHYSICS_GROUP_UNKNOWN = 0, PHYSICS_GROUP_JUSTICE = -1, PHYSICS_GROUP_ENEMY = -2};
-	enum Category { AIRCRAFT = 1,
-			AMMO	= 1 << 2
+	enum  { PHYSICS_GROUP_UNKNOWN = 0,
+			PHYSICS_GROUP_JUSTICE = -1,
+			PHYSICS_GROUP_ENEMY = -2
+	};
+
+	enum Category { AIRCRAFT			= 1,
+					AMMO				= 1 << 2,
+					ONSCREEN_TRIGGER	= 1 << 3,
+					SCREEN				= 1 << 4
 	};
 
 private:
@@ -72,11 +87,16 @@ private:
 
 	CCArray* stepCallbacksToAdd;
 	CCArray* stepCallbacksToDelete;
-
 	bool	stepCallbacksLocked;
 
+	// step iteration number
 	int velocityInteration;
 	int positionIteration;
+
+	// debug draw
+	GLESDebugDraw* debugDraw;
+	DebugDrawBox2dLayer* debugDrawLayer;
+	uint32 flags;
 
 };
 

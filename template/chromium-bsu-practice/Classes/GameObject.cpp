@@ -42,9 +42,15 @@ bool GameObject::init()
 		PhysicsManager::sharedInstance()->addStepCallbackHandler(this);
 	}
 
-	name = "GameObject";
-
 	return true;
+}
+
+GameObject::GameObject()
+{
+	graphics = NULL;
+	physics = NULL;
+
+	name = "GameObject";
 }
 
 GameObject::~GameObject()
@@ -59,7 +65,7 @@ GameObject::~GameObject()
 
 void GameObject::prePhysicsStep(float time, PhysicsManager* manager) {
 	
-	const CCPoint& pos = getPosition();			// suppose that GameObject Is In The Top Layer.
+	const CCPoint& pos = getPositionInWorldSpace();
 	float angle	= graphics->getRotation();		// puppose that GameObject doesn't rotate;
 
 	b2Vec2 physicsPos(pos.x / PhysicsManager::PTM_RATIO, pos.y / PhysicsManager::PTM_RATIO);
@@ -71,7 +77,15 @@ void GameObject::prePhysicsStep(float time, PhysicsManager* manager) {
 void GameObject::postPhysicsStep(float time, PhysicsManager* manager) {
 
 	b2Vec2 pos = physics->GetPosition();
-	setPosition(pos.x * PhysicsManager::PTM_RATIO, pos.y * PhysicsManager::PTM_RATIO);
+	CCPoint posPoint = ccp(pos.x * PhysicsManager::PTM_RATIO, pos.y * PhysicsManager::PTM_RATIO);
+	
+	CCNode* parent = getParent();
+	if(parent)
+	{
+		posPoint = parent->convertToNodeSpace(posPoint);
+	}
+
+	setPosition(posPoint);
 
 	float angle = physics->GetAngle();
 	graphics->setRotation(CC_RADIANS_TO_DEGREES(-angle));
@@ -189,6 +203,21 @@ CCPoint GameObject::getPositionInWorldSpace()
 	}
 
 	return getPosition();
+}
+
+CCPoint GameObject::convertToParentSpace(CCPoint& pos)
+{
+	CCNode* parent = getParent();
+	CCPoint posInParent = pos;
+
+	if(parent)
+	{
+
+		CCPoint posInWorld = convertToWorldSpace(pos);
+		posInParent = parent->convertToNodeSpace(posInWorld);
+	}
+
+	return posInParent;
 }
 
 bool GameObject::isOutScreen(float extraOutX , float extraOutY)

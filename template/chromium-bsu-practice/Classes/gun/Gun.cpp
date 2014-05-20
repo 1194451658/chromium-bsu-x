@@ -25,12 +25,16 @@
 #include "coldTimeMethod/EqualColdTime.h"
 #include "coldTimeMethod/GroupShotColdTimeMethod.h"
 
+int Gun::serialNumber = 0;
 
 bool Gun::init(Aircraft* owner, Ammo* prototypeAmmo, ColdTimeMethod* coldTimeMethod, ShotMethod* shotMethod)
 {
 	if(GameObject::init())
 	{
-		name = "Gun";
+		serialNumber++;
+		std::stringstream nameStr;
+		nameStr<<"Gun"<<serialNumber;
+		name = nameStr.str();
 
 		// physics group
 		if(owner)
@@ -287,7 +291,7 @@ Gun* Gun::createGunSinExample()
 	 Ammo* ammo = Ammo::createEnemyAmmo0();
 
 	 // cold time
-	 ColdTimeMethod* coldTimeMethod = NULL;
+	 ColdTimeMethod* coldTimeMethod = EqualColdTime::create(1.0/60 * 40);
 
 	 // shot method
 	 CCPoint pos = ccp(0,-10);

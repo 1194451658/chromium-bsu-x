@@ -1,0 +1,47 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="trigger/enemyStraightTrigger" itemID="5374beb4-0000034c" lastModified="1400589742" lastUniqueIdentifier="11" transformCenterPoint="#E.58, #A.59">
+  <timeline>
+    <DOMTimeline name="enemyStraightTrigger">
+      <layers>
+        <DOMLayer name="图层 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="fmkeorjoifad2ewr" centerPoint3DX="223.75" centerPoint3DY="232.95">
+                  <matrix>
+                    <Matrix tx="153.25" ty="199.95"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="70.5" y="33"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyStraight" centerPoint3DX="138" centerPoint3DY="103.95">
+                  <matrix>
+                    <Matrix tx="106" ty="71.95"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="32" y="32"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyStraight" selected="true" centerPoint3DX="262.25" centerPoint3DY="115.95">
+                  <matrix>
+                    <Matrix tx="230.25" ty="83.95"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="32" y="32"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="_contentSize" color="#9933CC" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

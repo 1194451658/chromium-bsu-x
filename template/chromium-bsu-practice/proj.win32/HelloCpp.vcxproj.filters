@@ -46,6 +46,18 @@
     <Filter Include="Classes\engine\action">
       <UniqueIdentifier>{85104e68-a580-475b-8002-b5ce5c715523}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\engine\xfl">
+      <UniqueIdentifier>{b446e110-c165-44eb-af47-8962b0f31eff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\trigger">
+      <UniqueIdentifier>{ef6710aa-e012-4967-8ec1-432a752aca19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\engine\tinyxml2">
+      <UniqueIdentifier>{aabaf44d-2d5a-45e6-aa06-a66a13690ada}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\test\other">
+      <UniqueIdentifier>{342292ee-42c1-4906-9b59-98b0e50501e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -102,9 +114,6 @@
     <ClCompile Include="..\Classes\map\AutoTiledBackground.cpp">
       <Filter>Classes\map</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\map\Map1.cpp">
-      <Filter>Classes\map</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\physics\GB2ShapeCache-x.cpp">
       <Filter>Classes\physics</Filter>
     </ClCompile>
@@ -155,6 +164,36 @@
     </ClCompile>
     <ClCompile Include="..\Classes\aircraft\EnemyBoss01.cpp">
       <Filter>Classes\aircraft</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\engine\TestTinyXml.cpp">
+      <Filter>Classes\test\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\xfl\XflParser.cpp">
+      <Filter>Classes\engine\xfl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\TestEnterScreenTrigger.cpp">
+      <Filter>Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\physics\DebugDrawBox2dLayer.cpp">
+      <Filter>Classes\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\trigger\EnterScreenTrigger.cpp">
+      <Filter>Classes\trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\tinyXml2\tinyxml2utils.cpp">
+      <Filter>Classes\engine\tinyxml2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\engine\TestBox2d.cpp">
+      <Filter>Classes\test\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\map\Map.cpp">
+      <Filter>Classes\map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\TestMapAndTrigger.cpp">
+      <Filter>Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\other\TestFallingLeaf.cpp">
+      <Filter>Classes\test\other</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -225,9 +264,6 @@
       <Filter>Classes\input</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\map\AutoTiledBackground.h">
-      <Filter>Classes\map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\map\Map1.h">
       <Filter>Classes\map</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\physics\GB2ShapeCache-x.h">
@@ -307,6 +343,36 @@
     </ClInclude>
     <ClInclude Include="..\Classes\aircraft\EnemyBoss01.h">
       <Filter>Classes\aircraft</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\engine\TestTinyXml.h">
+      <Filter>Classes\test\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\xfl\XflParser.h">
+      <Filter>Classes\engine\xfl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\TestEnterScreenTrigger.h">
+      <Filter>Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\physics\DebugDrawBox2dLayer.h">
+      <Filter>Classes\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\trigger\EnterScreenTrigger.h">
+      <Filter>Classes\trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\tinyXml2\tinyxml2utils.h">
+      <Filter>Classes\engine\tinyxml2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\engine\TestBox2d.h">
+      <Filter>Classes\test\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\map\Map.h">
+      <Filter>Classes\map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\TestMapAndTrigger.h">
+      <Filter>Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\other\TestFallingLeaf.h">
+      <Filter>Classes\test\other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

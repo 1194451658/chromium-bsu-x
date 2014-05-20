@@ -32,8 +32,12 @@ class GameObject : public CCNode, public PhysicsStepCallbackHandler
 {
 
 public:
+	GameObject();
 	~GameObject();
-	virtual void update(float dt) {CCLOG("GameObject::update called !");} ;
+	virtual void update(float dt)
+	{
+		// CCLOG("GameObject::update called !");
+	} ;
 
 	// physics
 	void prePhysicsStep(float time, PhysicsManager* manager);
@@ -54,6 +58,7 @@ public:
 
 	// utils
 	CCPoint getPositionInWorldSpace();
+	CCPoint convertToParentSpace(CCPoint& pos);
 	bool isOutScreen(float extraOutX = 0, float extraOutY = 0);
 
 protected:

@@ -78,23 +78,12 @@ bool TestPhysicsManager::init()
 	// -------------
 	// init physics
 	// -----------
-	b2World* physicsWorld = PhysicsManager::sharedInstance()->getPhysicsWorld();
+	PhysicsManager::sharedInstance()->enableDebugDraw(true);
 	GB2ShapeCache::sharedGB2ShapeCache()->addShapesWithFile("png/physics.plist");
 
 	// step
 	schedule(schedule_selector(TestPhysicsManager::stepForPhysicsManager));
 
-	// debug draw
-	GLESDebugDraw* debugDraw = new GLESDebugDraw(PTM_RATIO);
-	physicsWorld->SetDebugDraw(debugDraw);
-
-	uint32 flags = 0;
-	flags += b2Draw::e_shapeBit;
-	flags += b2Draw::e_jointBit;
-	// flags += b2Draw::e_aabbBit;
-	// flags += b2Draw::e_pairBit;
-	// flags += b2Draw::e_centerOfMassBit;
-	debugDraw->SetFlags(flags);
 
 	// -----------------
 	// Init Audio
@@ -134,16 +123,4 @@ bool TestPhysicsManager::init()
 void TestPhysicsManager::stepForPhysicsManager(float time)
 {
 	PhysicsManager::sharedInstance()->step(time);
-}
-
-void TestPhysicsManager::draw()
-{
-	CCLayer::draw();
-
-	ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
-
-	kmGLPushMatrix();
-	b2World* world = PhysicsManager::sharedInstance()->getPhysicsWorld();
-	world->DrawDebugData();
-	kmGLPopMatrix();
 }

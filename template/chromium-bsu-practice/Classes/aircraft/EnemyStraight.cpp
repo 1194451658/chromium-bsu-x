@@ -18,6 +18,8 @@
 #include "EnemyStraight.h"
 #include "math.h"
 
+int EnemyStraight::serialNumber = 0;
+
 EnemyStraight* EnemyStraight::create(AircraftDef def)
 {
 	EnemyStraight* hero = new EnemyStraight();
@@ -42,7 +44,10 @@ bool EnemyStraight::init(AircraftDef def)
 	// init base class
 	if(Aircraft::init(def))
 	{
-		name = "EnemyStraight";
+		serialNumber++;
+		std::stringstream nameStr;
+		nameStr<<"EnemeyStraight"<<serialNumber;
+		name = nameStr.str();
 
 		// create gun
 		defaultGun = Gun::createEnemyStraightGun();
@@ -63,7 +68,7 @@ EnemyStraight::~EnemyStraight()
 
 void EnemyStraight::move(float dt)
 {
-	setPositionY(getPositionY() + aircraftDef.straightYVelocity * dt);
+	// setPositionY(getPositionY() + aircraftDef.straightYVelocity * dt);
 
 	if(isOutScreen(0, graphics->getContentSize().height))
 	{
@@ -77,12 +82,14 @@ void EnemyStraight::shot(float dt)
 	static int frame = 0;
 	frame ++;
 
-	if(frame % 60 == 0)
-		defaultGun->trigger(true);
-	else
-	{
-		defaultGun->trigger(false);
-	}
+	//if(frame % 60 == 0)
+	//	defaultGun->trigger(true);
+	//else
+	//{
+	//	defaultGun->trigger(false);
+	//}
+
+	defaultGun->trigger(true);
 }
 
 void EnemyStraight::update(float dt)

@@ -14,40 +14,30 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-#ifndef __ENEMY_STRAIGHT_H__
-#define __ENEMY_STRAIGHT_H__
+#ifndef __TEST_BOX_2D_H__
+#define __TEST_BOX_2D_H__
 
 #include "cocos2d.h"
-#include "GameObject.h"
-#include "Aircraft.h"
 
-//#include "gun/HeroDefaultGun.h"
-#include "gun/Gun.h"
+#include "Box2D/Box2D.h"
 
-USING_NS_CC;
-
-class EnemyStraight : public Aircraft
+class TestBox2d : public cocos2d::CCLayer
 {
 public:
-	static EnemyStraight* create(AircraftDef def);
-	bool init(AircraftDef def);
-	void move(float dt);
-	void shot(float dt);
-	~EnemyStraight();
+	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
+	virtual bool init();  
 
-public:
-	// update
-	virtual void update(float time);
+	// there's no 'id' in cpp, so we recommend returning the class instance pointer
+	static cocos2d::CCScene* scene();
 
-	// void createExtraGraphics();
+	// implement the "static node()" method manually
+	CREATE_FUNC(TestBox2d);
 
-protected:
 
-private: 
-	EnemyStraight();
+private:
+	void stepForPhysicsManager(float time);
 
-	static int serialNumber;
+	void testShapeCenter();
 };
 
-#endif
+#endif // __HELLOWORLD_SCENE_H__

@@ -18,10 +18,11 @@
 #include "PhysicsManager.h"
 #include "GameObject.h"
 
+
 static PhysicsManager* _sharedInstance = NULL;
 
 float PhysicsManager::PTM_RATIO	= 32;
-// b2Vec2 PhysicsManager::gravity = b2Vec2(0.0, -10.0);
+//b2Vec2 PhysicsManager::gravity = b2Vec2(0.0, -10.0);
 b2Vec2 PhysicsManager::gravity = b2Vec2(0.0, 0.0);
 
 PhysicsManager*  PhysicsManager::sharedInstance()
@@ -40,6 +41,42 @@ PhysicsManager*  PhysicsManager::sharedInstance()
 	}
 
 	return _sharedInstance;
+}
+
+PhysicsManager::PhysicsManager()
+{
+	world = NULL;
+	stepCallbacks = NULL;
+
+	stepCallbacksToAdd = NULL;
+	stepCallbacksToDelete = NULL;
+	stepCallbacksLocked = NULL;
+
+	// step iteration number
+	velocityInteration = 10;
+	positionIteration = 10;
+
+	// debug draw
+	debugDraw = NULL;
+	debugDrawLayer = NULL;
+
+	flags = 0;
+	flags += b2Draw::e_shapeBit;
+	flags += b2Draw::e_jointBit;
+	//flags += b2Draw::e_aabbBit;
+	//flags += b2Draw::e_pairBit;
+	flags += b2Draw::e_centerOfMassBit;
+}
+
+PhysicsManager::~PhysicsManager()
+{
+	CC_SAFE_RELEASE(stepCallbacks);
+	CC_SAFE_RELEASE(stepCallbacksToAdd);
+	CC_SAFE_RELEASE(stepCallbacksToDelete);
+	CC_SAFE_DELETE(world);
+
+	CC_SAFE_RELEASE(debugDrawLayer);
+	CC_SAFE_DELETE(debugDraw);
 }
 
 bool PhysicsManager::init(b2Vec2& gravity)
@@ -63,15 +100,31 @@ bool PhysicsManager::init(b2Vec2& gravity)
 	stepCallbacksToAdd->retain();
 	stepCallbacksToDelete->retain();
 
+	// create debug draw
+	debugDraw = new GLESDebugDraw(PTM_RATIO);
+	debugDraw->SetFlags(flags);
+	world->SetDebugDraw(debugDraw);
+
+	debugDrawLayer = DebugDrawBox2dLayer::create();
+	debugDrawLayer->retain();
+
 	return true;
 }
 
-PhysicsManager::~PhysicsManager()
+void PhysicsManager::enableDebugDraw(bool enable)
 {
-	CC_SAFE_RELEASE(stepCallbacks);
-	CC_SAFE_RELEASE(stepCallbacksToAdd);
-	CC_SAFE_RELEASE(stepCallbacksToDelete);
-	CC_SAFE_DELETE(world);
+	if(enable)
+	{
+			CCDirector::sharedDirector()->setNotificationNode(debugDrawLayer);
+	}
+	else
+	{
+		// disable
+		if(CCDirector::sharedDirector()->getNotificationNode() == debugDrawLayer)
+		{
+			CCDirector::sharedDirector()->setNotificationNode(NULL);
+		}
+	}
 }
 
 void addStepCallbackHandler(PhysicsStepCallbackHandler* handler);
@@ -197,6 +250,41 @@ void PhysicsManager::BeginContact(b2Contact* contact)
 			lb->BeginContact(contact);
 
 		contact = contact->GetNext();
+	}
+}
+
+void PhysicsManager::createScreenCollider()
+{
+	CCSize size = CCDirector::sharedDirector()->getWinSize();
+	CCPoint pos = ccp(size.width/2, size.height/2);
+
+	b2World* world = PhysicsManager::sharedInstance()->getPhysicsWorld();
+
+	// create the physics shape from graphics content size
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.fixedRotation = true;
+	bodyDef.position = b2Vec2(pos.x/PhysicsManager::PTM_RATIO, pos.y/PhysicsManager::PTM_RATIO);
+	b2Body* body = world->CreateBody(&bodyDef);
+
+	b2PolygonShape shape;
+	shape.SetAsBox(size.width/2/PhysicsManager::PTM_RATIO,
+		size.height/2/PhysicsManager::PTM_RATIO);
+	body->CreateFixture(&shape, 0);
+
+	// set fixture collide filter
+	b2Filter filter;
+	filter.groupIndex	= PhysicsManager::PHYSICS_GROUP_UNKNOWN;
+	filter.categoryBits = PhysicsManager::SCREEN;
+	filter.maskBits		= PhysicsManager::ONSCREEN_TRIGGER;
+
+	b2Fixture* fixtureList = body->GetFixtureList();
+
+	while(NULL != fixtureList)
+	{
+		fixtureList->SetFilterData(filter);
+		fixtureList->SetSensor(true);
+		fixtureList = fixtureList->GetNext();
 	}
 }
 

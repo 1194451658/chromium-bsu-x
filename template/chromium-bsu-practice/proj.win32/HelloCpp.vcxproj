@@ -141,6 +141,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\engine\CCDrawGameObjectShadowNode.cpp" />
     <ClCompile Include="..\Classes\engine\CCSpriteWithShadow.cpp" />
+    <ClCompile Include="..\Classes\engine\tinyXml2\tinyxml2utils.cpp" />
+    <ClCompile Include="..\Classes\engine\xfl\XflParser.cpp" />
     <ClCompile Include="..\Classes\GameController.cpp" />
     <ClCompile Include="..\Classes\GameObject.cpp" />
     <ClCompile Include="..\Classes\gun\Ammo.cpp" />
@@ -156,7 +158,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\input\InputManager.cpp" />
     <ClCompile Include="..\Classes\map\AutoTiledBackground.cpp" />
-    <ClCompile Include="..\Classes\map\Map1.cpp" />
+    <ClCompile Include="..\Classes\map\Map.cpp" />
+    <ClCompile Include="..\Classes\physics\DebugDrawBox2dLayer.cpp" />
     <ClCompile Include="..\Classes\physics\GB2ShapeCache-x.cpp" />
     <ClCompile Include="..\Classes\physics\GLES-Render.cpp" />
     <ClCompile Include="..\Classes\physics\PhysicsManager.cpp" />
@@ -164,8 +167,14 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\scene\TestArmatureScene.cpp" />
     <ClCompile Include="..\Classes\scene\TestControl.cpp" />
     <ClCompile Include="..\Classes\scene\TestEffect.cpp" />
+    <ClCompile Include="..\Classes\scene\TestEnterScreenTrigger.cpp" />
+    <ClCompile Include="..\Classes\scene\TestMapAndTrigger.cpp" />
     <ClCompile Include="..\Classes\scene\TestPhysicsManager.cpp" />
     <ClCompile Include="..\Classes\scene\TestShotMethod.cpp" />
+    <ClCompile Include="..\Classes\test\engine\TestBox2d.cpp" />
+    <ClCompile Include="..\Classes\test\engine\TestTinyXml.cpp" />
+    <ClCompile Include="..\Classes\test\other\TestFallingLeaf.cpp" />
+    <ClCompile Include="..\Classes\trigger\EnterScreenTrigger.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -190,6 +199,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\engine\action\CCRandTextureForAmmo.h" />
     <ClInclude Include="..\Classes\engine\CCDrawGameObjectShadowNode.h" />
     <ClInclude Include="..\Classes\engine\CCSpriteWithShadow.h" />
+    <ClInclude Include="..\Classes\engine\tinyXml2\tinyxml2utils.h" />
+    <ClInclude Include="..\Classes\engine\xfl\XflParser.h" />
     <ClInclude Include="..\Classes\GameController.h" />
     <ClInclude Include="..\Classes\GameObject.h" />
     <ClInclude Include="..\Classes\gun\Ammo.h" />
@@ -207,7 +218,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\input\InputManager.h" />
     <ClInclude Include="..\Classes\map\AutoTiledBackground.h" />
-    <ClInclude Include="..\Classes\map\Map1.h" />
+    <ClInclude Include="..\Classes\map\Map.h" />
+    <ClInclude Include="..\Classes\physics\DebugDrawBox2dLayer.h" />
     <ClInclude Include="..\Classes\physics\GB2ShapeCache-x.h" />
     <ClInclude Include="..\Classes\physics\GLES-Render.h" />
     <ClInclude Include="..\Classes\physics\PhysicsManager.h" />
@@ -215,9 +227,15 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\scene\TestArmatureScene.h" />
     <ClInclude Include="..\Classes\scene\TestControl.h" />
     <ClInclude Include="..\Classes\scene\TestEffect.h" />
+    <ClInclude Include="..\Classes\scene\TestEnterScreenTrigger.h" />
+    <ClInclude Include="..\Classes\scene\TestMapAndTrigger.h" />
     <ClInclude Include="..\Classes\scene\TestPhysicsManager.h" />
     <ClInclude Include="..\Classes\scene\TestShotMethod.h" />
+    <ClInclude Include="..\Classes\test\engine\TestBox2d.h" />
     <ClInclude Include="..\Classes\test\engine\TestKeyUpDown.h" />
+    <ClInclude Include="..\Classes\test\engine\TestTinyXml.h" />
+    <ClInclude Include="..\Classes\test\other\TestFallingLeaf.h" />
+    <ClInclude Include="..\Classes\trigger\EnterScreenTrigger.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>

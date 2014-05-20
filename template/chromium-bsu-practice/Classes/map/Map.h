@@ -14,40 +14,28 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#ifndef __MAP_H__
+#define __MAP_H__
 
-#ifndef __ENEMY_STRAIGHT_H__
-#define __ENEMY_STRAIGHT_H__
 
 #include "cocos2d.h"
-#include "GameObject.h"
-#include "Aircraft.h"
-
-//#include "gun/HeroDefaultGun.h"
-#include "gun/Gun.h"
 
 USING_NS_CC;
 
-class EnemyStraight : public Aircraft
+
+class Map : public CCNode, public tinyxml2::XMLVisitor
 {
-public:
-	static EnemyStraight* create(AircraftDef def);
-	bool init(AircraftDef def);
-	void move(float dt);
-	void shot(float dt);
-	~EnemyStraight();
 
 public:
-	// update
-	virtual void update(float time);
+	static Map* create(tinyxml2::XMLDocument* mapDef);
 
-	// void createExtraGraphics();
+	Map();
+	~Map();
 
-protected:
+	bool init(tinyxml2::XMLDocument* mapDef);
 
-private: 
-	EnemyStraight();
 
-	static int serialNumber;
+	virtual bool VisitEnter (const tinyxml2::XMLElement & element, const  tinyxml2::XMLAttribute * attribute);
 };
 
-#endif
+#endif // !__MAP_H__
