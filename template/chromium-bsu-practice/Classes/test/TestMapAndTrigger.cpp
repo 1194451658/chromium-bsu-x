@@ -17,11 +17,11 @@
 #include "TestMapAndTrigger.h"
 
 #include <stdlib.h>
-#include "physics/GB2ShapeCache-x.h"
+#include "engine/physics/GB2ShapeCache-x.h"
 
 #include "engine/xfl/XflParser.h"
 #include "map/Map.h"
-#include "physics/PhysicsManager.h"
+#include "engine/physics/PhysicsManager.h"
 
 USING_NS_CC;
 

@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "TestBox2d.h"
-#include "physics/PhysicsManager.h"
+#include "engine/physics/PhysicsManager.h"
 #include <stdlib.h>
 
 #include "cocos-ext.h"

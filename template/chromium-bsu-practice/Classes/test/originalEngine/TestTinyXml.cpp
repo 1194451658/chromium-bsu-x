@@ -15,9 +15,9 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "TestTinyXml.h"
+#include "engine/tinyxml2/tinyxml2utils.h"
 
 #include <stdlib.h>
-#include "engine/tinyXml2/tinyxml2utils.h"
 
 USING_NS_CC;
 

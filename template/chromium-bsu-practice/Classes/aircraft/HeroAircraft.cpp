@@ -16,7 +16,7 @@
 
 
 #include "HeroAircraft.h"
-#include "input/InputManager.h"
+#include "engine/input/InputManager.h"
 
 
 HeroAircraft* HeroAircraft::create(AircraftDef def)

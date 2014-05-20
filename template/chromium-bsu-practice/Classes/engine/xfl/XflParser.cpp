@@ -1,5 +1,21 @@
 
+// Copyright 2014 Wanwan Zhang
+
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 #include "XflParser.h"
+#include "engine/tinyxml2/tinyxml2utils.h"
 
 XflParser* XflParser::_sharedInstance = NULL;
 
@@ -78,4 +94,55 @@ void XflParser::loadXmlToMap(string& rootDir, char* relativeFilePath, map<string
 	{
 		CCLOG("XflParser::loadXmlToMap file %s not exist !", xmlFilePath);
 	}
+}
+
+
+
+
+MatrixElement parseMatrixElement(const tinyxml2::XMLNode* node)
+{
+	MatrixElement matrix;
+
+	const tinyxml2::XMLElement* matrixElement = firstChildElementRecursively(node, "Matrix");
+
+	if(! matrixElement)
+	{
+		return matrix;
+	}
+
+	// parse tx, ty
+	matrixElement->QueryFloatAttribute("tx", &matrix.tx);
+	matrixElement->QueryFloatAttribute("ty", &matrix.ty);
+	matrixElement->QueryFloatAttribute("a", &matrix.a);
+	matrixElement->QueryFloatAttribute("b", &matrix.b);
+
+	return matrix;
+}
+
+CCPoint parseTransformationPoint(const tinyxml2::XMLNode* node)
+{
+	CCPoint point;
+
+	const tinyxml2::XMLElement* pointElement = firstChildElementRecursively(node, "Point");
+	if(!pointElement)
+		return point;
+
+	// parse point
+	pointElement->QueryFloatAttribute("x", &point.x);
+	pointElement->QueryFloatAttribute("y", &point.y);
+
+	return point;
+}
+
+CCSize parseSizeBasedOnTransformationPointAndScale(const tinyxml2::XMLNode* node)
+{
+	MatrixElement matrix = parseMatrixElement(node);
+	CCPoint point = parseTransformationPoint(node);
+
+	CCSize size;
+
+	size.width = point.x * matrix.a * 2;
+	size.height = point.y * matrix.b * 2;
+
+	return size;
 }

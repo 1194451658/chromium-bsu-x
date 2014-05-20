@@ -19,7 +19,7 @@
 #define __ENEMY_RAY_GUN_H__
 
 #include "cocos2d.h"
-#include "GameObject.h"
+#include "engine/GameObject.h"
 #include "Aircraft.h"
 
 //#include "gun/HeroDefaultGun.h"

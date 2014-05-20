@@ -21,7 +21,7 @@
 
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
-#include "physics/PhysicsManager.h"
+#include "engine/physics/PhysicsManager.h"
 #include "engine/CCSpriteWithShadow.h"
 
 #include <string>

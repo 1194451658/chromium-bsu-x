@@ -16,7 +16,7 @@
 
 
 #include "PhysicsManager.h"
-#include "GameObject.h"
+#include "engine/GameObject.h"
 
 
 static PhysicsManager* _sharedInstance = NULL;

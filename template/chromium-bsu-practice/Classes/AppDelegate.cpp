@@ -1,20 +1,23 @@
 #include "AppDelegate.h"
+
 #include "HelloWorldScene.h"
 
+#include "test/originalEngine/TestArmatureScene.h"
+#include "test/originalEngine/TestTinyXml.h"
+#include "test/originalEngine//TestBox2d.h"
+#include "test/originalEngine/TestControl.h"
 
-#include "scene/TestArmatureScene.h"
-#include "scene/TestEffect.h"
-#include "scene/TestPhysicsManager.h"
-#include "scene/TestAircraft.h"
-#include "scene/TestControl.h"
-#include "scene/TestShotMethod.h"
-
-#include "test/engine/TestTinyXml.h"
-#include "scene/TestEnterScreenTrigger.h"
-#include "test/engine/TestBox2d.h"
-#include "scene/TestMapAndTrigger.h"
+#include "test/engine/TestPhysicsManager.h"
 
 #include "test/other/TestFallingLeaf.h"
+
+#include "test/TestMapAndTrigger.h"
+#include "test/TestEffect.h"
+#include "test/TestAircraft.h"
+
+#include "test/TestShotMethod.h"
+
+
 
 USING_NS_CC;
 
@@ -64,6 +67,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//CCScene* pScene = TestEnterScreenTrigger::scene();
 	//CCScene* pScene = TestBox2d::scene();
 	CCScene* pScene = TestMapAndTrigger::scene();
+	//CCScene* pScene = HelloWorld::scene();
 
 	//CCScene* pScene = TestFallingLeaf::scene();
 

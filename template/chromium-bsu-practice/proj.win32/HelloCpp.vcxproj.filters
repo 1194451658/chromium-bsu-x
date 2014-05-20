@@ -25,14 +25,8 @@
     <Filter Include="Classes\gun\shotMethod">
       <UniqueIdentifier>{091614a2-764c-47f9-a199-004bc225eea3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\input">
-      <UniqueIdentifier>{c4f49c2a-965e-415f-9737-55181847bf03}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\map">
       <UniqueIdentifier>{0cef207b-13e6-427a-bf86-33ffb1770b07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\physics">
-      <UniqueIdentifier>{74232fba-0779-45fb-9fa6-165fb7a4ab69}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\scene">
       <UniqueIdentifier>{5ab3f309-64e8-4946-b435-735eb58e4d04}</UniqueIdentifier>
@@ -49,14 +43,23 @@
     <Filter Include="Classes\engine\xfl">
       <UniqueIdentifier>{b446e110-c165-44eb-af47-8962b0f31eff}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\trigger">
-      <UniqueIdentifier>{ef6710aa-e012-4967-8ec1-432a752aca19}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\engine\tinyxml2">
-      <UniqueIdentifier>{aabaf44d-2d5a-45e6-aa06-a66a13690ada}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\test\other">
       <UniqueIdentifier>{342292ee-42c1-4906-9b59-98b0e50501e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\engine\physics">
+      <UniqueIdentifier>{74232fba-0779-45fb-9fa6-165fb7a4ab69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\engine\input">
+      <UniqueIdentifier>{c4f49c2a-965e-415f-9737-55181847bf03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\map\trigger">
+      <UniqueIdentifier>{ef6710aa-e012-4967-8ec1-432a752aca19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\test\originalEngine">
+      <UniqueIdentifier>{59b91daa-a8d9-4cfa-aee6-8621c6a12e6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\engine\tinyxml2">
+      <UniqueIdentifier>{f5b1af42-06c5-4286-a792-72222f6ca779}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -108,32 +111,8 @@
     <ClCompile Include="..\Classes\gun\shotMethod\SwapLateralShotMethod.cpp">
       <Filter>Classes\gun\shotMethod</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\input\InputManager.cpp">
-      <Filter>Classes\input</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\map\AutoTiledBackground.cpp">
       <Filter>Classes\map</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\physics\GB2ShapeCache-x.cpp">
-      <Filter>Classes\physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\physics\GLES-Render.cpp">
-      <Filter>Classes\physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\physics\PhysicsManager.cpp">
-      <Filter>Classes\physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\scene\TestArmatureScene.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\scene\TestEffect.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameObject.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GameController.cpp">
-      <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\aircraft\EnemyBoss00.cpp">
       <Filter>Classes\aircraft</Filter>
@@ -141,20 +120,8 @@
     <ClCompile Include="..\Classes\aircraft\EnemyOmni.cpp">
       <Filter>Classes\aircraft</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\scene\TestPhysicsManager.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\scene\TestAircraft.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\scene\TestControl.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\aircraft\EnemyStraight.cpp">
       <Filter>Classes\aircraft</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\scene\TestShotMethod.cpp">
-      <Filter>Classes\scene</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\gun\shotMethod\TargetHeroShotMethod.cpp">
       <Filter>Classes\gun\shotMethod</Filter>
@@ -165,35 +132,71 @@
     <ClCompile Include="..\Classes\aircraft\EnemyBoss01.cpp">
       <Filter>Classes\aircraft</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\test\engine\TestTinyXml.cpp">
-      <Filter>Classes\test\engine</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\engine\xfl\XflParser.cpp">
       <Filter>Classes\engine\xfl</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\scene\TestEnterScreenTrigger.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\physics\DebugDrawBox2dLayer.cpp">
-      <Filter>Classes\physics</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\trigger\EnterScreenTrigger.cpp">
-      <Filter>Classes\trigger</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\engine\tinyXml2\tinyxml2utils.cpp">
-      <Filter>Classes\engine\tinyxml2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\test\engine\TestBox2d.cpp">
-      <Filter>Classes\test\engine</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\map\Map.cpp">
       <Filter>Classes\map</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\scene\TestMapAndTrigger.cpp">
-      <Filter>Classes\scene</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\test\other\TestFallingLeaf.cpp">
       <Filter>Classes\test\other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\physics\DebugDrawBox2dLayer.cpp">
+      <Filter>Classes\engine\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\physics\GB2ShapeCache-x.cpp">
+      <Filter>Classes\engine\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\physics\GLES-Render.cpp">
+      <Filter>Classes\engine\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\physics\PhysicsManager.cpp">
+      <Filter>Classes\engine\physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\input\InputManager.cpp">
+      <Filter>Classes\engine\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\map\trigger\EnterScreenTrigger.cpp">
+      <Filter>Classes\map\trigger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\GameObject.cpp">
+      <Filter>Classes\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GameController.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\originalEngine\TestBox2d.cpp">
+      <Filter>Classes\test\originalEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\originalEngine\TestTinyXml.cpp">
+      <Filter>Classes\test\originalEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\engine\TestPhysicsManager.cpp">
+      <Filter>Classes\test\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\originalEngine\TestArmatureScene.cpp">
+      <Filter>Classes\test\originalEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\originalEngine\TestControl.cpp">
+      <Filter>Classes\test\originalEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\TestAircraft.cpp">
+      <Filter>Classes\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\TestEffect.cpp">
+      <Filter>Classes\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\TestMapAndTrigger.cpp">
+      <Filter>Classes\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\TestShotMethod.cpp">
+      <Filter>Classes\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\test\engine\TestPhysicsEditor.cpp">
+      <Filter>Classes\test\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\tinyxml2\tinyxml2utils.cpp">
+      <Filter>Classes\engine\tinyxml2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -260,32 +263,8 @@
     <ClInclude Include="..\Classes\gun\shotMethod\SwapLateralShotMethod.h">
       <Filter>Classes\gun\shotMethod</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\input\InputManager.h">
-      <Filter>Classes\input</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\map\AutoTiledBackground.h">
       <Filter>Classes\map</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\physics\GB2ShapeCache-x.h">
-      <Filter>Classes\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\physics\GLES-Render.h">
-      <Filter>Classes\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\physics\PhysicsManager.h">
-      <Filter>Classes\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\scene\TestArmatureScene.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\scene\TestEffect.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\test\engine\TestKeyUpDown.h">
-      <Filter>Classes\test\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\GameObject.h">
-      <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\effect\Electric.h">
       <Filter>Classes\effect</Filter>
@@ -311,29 +290,14 @@
     <ClInclude Include="..\Classes\engine\action\CCRandTextureForAmmo.h">
       <Filter>Classes\engine\action</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\GameController.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\aircraft\EnemyBoss00.h">
       <Filter>Classes\aircraft</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\aircraft\EnemyOmni.h">
       <Filter>Classes\aircraft</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\scene\TestPhysicsManager.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\scene\TestAircraft.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\scene\TestControl.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\aircraft\EnemyStraight.h">
       <Filter>Classes\aircraft</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\scene\TestShotMethod.h">
-      <Filter>Classes\scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\gun\shotMethod\TargetHeroShotMethod.h">
       <Filter>Classes\gun\shotMethod</Filter>
@@ -344,35 +308,74 @@
     <ClInclude Include="..\Classes\aircraft\EnemyBoss01.h">
       <Filter>Classes\aircraft</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\test\engine\TestTinyXml.h">
-      <Filter>Classes\test\engine</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\engine\xfl\XflParser.h">
       <Filter>Classes\engine\xfl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\scene\TestEnterScreenTrigger.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\physics\DebugDrawBox2dLayer.h">
-      <Filter>Classes\physics</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\trigger\EnterScreenTrigger.h">
-      <Filter>Classes\trigger</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\engine\tinyXml2\tinyxml2utils.h">
-      <Filter>Classes\engine\tinyxml2</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\test\engine\TestBox2d.h">
-      <Filter>Classes\test\engine</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\map\Map.h">
       <Filter>Classes\map</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\scene\TestMapAndTrigger.h">
-      <Filter>Classes\scene</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\test\other\TestFallingLeaf.h">
       <Filter>Classes\test\other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\physics\DebugDrawBox2dLayer.h">
+      <Filter>Classes\engine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\physics\GB2ShapeCache-x.h">
+      <Filter>Classes\engine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\physics\GLES-Render.h">
+      <Filter>Classes\engine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\physics\PhysicsManager.h">
+      <Filter>Classes\engine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\input\InputManager.h">
+      <Filter>Classes\engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\map\trigger\EnterScreenTrigger.h">
+      <Filter>Classes\map\trigger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\GameObject.h">
+      <Filter>Classes\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameController.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\engine\TestKeyUpDown.h">
+      <Filter>Classes\test\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\originalEngine\TestBox2d.h">
+      <Filter>Classes\test\originalEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\originalEngine\TestTinyXml.h">
+      <Filter>Classes\test\originalEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\engine\TestPhysicsManager.h">
+      <Filter>Classes\test\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\originalEngine\TestArmatureScene.h">
+      <Filter>Classes\test\originalEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\originalEngine\TestControl.h">
+      <Filter>Classes\test\originalEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\TestAircraft.h">
+      <Filter>Classes\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\TestEffect.h">
+      <Filter>Classes\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\TestMapAndTrigger.h">
+      <Filter>Classes\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\TestShotMethod.h">
+      <Filter>Classes\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\engine\TestPhysicsEditor.h">
+      <Filter>Classes\test\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\tinyxml2\tinyxml2utils.h">
+      <Filter>Classes\engine\tinyxml2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

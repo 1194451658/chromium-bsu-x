@@ -15,7 +15,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "Aircraft.h"
-#include "physics/GB2ShapeCache-x.h"
+#include "engine/physics/GB2ShapeCache-x.h"
 #include "HeroAircraft.h"
 #include "EnemyBoss00.h"
 #include "EnemyOmni.h"

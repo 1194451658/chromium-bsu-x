@@ -1,4 +1,5 @@
 
+
 // Copyright 2014 Wanwan Zhang
 
 // This program is free software: you can redistribute it and/or modify
@@ -14,28 +15,37 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef __TEST_ENTER_SCREEN_TRIGGER_H__
-#define __TEST_ENTER_SCREEN_TRIGGER_H__
+
+#ifndef __INPUT_MANAGER__
+#define __INPUT_MANAGER__
 
 #include "cocos2d.h"
 
 USING_NS_CC;
 
-class TestEnterScreenTrigger : public cocos2d::CCLayer
+
+class InputManager : public CCObject, public CCKeypadDelegate
 {
 public:
-	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-	virtual bool init();  
+	static InputManager* sharedInstance();
 
-	// there's no 'id' in cpp, so we recommend returning the class instance pointer
-	static cocos2d::CCScene* scene();
+	// key pad
+    virtual void keyBackClicked() ;
+    virtual void keyMenuClicked();
+    virtual void keyDown_Extension(int key) ;
+    virtual void keyUp_Extension(int key);
 
-	// implement the "static node()" method manually
-	CREATE_FUNC(TestEnterScreenTrigger);
+public:
+    enum ArrowType { ARROW_UP = 0,
+		 ARROW_DOWN, 
+		 ARROW_LEFT,
+		 ARROW_RIGHT,
+		 FIRE,
+		 NUMBER_OF_ARROW};
+    enum ArrowState { ARROW_RELEASED = 0, ARROW_PRESSED};
+    ArrowState arrowState[NUMBER_OF_ARROW];
 
 private:
-
-
+    InputManager();
 };
-
-#endif // __HELLOWORLD_SCENE_H__
+#endif

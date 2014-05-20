@@ -19,7 +19,7 @@
 #define __ENEMY_BOSS_00_H__
 
 #include "cocos2d.h"
-#include "GameObject.h"
+#include "engine/GameObject.h"
 #include "Aircraft.h"
 
 //#include "gun/HeroDefaultGun.h"

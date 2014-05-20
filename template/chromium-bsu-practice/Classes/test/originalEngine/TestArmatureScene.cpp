@@ -20,12 +20,12 @@
 #include "keypad_dispatcher/CCKeypadDispatcher.h"
 
 #include "aircraft/HeroAircraft.h"
-#include "input/InputManager.h"
+#include "engine/input/InputManager.h"
 
-#include "physics/GB2ShapeCache-x.h"
-#include "physics/GLES-Render.h"
+#include "engine/physics/GB2ShapeCache-x.h"
+#include "engine/physics/GLES-Render.h"
 
-#include "physics/PhysicsManager.h"
+#include "engine/physics/PhysicsManager.h"
 #include "SimpleAudioEngine.h"
 
 #include <stdlib.h>

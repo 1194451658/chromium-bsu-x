@@ -18,7 +18,7 @@
 #define __GUN_H__
 
 #include "cocos2d.h"
-#include "GameObject.h"
+#include "engine/GameObject.h"
 #include "Ammo.h"
 #include "aircraft/Aircraft.h"
 #include "ColdTimeMethod.h"

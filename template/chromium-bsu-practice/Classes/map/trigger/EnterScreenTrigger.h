@@ -2,7 +2,7 @@
 #ifndef __ENTER_SCREEN_TRIGGER_H__
 #define __ENTER_SCREEN_TRIGGER_H__
 
-#include "GameObject.h"
+#include "engine/GameObject.h"
 #include "cocos2d.h"
 
 USING_NS_CC;

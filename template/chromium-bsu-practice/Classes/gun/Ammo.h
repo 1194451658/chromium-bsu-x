@@ -21,7 +21,7 @@
 
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
-#include "GameObject.h"
+#include "engine/GameObject.h"
 
 USING_NS_CC;
 #include <string>

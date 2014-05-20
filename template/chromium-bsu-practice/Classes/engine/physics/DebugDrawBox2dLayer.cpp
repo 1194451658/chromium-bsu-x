@@ -14,7 +14,7 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "DebugDrawBox2dLayer.h"
-#include "physics/PhysicsManager.h"
+#include "engine/physics/PhysicsManager.h"
 
 void DebugDrawBox2dLayer::draw()
 {

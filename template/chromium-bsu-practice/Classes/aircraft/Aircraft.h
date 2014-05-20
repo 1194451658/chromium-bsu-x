@@ -18,7 +18,7 @@
 #define __AIRCRAFT_H__
 
 #include "cocos2d.h"
-#include "GameObject.h"
+#include "engine/GameObject.h"
 
 #include <string>
 
