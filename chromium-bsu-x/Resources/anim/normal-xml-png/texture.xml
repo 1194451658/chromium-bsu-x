@@ -1,0 +1,19 @@
+<TextureAtlas name="DragonBones_Tutorial_MultiBehavior" width="512" height="512">
+  <SubTexture name="parts/beardR" width="68" height="18" cocos2d_pX="0" cocos2d_pY="0" x="291" y="233"/>
+  <SubTexture name="parts/beardL" width="60" height="18" cocos2d_pX="54" cocos2d_pY="4" x="229" y="221"/>
+  <SubTexture name="parts/handR" width="49" height="29" cocos2d_pX="0" cocos2d_pY="0" x="82" y="240"/>
+  <SubTexture name="parts/armR" width="23" height="39" cocos2d_pX="0" cocos2d_pY="0" x="465" y="160"/>
+  <SubTexture name="parts/armUpperR" width="80" height="47" cocos2d_pX="12" cocos2d_pY="28" x="0" y="199"/>
+  <SubTexture name="parts/legR" width="90" height="116" cocos2d_pX="0" cocos2d_pY="0" x="401" y="0"/>
+  <SubTexture name="parts/tail" width="108" height="139" cocos2d_pX="0" cocos2d_pY="-63.8" x="291" y="0"/>
+  <SubTexture name="parts/eyeR" width="19" height="29" cocos2d_pX="8" cocos2d_pY="15" x="491" y="118"/>
+  <SubTexture name="parts/eyeL" width="14" height="23" cocos2d_pX="0" cocos2d_pY="0" x="493" y="0"/>
+  <SubTexture name="parts/head" width="169" height="197" cocos2d_pX="79.5" cocos2d_pY="160" x="0" y="0"/>
+  <SubTexture name="parts/hair" width="62" height="141" cocos2d_pX="0" cocos2d_pY="0" x="401" y="118"/>
+  <SubTexture name="parts/body" width="118" height="174" cocos2d_pX="0" cocos2d_pY="0" x="171" y="0"/>
+  <SubTexture name="parts/legL" width="102" height="90" cocos2d_pX="0" cocos2d_pY="0" x="291" y="141"/>
+  <SubTexture name="parts/handL" width="48" height="39" cocos2d_pX="0" cocos2d_pY="0" x="82" y="199"/>
+  <SubTexture name="parts/armL" width="24" height="40" cocos2d_pX="0" cocos2d_pY="0" x="465" y="118"/>
+  <SubTexture name="parts/armUpperL" width="56" height="43" cocos2d_pX="41" cocos2d_pY="16" x="229" y="176"/>
+  <SubTexture name="parts/tailTip" width="56" height="105" cocos2d_pX="0" cocos2d_pY="0" x="171" y="176"/>
+</TextureAtlas>
