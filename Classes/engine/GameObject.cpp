@@ -245,3 +245,23 @@ bool GameObject::isOutScreen(float extraOutX , float extraOutY)
 
 	return false;
 }
+
+bool GameObject::isBelowScreen(float extraOutY)
+{
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+
+	CCNode* parent = getParent();
+
+	if(parent)
+	{
+		CCPoint posInWorld = parent->convertToWorldSpace(getPosition());
+
+		if(posInWorld.y < origin.y - extraOutY)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}

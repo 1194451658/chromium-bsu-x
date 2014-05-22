@@ -165,6 +165,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\map\AutoTiledBackground.cpp" />
     <ClCompile Include="..\Classes\map\Map.cpp" />
     <ClCompile Include="..\Classes\map\trigger\EnterScreenTrigger.cpp" />
+    <ClCompile Include="..\Classes\scene\GameScene.cpp" />
     <ClCompile Include="..\Classes\test\engine\TestPhysicsEditor.cpp" />
     <ClCompile Include="..\Classes\test\engine\TestPhysicsManager.cpp" />
     <ClCompile Include="..\Classes\test\originalEngine\TestArmatureScene.cpp" />
@@ -173,6 +174,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\test\originalEngine\TestTinyXml.cpp" />
     <ClCompile Include="..\Classes\test\other\TestFallingLeaf.cpp" />
     <ClCompile Include="..\Classes\test\TestAircraft.cpp" />
+    <ClCompile Include="..\Classes\test\TestAutoTiledMap.cpp" />
     <ClCompile Include="..\Classes\test\TestEffect.cpp" />
     <ClCompile Include="..\Classes\test\TestMapAndTrigger.cpp" />
     <ClCompile Include="..\Classes\test\TestShotMethod.cpp" />
@@ -227,6 +229,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\map\AutoTiledBackground.h" />
     <ClInclude Include="..\Classes\map\Map.h" />
     <ClInclude Include="..\Classes\map\trigger\EnterScreenTrigger.h" />
+    <ClInclude Include="..\Classes\scene\GameScene.h" />
     <ClInclude Include="..\Classes\test\engine\TestKeyUpDown.h" />
     <ClInclude Include="..\Classes\test\engine\TestPhysicsEditor.h" />
     <ClInclude Include="..\Classes\test\engine\TestPhysicsManager.h" />
@@ -236,6 +239,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\test\originalEngine\TestTinyXml.h" />
     <ClInclude Include="..\Classes\test\other\TestFallingLeaf.h" />
     <ClInclude Include="..\Classes\test\TestAircraft.h" />
+    <ClInclude Include="..\Classes\test\TestAutoTiledMap.h" />
     <ClInclude Include="..\Classes\test\TestEffect.h" />
     <ClInclude Include="..\Classes\test\TestMapAndTrigger.h" />
     <ClInclude Include="..\Classes\test\TestShotMethod.h" />

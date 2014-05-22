@@ -204,6 +204,12 @@
     <ClCompile Include="..\Classes\engine\sprite_nodes\CCSpriteExtWithShadow.cpp">
       <Filter>Classes\engine\sprite_nodes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\test\TestAutoTiledMap.cpp">
+      <Filter>Classes\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\scene\GameScene.cpp">
+      <Filter>Classes\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -388,6 +394,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\engine\sprite_nodes\CCSpriteExtWithShadow.h">
       <Filter>Classes\engine\sprite_nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\TestAutoTiledMap.h">
+      <Filter>Classes\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\scene\GameScene.h">
+      <Filter>Classes\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

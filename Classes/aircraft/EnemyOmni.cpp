@@ -102,12 +102,6 @@ void EnemyOmni::move(float dt)
 	}
 
 	setPositionY(getPositionY() + aircraftDef.omniYVelocity * dt);
-
-	if(isOutScreen(0, graphics->getContentSize().height))
-	{
-		shouldReleased = true;
-		removeFromParentAndCleanup(true);
-	}
 }
 
 void EnemyOmni::shot(float dt)

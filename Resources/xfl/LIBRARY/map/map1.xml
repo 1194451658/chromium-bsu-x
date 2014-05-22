@@ -1,8 +1,8 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="map/map1" itemID="53789f82-000001ee" lastModified="1400415673" lastUniqueIdentifier="31">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="map/map1" itemID="53789f82-000001ee" lastModified="1400766336" lastUniqueIdentifier="33">
   <timeline>
     <DOMTimeline name="map1">
       <layers>
-        <DOMLayer name="boss" color="#4FFFFF" current="true" isSelected="true" autoNamed="false">
+        <DOMLayer name="boss" color="#4FFFFF" autoNamed="false">
           <frames>
             <DOMFrame index="0" keyMode="9728">
               <elements>
@@ -18,7 +18,7 @@
             </DOMFrame>
           </frames>
         </DOMLayer>
-        <DOMLayer name="enemy" color="#4F80FF" autoNamed="false">
+        <DOMLayer name="enemy" color="#4F80FF" current="true" isSelected="true" autoNamed="false">
           <frames>
             <DOMFrame index="0" keyMode="9728">
               <elements>
@@ -30,9 +30,9 @@
                     <Point x="32" y="32"/>
                   </transformationPoint>
                 </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyStraight" centerPoint3DX="320.35" centerPoint3DY="5393.05">
+                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyStraight" centerPoint3DX="183.35" centerPoint3DY="5370.05">
                   <matrix>
-                    <Matrix tx="288.35" ty="5361.05"/>
+                    <Matrix tx="151.35" ty="5338.05"/>
                   </matrix>
                   <transformationPoint>
                     <Point x="32" y="32"/>
@@ -46,36 +46,28 @@
                     <Point x="32" y="32"/>
                   </transformationPoint>
                 </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyOmni" centerPoint3DX="199.35" centerPoint3DY="4407.15">
+                <DOMSymbolInstance libraryItemName="trigger/enemyStraightTrigger" centerPoint3DX="339.3" centerPoint3DY="4896.6">
                   <matrix>
-                    <Matrix tx="167.35" ty="4375.15"/>
-                  </matrix>
-                  <transformationPoint>
-                    <Point x="32" y="32"/>
-                  </transformationPoint>
-                </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyOmni" centerPoint3DX="155.35" centerPoint3DY="4553.15">
-                  <matrix>
-                    <Matrix tx="123.35" ty="4521.15"/>
-                  </matrix>
-                  <transformationPoint>
-                    <Point x="32" y="32"/>
-                  </transformationPoint>
-                </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyOmni" centerPoint3DX="481.3" centerPoint3DY="4477.15">
-                  <matrix>
-                    <Matrix tx="449.3" ty="4445.15"/>
-                  </matrix>
-                  <transformationPoint>
-                    <Point x="32" y="32"/>
-                  </transformationPoint>
-                </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="trigger/enemyStraightTrigger" centerPoint3DX="301.3" centerPoint3DY="4818.05">
-                  <matrix>
-                    <Matrix tx="89.35" ty="4685.6"/>
+                    <Matrix tx="127.35" ty="4764.15"/>
                   </matrix>
                   <transformationPoint>
                     <Point x="211.95" y="132.45"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="trigger/enemyStraightTrigger1" centerPoint3DX="446.4" centerPoint3DY="5350">
+                  <matrix>
+                    <Matrix tx="246.3" ty="5181.05"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="200.1" y="168.95"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="trigger/enemyStraightTrigger3" centerPoint3DX="355.15" centerPoint3DY="4601.1">
+                  <matrix>
+                    <Matrix tx="210.05" ty="4504.1"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="145.1" y="97"/>
                   </transformationPoint>
                 </DOMSymbolInstance>
               </elements>
@@ -105,20 +97,15 @@
             </DOMFrame>
           </frames>
         </DOMLayer>
-        <DOMLayer name="bg_indicator" color="#FF800A" locked="true" autoNamed="false">
+        <DOMLayer name="_contentSize" color="#FF800A" autoNamed="false">
           <frames>
             <DOMFrame index="0" keyMode="9728">
               <elements>
-                <DOMShape>
-                  <fills>
-                    <FillStyle index="1">
-                      <SolidColor/>
-                    </FillStyle>
-                  </fills>
-                  <edges>
-                    <Edge fillStyle0="1" edges="!0 0S1|0 115998!0 115998|12000 115998!12000 115998|12000 0!12000 0|0 0"/>
-                  </edges>
-                </DOMShape>
+                <DOMSymbolInstance libraryItemName="fd32vdfgedf" centerPoint3DX="300" centerPoint3DY="2899.95">
+                  <transformationPoint>
+                    <Point x="300" y="2899.95"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
               </elements>
             </DOMFrame>
           </frames>

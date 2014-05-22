@@ -1,0 +1,39 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="trigger/enemyStraightTrigger1" itemID="537dff57-00000200" lastModified="1400766308" lastUniqueIdentifier="11" transformCenterPoint="#E.58, #A.59">
+  <timeline>
+    <DOMTimeline name="enemyStraightTrigger1">
+      <layers>
+        <DOMLayer name="图层 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="fmkeorjoifad2ewr" selected="true" centerPoint3DX="168.75" centerPoint3DY="161">
+                  <matrix>
+                    <Matrix tx="98.25" ty="128"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="70.5" y="33"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyStraight" selected="true" centerPoint3DX="83" centerPoint3DY="32">
+                  <matrix>
+                    <Matrix tx="51"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="32" y="32"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="_contentSize" color="#9933CC" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements/>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

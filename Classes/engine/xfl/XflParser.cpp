@@ -73,7 +73,9 @@ void XflParser::initialLoad()
 
 	// load trigger
 	loadXmlToMap(libRootDir, "trigger/enemyStraightTrigger.xml", triggerDefs);
+	loadXmlToMap(libRootDir, "trigger/enemyStraightTrigger1.xml", triggerDefs);
 	loadXmlToMap(libRootDir, "trigger/enemyStraightTrigger2.xml", triggerDefs);
+	loadXmlToMap(libRootDir, "trigger/enemyStraightTrigger3.xml", triggerDefs);
 
 	// load map
 	loadXmlToMap(libRootDir, "map/testMap.xml", mapDefs);

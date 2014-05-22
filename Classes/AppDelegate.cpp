@@ -8,14 +8,15 @@
 #include "test/originalEngine/TestControl.h"
 
 #include "test/engine/TestPhysicsManager.h"
-
 #include "test/other/TestFallingLeaf.h"
 
 #include "test/TestMapAndTrigger.h"
 #include "test/TestEffect.h"
 #include "test/TestAircraft.h"
-
 #include "test/TestShotMethod.h"
+#include "test/TestAutoTiledMap.h"
+
+#include "scene/GameScene.h"
 
 #include "AppDelegate.h"
 
@@ -70,9 +71,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	// CCScene* pScene = TestControl::scene();
 	//CCScene* pScene = TestEnterScreenTrigger::scene();
 	//CCScene* pScene = TestBox2d::scene();
-	CCScene* pScene = TestMapAndTrigger::scene();
 	//CCScene* pScene = HelloWorld::scene();
 	//CCScene* pScene = TestFallingLeaf::scene();
+	//CCScene* pScene = TestAutoTiledMap::scene();
+
+	CCScene* pScene = GameScene::scene();
 
     // run
     pDirector->runWithScene(pScene);

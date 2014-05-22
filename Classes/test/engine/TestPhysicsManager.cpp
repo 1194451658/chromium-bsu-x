@@ -78,8 +78,9 @@ bool TestPhysicsManager::init()
 	// -------------
 	// init physics
 	// -----------
-	PhysicsManager::sharedInstance()->enableDebugDraw(true);
 	GB2ShapeCache::sharedGB2ShapeCache()->addShapesWithFile("png/physics.plist");
+	PhysicsManager::sharedInstance()->enableDebugDraw(true);
+
 
 	// step
 	schedule(schedule_selector(TestPhysicsManager::stepForPhysicsManager));

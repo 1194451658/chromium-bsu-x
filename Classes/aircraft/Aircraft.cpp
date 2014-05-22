@@ -160,16 +160,31 @@ void Aircraft::hpBarUpdate(float percentage)
 
 void Aircraft::update(float dt)
 {
+	// first of first, check validity
+	if(shouldReleased)
+	{
+		removeFromParent();
+		return;
+	}
+
 	if(curHp < 0)
 	{
 		removeFromParent();
 		shouldReleased = true;
+		return;
 	}
 
 	if(damageToHit > 0)
 	{
 		setCurHp(curHp-damageToHit);
 		damageToHit = 0;
+	}
+
+	if(isBelowScreen(graphics->getContentSize().height))
+	{
+		shouldReleased = true;
+		removeFromParentAndCleanup(true);
+		return;
 	}
 }
 

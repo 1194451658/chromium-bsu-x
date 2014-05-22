@@ -68,13 +68,7 @@ EnemyStraight::~EnemyStraight()
 
 void EnemyStraight::move(float dt)
 {
-	// setPositionY(getPositionY() + aircraftDef.straightYVelocity * dt);
-
-	if(isOutScreen(0, graphics->getContentSize().height))
-	{
-		shouldReleased = true;
-		removeFromParentAndCleanup(true);
-	}
+	setPositionY(getPositionY() + aircraftDef.straightYVelocity * dt);
 }
 
 void EnemyStraight::shot(float dt)

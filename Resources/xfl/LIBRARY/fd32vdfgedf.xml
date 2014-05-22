@@ -1,0 +1,26 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="fd32vdfgedf" itemID="537dfa70-000001ef" lastModified="1400765040">
+  <timeline>
+    <DOMTimeline name="fd32vdfgedf">
+      <layers>
+        <DOMLayer name="图层 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor/>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle0="1" edges="!0 0S1|0 115998!0 115998|12000 115998!12000 115998|12000 0!12000 0|0 0"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

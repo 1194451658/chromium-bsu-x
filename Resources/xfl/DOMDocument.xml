@@ -1,10 +1,10 @@
 <DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" width="300" currentTimeline="1" xflVersion="2.2" creatorInfo="Adobe Flash Professional CS6" platform="Windows" versionInfo="Saved by Adobe Flash Windows 12.0 build 537" majorVersion="12" buildNumber="537" timelineLabelWidth="217" viewAngle3D="31.7033311465608" vanishingPoint3DX="150" nextSceneIdentifier="3" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false" autoSaveHasPrompted="true">
      <folders>
           <DOMFolderItem name="asset" itemID="5346333e-0000056b"/>
-          <DOMFolderItem name="map" itemID="53789f7e-000001ec"/>
-          <DOMFolderItem name="prefab" itemID="5374b5dc-00000288"/>
+          <DOMFolderItem name="map" itemID="53789f7e-000001ec" isExpanded="true"/>
+          <DOMFolderItem name="prefab" itemID="5374b5dc-00000288" isExpanded="true"/>
           <DOMFolderItem name="prefab/enemy" itemID="5374b635-0000028f"/>
-          <DOMFolderItem name="trigger" itemID="5374bed5-0000035a"/>
+          <DOMFolderItem name="trigger" itemID="5374bed5-0000035a" isExpanded="true"/>
      </folders>
      <media>
           <DOMBitmapItem name="asset/enemy00.png" itemID="5374a617-000001dd" sourceExternalFilepath="../asset/LIBRARY/asset/enemy00.png" sourceLastImported="1400153596" externalFileSize="8923" originalCompressionType="lossless" quality="50" href="asset/enemy00.png" bitmapDataHRef="M 1 1397109417.dat" frameRight="1280" frameBottom="1280"/>
@@ -17,9 +17,10 @@
           <DOMBitmapItem name="asset/hero.png" itemID="5374a617-000001e4" sourceExternalFilepath="../asset/LIBRARY/asset/hero.png" sourceLastImported="1400153596" externalFileCRC32="2649021777" externalFileSize="5497" originalCompressionType="lossless" quality="50" href="asset/hero.png" bitmapDataHRef="M 8 1397109418.dat" frameRight="1280" frameBottom="1280"/>
      </media>
      <symbols>
+          <Include href="fd32vdfgedf.xml" loadImmediate="false" itemID="537dfa70-000001ef" lastModified="1400765040"/>
           <Include href="fdafe34gdf.xml" loadImmediate="false" itemID="5378cddd-00000218" lastModified="1400426090"/>
           <Include href="fmkeorjoifad2ewr.xml" loadImmediate="false" itemID="5374be93-00000348" lastModified="1400159891"/>
-          <Include href="map/map1.xml" loadImmediate="false" itemID="53789f82-000001ee" lastModified="1400415673"/>
+          <Include href="map/map1.xml" loadImmediate="false" itemID="53789f82-000001ee" lastModified="1400766336"/>
           <Include href="map/testMap.xml" loadImmediate="false" itemID="5378b24e-00000214" lastModified="1400597187"/>
           <Include href="prefab/enemy/enemyBoss00.xml" loadImmediate="false" itemID="5374b596-0000027e" lastModified="1400157590"/>
           <Include href="prefab/enemy/enemyBoss01.xml" loadImmediate="false" itemID="537b5aed-00000256" lastModified="1400593133"/>
@@ -29,7 +30,9 @@
           <Include href="prefab/enemy/enemyTank.xml" loadImmediate="false" itemID="5374b578-00000279" lastModified="1400157560"/>
           <Include href="prefab/enemy/hero.xml" loadImmediate="false" itemID="5346332e-00000563" lastModified="1400155719"/>
           <Include href="trigger/enemyStraightTrigger.xml" loadImmediate="false" itemID="5374beb4-0000034c" lastModified="1400589742"/>
+          <Include href="trigger/enemyStraightTrigger1.xml" loadImmediate="false" itemID="537dff57-00000200" lastModified="1400766308"/>
           <Include href="trigger/enemyStraightTrigger2.xml" loadImmediate="false" itemID="537b2076-0000020d" lastModified="1400597147"/>
+          <Include href="trigger/enemyStraightTrigger3.xml" loadImmediate="false" itemID="537dff78-0000021e" lastModified="1400766340"/>
      </symbols>
      <timelines>
           <DOMTimeline name="Scene 1">
@@ -38,7 +41,7 @@
                          <frames>
                               <DOMFrame index="0" keyMode="9728">
                                    <elements>
-                                        <DOMSymbolInstance libraryItemName="map/map1" centerPoint3DX="1220.85" centerPoint3DY="149.1">
+                                        <DOMSymbolInstance libraryItemName="map/map1" selected="true" centerPoint3DX="1220.85" centerPoint3DY="149.1">
                                              <matrix>
                                                   <Matrix tx="538.1" ty="-2750.85"/>
                                              </matrix>
