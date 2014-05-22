@@ -1,0 +1,65 @@
+﻿Build started 2014/5/22 15:11:19.
+     1>Project "E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\HelloCpp.vcxproj" on node 4 (Build target(s)).
+     1>PreLinkEvent:
+         if not exist "E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\Debug.win32\" mkdir "E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\Debug.win32\"
+         xcopy /Y /Q "E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\..\..\..\external\libwebsockets\win32\lib\*.*" "E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\Debug.win32\"
+         :VCEnd
+         复制了 2 个文件
+       Link:
+         D:\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\Debug.win32\HelloCpp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\Debug.win32\\" libExtensions.lib libcocos2d.lib libCocosDenshion.lib opengl32.lib glew32.lib libBox2d.lib libchipmunk.lib libcurl_imp.lib pthreadVCE2.lib websockets.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\Debug.win32\HelloCpp.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\Debug.win32\HelloCpp.lib" /MACHINE:X86 /SAFESEH Debug.win32\Aircraft.obj
+         Debug.win32\EnemyBoss00.obj
+         Debug.win32\EnemyBoss01.obj
+         Debug.win32\EnemyOmni.obj
+         Debug.win32\EnemyRayGun.obj
+         Debug.win32\EnemyStraight.obj
+         Debug.win32\HeroAircraft.obj
+         Debug.win32\AppDelegate.obj
+         Debug.win32\CCDrawGameObjectShadowNode.obj
+         Debug.win32\CCSpriteWithShadow.obj
+         Debug.win32\GameObject.obj
+         Debug.win32\InputManager.obj
+         Debug.win32\DebugDrawBox2dLayer.obj
+         "Debug.win32\GB2ShapeCache-x.obj"
+         "Debug.win32\GLES-Render.obj"
+         Debug.win32\PhysicsManager.obj
+         Debug.win32\tinyxml2utils.obj
+         Debug.win32\XflParser.obj
+         Debug.win32\GameController.obj
+         Debug.win32\Ammo.obj
+         Debug.win32\EqualColdTime.obj
+         Debug.win32\GroupShotColdTimeMethod.obj
+         Debug.win32\Gun.obj
+         Debug.win32\LateralShotMethod.obj
+         Debug.win32\MiddleShotMethod.obj
+         Debug.win32\SineShotMethod.obj
+         Debug.win32\StrafeShotMethod.obj
+         Debug.win32\SwapLateralShotMethod.obj
+         Debug.win32\TargetHeroShotMethod.obj
+         Debug.win32\HelloWorldScene.obj
+         Debug.win32\AutoTiledBackground.obj
+         Debug.win32\Map.obj
+         Debug.win32\EnterScreenTrigger.obj
+         Debug.win32\TestPhysicsEditor.obj
+         Debug.win32\TestPhysicsManager.obj
+         Debug.win32\TestArmatureScene.obj
+         Debug.win32\TestBox2d.obj
+         Debug.win32\TestControl.obj
+         Debug.win32\TestTinyXml.obj
+         Debug.win32\TestFallingLeaf.obj
+         Debug.win32\TestAircraft.obj
+         Debug.win32\TestEffect.obj
+         Debug.win32\TestMapAndTrigger.obj
+         Debug.win32\TestShotMethod.obj
+         Debug.win32\main.obj
+         "E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\Debug.win32\libcocos2d.lib"
+         "E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\Debug.win32\libCocosDenshion.lib"
+         "E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\Debug.win32\libExtensions.lib"
+         "E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\Debug.win32\libBox2D.lib"
+         "E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\Debug.win32\libchipmunk.lib"
+     1>Aircraft.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+         HelloCpp.vcxproj -> E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\Debug.win32\HelloCpp.exe
+     1>Done Building Project "E:\github\chromium-bsu-practice\template\chromium-bsu-practice\proj.win32\HelloCpp.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:20.59

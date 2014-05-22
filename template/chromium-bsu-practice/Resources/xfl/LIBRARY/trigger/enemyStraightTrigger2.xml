@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="trigger/enemyStraightTrigger2" itemID="537b2076-0000020d" lastModified="1400593365" lastUniqueIdentifier="10">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="trigger/enemyStraightTrigger2" itemID="537b2076-0000020d" lastModified="1400597147" lastUniqueIdentifier="10">
   <timeline>
     <DOMTimeline name="enemyStraightTrigger2">
       <layers>
@@ -19,9 +19,9 @@
                     <Point x="70.5" y="33"/>
                   </transformationPoint>
                 </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyOmni" centerPoint3DX="178.3" centerPoint3DY="43.35">
+                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyOmni" centerPoint3DX="202.3" centerPoint3DY="-173.65">
                   <matrix>
-                    <Matrix tx="146.3" ty="11.35"/>
+                    <Matrix tx="170.3" ty="-205.65"/>
                   </matrix>
                   <transformationPoint>
                     <Point x="32" y="32"/>

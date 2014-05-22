@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="map/testMap" itemID="5378b24e-00000214" lastModified="1400593345" lastUniqueIdentifier="14">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="map/testMap" itemID="5378b24e-00000214" lastModified="1400597187" lastUniqueIdentifier="14">
   <timeline>
     <DOMTimeline name="testMap">
       <layers>
@@ -6,7 +6,7 @@
           <frames>
             <DOMFrame index="0" keyMode="9728">
               <elements>
-                <DOMSymbolInstance libraryItemName="trigger/enemyStraightTrigger2" selected="true" centerPoint3DX="132.5" centerPoint3DY="292.5">
+                <DOMSymbolInstance libraryItemName="trigger/enemyStraightTrigger2" centerPoint3DX="132.5" centerPoint3DY="292.5">
                   <matrix>
                     <Matrix tx="49" ty="242"/>
                   </matrix>
