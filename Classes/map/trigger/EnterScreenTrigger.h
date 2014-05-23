@@ -9,8 +9,6 @@ USING_NS_CC;
 
 class EnterScreenTrigger;
 
-
-
 class EnterScreenTriggerCreateGraphicsVisitor : public tinyxml2::XMLVisitor
 {
 public:
@@ -73,8 +71,8 @@ public:
 private:
 	tinyxml2::XMLDocument* xmlDef;
 
-	friend EnterScreenTriggerCreateGraphicsVisitor;
-	friend EnterScreenTriggerCreateInstanceVisitor;
+	friend class EnterScreenTriggerCreateGraphicsVisitor;
+	friend class EnterScreenTriggerCreateInstanceVisitor;
 
 	bool triggered;
 };

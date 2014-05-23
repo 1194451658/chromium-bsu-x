@@ -87,10 +87,10 @@ bool GameScene::init()
 	CCRepeatForever* repeat = CCRepeatForever::create(move);
 	mapAndGrondLayer->runAction(repeat);
 
-	// create background
-	AutoTiledBackground* background = AutoTiledBackground::create("png/ground/012.png");
-	if(background)
-		mapAndGrondLayer->addChild(background);
+	// // create background
+	// AutoTiledBackground* background = AutoTiledBackground::create("png/ground/012.png");
+	// if(background)
+	// 	mapAndGrondLayer->addChild(background);
 
 	// create map
 	map<string, tinyxml2::XMLDocument*>::iterator mapDef = XflParser::sharedInstance()->mapDefs.find("map/map1.xml");
@@ -106,9 +106,6 @@ bool GameScene::init()
 	{
 		CCLog("GameScene::init Map not created !!");
 	}
-
-
-
 
 	return true;
 }

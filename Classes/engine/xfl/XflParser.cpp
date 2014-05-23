@@ -21,7 +21,7 @@ XflParser* XflParser::_sharedInstance = NULL;
 
 XflParser::XflParser()
 {
-	libRootDir =  CCFileUtils::sharedFileUtils()->fullPathForFilename("Resources/xfl/LIBRARY");
+	libRootDir =  CCFileUtils::sharedFileUtils()->fullPathForFilename("xfl/LIBRARY");
 	//libPrefabDir = libRootDir + "/prefab/";
 	//libTriggerDir = libRootDir + "/trigger/";
 	//libMapDir = libRootDir + "/map/";
@@ -94,7 +94,7 @@ void XflParser::loadXmlToMap(string& rootDir, char* relativeFilePath, map<string
 		CCLOG("XflParser::loadXmlToMap load xml file: %s", relativeFilePath);
 	}else
 	{
-		CCLOG("XflParser::loadXmlToMap file %s not exist !", xmlFilePath);
+		CCLOG("XflParser::loadXmlToMap file %s not exist !", xmlFilePath.c_str());
 	}
 }
 

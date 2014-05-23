@@ -10,13 +10,25 @@ INCLUDES = -I.. -I../Classes
 SOURCES = main.cpp \
 	../Classes/aircraft/Aircraft.cpp \
 	../Classes/aircraft/EnemyBoss00.cpp \
+	../Classes/aircraft/EnemyBoss01.cpp \
 	../Classes/aircraft/EnemyOmni.cpp \
 	../Classes/aircraft/EnemyStraight.cpp \
+	../Classes/aircraft/EnemyRayGun.cpp \
 	../Classes/aircraft/HeroAircraft.cpp \
 	../Classes/engine/action/CCRandomRotateBy.cpp \
 	../Classes/engine/action/CCRandTextureCoord.cpp \
+	../Classes/engine/input/InputManager.cpp \
+	../Classes/engine/physics/DebugDrawBox2dLayer.cpp \
+	../Classes/engine/physics/GB2ShapeCache-x.cpp \
+	../Classes/engine/physics/GLES-Render.cpp \
+	../Classes/engine/physics/PhysicsManager.cpp \
+	../Classes/engine/sprite_nodes/CCSpriteExt.cpp \
+	../Classes/engine/sprite_nodes/CCSpriteExtWithShadow.cpp \
+	../Classes/engine/tinyxml2/tinyxml2utils.cpp \
+	../Classes/engine/xfl/XflParser.cpp \
 	../Classes/engine/CCDrawGameObjectShadowNode.cpp \
 	../Classes/engine/CCSpriteWithShadow.cpp \
+	../Classes/engine/GameObject.cpp \
 	../Classes/gun/coldTimeMethod/EqualColdTime.cpp \
 	../Classes/gun/coldTimeMethod/GroupShotColdTimeMethod.cpp \
 	../Classes/gun/shotMethod/LateralShotMethod.cpp \
@@ -27,23 +39,25 @@ SOURCES = main.cpp \
 	../Classes/gun/shotMethod/TargetHeroShotMethod.cpp \
 	../Classes/gun/Gun.cpp \
 	../Classes/gun/Ammo.cpp \
-	../Classes/input/InputManager.cpp \
+	../Classes/map/trigger/EnterScreenTrigger.cpp \
 	../Classes/map/AutoTiledBackground.cpp \
-	../Classes/map/Map1.cpp \
-	../Classes/physics/GLES-Render.cpp \
-	../Classes/physics/GB2ShapeCache-x.cpp \
-	../Classes/physics/PhysicsManager.cpp \
-	../Classes/scene/TestAircraft.cpp \
-	../Classes/scene/TestArmatureScene.cpp \
-	../Classes/scene/TestControl.cpp \
-	../Classes/scene/TestEffect.cpp \
-	../Classes/scene/TestPhysicsManager.cpp \
-	../Classes/scene/TestShotMethod.cpp \
-	../Classes/GameObject.cpp \
-	../Classes/GameController.cpp \
+	../Classes/map/Map.cpp \
+	../Classes/scene/GameScene.cpp \
+	../Classes/test/engine/TestPhysicsEditor.cpp \
+	../Classes/test/engine/TestPhysicsManager.cpp \
+	../Classes/test/originalEngine/TestArmatureScene.cpp \
+	../Classes/test/originalEngine/TestBox2d.cpp \
+	../Classes/test/originalEngine/TestControl.cpp \
+	../Classes/test/originalEngine/TestTinyXml.cpp \
+	../Classes/test/other/TestFallingLeaf.cpp \
+	../Classes/test/TestAircraft.cpp \
+	../Classes/test/TestAutoTiledMap.cpp \
+	../Classes/test/TestEffect.cpp \
+	../Classes/test/TestMapAndTrigger.cpp \
+	../Classes/test/TestShotMethod.cpp \
         ../Classes/AppDelegate.cpp \
+	../Classes/GameController.cpp \
         ../Classes/HelloWorldScene.cpp \
-
 
 COCOS_ROOT = ../../..
 include $(COCOS_ROOT)/cocos2dx/proj.linux/cocos2dx.mk

@@ -57,23 +57,21 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	CCFileUtils::sharedFileUtils()->addSearchPath("Resources");
 
 
-
-
 	// --------------------
 	// test
 	// -------------------
 	// CCScene* pScene = TestPhysicsManager::scene();
 	// CCScene *pScene = TestEffectScene::scene();
 	// CCScene* pScene = TestArmatureScene::scene();
-	 //CCScene* pScene = TestAircraft::scene();
+	// CCScene* pScene = TestAircraft::scene();
 	// CCScene* pScene = TestShotMethod::scene();
-	 //CCScene* pScene = TestTinyXml::scene();
+	// CCScene* pScene = TestTinyXml::scene();
 	// CCScene* pScene = TestControl::scene();
-	//CCScene* pScene = TestEnterScreenTrigger::scene();
-	//CCScene* pScene = TestBox2d::scene();
-	//CCScene* pScene = HelloWorld::scene();
-	//CCScene* pScene = TestFallingLeaf::scene();
-	//CCScene* pScene = TestAutoTiledMap::scene();
+	// CCScene* pScene = TestMapAndTrigger::scene();
+	// CCScene* pScene = TestBox2d::scene();
+	// CCScene* pScene = HelloWorld::scene();
+	// CCScene* pScene = TestFallingLeaf::scene();
+	// CCScene* pScene = TestAutoTiledMap::scene();
 
 	CCScene* pScene = GameScene::scene();
 

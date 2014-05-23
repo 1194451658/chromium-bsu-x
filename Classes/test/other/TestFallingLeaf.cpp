@@ -94,7 +94,7 @@ void TestFallingLeaf::playLeafAnim(CCSpriteExt *spriteLeaf)
 	}  
 	CCLog("rotime%ffAngle1%ffAngle2%f",roTime, fAngle1,fAngle1);  
 	//随机生成叶子横向偏移值  
-	srand((UINT)GetCurrentTime());  
+	// srand((UINT)GetCurrentTime());  
 	int iRandPos = rand() % 250;  
 	CCLog("Pianyi%d", iRandPos);  
 	//叶子所运动到的位置  
@@ -140,7 +140,7 @@ void TestFallingLeaf::resetLeafPos(CCNode* sender)
 	CCPoint pos;  
 	float fAngle;  
 	//随机生成叶子的起始位置  
-	srand((UINT)GetCurrentTime());  
+	// srand((UINT)GetCurrentTime());  
 	int iRand = (rand() % 200);  
 	if (iTag == TAG_LEAF1)  
 	{  

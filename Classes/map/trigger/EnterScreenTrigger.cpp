@@ -1,6 +1,6 @@
 
 #include "EnterScreenTrigger.h"
-#include "engine/tinyXml2/tinyxml2utils.h"
+#include "engine/tinyxml2/tinyxml2utils.h"
 #include "engine/xfl/XflParser.h"
 #include "aircraft/Aircraft.h"
 
