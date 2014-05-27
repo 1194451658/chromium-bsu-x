@@ -60,6 +60,9 @@ public:
 	// create screen collider
 	void createScreenCollider();
 
+	// reset all
+	void resetAll();
+
 private:
 	bool init(b2Vec2& gravity);
 	PhysicsManager();
@@ -81,6 +84,7 @@ public:
 
 private:
 	b2World* world;
+	b2Body* screenCollider;
 	CCArray* stepCallbacks;
 
 	CCArray* stepCallbacksToAdd;

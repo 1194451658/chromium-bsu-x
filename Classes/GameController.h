@@ -40,6 +40,9 @@ public:
 	void newGame();
 	void gameOver();
 
+	// reset all
+	void resetAll();
+
 
 private:
 	static GameController* _sharedInstance;

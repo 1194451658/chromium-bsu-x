@@ -46,6 +46,7 @@ PhysicsManager*  PhysicsManager::sharedInstance()
 PhysicsManager::PhysicsManager()
 {
 	world = NULL;
+	screenCollider = NULL;
 	stepCallbacks = NULL;
 
 	stepCallbacksToAdd = NULL;
@@ -109,6 +110,13 @@ bool PhysicsManager::init(b2Vec2& gravity)
 	debugDrawLayer->retain();
 
 	return true;
+}
+
+void PhysicsManager::resetAll()
+{
+	stepCallbacks->removeAllObjects();
+	stepCallbacksToAdd->removeAllObjects();
+	stepCallbacksToDelete->removeAllObjects();
 }
 
 void PhysicsManager::enableDebugDraw(bool enable)
@@ -260,31 +268,35 @@ void PhysicsManager::createScreenCollider()
 
 	b2World* world = PhysicsManager::sharedInstance()->getPhysicsWorld();
 
-	// create the physics shape from graphics content size
-	b2BodyDef bodyDef;
-	bodyDef.type = b2_dynamicBody;
-	bodyDef.fixedRotation = true;
-	bodyDef.position = b2Vec2(pos.x/PhysicsManager::PTM_RATIO, pos.y/PhysicsManager::PTM_RATIO);
-	b2Body* body = world->CreateBody(&bodyDef);
-
-	b2PolygonShape shape;
-	shape.SetAsBox(size.width/2/PhysicsManager::PTM_RATIO,
-		size.height/2/PhysicsManager::PTM_RATIO);
-	body->CreateFixture(&shape, 0);
-
-	// set fixture collide filter
-	b2Filter filter;
-	filter.groupIndex	= PhysicsManager::PHYSICS_GROUP_UNKNOWN;
-	filter.categoryBits = PhysicsManager::SCREEN;
-	filter.maskBits		= PhysicsManager::ONSCREEN_TRIGGER;
-
-	b2Fixture* fixtureList = body->GetFixtureList();
-
-	while(NULL != fixtureList)
+	if(!screenCollider)
 	{
-		fixtureList->SetFilterData(filter);
-		fixtureList->SetSensor(true);
-		fixtureList = fixtureList->GetNext();
+		// create the physics shape from graphics content size
+		b2BodyDef bodyDef;
+		bodyDef.type = b2_dynamicBody;
+		bodyDef.fixedRotation = true;
+		bodyDef.position = b2Vec2(pos.x/PhysicsManager::PTM_RATIO, pos.y/PhysicsManager::PTM_RATIO);
+		b2Body* body = world->CreateBody(&bodyDef);
+		screenCollider = body;
+
+		b2PolygonShape shape;
+		shape.SetAsBox(size.width/2/PhysicsManager::PTM_RATIO,
+			size.height/2/PhysicsManager::PTM_RATIO);
+		body->CreateFixture(&shape, 0);
+
+		// set fixture collide filter
+		b2Filter filter;
+		filter.groupIndex	= PhysicsManager::PHYSICS_GROUP_UNKNOWN;
+		filter.categoryBits = PhysicsManager::SCREEN;
+		filter.maskBits		= PhysicsManager::ONSCREEN_TRIGGER;
+
+		b2Fixture* fixtureList = body->GetFixtureList();
+
+		while(NULL != fixtureList)
+		{
+			fixtureList->SetFilterData(filter);
+			fixtureList->SetSensor(true);
+			fixtureList = fixtureList->GetNext();
+		}
 	}
 }
 

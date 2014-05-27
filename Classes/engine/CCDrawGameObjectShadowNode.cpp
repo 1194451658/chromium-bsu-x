@@ -36,9 +36,16 @@ CCDrawGameObjectShadowNode* CCDrawGameObjectShadowNode::create()
 	return pRet;
 }
 
+CCDrawGameObjectShadowNode::CCDrawGameObjectShadowNode()
+{
+	childrenToRemove = NULL;
+	gameObjects = NULL;
+}
+
 CCDrawGameObjectShadowNode::~CCDrawGameObjectShadowNode()
 {
 	CC_SAFE_RELEASE(childrenToRemove);
+	CC_SAFE_RELEASE(gameObjects);
 }
 
 

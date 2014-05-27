@@ -29,6 +29,7 @@ class CCDrawGameObjectShadowNode : public CCNode
 public:
 	void visit();
 	static CCDrawGameObjectShadowNode* create();
+	CCDrawGameObjectShadowNode();
 	~CCDrawGameObjectShadowNode();
 	void removeShouldReleasedGameObject();
 	void addGameObject(GameObject* go);

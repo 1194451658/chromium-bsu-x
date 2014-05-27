@@ -26,6 +26,14 @@ GameController::GameController()
 	newGame();
 }
 
+void GameController::resetAll()
+{
+	CC_SAFE_RELEASE_NULL(playerAircraft);
+	CC_SAFE_RELEASE_NULL(shadowLayer);
+	CC_SAFE_RELEASE_NULL(explosionLayer);
+	CC_SAFE_RELEASE_NULL(aircraftLayer);
+}
+
 GameController::~GameController()
 {
 	CC_SAFE_RELEASE(playerAircraft);
@@ -159,6 +167,7 @@ void GameController::createHero()
 void GameController::newGame()
 {
 	heroLife = 2;
+	resetAll();
 }
 
 void GameController::gameOver()

@@ -64,24 +64,16 @@ void ReplayTransitionScene::update(float delta)
 	CCDirector::sharedDirector()->replaceScene(transitionScene);
 }
 
-//CCScene* GameScene::scene()
-//{
-//	// 'scene' is an autorelease object
-//	CCScene *scene = CCScene::create();
-//
-//	// 'layer' is an autorelease object
-//	GameScene *layer = GameScene::create();
-//
-//	// add layer as a child to scene
-//	scene->addChild(layer);
-//
-//	// return the scene
-//	return scene;
-//}
-
 GameScene::GameScene()
 {
 	lifeLabel = NULL;
+}
+
+GameScene::~GameScene()
+{
+	CC_SAFE_RELEASE_NULL(lifeLabel);
+	PhysicsManager::sharedInstance()->resetAll();
+	GameController::sharedInstance()->resetAll();
 }
 
 // on "init" you need to initialize your instance
@@ -115,10 +107,14 @@ bool GameScene::init()
 	// init physics
 	// ------------
 	GB2ShapeCache::sharedGB2ShapeCache()->addShapesWithFile("png/physics.plist");
-	// PhysicsManager::sharedInstance()->enableDebugDraw(true);
+	//PhysicsManager::sharedInstance()->enableDebugDraw(true);
 	PhysicsManager::sharedInstance()->createScreenCollider();
 	schedule(schedule_selector(GameScene::stepForPhysicsManager));
 
+	// --------
+	// new game
+	// ----------
+	GameController::sharedInstance()->newGame();
 
 	// -----------------------------------
 	// create map && background layer
@@ -151,11 +147,6 @@ bool GameScene::init()
 	{
 		CCLog("GameScene::init Map not created !!");
 	}
-
-	// --------
-	// new game
-	// ----------
-	GameController::sharedInstance()->newGame();
 
 	// -----------------
 	// create draw shadow layer
@@ -196,8 +187,6 @@ bool GameScene::init()
 
 	// schedule update
 	scheduleUpdate();
-
-
 
 	return true;
 }
