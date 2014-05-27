@@ -266,6 +266,8 @@ void PhysicsManager::createScreenCollider()
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
 	CCPoint pos = ccp(size.width/2, size.height/2);
 
+	//size = CCSizeMake(600, 50);
+
 	b2World* world = PhysicsManager::sharedInstance()->getPhysicsWorld();
 
 	if(!screenCollider)

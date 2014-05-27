@@ -188,6 +188,9 @@ bool GameScene::init()
 	// schedule update
 	scheduleUpdate();
 
+	//// test game over
+	//gameOver();
+
 	return true;
 }
 

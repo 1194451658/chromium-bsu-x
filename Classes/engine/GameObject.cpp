@@ -98,7 +98,12 @@ void GameObject::onEnter()
 	scheduleUpdate();
 	
 	if(physics)
+	{
 		physics->SetActive(true);
+
+		// update physics position
+		prePhysicsStep(0, NULL);
+	}
 }
 
 void GameObject::onExit()

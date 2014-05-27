@@ -96,11 +96,6 @@ void GameController::addExplosion(CCNode* explosion)
 	}
 }
 
-//CCDrawGameObjectShadowNode* GameController::getDrawShadowLayer()
-//{ 
-//	return this->shadowLayer;
-//}
-
 void GameController::addAircraft(Aircraft* aircraft)
 {
 	// pos in world
