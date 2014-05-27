@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="trigger/enemyStraightTrigger1" itemID="537dff57-00000200" lastModified="1400766308" lastUniqueIdentifier="11" transformCenterPoint="#E.58, #A.59">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="trigger/enemyStraightTrigger1" itemID="537dff57-00000200" lastModified="1401088751" lastUniqueIdentifier="13" transformCenterPoint="#E.58, #A.59">
   <timeline>
     <DOMTimeline name="enemyStraightTrigger1">
       <layers>
@@ -6,17 +6,33 @@
           <frames>
             <DOMFrame index="0" keyMode="9728">
               <elements>
-                <DOMSymbolInstance libraryItemName="fmkeorjoifad2ewr" selected="true" centerPoint3DX="168.75" centerPoint3DY="161">
+                <DOMSymbolInstance libraryItemName="fmkeorjoifad2ewr" centerPoint3DX="74.75" centerPoint3DY="161">
                   <matrix>
-                    <Matrix tx="98.25" ty="128"/>
+                    <Matrix tx="4.25" ty="128"/>
                   </matrix>
                   <transformationPoint>
                     <Point x="70.5" y="33"/>
                   </transformationPoint>
                 </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyStraight" selected="true" centerPoint3DX="83" centerPoint3DY="32">
+                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyStraight" centerPoint3DX="54" centerPoint3DY="32">
                   <matrix>
-                    <Matrix tx="51"/>
+                    <Matrix tx="22"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="32" y="32"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyStraight" centerPoint3DX="-130" centerPoint3DY="-19.5">
+                  <matrix>
+                    <Matrix tx="-162" ty="-51.5"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point x="32" y="32"/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyStraight" selected="true" centerPoint3DX="226.95" centerPoint3DY="-32">
+                  <matrix>
+                    <Matrix tx="194.95" ty="-64"/>
                   </matrix>
                   <transformationPoint>
                     <Point x="32" y="32"/>

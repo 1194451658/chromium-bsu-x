@@ -17,6 +17,7 @@
 
 #include "HeroAircraft.h"
 #include "engine/input/InputManager.h"
+#include "GameController.h"
 
 
 HeroAircraft* HeroAircraft::create(AircraftDef def)
@@ -36,6 +37,14 @@ HeroAircraft* HeroAircraft::create(AircraftDef def)
 
 HeroAircraft::HeroAircraft()
 {
+	inUserControl = true;
+	boundMoveInScreen = true;
+	//gunTriggerd = false;
+}
+
+HeroAircraft::~HeroAircraft()
+{
+	CC_SAFE_RELEASE_NULL(graphics);
 }
 
 bool HeroAircraft::init(AircraftDef def)
@@ -58,36 +67,80 @@ bool HeroAircraft::init(AircraftDef def)
 	return false;
 }
 
-HeroAircraft::~HeroAircraft()
-{
-	CC_SAFE_RELEASE_NULL(graphics);
-}
+
 
 void HeroAircraft::update(float dt)
 {
 	Aircraft::update(dt);
 
-	// move
-	InputManager* input = InputManager::sharedInstance();
+	//// move
+	//InputManager* input = InputManager::sharedInstance();
 
-	if(input->arrowState[input->ARROW_UP] == InputManager::ARROW_PRESSED)
-		setPositionY(getPositionY() + 10);
+	//if(input->arrowState[input->ARROW_UP] == InputManager::ARROW_PRESSED)
+	//	setPositionY(getPositionY() + 10);
 
-	if(input->arrowState[input->ARROW_DOWN] == InputManager::ARROW_PRESSED)
-		setPositionY(getPositionY() - 10);
+	//if(input->arrowState[input->ARROW_DOWN] == InputManager::ARROW_PRESSED)
+	//	setPositionY(getPositionY() - 10);
 
-	if(input->arrowState[input->ARROW_LEFT] == InputManager::ARROW_PRESSED)
-		setPositionX(getPositionX() - 10);
+	//if(input->arrowState[input->ARROW_LEFT] == InputManager::ARROW_PRESSED)
+	//	setPositionX(getPositionX() - 10);
 
-	if(input->arrowState[input->ARROW_RIGHT] == InputManager::ARROW_PRESSED)
-		setPositionX(getPositionX() + 10);
+	//if(input->arrowState[input->ARROW_RIGHT] == InputManager::ARROW_PRESSED)
+	//	setPositionX(getPositionX() + 10);
 
-	if(input->arrowState[input->FIRE] == InputManager::ARROW_PRESSED)
+	//if(input->arrowState[input->FIRE] == InputManager::ARROW_PRESSED)
+	//{
+	//	defaultGun->trigger(true);
+	//}
+	//else
+	//{
+	//	defaultGun->trigger(false);
+	//}
+
+	if(shouldReleased)
 	{
-		defaultGun->trigger(true);
+		GameController::sharedInstance()->heroDead();
 	}
-	else
-	{
-		defaultGun->trigger(false);
-	}
+
+	//if(gunTriggerd)
+	//{
+	//}
+	//defaultGun->trigger(true);
+}
+
+void HeroAircraft::playNewLifeAction()
+{
+	//
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+	CCSize graphicsSize = graphics->getContentSize();
+	float screenCenterX = origin.x + visibleSize.width/2;
+
+	setBoundMoveInScreen(false);
+	setInUserControl(false);
+
+	// initial pos
+	setPosition(ccp(screenCenterX - 200, -graphicsSize.height));
+
+	// move in action
+	float moveFrontTime = 0.3;
+	float moveBackTime = 0.5;
+	float moveRightTime = moveFrontTime + moveBackTime;
+	CCMoveTo* moveFront = CCMoveTo::create(moveFrontTime, ccp(screenCenterX - 100, graphicsSize.height*4));
+	CCMoveTo* moveBack = CCMoveTo::create(moveBackTime, ccp(screenCenterX, graphicsSize.height*3));
+
+	CCSequence* moveFrontBackSeq = CCSequence::createWithTwoActions(moveFront, moveBack);
+	CCDelayTime* delay = CCDelayTime::create(0.3);
+	CCCallFunc* finishCallback = CCCallFunc::create(this, SEL_CallFunc(&HeroAircraft::newLifeCallFuncSelector));
+
+	
+	CCSequence* finalSeq = CCSequence::create(moveFrontBackSeq, delay, finishCallback, NULL);
+	runAction(finalSeq);
+}
+
+void HeroAircraft::newLifeCallFuncSelector()
+{
+	setBoundMoveInScreen(true);
+	setInUserControl(true);
+	if(defaultGun) defaultGun->trigger(true);
 }

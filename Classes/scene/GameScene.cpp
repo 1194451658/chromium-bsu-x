@@ -23,16 +23,23 @@
 #include "map/Map.h"
 #include "map/AutoTiledBackground.h"
 #include "engine/physics/PhysicsManager.h"
+#include "engine/CCDrawGameObjectShadowNode.h"
+#include "aircraft/Aircraft.h"
+#include "GameController.h"
+
+#include "engine/input/TouchInputLayer.h"
+#include "engine/base_nodes/ReverseZOrderNode.h"
 
 USING_NS_CC;
 
-CCScene* GameScene::scene()
+
+cocos2d::CCScene* ReplayTransitionScene::scene()
 {
 	// 'scene' is an autorelease object
 	CCScene *scene = CCScene::create();
 
 	// 'layer' is an autorelease object
-	GameScene *layer = GameScene::create();
+	ReplayTransitionScene *layer = ReplayTransitionScene::create();
 
 	// add layer as a child to scene
 	scene->addChild(layer);
@@ -41,10 +48,46 @@ CCScene* GameScene::scene()
 	return scene;
 }
 
+
+void ReplayTransitionScene::onEnterTransitionDidFinish()
+{
+	CCLayer::onEnterTransitionDidFinish();
+	scheduleUpdate();
+}
+
+void ReplayTransitionScene::update(float delta)
+{
+	unscheduleUpdate();
+	float time = 0.5;
+	GameScene* gs = GameScene::create();
+	CCTransitionProgressVertical* transitionScene = CCTransitionProgressVertical::create(0.5, gs);
+	CCDirector::sharedDirector()->replaceScene(transitionScene);
+}
+
+//CCScene* GameScene::scene()
+//{
+//	// 'scene' is an autorelease object
+//	CCScene *scene = CCScene::create();
+//
+//	// 'layer' is an autorelease object
+//	GameScene *layer = GameScene::create();
+//
+//	// add layer as a child to scene
+//	scene->addChild(layer);
+//
+//	// return the scene
+//	return scene;
+//}
+
+GameScene::GameScene()
+{
+	lifeLabel = NULL;
+}
+
 // on "init" you need to initialize your instance
 bool GameScene::init()
 {
-	if ( !CCLayer::init() )
+	if ( !CCScene::init() )
 	{
 		return false;
 	}
@@ -76,9 +119,10 @@ bool GameScene::init()
 	PhysicsManager::sharedInstance()->createScreenCollider();
 	schedule(schedule_selector(GameScene::stepForPhysicsManager));
 
-	// --------------
-	// create map && background
-	// ------------
+
+	// -----------------------------------
+	// create map && background layer
+	// --------------------------
 	CCNode* mapAndGrondLayer = CCNode::create();
 	addChild(mapAndGrondLayer);
 
@@ -87,10 +131,11 @@ bool GameScene::init()
 	CCRepeatForever* repeat = CCRepeatForever::create(move);
 	mapAndGrondLayer->runAction(repeat);
 
-	// // create background
-	// AutoTiledBackground* background = AutoTiledBackground::create("png/ground/012.png");
-	// if(background)
-	// 	mapAndGrondLayer->addChild(background);
+	 // create background
+	 AutoTiledBackground* background = AutoTiledBackground::create("png/ground/012.png");
+	 if(background)
+	 	mapAndGrondLayer->addChild(background);
+
 
 	// create map
 	map<string, tinyxml2::XMLDocument*>::iterator mapDef = XflParser::sharedInstance()->mapDefs.find("map/map1.xml");
@@ -107,7 +152,132 @@ bool GameScene::init()
 		CCLog("GameScene::init Map not created !!");
 	}
 
+	// --------
+	// new game
+	// ----------
+	GameController::sharedInstance()->newGame();
+
+	// -----------------
+	// create draw shadow layer
+	// ---------------------
+	CCDrawGameObjectShadowNode* shadowLayer = CCDrawGameObjectShadowNode::create();
+	GameController::sharedInstance()->setDrawShadowLayer(shadowLayer);
+	addChild(shadowLayer);
+
+	// ----------------------
+	// create aircraft layer
+	// -----------------------
+	CCNode* aircraftLayer = CCNode::create();
+	GameController::sharedInstance()->setAircraftLayer(aircraftLayer);
+	addChild(aircraftLayer);
+
+	// ----------------------
+	// create explosion layer
+	// -----------------------
+	ReverseZOrderNode* explosionLayer = ReverseZOrderNode::create();
+	GameController::sharedInstance()->setExplosionLayer(explosionLayer);
+	addChild(explosionLayer);
+
+	// ----------------------
+	// create touch input layer
+	// ------------------------
+	TouchInputLayer* inputLayer = TouchInputLayer::create();
+	addChild(inputLayer);
+
+	// -------------------
+	// create HUD
+	// ------------------
+	createHUD();
+
+	// ------------  
+	// Hero Aircraft
+	// -----------
+	GameController::sharedInstance()->createHero();
+
+	// schedule update
+	scheduleUpdate();
+
+
+
 	return true;
+}
+
+void GameScene::createHUD()
+{
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+	CCSize visibleSize = CCDirector::sharedDirector()->getVisibleSize();
+
+	// left up corner, life display
+	CCSprite* heroSprite = CCSprite::create("png/airCraft/hero.png");
+	lifeLabel = CCLabelTTF::create();
+	lifeLabel->retain();
+	lifeLabel->setString("x 999");
+	lifeLabel->setFontSize(40);
+
+	CCNode* node = CCNode::create();
+	node->addChild(heroSprite);
+	node->addChild(lifeLabel);
+
+	float horInterval = 20;
+	heroSprite->setAnchorPoint(ccp(0,1));
+	lifeLabel->setAnchorPoint(ccp(0,1));
+	lifeLabel->setPosition(ccp(heroSprite->getContentSize().width + horInterval, -(heroSprite->getContentSize().height - lifeLabel->getContentSize().height)/2));
+
+	addChild(node);
+	node->setPosition(ccp(origin.x, origin.y + visibleSize.height));
+
+	// manual update
+	updateHUD();
+}
+
+void GameScene::update(float delta)
+{
+	updateHUD();
+}
+
+void GameScene::updateHUD()
+{
+	if(lifeLabel)
+	{
+		// get left life
+		int life = GameController::sharedInstance()->getHeroLife();
+		stringstream toString;
+		toString<<"x "<<life;
+		lifeLabel->setString(toString.str().c_str());
+	}
+}
+
+void GameScene::gameOver()
+{
+	CCPoint origin = CCDirector::sharedDirector()->getVisibleOrigin();
+	CCSize size = CCDirector::sharedDirector()->getVisibleSize();
+	// create menu layer
+
+	CCNode* layer = CCNode::create();
+
+	CCLabelTTF* loseLabel = CCLabelTTF::create();
+	loseLabel->setString("You Lose !");
+	loseLabel->setFontSize(60);
+	loseLabel->setPosition(ccp(origin.x + size.width/2, origin.y + size.height/2 + 50));
+	addChild(loseLabel);
+
+	// create replay menu
+	CCMenuItemFont* menuItem = CCMenuItemFont::create("Click To Play Again !", this, SEL_MenuHandler(&GameScene::replayMenuHandler));
+	CCMenu* menu = CCMenu::create(menuItem, NULL);
+	// menu->addChild(menuItem);
+	addChild(menu);
+}
+
+void GameScene::replayMenuHandler(CCObject* obj)
+{
+	float time = 0.5;
+	 CCScene* replayScene = ReplayTransitionScene::scene();
+	//CCScene* replayScene = GameScene::scene();
+	CCTransitionProgressVertical* transitionScene = CCTransitionProgressVertical::create(0.5, replayScene);
+	CCDirector::sharedDirector()->replaceScene(transitionScene);
+
+	//CCScene* newScene = GameScene::scene();
+	//CCDirector::sharedDirector()->replaceScene(newScene);
 }
 
 void GameScene::stepForPhysicsManager(float time)

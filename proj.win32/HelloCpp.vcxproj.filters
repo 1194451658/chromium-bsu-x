@@ -16,15 +16,6 @@
     <Filter Include="Classes\engine">
       <UniqueIdentifier>{27ac68ce-e4f7-41aa-8149-8646663a1eaf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\gun">
-      <UniqueIdentifier>{6d130e19-4550-475f-beff-6972c4c242c7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\gun\codeTimeMethod">
-      <UniqueIdentifier>{9979dd39-ac5d-4307-8b6d-e0dc90735b28}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\gun\shotMethod">
-      <UniqueIdentifier>{091614a2-764c-47f9-a199-004bc225eea3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\map">
       <UniqueIdentifier>{0cef207b-13e6-427a-bf86-33ffb1770b07}</UniqueIdentifier>
     </Filter>
@@ -63,6 +54,24 @@
     </Filter>
     <Filter Include="Classes\engine\sprite_nodes">
       <UniqueIdentifier>{8ca1eec2-e58f-4ea9-bf23-6ad1132e38c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\engine\input\virtualKeyPad">
+      <UniqueIdentifier>{41755797-d287-4212-a204-c00aeea43e5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\engine\input\virtualKeyPad\sneakyInput">
+      <UniqueIdentifier>{dcdd5230-9529-4c33-b066-c3e8e9db9100}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\gun">
+      <UniqueIdentifier>{6d130e19-4550-475f-beff-6972c4c242c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\gun\codeTimeMethod">
+      <UniqueIdentifier>{9979dd39-ac5d-4307-8b6d-e0dc90735b28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\gun\shotMethod">
+      <UniqueIdentifier>{091614a2-764c-47f9-a199-004bc225eea3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\engine\base_nodes">
+      <UniqueIdentifier>{08049da4-f7fa-40fd-9688-13542b020e5f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +218,12 @@
     </ClCompile>
     <ClCompile Include="..\Classes\scene\GameScene.cpp">
       <Filter>Classes\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\input\TouchInputLayer.cpp">
+      <Filter>Classes\engine\input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\base_nodes\ReverseZOrderNode.cpp">
+      <Filter>Classes\engine\base_nodes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -400,6 +415,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\scene\GameScene.h">
       <Filter>Classes\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\input\TouchInputLayer.h">
+      <Filter>Classes\engine\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\base_nodes\ReverseZOrderNode.h">
+      <Filter>Classes\engine\base_nodes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

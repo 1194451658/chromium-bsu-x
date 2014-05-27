@@ -3,6 +3,7 @@
 #include "engine/tinyxml2/tinyxml2utils.h"
 #include "engine/xfl/XflParser.h"
 #include "aircraft/Aircraft.h"
+#include "GameController.h"
 
 
 EnterScreenTrigger* EnterScreenTrigger::create(tinyxml2::XMLDocument* xmlDef)
@@ -18,12 +19,25 @@ EnterScreenTrigger* EnterScreenTrigger::create(tinyxml2::XMLDocument* xmlDef)
 	return NULL;
 }
 
+EnterScreenTrigger* EnterScreenTrigger::create(string& prefabName, CCSize& prefabSize)
+{
+	EnterScreenTrigger* newTrigger = new EnterScreenTrigger();
+
+	if(newTrigger->init(prefabName, prefabSize))
+	{
+		newTrigger->autorelease();
+		return newTrigger;
+	}
+
+	return NULL;
+}
+
 EnterScreenTrigger::EnterScreenTrigger()
 {
-	xmlDef = NULL;
 	triggered = false;
 
-
+	triggerMode = TRIGGER_MODE_UNKNOWN;
+	xmlDef = NULL;
 }
 EnterScreenTrigger::~EnterScreenTrigger()
 {
@@ -33,7 +47,16 @@ EnterScreenTrigger::~EnterScreenTrigger()
 bool EnterScreenTrigger::init(tinyxml2::XMLDocument* xmlDef)
 {
 	//
+	triggerMode = TRIGGER_MODE_XFL_DEF;
 	this->xmlDef = xmlDef;
+	return GameObject::init();
+}
+
+bool EnterScreenTrigger::init(string& prefabName, CCSize& prefabSize)
+{
+	triggerMode = TRIGGER_MODE_SINGLE_PREFAB_STRING;
+	this->prefabName = prefabName;
+	this->prefabSize = prefabSize;
 	return GameObject::init();
 }
 
@@ -59,8 +82,42 @@ void EnterScreenTrigger::postPhysicsStep(float time, PhysicsManager* manager)
 
 	if(triggered)
 	{
-		EnterScreenTriggerCreateInstanceVisitor createInstanceVisitor(this);
-		xmlDef->Accept(&createInstanceVisitor);
+		triggered = false;
+
+
+		if(TRIGGER_MODE_XFL_DEF == triggerMode)
+		{
+			EnterScreenTriggerCreateInstanceVisitor createInstanceVisitor(this);
+			xmlDef->Accept(&createInstanceVisitor);
+		}
+
+		else if(TRIGGER_MODE_SINGLE_PREFAB_STRING == triggerMode)
+		{
+			// create prefab
+			Aircraft* enemy = NULL;
+			if(prefabName == "prefab/enemy/enemyBoss00.xml")
+				enemy = Aircraft::createBoss00();
+			else if(prefabName == "prefab/enemy/enemyBoss01.xml")
+				enemy = Aircraft::createBoss01();
+			else if(prefabName == "prefab/enemy/enemyOmni.xml")
+				enemy = Aircraft::createEnemyOmni();
+			else if(prefabName == "prefab/enemy/enemyRayGun.xml")
+				enemy = Aircraft::createEnemyRayGun();
+			else if(prefabName == "prefab/enemy/enemyStraight.xml")
+				enemy = Aircraft::createEnemyStraight();
+			else if(prefabName == "prefab/enemy/enemyTank.xml")
+				enemy = Aircraft::createEnemyTank();
+
+			if(enemy)
+			{
+				CCNode* parent = getParent();
+				if(parent)
+				{
+					enemy->setPosition(getPositionInWorldSpace());
+					GameController::sharedInstance()->addAircraft(enemy);
+				}
+			}
+		}
 
 		// remove self
 		this->shouldReleased = true;
@@ -70,9 +127,24 @@ void EnterScreenTrigger::postPhysicsStep(float time, PhysicsManager* manager)
 
 CCNode* EnterScreenTrigger::initGraphics()
 {
-	// parse trigger collision indicator's graphics region
-	EnterScreenTriggerCreateGraphicsVisitor createGraphicsVisitor(this);
-	xmlDef->Accept(&createGraphicsVisitor);
+	if(triggerMode == TRIGGER_MODE_XFL_DEF && xmlDef)
+	{
+		// parse trigger collision indicator's graphics region
+		EnterScreenTriggerCreateGraphicsVisitor createGraphicsVisitor(this);
+		xmlDef->Accept(&createGraphicsVisitor);
+	}
+
+	else if(triggerMode == TRIGGER_MODE_SINGLE_PREFAB_STRING)
+	{
+
+		CCLayerColor* collider = CCLayerColor::create(ccc4(0,255,0,100));
+		collider->changeWidthAndHeight(prefabSize.width, prefabSize.height);
+		collider->ignoreAnchorPointForPosition(false);
+		collider->setAnchorPoint(ccp(0.5, 0.5));
+		graphics = collider;
+		graphics->setVisible(false);
+	}
+
 
 	return graphics;
 	//return NULL;
@@ -118,6 +190,7 @@ bool EnterScreenTriggerCreateGraphicsVisitor::VisitEnter(const tinyxml2::XMLElem
 					layerColor->changeWidthAndHeight(transPoint.x*2, transPoint.y*2);
 					layerColor->setPosition(ccp(matrixElement.tx, -matrixElement.ty - transPoint.y*2));
 					triggerToControl->graphics = layerColor;
+					triggerToControl->graphics->setVisible(false);
 				}
 			}
 		}
@@ -187,14 +260,15 @@ bool EnterScreenTriggerCreateInstanceVisitor::VisitEnter(const tinyxml2::XMLElem
 
 				enemy->setPosition(ccp(matrixElement.tx + transPoint.x, -(matrixElement.ty + transPoint.y)));
 
-				// add to trigger parent
+				// add to aircraft layer
 				CCNode* triggerParent = triggerToControl->getParent();
 				if(triggerParent)
 				{
 					CCPoint pos = enemy->getPosition();
 					CCPoint posInParent = triggerToControl->convertToParentSpace(pos);
-					enemy->setPosition(posInParent);
-					triggerParent->addChild(enemy);
+					enemy->setPosition(triggerParent->convertToWorldSpace(posInParent));
+					// triggerParent->addChild(enemy);
+					GameController::sharedInstance()->addAircraft(enemy);
 				}
 			}
 		}
@@ -213,6 +287,9 @@ b2Body* EnterScreenTrigger::initPhysics()
 	{
 		CCSize size = graphics->getContentSize();
 		CCPoint anchorPoint = graphics->getAnchorPointInPoints();
+		if(graphics->isIgnoreAnchorPointForPosition())
+			anchorPoint = ccp(0,0);
+
 		CCPoint pos = graphics->getPosition();
 
 		b2World* world = PhysicsManager::sharedInstance()->getPhysicsWorld();
@@ -223,9 +300,9 @@ b2Body* EnterScreenTrigger::initPhysics()
 		bodyDef.fixedRotation = true;
 		b2Body* body = world->CreateBody(&bodyDef);
 
-		// because if graphics is CCLayerColor, it's ignoreAnchorPointForPosition
+		// because if graphics is CCLayerColor
 		b2PolygonShape shape;
-		b2Vec2 center((pos.x + size.width/2) / PhysicsManager::PTM_RATIO, (pos.y + size.height/2) / PhysicsManager::PTM_RATIO);
+		b2Vec2 center((size.width/2 + pos.x - anchorPoint.x) / PhysicsManager::PTM_RATIO, (size.height/2 + pos.y - anchorPoint.y) / PhysicsManager::PTM_RATIO);
 		shape.SetAsBox(size.width/2/PhysicsManager::PTM_RATIO,
 			size.height/2/PhysicsManager::PTM_RATIO,
 			center,
@@ -252,5 +329,3 @@ b2Body* EnterScreenTrigger::initPhysics()
 
 	return NULL;
 }
-
-

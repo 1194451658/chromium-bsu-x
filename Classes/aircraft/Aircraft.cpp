@@ -32,7 +32,7 @@ bool Aircraft::init(AircraftDef def)
 	curHp = def.hp;
 	damageToHit = 0;
 
-
+	isInvinsible = false;
 
 	if(GameObject::init())
 	{
@@ -176,7 +176,11 @@ void Aircraft::update(float dt)
 
 	if(damageToHit > 0)
 	{
-		setCurHp(curHp-damageToHit);
+		if(!isInvinsible)
+		{
+			setCurHp(curHp-damageToHit);
+		}
+
 		damageToHit = 0;
 	}
 
@@ -211,6 +215,21 @@ void Aircraft::setDefaultGun(Gun* gun)
 		addChild(gun);
 		gun->setOwnerAircraft(this);
 	}
+}
+
+void Aircraft::setInvinsible(float time)
+{
+	isInvinsible = true;
+
+	CCBlink* blink = CCBlink::create(time, 30);
+	CCCallFunc* finished = CCCallFunc::create(this, SEL_CallFunc(&Aircraft::callFuncInvinsible));
+	CCSequence* seq = CCSequence::createWithTwoActions(blink, finished);
+	runAction(seq);
+}
+
+void Aircraft::callFuncInvinsible()
+{
+	isInvinsible = false;
 }
 
 

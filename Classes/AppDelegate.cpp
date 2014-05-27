@@ -67,13 +67,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	// CCScene* pScene = TestShotMethod::scene();
 	// CCScene* pScene = TestTinyXml::scene();
 	// CCScene* pScene = TestControl::scene();
-	// CCScene* pScene = TestMapAndTrigger::scene();
+	 //CCScene* pScene = TestMapAndTrigger::scene();
 	// CCScene* pScene = TestBox2d::scene();
 	// CCScene* pScene = HelloWorld::scene();
 	// CCScene* pScene = TestFallingLeaf::scene();
 	// CCScene* pScene = TestAutoTiledMap::scene();
 
-	CCScene* pScene = GameScene::scene();
+	CCScene* pScene = GameScene::create();
 
     // run
     pDirector->runWithScene(pScene);

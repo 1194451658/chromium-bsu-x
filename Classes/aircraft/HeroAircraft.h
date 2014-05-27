@@ -39,11 +39,27 @@ public:
 public:
     // update
     virtual void update(float time);
+
+	void playNewLifeAction();
+	void newLifeCallFuncSelector();
+
+	//// about gun
+	//void setGunTriggered(bool triggerd) {gunTriggerd = triggerd};
+
+	void setInUserControl(bool control) { inUserControl = control;}
+	bool isInUserControl(){ return inUserControl; };
+
+	void setBoundMoveInScreen(bool bound){ boundMoveInScreen = bound; }
+	bool isBoundMoveInScreen(){ return boundMoveInScreen; }
 	
 protected:
 
 private: 
     HeroAircraft();
+
+	bool inUserControl;
+	bool boundMoveInScreen;
+	//bool gunTriggerd;
 };
 
 #endif

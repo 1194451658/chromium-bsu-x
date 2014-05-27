@@ -21,6 +21,7 @@
 
 #include "effect/Explosion.h"
 #include "engine/action/CCRandTextureForAmmo.h"
+#include "GameController.h"
 
 using namespace CocosDenshion;
 
@@ -102,7 +103,7 @@ b2Body* Ammo::initPhysics()
 		b2Filter filter;
 		filter.groupIndex	= ammoDef.physicsGroup;
 		filter.categoryBits = PhysicsManager::AMMO;
-		filter.maskBits		= PhysicsManager::AIRCRAFT | PhysicsManager::AMMO;
+		filter.maskBits		= PhysicsManager::AIRCRAFT;
 
 		b2Fixture* fixtureList = body->GetFixtureList();
 
@@ -167,8 +168,9 @@ void Ammo::doDamageToGameObject(GameObject* go)
 		if(parent)
 		{
 			Explositon* exp = Explositon::create(1,0,0,0,20,10);
-			exp->setPosition(this->getPosition());
-			parent->addChild(exp);
+			exp->setPosition(this->getPositionInWorldSpace());
+			// parent->addChild(exp);
+			GameController::sharedInstance()->addExplosion(exp);
 		}
 	}
 }

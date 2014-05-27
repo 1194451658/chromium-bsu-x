@@ -1,4 +1,4 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="trigger/enemyStraightTrigger2" itemID="537b2076-0000020d" lastModified="1400597147" lastUniqueIdentifier="10">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="trigger/enemyStraightTrigger2" itemID="537b2076-0000020d" lastModified="1400827507" lastUniqueIdentifier="10">
   <timeline>
     <DOMTimeline name="enemyStraightTrigger2">
       <layers>
@@ -19,36 +19,12 @@
                     <Point x="70.5" y="33"/>
                   </transformationPoint>
                 </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyOmni" centerPoint3DX="202.3" centerPoint3DY="-173.65">
+                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyRayGun" selected="true" centerPoint3DX="133.3" centerPoint3DY="32">
                   <matrix>
-                    <Matrix tx="170.3" ty="-205.65"/>
+                    <Matrix tx="101.3"/>
                   </matrix>
                   <transformationPoint>
                     <Point x="32" y="32"/>
-                  </transformationPoint>
-                </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyRayGun" centerPoint3DX="299.3" centerPoint3DY="52.35">
-                  <matrix>
-                    <Matrix tx="267.3" ty="20.35"/>
-                  </matrix>
-                  <transformationPoint>
-                    <Point x="32" y="32"/>
-                  </transformationPoint>
-                </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyTank" centerPoint3DX="112.35" centerPoint3DY="-117.65">
-                  <matrix>
-                    <Matrix tx="48.35" ty="-181.65"/>
-                  </matrix>
-                  <transformationPoint>
-                    <Point x="64" y="64"/>
-                  </transformationPoint>
-                </DOMSymbolInstance>
-                <DOMSymbolInstance libraryItemName="prefab/enemy/enemyBoss00" centerPoint3DX="332.3" centerPoint3DY="-83.65">
-                  <matrix>
-                    <Matrix tx="204.3" ty="-147.65"/>
-                  </matrix>
-                  <transformationPoint>
-                    <Point x="128" y="64"/>
                   </transformationPoint>
                 </DOMSymbolInstance>
               </elements>

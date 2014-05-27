@@ -47,11 +47,13 @@ class EnterScreenTrigger : public GameObject, public b2ContactListener
 
 public:
 	static EnterScreenTrigger* create(tinyxml2::XMLDocument* xmlDef);
+	static EnterScreenTrigger* create(string& prefabName, CCSize& prefabSize);
 
 	EnterScreenTrigger();
 	~EnterScreenTrigger();
 
 	bool init(tinyxml2::XMLDocument* xmlDef);
+	bool init(string& prefabName, CCSize& prefabSize);
 
 	// game object
 	virtual CCNode* initGraphics();
@@ -66,15 +68,23 @@ public:
 	// game object
 	void postPhysicsStep(float time, PhysicsManager* manager);
 
-
-
 private:
-	tinyxml2::XMLDocument* xmlDef;
-
 	friend class EnterScreenTriggerCreateGraphicsVisitor;
 	friend class EnterScreenTriggerCreateInstanceVisitor;
 
 	bool triggered;
+
+	enum TriggerModeEnum
+	{
+		TRIGGER_MODE_XFL_DEF,
+		TRIGGER_MODE_SINGLE_PREFAB_STRING,
+		TRIGGER_MODE_UNKNOWN
+	};
+private:
+	TriggerModeEnum triggerMode;
+	tinyxml2::XMLDocument* xmlDef;
+	string prefabName;
+	CCSize prefabSize;
 };
 
 #endif

@@ -21,20 +21,62 @@
 #include "Box2D/Box2D.h"
 #include "AppMacros.h"
 
-class GameScene : public cocos2d::CCLayer
+class ReplayTransitionScene : public cocos2d::CCLayer
+{
+public:
+	CREATE_FUNC(ReplayTransitionScene);
+
+	static cocos2d::CCScene* scene();
+	void onEnterTransitionDidFinish();
+	void update(float delta);
+};
+
+class GameScene : public cocos2d::CCScene
 {
 public:
 	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
 	virtual bool init();  
+	GameScene();
+
 
 	// there's no 'id' in cpp, so we recommend returning the class instance pointer
-	static cocos2d::CCScene* scene();
+	//static cocos2d::CCScene* scene();
 
 	// implement the "static node()" method manually
 	CREATE_FUNC(GameScene);
 
+public:
+
+
 private:
 	void stepForPhysicsManager(float time);
+
+	void createHUD();
+	void updateHUD();
+
+	//
+	void update(float delta);
+
+	// 
+	virtual void onEnter() {}
+    virtual void onEnterTransitionDidFinish()
+	{
+		CCScene::onEnter();
+		CCScene::onEnterTransitionDidFinish();
+	};
+	virtual void onExit(){}
+    virtual void onExitTransitionDidStart()
+	{
+		CCScene::onExitTransitionDidStart();
+		CCScene::onExit();
+	}
+
+public:
+	void gameOver();
+	void replayMenuHandler(CCObject* obj);
+
+private:
+	CCLabelTTF* lifeLabel;
 
 };
 

@@ -22,6 +22,7 @@
 #include "engine/xfl/XflParser.h"
 #include "map/Map.h"
 #include "engine/physics/PhysicsManager.h"
+#include "GameController.h"
 
 USING_NS_CC;
 
@@ -71,14 +72,13 @@ bool TestMapAndTrigger::init()
 	// init physics
 	// ------------
 	GB2ShapeCache::sharedGB2ShapeCache()->addShapesWithFile("png/physics.plist");
-	// PhysicsManager::sharedInstance()->enableDebugDraw(true);
+	PhysicsManager::sharedInstance()->enableDebugDraw(true);
 	PhysicsManager::sharedInstance()->createScreenCollider();
 	schedule(schedule_selector(TestMapAndTrigger::stepForPhysicsManager));
 
 	// --------------
 	// create map
 	// ------------
-
 	map<string, tinyxml2::XMLDocument*>::iterator mapDef = XflParser::sharedInstance()->mapDefs.find("map/testMap.xml");
 
 	if(mapDef != XflParser::sharedInstance()->mapDefs.end())
@@ -93,6 +93,13 @@ bool TestMapAndTrigger::init()
 			//CCMoveTo* move = CCMoveTo::create(time, ccp(0,0));
 			//map->runAction(move);
 	}
+
+	// ----------------------
+	// create aircraft layer
+	// -----------------------
+	CCNode* aircraftLayer = CCNode::create();
+	GameController::sharedInstance()->setAircraftLayer(aircraftLayer);
+	addChild(aircraftLayer);
 
 	return true;
 }

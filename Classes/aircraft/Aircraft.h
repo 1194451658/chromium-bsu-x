@@ -98,6 +98,12 @@ public:
 	void hpBarInit(float width, float height, float maxValue, float initialValue);
 	void hpBarUpdate(float percentage);
 
+	// --------
+	// state
+	// ---------
+	void setInvinsible(float time);
+	void callFuncInvinsible();
+
 
 	// --------------
 	// debug
@@ -123,11 +129,15 @@ private:
 protected:
 	AircraftDef aircraftDef;
 
+	// gun
 	Gun* defaultGun;
 
 	float maxHp;
 	float curHp;
 	float damageToHit;
+
+	// state
+	bool isInvinsible;
 
 	// hp bar
 	CCLayerColor* hpBarBg;

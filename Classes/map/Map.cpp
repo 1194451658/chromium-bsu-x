@@ -83,7 +83,7 @@ bool 	Map::VisitEnter (const  tinyxml2::XMLElement & element, const  tinyxml2::X
 		const char* libraryItemName = element.Attribute("libraryItemName");
 		string libraryItemNameStr = string(libraryItemName) + ".xml";
 
-		// check if it's trigger
+		// check if it's trigger, create trigger with xfl.
 		{
 			std::size_t pos = libraryItemNameStr.find("trigger/");
 
@@ -104,6 +104,22 @@ bool 	Map::VisitEnter (const  tinyxml2::XMLElement & element, const  tinyxml2::X
 					// trigger not found !!
 					CCLOG("Map::init library trigger not found : %s", libraryItemNameStr.c_str());
 				}
+			}
+		}
+
+		// check if it's prefab, create trigger with single prefab
+		{
+			std::size_t pos = libraryItemNameStr.find("prefab/");
+
+			if(pos == 0)
+			{
+				// get & set pos
+				MatrixElement matrix = parseMatrixElement(&element);
+				CCSize size = parseSizeBasedOnTransformationPointAndScale(&element);
+
+				EnterScreenTrigger* trigger = EnterScreenTrigger::create(libraryItemNameStr, size);
+				trigger->setPosition(ccp(matrix.tx + size.width/2, -matrix.ty - size.height/2));
+				addChild(trigger);
 			}
 		}
 
