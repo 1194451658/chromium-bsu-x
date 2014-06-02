@@ -225,6 +225,9 @@
     <ClCompile Include="..\Classes\engine\base_nodes\ReverseZOrderNode.cpp">
       <Filter>Classes\engine\base_nodes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\test\engine\TestCleanUp.cpp">
+      <Filter>Classes\test\engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -421,6 +424,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\engine\base_nodes\ReverseZOrderNode.h">
       <Filter>Classes\engine\base_nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\test\engine\TestCleanUp.h">
+      <Filter>Classes\test\engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

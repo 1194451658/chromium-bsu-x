@@ -37,15 +37,54 @@
 #define GB2ShapeCache_x_h
 
 #include "AppMacros.h"
+#include "Box2D/Box2D.h"
 
-class BodyDef;
-class b2Body;
+/**
+* Internal class to hold the fixtures
+*/
+class FixtureDef {
+public:
+	FixtureDef()
+		: next(NULL) {}
+
+	~FixtureDef() {
+		// delete next;
+		delete fixture.shape;
+	}
+
+	FixtureDef *next;
+	b2FixtureDef fixture;
+	int callbackData;
+};
+
+class BodyDef {
+public:
+	BodyDef()
+		: fixtures(NULL) {}
+
+	~BodyDef() {
+		//if (fixtures)
+		//delete fixtures;
+
+		FixtureDef* curFixtureDef = fixtures;
+		while(curFixtureDef)
+		{
+			FixtureDef* defToDelete = curFixtureDef;
+			curFixtureDef = curFixtureDef->next;
+			delete defToDelete;
+		}
+	}
+
+	FixtureDef *fixtures;
+	CCPoint anchorPoint;
+};
 
 namespace cocos2d {
 class GB2ShapeCache {
 public:
 // Static interface
 static GB2ShapeCache* sharedGB2ShapeCache(void);
+static void sharedGB2ShapeCacheCleanUp();
 
 public:
 bool init();	
@@ -54,10 +93,20 @@ void addFixturesToBody(b2Body *body, const std::string &shape);
 cocos2d::CCPoint anchorPointForShape(const std::string &shape);
 void reset();
 float getPtmRatio() { return ptmRatio; }
-~GB2ShapeCache() {}
+~GB2ShapeCache()
+{
+	// shapeObjects.clear();
+	for(std::map<std::string, BodyDef*>::iterator i = shapeObjects.begin(); i != shapeObjects.end(); i++)
+	{
+		if(i->second)
+			delete i->second;
+	}
+}
 
 private:
 std::map<std::string, BodyDef *> shapeObjects;
+std::set<std::string> parsedFileSet;
+
 GB2ShapeCache(void) {}
 float ptmRatio;
 };

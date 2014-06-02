@@ -48,9 +48,12 @@ bool Ammo::init(AmmoDef& def)
 		if(def.randTex)
 		{
 			// create rand texture action
-			CCRandTextureForAmmo* randTextureAct = CCRandTextureForAmmo::create(1);
-			CCRepeatForever* repeatAct = CCRepeatForever::create(randTextureAct);
-			graphics->runAction(repeatAct);
+			// CCRandTextureForAmmo* randTextureAct = CCRandTextureForAmmo::create(1);
+			// CCRepeatForever* repeatAct = CCRepeatForever::create(randTextureAct);
+			// graphics->runAction(repeatAct);
+
+			CCMoveBy* randTextureAct = CCMoveBy::create(1, ccp(0, 0));
+			graphics->runAction(randTextureAct);
 		}
 
 		return true;

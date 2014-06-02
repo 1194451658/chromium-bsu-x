@@ -25,6 +25,8 @@ USING_NS_CC;
 class CCSpriteExtWithShadow : public CCSpriteExt
 {
 public:
+	CCSpriteExtWithShadow();
+	~CCSpriteExtWithShadow();
 	void drawShadow();
 	void visitShadow();
 	static CCSpriteExtWithShadow* create(const char *pszFileName);

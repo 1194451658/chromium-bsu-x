@@ -34,9 +34,21 @@ CCSpriteExtWithShadow* CCSpriteExtWithShadow::create(const char *pszFileName)
 	return NULL;
 }
 
+CCSpriteExtWithShadow::CCSpriteExtWithShadow()
+{
+	shadowShaderProgram = NULL;
+}
+
+
+CCSpriteExtWithShadow::~CCSpriteExtWithShadow()
+{
+	CC_SAFE_RELEASE_NULL(shadowShaderProgram);
+}
+
 void CCSpriteExtWithShadow::initShader()
 {
 	CCGLProgram* shader = new CCGLProgram();
+	shader->autorelease();
 
 	const char* fragShader = 
 		"											\n\
@@ -71,7 +83,9 @@ void CCSpriteExtWithShadow::initShader()
 	shader->link();
 	shader->updateUniforms();
 
+	CC_SAFE_RELEASE_NULL(shadowShaderProgram);
 	shadowShaderProgram = shader;
+	shadowShaderProgram->retain();
 	return ;
 }
 

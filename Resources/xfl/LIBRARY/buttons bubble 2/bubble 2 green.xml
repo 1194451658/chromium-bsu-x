@@ -1,0 +1,228 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="buttons bubble 2/bubble 2 green" itemID="427e34f4-00005d55" symbolType="button" lastModified="1115596628">
+  <timeline>
+    <DOMTimeline name="bubble 2 green">
+      <layers>
+        <DOMLayer name="text" color="#9933CC" locked="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" duration="3" keyMode="9728">
+              <elements>
+                <DOMStaticText fontRenderingMode="bitmap" left="0.4" width="26.2" height="12.05" autoExpand="true" isSelectable="false">
+                  <matrix>
+                    <Matrix tx="-13.5" ty="-6.5"/>
+                  </matrix>
+                  <textRuns>
+                    <DOMTextRun>
+                      <characters>Enter</characters>
+                      <textAttrs>
+                        <DOMTextAttrs alignment="center" size="10" bitmapSize="200" face="Verdana" fillColor="#333333"/>
+                      </textAttrs>
+                    </DOMTextRun>
+                  </textRuns>
+                </DOMStaticText>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="center" color="#FFFF4F" current="true" isSelected="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" duration="2" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <RadialGradient>
+                        <matrix>
+                          <Matrix a="0.025634765625" d="0.025634765625" tx="-6.05" ty="-5.75"/>
+                        </matrix>
+                        <GradientEntry color="#FFFFFF" ratio="0"/>
+                        <GradientEntry color="#88DDA9" ratio="0.925490196078431"/>
+                        <GradientEntry color="#7BD9A0" ratio="1"/>
+                      </RadialGradient>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle1="1" edges="!297 -298[#162.D1 -239.59375 386.5 -164!386.5 -164[#1A3.1D #FFFFAA.2E 420 0!420 0[#1A4.0C #54.D7 386.5 163!386.5 163[#162.D1 #EE.97 297 297!297 297[#ED.EE #163.1D 163 386.5!163 386.5[#54.C4 #1A2.FF 0 420!0 420[#FFFFAA.43 #1A3.F4 -164
+ 386.5!-164 386.5[-238.9375 #163.1D -298 297!-298 297[#FFFE9C.2F #EE.97 -387.5 163!-387.5 163[#FFFE5B.E9 #54.D7 -420 0!-420 0[#FFFE5B.E9 #FFFFAA.2E -387.5 -164!-387.5 -164[#FFFE9C.2F -239.59375 -298 -298!-298 -298[-238.9375 #FFFE9B.E2
+ -164 -387.5!-164 -387.5[#FFFFAA.43 #FFFE5C.05 0 -420!0 -420[#54.C4 #FFFE5C.05 163 -387.5!163 -387.5[#ED.EE #FFFE9B.E2 297 -298"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="2" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <RadialGradient>
+                        <matrix>
+                          <Matrix a="0.025634765625" d="0.025634765625" tx="-6.05" ty="-5.75"/>
+                        </matrix>
+                        <GradientEntry color="#A9E7C1" ratio="0"/>
+                        <GradientEntry color="#61D18D" ratio="1"/>
+                      </RadialGradient>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle1="1" edges="
+!386.5 -164[#1A3.1D #FFFFAA.2E 420 0!420 0[#1A4.0C #54.D7 386.5 163!386.5 163[#162.D1 #EE.97 297 297!297 297[#ED.EE #163.1D 163 386.5!163 386.5[#54.C4 #1A2.FF 0 420!0 420[#FFFFAA.43 #1A3.F4 -164 386.5!-164 386.5[-238.9375 #163.1D -298
+ 297!-298 297[#FFFE9C.2F #EE.97 -387.5 163!-387.5 163[#FFFE5B.E9 #54.D7 -420 0!-420 0[#FFFE5B.E9 #FFFFAA.2E -387.5 -164!-387.5 -164[#FFFE9C.2F -239.59375 -298 -298!-298 -298[-238.9375 #FFFE9B.E2 -164 -387.5!-164 -387.5[#FFFFAA.43 #FFFE5C.05
+ 0 -420!0 -420[#54.C4 #FFFE5C.05 163 -387.5!163 -387.5[#ED.EE #FFFE9B.E2 297 -298!297 -298[#162.D1 -239.59375 386.5 -164"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="center border" color="#FF4FFF" locked="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#30A55E"/>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle1="1" edges="
+!310.5 -311.5[#174.26 #FFFF04.E1 405 -172!405 -172[#1B7.4C #FFFFA6.55 440 0!440 0[#1B8.19 #58.C2 405 171!405 171[#174.26 #FA.1E 310.5 310.5!310.5 310.5[#F9.8C #173.9A 171 405!171 405[#58.B2 #1B7.34 0 440!0 440[#FFFFA6.66 #1B8.05 -172
+ 405!-172 405[#FFFF05.73 #173.9A -311.5 310.5!-311.5 310.5[#FFFE8A.DA #FA.1E -406 171!-406 171[#FFFE47.CD #58.C2 -440 0!-440 0[#FFFE47.CD #FFFFA6.55 -406 -172!-406 -172[#FFFE8A.DA #FFFF04.E1 -311.5 -311.5!-311.5 -311.5[#FFFF05.73 #FFFE8B.66
+ -172 -406!-172 -406[#FFFFA6.66 #FFFE47.E3 0 -440!0 -440[#58.B2 #FFFE47.E3 171 -406!171 -406[#F9.8C #FFFE8B.66 310.5 -311.5"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="1" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="buttons bubble 2/bubble 2 blue glow">
+                  <matrix>
+                    <Matrix a="0.8148193359375" d="0.8148193359375"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="12" blurY="12" color="#FFFF99"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="2" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="buttons bubble 2/bubble 2 blue glow">
+                  <matrix>
+                    <Matrix a="0.8148193359375" d="0.8148193359375"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                  <filters>
+                    <GlowFilter blurX="24" blurY="24" color="#FFFF99"/>
+                  </filters>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="gradient circle" color="#4FFFFF" locked="true" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" duration="3" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <LinearGradient>
+                        <matrix>
+                          <Matrix a="-0.0201416015625" b="-0.0210113525390625" c="0.0146484375" d="-0.0146331787109375" tx="-0.7" ty="0.5"/>
+                        </matrix>
+                        <GradientEntry color="#A9E7C1" ratio="0"/>
+                        <GradientEntry color="#30A55E" ratio="1"/>
+                      </LinearGradient>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle1="1" edges="
+!339 -340[#195.AF -273 442 -187!442 -187[#1DF.1F -98 480 0!480 0[#1E0.1A 97 442 186!442 186[#195.AF 272 339 339!339 339[#110.4B 405 186 442!186 442[#60.EB 479 0 480!0 480[#FFFF9E.17 480 -187 442!-187 442[#FFFEEE.B4 405 -340 339!-340 339
+[-406.6875 273 -443 186!-443 186[#FFFE1F.E3 97 -480 0!-480 0[#FFFE1F.E3 -98 -443 -187!-443 -187[-406.6875 -273 -340 -340!-340 -340[#FFFEEE.B4 -406 -187 -443!-187 -443[#FFFF9E.17 -480 0 -480!0 -480[#60.EB -480 186 -443!186 -443[#110.4B
+ -406 339 -340"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="outer circle" color="#4FFF4F" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" duration="2" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#35B969"/>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle1="1" edges="
+!381 -382[#1C8.AC -308 497 -211!497 -211[#21B.1E -110 540 0!540 0[#21C.19 109 497 210!497 210[#1C8.AC 307 381 381!381 381[#132.4C 456 210 497!210 497[#6C.ED 539 0 540!0 540[#FFFF92.15 540 -211 497!-211 497[#FFFECC.B3 456 -382 381!-382
+ 381[#FFFE36.54 307 -498 210!-498 210[#FFFDE3.E4 109 -540 0!-540 0[#FFFDE3.E4 -110 -498 -211!-498 -211[#FFFE36.54 -308 -382 -382!-382 -382[#FFFECC.B3 -457 -211 -498!-211 -498[#FFFF92.15 -540 0 -540!0 -540[#6C.ED -540 210 -498!210 -498
+[#132.4C -457 381 -382"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="2" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#46CA7A"/>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle1="1" edges="
+!381 -382[#1C8.AC -308 497 -211!497 -211[#21B.1E -110 540 0!540 0[#21C.19 109 497 210!497 210[#1C8.AC 307 381 381!381 381[#132.4C 456 210 497!210 497[#6C.ED 539 0 540!0 540[#FFFF92.15 540 -211 497!-211 497[#FFFECC.B3 456 -382 381!-382
+ 381[#FFFE36.54 307 -498 210!-498 210[#FFFDE3.E4 109 -540 0!-540 0[#FFFDE3.E4 -110 -498 -211!-498 -211[#FFFE36.54 -308 -382 -382!-382 -382[#FFFECC.B3 -457 -211 -498!-211 -498[#FFFF92.15 -540 0 -540!0 -540[#6C.ED -540 210 -498!210 -498
+[#132.4C -457 381 -382"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+        <DOMLayer name="outer border" color="#808080" autoNamed="false">
+          <frames>
+            <DOMFrame index="0" duration="2" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#82DBA5"/>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle1="1" edges="
+!409 -410.5[#1EA.7B #FFFEB5.26 534 -226.5!534 -226.5[#243.24 #FFFF89.EB 580 0!580 0[#244.32 #75.0B 534 225.5!534 225.5[#1EA.7B #149.99 409 409!409 409[#148.D8 #1E9.C2 225.5 534!225.5 534[#74.F7 #243.04 0 580!0 580[#FFFF8A.01 #244.17 -226.5
+ 534!-226.5 534[#FFFEB5.E6 #1E9.C2 -410.5 409!-410.5 409[#FFFE14.44 #149.99 -535 225.5!-535 225.5[#FFFDBB.D3 #75.0B -580 0!-580 0[#FFFDBB.D3 #FFFF89.EB -535 -226.5!-535 -226.5[#FFFE14.44 #FFFEB5.26 -410.5 -410.5!-410.5 -410.5[#FFFEB5.E6
+ #FFFE14.FD -226.5 -535!-226.5 -535[#FFFF8A.01 #FFFDBB.F1 0 -580!0 -580[#74.F7 #FFFDBB.F1 225.5 -535!225.5 -535[#148.D8 #FFFE14.FD 409 -410.5"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="2" duration="2" keyMode="9728">
+              <elements>
+                <DOMSymbolInstance libraryItemName="buttons bubble 2/bubble 2 blue glow" symbolType="graphic" loop="loop">
+                  <matrix>
+                    <Matrix a="1.03704833984375" d="1.03704833984375"/>
+                  </matrix>
+                  <transformationPoint>
+                    <Point/>
+                  </transformationPoint>
+                </DOMSymbolInstance>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

@@ -48,8 +48,6 @@ bool EnemyBoss00::init(AircraftDef def)
 		// create gun
 		Gun* lateralGun = Gun::createEnemyBoss00Gun0();
 		Gun* middleGun = Gun::createEnemyBoss00Gun1();
-		lateralGun->retain();
-		middleGun->retain();
 
 		lateralGun->setOwnerAircraft(this);
 		middleGun->setOwnerAircraft(this);

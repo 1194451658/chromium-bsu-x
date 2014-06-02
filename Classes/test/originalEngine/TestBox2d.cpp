@@ -55,6 +55,11 @@ bool TestBox2d::init()
 	return true;
 }
 
+TestBox2d::~TestBox2d()
+{
+	//PhysicsManager::sharedInstanceCleanUp();
+}
+
 void TestBox2d::stepForPhysicsManager(float time)
 {
 	PhysicsManager::sharedInstance()->step(time);

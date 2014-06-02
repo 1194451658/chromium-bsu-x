@@ -63,6 +63,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LibraryPath>$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A\lib;$(LibraryPath)</LibraryPath>
@@ -169,6 +170,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\map\Map.cpp" />
     <ClCompile Include="..\Classes\map\trigger\EnterScreenTrigger.cpp" />
     <ClCompile Include="..\Classes\scene\GameScene.cpp" />
+    <ClCompile Include="..\Classes\test\engine\TestCleanUp.cpp" />
     <ClCompile Include="..\Classes\test\engine\TestPhysicsEditor.cpp" />
     <ClCompile Include="..\Classes\test\engine\TestPhysicsManager.cpp" />
     <ClCompile Include="..\Classes\test\originalEngine\TestArmatureScene.cpp" />
@@ -235,6 +237,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\map\Map.h" />
     <ClInclude Include="..\Classes\map\trigger\EnterScreenTrigger.h" />
     <ClInclude Include="..\Classes\scene\GameScene.h" />
+    <ClInclude Include="..\Classes\test\engine\TestCleanUp.h" />
     <ClInclude Include="..\Classes\test\engine\TestKeyUpDown.h" />
     <ClInclude Include="..\Classes\test\engine\TestPhysicsEditor.h" />
     <ClInclude Include="..\Classes\test\engine\TestPhysicsManager.h" />

@@ -36,6 +36,33 @@ XflParser::~XflParser()
 		delete _sharedInstance;
 		_sharedInstance = NULL;
 	}
+
+	for(map<string, tinyxml2::XMLDocument*>::iterator i = prefabDefs.begin(); i != prefabDefs.end(); i++)
+	{
+		if(i->second)
+		{
+			delete i->second;
+			i->second = NULL;
+		}
+	}
+
+	for(map<string, tinyxml2::XMLDocument*>::iterator i = triggerDefs.begin(); i != triggerDefs.end(); i++)
+	{
+		if(i->second)
+		{
+			delete i->second;
+			i->second = NULL;
+		}
+	}
+
+	for(map<string, tinyxml2::XMLDocument*>::iterator i = mapDefs.begin(); i != mapDefs.end(); i++)
+	{
+		if(i->second)
+		{
+			delete i->second;
+			i->second = NULL;
+		}
+	}
 }
 
 
@@ -47,9 +74,21 @@ XflParser* XflParser::sharedInstance()
 		XflParser* newParser = new XflParser();
 		newParser->initialLoad();
 		_sharedInstance = newParser;
+
+		atexit(&XflParser::sharedInstanceCleanUp);
 	}
 
 	return _sharedInstance;
+}
+
+void XflParser::sharedInstanceCleanUp()
+{
+	if(_sharedInstance)
+	{
+		XflParser* instanceToDelete = _sharedInstance;
+		_sharedInstance = NULL;
+		delete instanceToDelete;
+	}
 }
 
 

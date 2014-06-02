@@ -39,47 +39,30 @@
 
 using namespace cocos2d;
 
-/**
-* Internal class to hold the fixtures
-*/
-class FixtureDef {
-public:
-    FixtureDef()
-    : next(NULL) {}
-    
-    ~FixtureDef() {
-        delete next;
-        delete fixture.shape;
-    }
-    
-    FixtureDef *next;
-    b2FixtureDef fixture;
-    int callbackData;
-};
 
-class BodyDef {
-public:
-BodyDef()
-: fixtures(NULL) {}
-
-~BodyDef() {
-if (fixtures)
-delete fixtures;
-}
-
-FixtureDef *fixtures;
-CCPoint anchorPoint;
-};
 
 static GB2ShapeCache *_sharedGB2ShapeCache = NULL;
 
-GB2ShapeCache* GB2ShapeCache::sharedGB2ShapeCache(void) {
-if (!_sharedGB2ShapeCache) {
-_sharedGB2ShapeCache = new GB2ShapeCache();
-        _sharedGB2ShapeCache->init();
+GB2ShapeCache* GB2ShapeCache::sharedGB2ShapeCache(void)
+{
+	if (!_sharedGB2ShapeCache)
+	{
+		_sharedGB2ShapeCache = new GB2ShapeCache();
+		_sharedGB2ShapeCache->init();
+
+		atexit(&GB2ShapeCache::sharedGB2ShapeCacheCleanUp);
+	}
+
+	return _sharedGB2ShapeCache;
 }
 
-return _sharedGB2ShapeCache;
+void GB2ShapeCache::sharedGB2ShapeCacheCleanUp()
+{
+	if(_sharedGB2ShapeCache)
+	{
+		delete _sharedGB2ShapeCache;
+		_sharedGB2ShapeCache = NULL;
+	}
 }
 
 bool GB2ShapeCache::init() {
@@ -118,7 +101,13 @@ return bd->anchorPoint;
 
 void GB2ShapeCache::addShapesWithFile(const std::string &plist) {
     
-//const char *fullName = CCFileUtils::sharedFileUtils()->fullPathForFilename(plist.c_str()).c_str();
+
+	string fullPath = CCFileUtils::sharedFileUtils()->fullPathForFilename(plist.c_str());
+
+	if(parsedFileSet.find(fullPath) != parsedFileSet.end())
+		return;
+
+	parsedFileSet.insert(fullPath);
     
     CCDictionary *dict = CCDictionary::createWithContentsOfFile(plist.c_str());
     // not triggered - cocos2dx delivers empty dict if non was found

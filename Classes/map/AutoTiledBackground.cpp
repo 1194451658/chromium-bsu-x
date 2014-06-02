@@ -80,6 +80,7 @@ AutoTiledBackground* AutoTiledBackground::create(const char *pszFileName)
 			";
 
 		CCGLProgram* shader = new CCGLProgram();
+		shader->autorelease();
 		shader->initWithVertexShaderByteArray(vertexShader, fragShader);
 		shader->addAttribute(kCCAttributeNamePosition, kCCVertexAttrib_Position);
 		shader->addAttribute(kCCAttributeNameColor, kCCVertexAttrib_Color);
@@ -98,7 +99,6 @@ AutoTiledBackground* AutoTiledBackground::create(const char *pszFileName)
 		 shader->updateUniforms();
 
 		pobSprite->setShaderProgram(shader);
-
 		return pobSprite;
 	}
 	CC_SAFE_DELETE(pobSprite);

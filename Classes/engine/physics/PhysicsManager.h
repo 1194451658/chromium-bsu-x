@@ -41,6 +41,7 @@ class PhysicsManager : public CCObject, public b2ContactListener
 
 public:
 	static PhysicsManager* sharedInstance();
+	static void sharedInstanceCleanUp();
 public:
 	~PhysicsManager();
 	void addStepCallbackHandler(PhysicsStepCallbackHandler* handler);

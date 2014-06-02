@@ -1,0 +1,28 @@
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="buttons bubble 2/bubble 2 blue glow" itemID="427e33f5-000056c7" symbolType="graphic" lastModified="1115595893">
+  <timeline>
+    <DOMTimeline name="bubble 2 blue glow">
+      <layers>
+        <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+          <frames>
+            <DOMFrame index="0" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor color="#FFFF99"/>
+                    </FillStyle>
+                  </fills>
+                  <edges>
+                    <Edge fillStyle1="1" edges="!210 -498[#132.4C -457 381 -382!381 -382[#1C8.AC -308 497 -211!497 -211[#21B.1E -110 540 0!540 0[#21C.19 109 497 210!497 210[#1C8.AC 307 381 381!381 381[#132.4C 456 210 497!210 497[#6C.ED 539 0 540!0 540[#FFFF92.15 540 -211 497!-211 497
+[#FFFECC.B3 456 -382 381!-382 381[#FFFE36.54 307 -498 210!-498 210[#FFFDE3.E4 109 -540 0!-540 0[#FFFDE3.E4 -110 -498 -211!-498 -211[#FFFE36.54 -308 -382 -382!-382 -382[#FFFECC.B3 -457 -211 -498!-211 -498[#FFFF92.15 -540 0 -540!0 -540
+[#6C.ED -540 210 -498"/>
+                  </edges>
+                </DOMShape>
+              </elements>
+            </DOMFrame>
+          </frames>
+        </DOMLayer>
+      </layers>
+    </DOMTimeline>
+  </timeline>
+</DOMSymbolItem>

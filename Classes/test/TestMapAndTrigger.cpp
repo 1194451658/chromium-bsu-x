@@ -73,7 +73,7 @@ bool TestMapAndTrigger::init()
 	// ------------
 	GB2ShapeCache::sharedGB2ShapeCache()->addShapesWithFile("png/physics.plist");
 	PhysicsManager::sharedInstance()->enableDebugDraw(true);
-	PhysicsManager::sharedInstance()->createScreenCollider();
+	//PhysicsManager::sharedInstance()->createScreenCollider();
 	schedule(schedule_selector(TestMapAndTrigger::stepForPhysicsManager));
 
 	// --------------
@@ -94,12 +94,12 @@ bool TestMapAndTrigger::init()
 			//map->runAction(move);
 	}
 
-	// ----------------------
-	// create aircraft layer
-	// -----------------------
-	CCNode* aircraftLayer = CCNode::create();
-	GameController::sharedInstance()->setAircraftLayer(aircraftLayer);
-	addChild(aircraftLayer);
+	//// ----------------------
+	//// create aircraft layer
+	//// -----------------------
+	//CCNode* aircraftLayer = CCNode::create();
+	//GameController::sharedInstance()->setAircraftLayer(aircraftLayer);
+	//addChild(aircraftLayer);
 
 	return true;
 }

@@ -67,6 +67,8 @@ void ReplayTransitionScene::update(float delta)
 GameScene::GameScene()
 {
 	lifeLabel = NULL;
+
+	PhysicsManager::sharedInstanceCleanUp();
 }
 
 GameScene::~GameScene()
@@ -74,6 +76,9 @@ GameScene::~GameScene()
 	CC_SAFE_RELEASE_NULL(lifeLabel);
 	PhysicsManager::sharedInstance()->resetAll();
 	GameController::sharedInstance()->resetAll();
+
+	//PhysicsManager::sharedInstanceCleanUp();
+	// XflParser::sharedInstanceCleanUp();
 }
 
 // on "init" you need to initialize your instance

@@ -142,7 +142,7 @@ CCNode* EnterScreenTrigger::initGraphics()
 		collider->ignoreAnchorPointForPosition(false);
 		collider->setAnchorPoint(ccp(0.5, 0.5));
 		graphics = collider;
-		//graphics->setVisible(false);
+		graphics->setVisible(false);
 	}
 
 
@@ -190,7 +190,7 @@ bool EnterScreenTriggerCreateGraphicsVisitor::VisitEnter(const tinyxml2::XMLElem
 					layerColor->changeWidthAndHeight(transPoint.x*2, transPoint.y*2);
 					layerColor->setPosition(ccp(matrixElement.tx, -matrixElement.ty - transPoint.y*2));
 					triggerToControl->graphics = layerColor;
-					//triggerToControl->graphics->setVisible(false);
+					triggerToControl->graphics->setVisible(false);
 				}
 			}
 		}

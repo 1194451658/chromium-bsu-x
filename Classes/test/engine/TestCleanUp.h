@@ -14,13 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef __TEST_BOX_2D_H__
-#define __TEST_BOX_2D_H__
+#ifndef __TEST_CLEAN_UP_H__
+#define __TEST_CLEAN_UP_H__
 
 #include "Box2D/Box2D.h"
 #include "AppMacros.h"
 
-class TestBox2d : public cocos2d::CCLayer
+class TestCleanUp : public cocos2d::CCLayer
 {
 public:
 	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
@@ -30,15 +30,7 @@ public:
 	static cocos2d::CCScene* scene();
 
 	// implement the "static node()" method manually
-	CREATE_FUNC(TestBox2d);
-
-	~TestBox2d();
-
-
-private:
-	void stepForPhysicsManager(float time);
-
-	void testShapeCenter();
+	CREATE_FUNC(TestCleanUp);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

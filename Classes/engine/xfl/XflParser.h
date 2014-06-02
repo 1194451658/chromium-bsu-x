@@ -32,6 +32,7 @@ class XflParser
 public:
 	~XflParser();
 	static XflParser* sharedInstance();
+	static void sharedInstanceCleanUp();
 
 	// init load 
 	void initialLoad();

@@ -45,6 +45,7 @@ public:
 
 
 private:
+	static void cleanup();
 	static GameController* _sharedInstance;
 	GameController();
 

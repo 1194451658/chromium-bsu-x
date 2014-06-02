@@ -10,9 +10,19 @@ GameController* GameController::sharedInstance()
 	if(GameController::_sharedInstance == NULL)
 	{
 		GameController::_sharedInstance = new GameController();
+		atexit(&GameController::cleanup);
 	}
 
 	return GameController::_sharedInstance;
+}
+
+void GameController::cleanup()
+{
+	if(GameController::_sharedInstance)
+	{
+		delete GameController::_sharedInstance;
+		_sharedInstance = NULL;
+	}
 }
 
 GameController::GameController()

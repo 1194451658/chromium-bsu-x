@@ -34,6 +34,8 @@ PhysicsManager*  PhysicsManager::sharedInstance()
 		if(newInstance && newInstance->init(PhysicsManager::gravity))
 		{
 			_sharedInstance = newInstance;
+			atexit(&PhysicsManager::sharedInstanceCleanUp);
+
 		} else
 		{
 			CC_SAFE_DELETE(newInstance);
@@ -41,6 +43,11 @@ PhysicsManager*  PhysicsManager::sharedInstance()
 	}
 
 	return _sharedInstance;
+}
+
+void PhysicsManager::sharedInstanceCleanUp()
+{
+	CC_SAFE_RELEASE_NULL(_sharedInstance);
 }
 
 PhysicsManager::PhysicsManager()

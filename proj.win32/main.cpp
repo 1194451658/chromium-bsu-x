@@ -2,6 +2,11 @@
 #include "AppDelegate.h"
 #include "CCEGLView.h"
 
+// visual leak detector
+// used to find memory leak in windows visual studio.
+// comment it, if you like
+#include "vld.h"
+
 USING_NS_CC;
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,

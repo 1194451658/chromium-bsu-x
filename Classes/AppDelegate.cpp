@@ -8,6 +8,8 @@
 #include "test/originalEngine/TestControl.h"
 
 #include "test/engine/TestPhysicsManager.h"
+#include "test/engine/TestCleanUp.h"
+
 #include "test/other/TestFallingLeaf.h"
 
 #include "test/TestMapAndTrigger.h"
@@ -68,12 +70,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	// CCScene* pScene = TestTinyXml::scene();
 	// CCScene* pScene = TestControl::scene();
 	 //CCScene* pScene = TestMapAndTrigger::scene();
-	// CCScene* pScene = TestBox2d::scene();
+	 //CCScene* pScene = TestBox2d::scene();
 	// CCScene* pScene = HelloWorld::scene();
 	// CCScene* pScene = TestFallingLeaf::scene();
 	// CCScene* pScene = TestAutoTiledMap::scene();
 
 	CCScene* pScene = GameScene::create();
+
+	//CCScene* pScene = TestCleanUp::scene();
 
     // run
     pDirector->runWithScene(pScene);

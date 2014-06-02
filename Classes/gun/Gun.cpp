@@ -88,6 +88,8 @@ Gun::Gun()
 
 Gun::~Gun()
 {
+	if(prototypeAmmo)
+		prototypeAmmo->cleanup();
 	CC_SAFE_RELEASE(prototypeAmmo);
 	CC_SAFE_RELEASE(coldTimeMethod);
 	CC_SAFE_RELEASE(shotMethod);
@@ -104,7 +106,7 @@ Gun* Gun::create(Aircraft* owner, Ammo* prototypeAmmo, ColdTimeMethod* coldTimeM
 	}
 
 	CC_SAFE_DELETE(newGun);
-	return NULL;
+	return NULL; 
 }
 
 void Gun::update(float time)
