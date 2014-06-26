@@ -17,6 +17,7 @@
 #include "test/TestAircraft.h"
 #include "test/TestShotMethod.h"
 #include "test/TestAutoTiledMap.h"
+#include "test/TestScene.h"
 
 #include "scene/GameScene.h"
 
@@ -34,12 +35,6 @@ AppDelegate::~AppDelegate()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
-
-	// --------------
-	// set frame size
-	// ---------------
-	CCEGLView* eglView = CCEGLView::sharedOpenGLView();
-	eglView->setFrameSize(600, 800);
 
 	// initialize director
 	CCDirector* pDirector = CCDirector::sharedDirector();
@@ -69,12 +64,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	// CCScene* pScene = TestShotMethod::scene();
 	// CCScene* pScene = TestTinyXml::scene();
 	// CCScene* pScene = TestControl::scene();
-	 //CCScene* pScene = TestMapAndTrigger::scene();
-	 //CCScene* pScene = TestBox2d::scene();
+	// CCScene* pScene = TestMapAndTrigger::scene();
+	// CCScene* pScene = TestBox2d::scene();
 	// CCScene* pScene = HelloWorld::scene();
 	// CCScene* pScene = TestFallingLeaf::scene();
 	// CCScene* pScene = TestAutoTiledMap::scene();
 
+	// CCScene* pScene = TestScene::scene();
 	CCScene* pScene = GameScene::create();
 
 	//CCScene* pScene = TestCleanUp::scene();

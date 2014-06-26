@@ -124,16 +124,33 @@ void XflParser::initialLoad()
 void XflParser::loadXmlToMap(string& rootDir, char* relativeFilePath, map<string, tinyxml2::XMLDocument*>& toMap)
 {
 	string xmlFilePath = string(rootDir) + "/" + relativeFilePath;
+	string fullxmlFilePath = CCFileUtils::sharedFileUtils()->fullPathForFilename(xmlFilePath.c_str());
 
-	if(CCFileUtils::sharedFileUtils()->isFileExist(xmlFilePath.c_str()))
+	if(CCFileUtils::sharedFileUtils()->isFileExist(fullxmlFilePath.c_str()))
 	{
+
+		//CCLOG("XflParser::loadXmlToMap fullxmlFilePath: %s", fullxmlFilePath.c_str());
+
+		// get file data
+		unsigned long nLength = 0;
+		char* pBuff = (char*)CCFileUtils::sharedFileUtils()->getFileData(fullxmlFilePath.c_str(), "rt", &nLength );
+
 		tinyxml2::XMLDocument* doc = new tinyxml2::XMLDocument();
-		doc->LoadFile(xmlFilePath.c_str());
+		doc->Parse(pBuff);
+
+		if(pBuff)
+			delete pBuff;
+
+		// if(0 != doc->LoadFile(fullxmlFilePath.c_str()))
+		// {
+		// 	CCLog("XflParser::loadXmlToMap loadFile Failed !");
+		// }
+
 		toMap.insert(pair<const char*, tinyxml2::XMLDocument*>(relativeFilePath, doc));
 		CCLOG("XflParser::loadXmlToMap load xml file: %s", relativeFilePath);
 	}else
 	{
-		CCLOG("XflParser::loadXmlToMap file %s not exist !", xmlFilePath.c_str());
+		CCLOG("XflParser::loadXmlToMap file %s not exist !", fullxmlFilePath.c_str());
 	}
 }
 

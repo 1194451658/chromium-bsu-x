@@ -37,8 +37,8 @@ AutoTiledBackground* AutoTiledBackground::create(const char *pszFileName)
 		#else												\n\
 		varying vec4 v_fragmentColor;						\n\
 		varying vec2 v_texCoord;							\n\
-		varying vec4 v_position;							\n\
 		#endif												\n\
+		varying vec4 v_position;							\n\
 		\n\
 		void main()											\n\
 		{													\n\
@@ -72,8 +72,8 @@ AutoTiledBackground* AutoTiledBackground::create(const char *pszFileName)
 			{													\n\
 				float widthPercent = mod(v_position.x, textureWidth) / textureWidth;						\n\
 				float heightPercent = mod(v_position.y, textureHeight) / textureHeight;						\n\
-				float texCoordX = textureCoordLeft * (1-widthPercent) + textureCoordRight * widthPercent;	\n\
-				float texCoordY = textureCoordBottom * (1-heightPercent) + textureCoordTop* heightPercent;	\n\
+				float texCoordX = textureCoordLeft * (1.0-widthPercent) + textureCoordRight * widthPercent;	\n\
+				float texCoordY = textureCoordBottom * (1.0-heightPercent) + textureCoordTop* heightPercent;	\n\
 				\n\
 				gl_FragColor = vec4( v_fragmentColor * texture2D(CC_Texture0, vec2(texCoordX, texCoordY)));	// A from texture & uniform		\n\
 			}													\n\
